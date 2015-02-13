@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnitySampleAssets.Characters.ThirdPerson;
 using System.Collections;
 
 public class UIController : MonoBehaviour {
@@ -25,10 +24,11 @@ public class UIController : MonoBehaviour {
 
     Characters CurrentCharcter;
 
-    GameObject character;
+    //GameObject character;
+
 	// Use this for initialization
 	void Start () {
-        character = GameObject.Find("ThirdPersonCharacter");
+        //character = GameObject.Find("ThirdPersonCharacter");
         sunSpiritStartPowerLevel = sunSpiritPowerLevel;
         moonSpiritStartPowerLevel = moonSpiritPowerLevel;
         CurrentCharcter = Characters.Muskalo;
@@ -48,8 +48,8 @@ public class UIController : MonoBehaviour {
 
         if (CurrentCharcter == Characters.Muskalo)
         {
-            character.GetComponent<ThirdPersonCharacter>().jumpPower = 10;
-            character.GetComponent<ThirdPersonUserControl>().walkByDefault = true;
+            //character.GetComponent<ThirdPersonCharacter>().jumpPower = 10;
+            //character.GetComponent<ThirdPersonUserControl>().walkByDefault = true;
             if (Input.GetKeyUp(KeyCode.E))
             {
                 CurrentCharcter = Characters.Moon;
@@ -73,8 +73,8 @@ public class UIController : MonoBehaviour {
         }
         else if (CurrentCharcter == Characters.Moon)
         {
-            character.GetComponent<ThirdPersonCharacter>().jumpPower = 20;
-            character.GetComponent<ThirdPersonUserControl>().walkByDefault = true;
+            //character.GetComponent<ThirdPersonCharacter>().jumpPower = 20;
+            //character.GetComponent<ThirdPersonUserControl>().walkByDefault = true;
             if (moonSpiritPowerLevel > 0)
                 moonSpiritPowerLevel -= Time.deltaTime;
             if (Input.GetKeyUp(KeyCode.E))
@@ -92,8 +92,8 @@ public class UIController : MonoBehaviour {
         }
         else if (CurrentCharcter == Characters.Sun)
         {
-            character.GetComponent<ThirdPersonCharacter>().jumpPower = 10;
-            character.GetComponent<ThirdPersonUserControl>().walkByDefault = false;
+            //character.GetComponent<ThirdPersonCharacter>().jumpPower = 10;
+            //character.GetComponent<ThirdPersonUserControl>().walkByDefault = false;
             if (sunSpiritPowerLevel > 0)
                 sunSpiritPowerLevel -= Time.deltaTime;
             if (Input.GetKeyUp(KeyCode.E) || sunSpiritPowerLevel <= 0)
