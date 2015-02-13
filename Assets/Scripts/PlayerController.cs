@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public class Muskalo : State<PlayerController>{
-		Direction moving = Direction.Stopped;
 		bool keyRecieved = false;
 		
 		public Muskalo()
@@ -17,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 		
 		public override void OnEnter (PlayerController owner)
 		{
-			owner.StateMachine.setState("Muskalo");
+			owner.stateMachine.setState("Muskalo");
 		}
 		
 		public override void Process (PlayerController owner)
@@ -58,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 		
 		public override void OnEnter (PlayerController owner)
 		{
-			owner.StateMachine.setState("Wolf");
+			owner.stateMachine.setState("Wolf");
 		}
 		
 		public override void Process (PlayerController owner)
