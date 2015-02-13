@@ -31,6 +31,7 @@ public class StateMachine <T>
 	private State<T> PreviousState;
 	private State<T> GlobalState;
 	private bool pause; //pause is to pause the current state, useful for menus
+	private string STATE = "";
 	
 	public void Awake() 
 	{
@@ -105,6 +106,16 @@ public class StateMachine <T>
 	public bool isPaused()
 	{
 		return pause;
+	}
+
+	public string getState()
+	{
+		return STATE;
+	}
+
+	public void setState(string st)
+	{
+		STATE = st;
 	}
 }
 
