@@ -4,13 +4,13 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+    public GameObject targetUI;
+
 	public class Muskalo : State<PlayerController>{
 
 		public Muskalo()
 		{
-			HandlerList.Add( new Handler<PlayerController>("Left",moveLeft) );
-			HandlerList.Add( new Handler<PlayerController>("Stop",stopMoving) );
-			HandlerList.Add( new Handler<PlayerController>("Right",moveRight) );
+			HandlerList.Add( new Handler<PlayerController>("Move",move) );
 			HandlerList.Add ( new Handler<PlayerController>("Jump",jump) );
 		}
 		
@@ -54,23 +54,14 @@ public class PlayerController : MonoBehaviour {
             owner.muskaloUI.GetComponent<Image>().color = m;
         }
 		
-		void moveLeft(PlayerController owner, params object[] args)
+		void move(PlayerController owner, params object[] args)
 		{
 
 		}
-		
-		void moveRight(PlayerController owner, params object[] args)
-		{
 
-		}
-		
 		void jump(PlayerController owner, params object[] args)
 		{
 			
-		}
-		void stopMoving(PlayerController owner, params object[] args)
-		{
-
 		}
 	}
 
@@ -80,9 +71,7 @@ public class PlayerController : MonoBehaviour {
 
         public Fox()
         {
-            HandlerList.Add(new Handler<PlayerController>("Left", moveLeft));
-            HandlerList.Add(new Handler<PlayerController>("Stop", stopMoving));
-            HandlerList.Add(new Handler<PlayerController>("Right", moveRight));
+            HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
         }
 
@@ -116,21 +105,12 @@ public class PlayerController : MonoBehaviour {
             owner.foxUI.GetComponent<Image>().color = m;
         }
 
-        void moveLeft(PlayerController owner, params object[] args)
-        {
-
-        }
-
-        void moveRight(PlayerController owner, params object[] args)
+        void move(PlayerController owner, params object[] args)
         {
 
         }
 
         void jump(PlayerController owner, params object[] args)
-        {
-
-        }
-        void stopMoving(PlayerController owner, params object[] args)
         {
 
         }
@@ -141,9 +121,7 @@ public class PlayerController : MonoBehaviour {
 
 		public Wolf()
 		{
-			HandlerList.Add( new Handler<PlayerController>("Left",moveLeft) );
-			HandlerList.Add( new Handler<PlayerController>("Stop",stopMoving) );
-			HandlerList.Add( new Handler<PlayerController>("Right",moveRight) );
+			HandlerList.Add( new Handler<PlayerController>("Move",move) );
 			HandlerList.Add ( new Handler<PlayerController>("Jump",jump) );
 		}
 		
@@ -177,21 +155,12 @@ public class PlayerController : MonoBehaviour {
             owner.wolfUI.GetComponent<Image>().color = m;
         }
 		
-		void moveLeft(PlayerController owner, params object[] args)
-		{
-
-		}
-		
-		void moveRight(PlayerController owner, params object[] args)
+		void move(PlayerController owner, params object[] args)
 		{
 
 		}
 		
 		void jump(PlayerController owner, params object[] args)
-		{
-
-		}
-		void stopMoving(PlayerController owner, params object[] args)
 		{
 
 		}
@@ -223,55 +192,42 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         stateMachine.Update();
-        if (Input.GetKeyUp(KeyCode.Q))
-            Left();
-        else if (Input.GetKeyUp(KeyCode.E))
-            Right();
-	}
-
-	// unused method
-	void Left(){
-		stateMachine.messageReciever("Left",null);
-        if(stateMachine.getState() == "Wolf")
-            stateMachine.ChangeState(states[0]);
-        else if (stateMachine.getState() == "Fox")
-            stateMachine.ChangeState(states[1]);
-        else if (stateMachine.getState() == "Muskalo")
-            stateMachine.ChangeState(states[2]);
-	}
-
-	// unused method
-	void Right(){
-		stateMachine.messageReciever("Right",null);
-        if (stateMachine.getState() == "Wolf")
-            stateMachine.ChangeState(states[2]);
-        else if (stateMachine.getState() == "Fox")
-            stateMachine.ChangeState(states[0]);
-        else if (stateMachine.getState() == "Muskalo")
-            stateMachine.ChangeState(states[1]);
 	}
 
 
    /***************************
 	******** New Calls ********
 	***************************/
-	void RotateLeft(){
-		if(stateMachine.getState() == "Wolf")
-			stateMachine.ChangeState(states[0]);
-		else if (stateMachine.getState() == "Fox")
-			stateMachine.ChangeState(states[1]);
-		else if (stateMachine.getState() == "Muskalo")
-			stateMachine.ChangeState(states[2]);
+	
+	void RotateRight()
+    {
+        targetUI.SendMessage("ChangeState", 2, SendMessageOptions.DontRequireReceiver);
 	}
 
-	void RotateRight(){
-		if (stateMachine.getState() == "Wolf")
-			stateMachine.ChangeState(states[2]);
-		else if (stateMachine.getState() == "Fox")
-			stateMachine.ChangeState(states[0]);
-		else if (stateMachine.getState() == "Muskalo")
-			stateMachine.ChangeState(states[1]);
-	}
+    void RotateLeft()
+    {
+        targetUI.SendMessage("ChangeState", 1, SendMessageOptions.DontRequireReceiver);
+    }
+
+    void ChangeRight()
+    {
+        if (stateMachine.getState() == "Wolf")
+            stateMachine.ChangeState(states[2]);
+        else if (stateMachine.getState() == "Fox")
+            stateMachine.ChangeState(states[0]);
+        else if (stateMachine.getState() == "Muskalo")
+            stateMachine.ChangeState(states[1]);
+    }
+
+    void ChangeLeft()
+    {
+        if (stateMachine.getState() == "Wolf")
+            stateMachine.ChangeState(states[0]);
+        else if (stateMachine.getState() == "Fox")
+            stateMachine.ChangeState(states[1]);
+        else if (stateMachine.getState() == "Muskalo")
+            stateMachine.ChangeState(states[2]);
+    }
 
 	void Move(Vector2 direction){
 
