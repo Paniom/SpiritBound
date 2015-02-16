@@ -5,8 +5,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public class Muskalo : State<PlayerController>{
-		bool keyRecieved = false;
-		
+
 		public Muskalo()
 		{
 			HandlerList.Add( new Handler<PlayerController>("Left",moveLeft) );
@@ -230,6 +229,7 @@ public class PlayerController : MonoBehaviour {
             Right();
 	}
 
+	// unused method
 	void Left(){
 		stateMachine.messageReciever("Left",null);
         if(stateMachine.getState() == "Wolf")
@@ -239,7 +239,8 @@ public class PlayerController : MonoBehaviour {
         else if (stateMachine.getState() == "Muskalo")
             stateMachine.ChangeState(states[2]);
 	}
-	
+
+	// unused method
 	void Right(){
 		stateMachine.messageReciever("Right",null);
         if (stateMachine.getState() == "Wolf")
@@ -248,5 +249,39 @@ public class PlayerController : MonoBehaviour {
             stateMachine.ChangeState(states[0]);
         else if (stateMachine.getState() == "Muskalo")
             stateMachine.ChangeState(states[1]);
+	}
+
+
+   /***************************
+	******** New Calls ********
+	***************************/
+	void RotateLeft(){
+		if(stateMachine.getState() == "Wolf")
+			stateMachine.ChangeState(states[0]);
+		else if (stateMachine.getState() == "Fox")
+			stateMachine.ChangeState(states[1]);
+		else if (stateMachine.getState() == "Muskalo")
+			stateMachine.ChangeState(states[2]);
+	}
+
+	void RotateRight(){
+		if (stateMachine.getState() == "Wolf")
+			stateMachine.ChangeState(states[2]);
+		else if (stateMachine.getState() == "Fox")
+			stateMachine.ChangeState(states[0]);
+		else if (stateMachine.getState() == "Muskalo")
+			stateMachine.ChangeState(states[1]);
+	}
+
+	void Move(Vector2 direction){
+
+	}
+
+	void Interact(){
+
+	}
+
+	void Jump(){
+
 	}
 }
