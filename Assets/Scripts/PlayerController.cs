@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			HandlerList.Add( new Handler<PlayerController>("Move",move) );
 			HandlerList.Add ( new Handler<PlayerController>("Jump",jump) );
+			//HandlerList.Add ( new Handler<PlayerController>("Interact",charge) );
 		}
 		
 		public override void OnEnter (PlayerController owner)
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 
 		void jump(PlayerController owner, params object[] args)
 		{
-			
+			owner.rigidbody.AddForce(new Vector3(0,500,0),ForceMode.Impulse);
 		}
 	}
 
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour {
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
+			//HandlerList.Add ( new Handler<PlayerController>("Interact",dash) );
         }
 
         public override void OnEnter(PlayerController owner)
@@ -112,7 +114,7 @@ public class PlayerController : MonoBehaviour {
 
         void jump(PlayerController owner, params object[] args)
         {
-
+			owner.rigidbody.AddForce(new Vector3(0,500,0), ForceMode.Impulse);
         }
     }
 
@@ -123,6 +125,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			HandlerList.Add( new Handler<PlayerController>("Move",move) );
 			HandlerList.Add ( new Handler<PlayerController>("Jump",jump) );
+			//HandlerList.Add ( new Handler<PlayerController>("Interact",precision) );
 		}
 		
 		public override void OnEnter (PlayerController owner)
@@ -162,7 +165,7 @@ public class PlayerController : MonoBehaviour {
 		
 		void jump(PlayerController owner, params object[] args)
 		{
-
+			owner.rigidbody.AddForce(new Vector3(0,500,0), ForceMode.Impulse);
 		}
 	}
 
@@ -178,6 +181,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject wolfPowerLevelUI;
     public float wolfSpiritPowerLevel = 20;
     public float foxSpiritPowerLevel = 20;
+	private float distToGround = 0;
 
     float foxSpiritStartPowerLevel;
     float wolfSpiritStartPowerLevel;
@@ -187,6 +191,7 @@ public class PlayerController : MonoBehaviour {
         foxSpiritStartPowerLevel = foxSpiritPowerLevel;
         wolfSpiritStartPowerLevel = wolfSpiritPowerLevel;
         stateMachine.Configure(this, states[0]);
+		distToGround = collider.bounds.extents.y;
 		Physics.gravity = new Vector3(0,-150,0);
 	}
 	
@@ -235,10 +240,16 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Interact(){
-
+		stateMachine.messageReciever("Interact",null);
 	}
 
 	void Jump(){
+		if(IsGrounded()) {
+			stateMachine.messageReciever("Jump",null);
+		}
+	}
 
+	bool IsGrounded() {
+		return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
 	}
 }
