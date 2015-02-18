@@ -15,7 +15,6 @@ public class UIController : MonoBehaviour
 
         public override void OnEnter(UIController owner)
         {
-            owner._timeStartedLerping = Time.time;
             owner._isLerping = true;
             owner.startRotation = owner.SpiritUIParent.transform.localEulerAngles;
             owner.endRotation = owner.startRotation;
@@ -60,7 +59,6 @@ public class UIController : MonoBehaviour
 
         public override void OnEnter(UIController owner)
         {
-            owner._timeStartedLerping = Time.time;
             owner._isLerping = true;
             owner.startRotation = owner.SpiritUIParent.transform.localEulerAngles;
             owner.endRotation = owner.startRotation;
@@ -125,21 +123,8 @@ public class UIController : MonoBehaviour
     public StateMachine<UIController> stateMachine = new StateMachine<UIController>();
 
     public GameObject SpiritUIParent;
-    public GameObject[] spiritUI;
-    public GameObject foxPowerLevelUI;
-    public GameObject wolfPowerLevelUI;
-    public float wolfSpiritPowerLevel = 20;
-    public float foxSpiritPowerLevel = 20;
 
-    float foxSpiritStartPowerLevel;
-    float wolfSpiritStartPowerLevel;
-
-    float startTime;
-    float delayTime = 2.0f;
-
-    float timeTakenDuringLerp = 2.0f;
     public bool _isLerping = false;
-    float _timeStartedLerping;
 
     Vector3 startRotation;
     Vector3 endRotation;
@@ -147,8 +132,6 @@ public class UIController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        foxSpiritStartPowerLevel = foxSpiritPowerLevel;
-        wolfSpiritStartPowerLevel = wolfSpiritPowerLevel;
         stateMachine.Configure(this, states[0]);
     }
 

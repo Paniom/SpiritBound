@@ -29,23 +29,19 @@ public class PlayerController : MonoBehaviour
             if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to increase
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime * 0.5f; //increase fox power level
-                owner.foxSpiritPowerLevel = owner.foxPowerLevelUI.GetComponent<Slider>().value;
             }
-            else if (owner.foxPowerLevelUI.GetComponent<Slider>().value > owner.foxSpiritStartPowerLevel)
+            else if (owner.foxPowerLevelUI.GetComponent<Slider>().value > owner.foxSpiritStartPowerLevel) //check if fox power level went over starting power level
             {
-                owner.foxPowerLevelUI.GetComponent<Slider>().value = owner.foxSpiritStartPowerLevel;
-                owner.foxSpiritPowerLevel = owner.foxPowerLevelUI.GetComponent<Slider>().value;
+                owner.foxPowerLevelUI.GetComponent<Slider>().value = owner.foxSpiritStartPowerLevel; // reset value to starting power level
             }
 
             if (owner.wolfPowerLevelUI.GetComponent<Slider>().value < owner.wolfSpiritStartPowerLevel) // check if wolf power level needs to increase
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime * 0.5f; //increase wolf power level
-                owner.wolfSpiritPowerLevel = owner.wolfPowerLevelUI.GetComponent<Slider>().value;
             }
-            else if (owner.wolfPowerLevelUI.GetComponent<Slider>().value > owner.wolfSpiritStartPowerLevel)
+            else if (owner.wolfPowerLevelUI.GetComponent<Slider>().value > owner.wolfSpiritStartPowerLevel)//check if wolf power level went over starting power level
             {
-                owner.wolfPowerLevelUI.GetComponent<Slider>().value = owner.wolfSpiritStartPowerLevel;
-                owner.wolfSpiritPowerLevel = owner.wolfPowerLevelUI.GetComponent<Slider>().value;
+                owner.wolfPowerLevelUI.GetComponent<Slider>().value = owner.wolfSpiritStartPowerLevel;// reset value to starting power level
             }
         }
 
@@ -92,12 +88,10 @@ public class PlayerController : MonoBehaviour
             if (owner.foxPowerLevelUI.GetComponent<Slider>().value > 0) // check if fox power level needs to decrease
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value -= Time.deltaTime; //decrease fox power level
-                owner.foxSpiritPowerLevel = owner.foxPowerLevelUI.GetComponent<Slider>().value;
             }
             else
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.foxSpiritPowerLevel = owner.foxPowerLevelUI.GetComponent<Slider>().value;
                 owner.stateMachine.ChangeState(owner.states[0]); //switch state to muskalo
                 owner.targetUI.GetComponent<UIController>().stateMachine.ChangeState(owner.targetUI.GetComponent<UIController>().states[0]);
                 owner.targetUI.GetComponent<UIController>()._isLerping = false;
@@ -148,12 +142,10 @@ public class PlayerController : MonoBehaviour
             if (owner.wolfPowerLevelUI.GetComponent<Slider>().value > 0) // check if wolf power level needs to decrease
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value -= Time.deltaTime; //decrease wolf power level
-                owner.wolfSpiritPowerLevel = owner.wolfPowerLevelUI.GetComponent<Slider>().value;
             }
             else
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.wolfSpiritPowerLevel = owner.wolfPowerLevelUI.GetComponent<Slider>().value;
                 owner.stateMachine.ChangeState(owner.states[0]); //switch state to muskalo
                 owner.targetUI.GetComponent<UIController>().stateMachine.ChangeState(owner.targetUI.GetComponent<UIController>().states[0]);
                 owner.targetUI.GetComponent<UIController>()._isLerping = false;
@@ -190,11 +182,9 @@ public class PlayerController : MonoBehaviour
     public GameObject foxUI;
     public GameObject foxPowerLevelUI;
     public GameObject wolfPowerLevelUI;
-    public float wolfSpiritPowerLevel = 20;
-    public float foxSpiritPowerLevel = 20;
 
-    float foxSpiritStartPowerLevel;
-    float wolfSpiritStartPowerLevel;
+    float foxSpiritStartPowerLevel = 20;
+    float wolfSpiritStartPowerLevel = 20;
 
     public GameObject foxTrail;
     public GameObject wolfTrail;
@@ -212,8 +202,6 @@ public class PlayerController : MonoBehaviour
         distInX = collider.bounds.extents.x;
         distInZ = collider.bounds.extents.z;
         distToGround = collider.bounds.extents.y; // set distance from player collider to ground
-        foxSpiritStartPowerLevel = foxSpiritPowerLevel;
-        wolfSpiritStartPowerLevel = wolfSpiritPowerLevel;
         stateMachine.Configure(this, states[0]);
     }
 
