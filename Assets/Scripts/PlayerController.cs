@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 		
 		void move(PlayerController owner, params object[] args)
 		{
-
+			owner.rigidbody.velocity = new Vector3((float) args[0], 0, (float) args[1]);
 		}
 
 		void jump(PlayerController owner, params object[] args)
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour {
 
         void move(PlayerController owner, params object[] args)
         {
-
+			owner.rigidbody.velocity = new Vector3((float) args[0], 0, (float) args[1]);
         }
 
         void jump(PlayerController owner, params object[] args)
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour {
 		
 		void move(PlayerController owner, params object[] args)
 		{
-
+			owner.rigidbody.velocity = new Vector3((float) args[0], 0, (float) args[1]);
 		}
 		
 		void jump(PlayerController owner, params object[] args)
@@ -187,6 +187,7 @@ public class PlayerController : MonoBehaviour {
         foxSpiritStartPowerLevel = foxSpiritPowerLevel;
         wolfSpiritStartPowerLevel = wolfSpiritPowerLevel;
         stateMachine.Configure(this, states[0]);
+		Physics.gravity = new Vector3(0,-150,0);
 	}
 	
 	// Update is called once per frame
@@ -230,7 +231,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 	void Move(Vector2 direction){
-
+		stateMachine.messageReciever("Move",new object[] {direction.x,direction.y});
 	}
 
 	void Interact(){

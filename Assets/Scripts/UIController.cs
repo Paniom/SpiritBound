@@ -96,8 +96,8 @@ public class UIController : MonoBehaviour
     }
 
     public State<UIController>[] states = new State<UIController>[] {	new Stationary(),
-																				new RotatingLeft(),
-                                                                                new RotatingRight()};
+																		new RotatingLeft(),
+																		new RotatingRight() };
     public StateMachine<UIController> stateMachine = new StateMachine<UIController>();
 
     public GameObject SpiritUIParent;
