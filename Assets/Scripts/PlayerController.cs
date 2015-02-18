@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
         public override void Process(PlayerController owner)
         {
-            if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to decrease
+            if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to increase
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime * 0.5f; //increase fox power level
                 owner.foxSpiritPowerLevel = owner.foxPowerLevelUI.GetComponent<Slider>().value;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
                 owner.foxSpiritPowerLevel = owner.foxPowerLevelUI.GetComponent<Slider>().value;
             }
 
-            if (owner.wolfPowerLevelUI.GetComponent<Slider>().value < owner.wolfSpiritStartPowerLevel) // check if wolf power level needs to decrease
+            if (owner.wolfPowerLevelUI.GetComponent<Slider>().value < owner.wolfSpiritStartPowerLevel) // check if wolf power level needs to increase
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime * 0.5f; //increase wolf power level
                 owner.wolfSpiritPowerLevel = owner.wolfPowerLevelUI.GetComponent<Slider>().value;
@@ -202,11 +202,15 @@ public class PlayerController : MonoBehaviour
 
     bool grounded; // Determine if the player is on the ground
     float distToGround; // Distance from player collider to ground
+    float distInX;
+    float distInZ;
     public float speed; //How fast the player will move
 
     // Use this for initialization
     void Start()
     {
+        distInX = collider.bounds.extents.x;
+        distInZ = collider.bounds.extents.z;
         distToGround = collider.bounds.extents.y; // set distance from player collider to ground
         foxSpiritStartPowerLevel = foxSpiritPowerLevel;
         wolfSpiritStartPowerLevel = wolfSpiritPowerLevel;
@@ -270,6 +274,11 @@ public class PlayerController : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f); // Raycast to determine if player is on the ground and they can jump
+    }
+
+    bool IsHittingWall()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distInX + 0.1f); // Raycast to determine if player is on the ground and they can jump
     }
 
     /* If the player is grounded they will jump*/
