@@ -6,12 +6,13 @@ public class CameraController : MonoBehaviour {
 
 	public class Rotating : State<CameraController>
 	{
-		Vector3 start = Vector3.zero;
-		Vector3 end = Vector3.zero;
+		Quaternion start = Quaternion.identity;
+		Quaternion end = Quaternion.identity;
 		Vector3 sPos = Vector3.zero;
 		Vector3 ePos = Vector3.zero;
 		float count = 0;
 		float totalTime = 1;
+		float trueEnd = 0;
 
 		public Rotating()
 		{
@@ -20,12 +21,17 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnEnter (CameraController owner)
 		{
-			float s = owner.transform.rotation.eulerAngles.y;
-			float e = owner.yRotations[owner.yRotations.Count-1];
+			float s = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
+			owner.activeRotation = owner.yRotations[owner.yRotations.Count-1];
+			float e = owner.activeRotation;
+			trueEnd = e;
+			float[] vals = owner.getRotationAngles(s,e);
+			s = vals[0];
+			e = vals[1];
 			count = 0;
 			totalTime = Mathf.Abs(s-e)/90f;
-			start = new Vector3(0,s,0);
-			end = new Vector3(0,e,0);
+			start = Quaternion.Euler(29.45f,s,0);
+			end = Quaternion.Euler(29.45f,e,0);
 			sPos = new Vector3(Mathf.Cos(s*Mathf.Deg2Rad)*owner.distFromPlayer.x + Mathf.Sin(s*Mathf.Deg2Rad)*owner.distFromPlayer.z,
 			                   0,Mathf.Cos(s*Mathf.Deg2Rad)*owner.distFromPlayer.z - Mathf.Sin(s*Mathf.Deg2Rad)*owner.distFromPlayer.x);
 			ePos = new Vector3(Mathf.Cos(e*Mathf.Deg2Rad)*owner.distFromPlayer.x + Mathf.Sin(e*Mathf.Deg2Rad)*owner.distFromPlayer.z,
@@ -34,17 +40,24 @@ public class CameraController : MonoBehaviour {
 
 		public override void Process (CameraController owner)
 		{
-			Vector3 current = Vector3.Slerp(start,end,count);
+			Quaternion current = Quaternion.Slerp(start,end,count);
 			Vector3 cPos = Vector3.Slerp(sPos,ePos,count);
 			count = Mathf.Clamp01(count+Time.deltaTime/totalTime);
 			if(count == 1)
 			{
 				owner.stateMachine.ChangeState(owner.states[1]);
 			}
-			current.x = 29.45f;
 			cPos.y = owner.distFromPlayer.y;
-			owner.transform.localRotation = Quaternion.Euler(current);
+			owner.transform.localRotation = current;
 			owner.transform.localPosition = cPos;
+		}
+
+		public override void OnExit (CameraController owner)
+		{
+			if(count == 1)
+			{
+				owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,trueEnd,owner.transform.rotation.eulerAngles.z);
+			}
 		}
 	}
 
@@ -86,10 +99,13 @@ public class CameraController : MonoBehaviour {
 
 	void RemoveRotation (int y) {
 		yRotations.Remove(y);
-		if(rotating) {
-			stateMachine.ChangeState(states[1]);
+		if(activeRotation == y)
+		{
+			if(rotating) {
+				stateMachine.ChangeState(states[1]);
+			}
+			stateMachine.ChangeState(states[0]);
 		}
-		stateMachine.ChangeState(states[0]);
 	}
 
 	void AddRotation (int y) {
@@ -99,4 +115,34 @@ public class CameraController : MonoBehaviour {
 		}
 		stateMachine.ChangeState(states[0]);
 	}
+
+	public float[] getRotationAngles(float start, float end) {
+		if(Mathf.Abs(start-end) <= 180) {
+			return new float[] {start,end};
+		}
+		if(start < 180) {
+			return new float[] {start,end-360};
+		}
+		return new float[] {start,end+360};
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
