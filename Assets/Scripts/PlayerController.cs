@@ -183,6 +183,9 @@ public class PlayerController : MonoBehaviour
     public GameObject foxPowerLevelUI;
     public GameObject wolfPowerLevelUI;
 
+	public GameObject followingCamera;
+	private float camDirection = 0;
+
     float foxSpiritStartPowerLevel = 20;
     float wolfSpiritStartPowerLevel = 20;
 
@@ -210,6 +213,18 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log(stateMachine.getState());
         stateMachine.Update();
+		if(Input.GetKeyDown(KeyCode.Alpha1)) {
+			camDirection = 90;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha2)) {
+			camDirection = 180;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+			camDirection = 270;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha0)) {
+			camDirection = 0;
+		}
     }
 
 
@@ -231,7 +246,8 @@ public class PlayerController : MonoBehaviour
 
     void ChangeRight()
     {
-        if (stateMachine.getState() == "Wolf")
+		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
+		if (stateMachine.getState() == "Wolf")
             stateMachine.ChangeState(states[2]);
         else if (stateMachine.getState() == "Fox")
             stateMachine.ChangeState(states[0]);
@@ -241,6 +257,7 @@ public class PlayerController : MonoBehaviour
 
     void ChangeLeft()
     {
+		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
         if (stateMachine.getState() == "Wolf")
             stateMachine.ChangeState(states[0]);
         else if (stateMachine.getState() == "Fox")
@@ -251,7 +268,10 @@ public class PlayerController : MonoBehaviour
 
     void Move(Vector2 direction)
     {
-        stateMachine.messageReciever("Move",new object[] {direction.x,direction.y});
+		camDirection = followingCamera.transform.localRotation.eulerAngles.y;
+		stateMachine.messageReciever("Move",new object[] {Mathf.Cos(camDirection*Mathf.Deg2Rad)*direction.x + 
+			Mathf.Sin(camDirection*Mathf.Deg2Rad)*direction.y,Mathf.Cos(camDirection*Mathf.Deg2Rad)*direction.y - 
+			Mathf.Sin(camDirection*Mathf.Deg2Rad)*direction.x});// straight
     }
 
     void Interact()
@@ -277,4 +297,9 @@ public class PlayerController : MonoBehaviour
             stateMachine.messageReciever("Jump",null);
         }
     }
+
+	public void interactFinished()
+	{
+		gameObject.SendMessage("interactFinished",SendMessageOptions.DontRequireReceiver);
+	}
 }

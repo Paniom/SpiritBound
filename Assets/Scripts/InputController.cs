@@ -13,9 +13,6 @@ public class InputController : MonoBehaviour {
 	private Vector2 direction = Vector2.zero; // used to control the movement passed through
 
 	private bool canRotate = true;
-	private float rotateDelay = 2.5f;
-	private float rotateEnd = 0;
-	private float rotateTime = 0;
 	private bool interactActive = false;
 	private float interactDelay = 1.5f;
 	private float interactTime = 0;
@@ -139,18 +136,10 @@ public class InputController : MonoBehaviour {
 				if ( Input.GetKey(KeyCode.Z) ) {
 					target.SendMessage("RotateLeft", SendMessageOptions.DontRequireReceiver);
 					canRotate = false;
-					rotateEnd = Time.time + rotateDelay;
 				}
 				else if ( Input.GetKey(KeyCode.X) ) {
 					target.SendMessage("RotateRight", SendMessageOptions.DontRequireReceiver);
 					canRotate = false;
-					rotateEnd = Time.time + rotateDelay;
-				}
-			}
-			else {
-				rotateTime = Time.time;
-				if(rotateTime >= rotateEnd) {
-					canRotate = true;
 				}
 			}
 		}
@@ -232,9 +221,13 @@ public class InputController : MonoBehaviour {
 
 	// Resets the interact buttons to be used again
 	// starts the delay on using the interact button
-	public void interactFinished() {
+	void interactFinished() {
 		interactActive = false;
 		interactTime = interactDelay;
+	}
+
+	void rotateFinished() {
+		canRotate = true;
 	}
 
 	// Determines whether a swipe is vertical up the screen or horizontal and which direction
@@ -242,21 +235,15 @@ public class InputController : MonoBehaviour {
 	void setSwipe(Vector2 input) {
 		float x = input.x;
 		float y = input.y;
-		rotateTime = Time.time;
-		if(rotateTime >= rotateEnd) {
-			canRotate = true;
-		}
 		if (canRotate && !interactActive) {
 			if(Mathf.Abs(x) > y && Mathf.Abs(x) > 100) {
 				if(x > 0) {
 					target.SendMessage("RotateRight", SendMessageOptions.DontRequireReceiver);
 					canRotate = false;
-					rotateEnd = Time.time + rotateDelay;
 				}
 				else {
 					target.SendMessage("RotateLeft", SendMessageOptions.DontRequireReceiver);
 					canRotate = false;
-					rotateEnd = Time.time + rotateDelay;
 				}
 			}
 		}
