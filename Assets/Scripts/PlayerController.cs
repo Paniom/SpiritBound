@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
-            //HandlerList.Add(new Handler<PlayerController>("Interact", charge));
+            HandlerList.Add(new Handler<PlayerController>("Interact", charge));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -55,12 +55,19 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.velocity = new Vector3((float)args[0], owner.rigidbody.velocity.y, (float)args[1]);
+            owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
         }
 
         void jump(PlayerController owner, params object[] args)
         {
-            owner.GetComponent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+            Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
+            vel.y = 5;
+            owner.GetComponent<Rigidbody>().velocity = vel;
+        }
+
+        void charge(PlayerController owner, params object[] args)
+        {
+
         }
     }
 
@@ -71,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
-            //HandlerList.Add(new Handler<PlayerController>("Interact", dash));
+            HandlerList.Add(new Handler<PlayerController>("Interact", dash));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -109,12 +116,19 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.velocity = new Vector3((float)args[0], owner.rigidbody.velocity.y, (float)args[1]);
+            owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
         }
 
         void jump(PlayerController owner, params object[] args)
         {
-            owner.GetComponent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+            Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
+            vel.y = 5;
+            owner.GetComponent<Rigidbody>().velocity = vel;
+        }
+
+        void dash(PlayerController owner, params object[] args)
+        {
+
         }
     }
 
@@ -125,7 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
-            //HandlerList.Add(new Handler<PlayerController>("Interact", precision));
+            HandlerList.Add(new Handler<PlayerController>("Interact", precision));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -163,12 +177,19 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.velocity = new Vector3((float)args[0], owner.rigidbody.velocity.y, (float)args[1]);
+            owner.rigidbody.velocity = new Vector3((float)args[0]*owner.speed, owner.rigidbody.velocity.y, (float)args[1]*owner.speed);
         }
 
         void jump(PlayerController owner, params object[] args)
         {
-            owner.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250, 0));
+            Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
+            vel.y = 10;
+            owner.GetComponent<Rigidbody>().velocity = vel;
+        }
+
+        void precision(PlayerController owner, params object[] args)
+        {
+
         }
     }
 
@@ -197,7 +218,9 @@ public class PlayerController : MonoBehaviour
     float distToGround; // Distance from player collider to ground
     float distInX;
     float distInZ;
-    public float speed; //How fast the player will move
+    public float speed = 1; //How fast the player will move
+
+    Vector3 startGravity = Physics.gravity; //Variable to tell what the starting gravity was
 
     // Use this for initialization
     void Start()

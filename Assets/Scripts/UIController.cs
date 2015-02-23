@@ -5,9 +5,14 @@ using System.Collections;
 public class UIController : MonoBehaviour
 {
     public GameObject PlayerTarget;
-
+    
     public class RotatingLeft : State<UIController>
     {
+        Quaternion start = Quaternion.identity;
+        Quaternion end = Quaternion.identity;
+        float count = 0;
+        float totalTime = 1;
+
         public RotatingLeft()
         {
             
@@ -15,43 +20,42 @@ public class UIController : MonoBehaviour
 
         public override void OnEnter(UIController owner)
         {
+            float s = owner.SpiritUIParent.transform.rotation.eulerAngles.y;
+            float e = s - 120;
+            count = 0;
+            totalTime = Mathf.Abs(s - e) / 90f;
+            start = Quaternion.Euler(0, s, 0);
+            end = Quaternion.Euler(0, e, 0);
+
             owner._isLerping = true;
-            owner.startRotation = owner.SpiritUIParent.transform.localEulerAngles;
-            owner.endRotation = owner.startRotation;
-            owner.endRotation.y = owner.startRotation.y - 120;
-            owner.endRotation.y = owner.endRotation.y < 0 ? 360 + owner.endRotation.y % 360 : owner.endRotation.y % 360;
         }
 
         public override void Process(UIController owner)
         {
-            if (owner._isLerping)
-            {
-                Vector3 TempRotation = owner.SpiritUIParent.transform.localEulerAngles;
-                TempRotation.y = Mathf.LerpAngle(owner.SpiritUIParent.transform.localEulerAngles.y, owner.endRotation.y, Time.deltaTime*2);
-                owner.SpiritUIParent.transform.localEulerAngles = TempRotation;
-
-                //When completed the lerp, set _isLerping to false
-                if (Mathf.Abs(owner.SpiritUIParent.transform.localEulerAngles.y - owner.endRotation.y) < 1.5f)
-                {
-                    owner.SpiritUIParent.transform.localEulerAngles = owner.endRotation;
-                    owner._isLerping = false;
-                }
-            }
-            else
+            Quaternion current = Quaternion.Slerp(start, end, count);
+            count = Mathf.Clamp01(count + Time.deltaTime / totalTime);
+            if (count == 1)
             {
                 owner.stateMachine.ChangeState(owner.states[0]);
             }
+            owner.SpiritUIParent.transform.localRotation = current;
         }
 
         public override void OnExit(UIController owner)
         {
-            //owner._isLerping = false;
+            owner._isLerping = false;
+            owner.SpiritUIParent.transform.rotation = end;
             owner.PlayerTarget.SendMessage("ChangeLeft");
         }
     }
 
     public class RotatingRight : State<UIController>
     {
+        Quaternion start = Quaternion.identity;
+        Quaternion end = Quaternion.identity;
+        float count = 0;
+        float totalTime = 1;
+
         public RotatingRight()
         {
 
@@ -59,37 +63,30 @@ public class UIController : MonoBehaviour
 
         public override void OnEnter(UIController owner)
         {
+            float s = owner.SpiritUIParent.transform.rotation.eulerAngles.y;
+            float e = s + 120;
+            count = 0;
+            totalTime = Mathf.Abs(s - e) / 90f;
+            start = Quaternion.Euler(0, s, 0);
+            end = Quaternion.Euler(0, e, 0);
+
             owner._isLerping = true;
-            owner.startRotation = owner.SpiritUIParent.transform.localEulerAngles;
-            owner.endRotation = owner.startRotation;
-            owner.endRotation.y = owner.startRotation.y + 120;
-            if(owner.endRotation.y != 360)
-                owner.endRotation.y = owner.endRotation.y < 0 ? 360 + owner.endRotation.y % 360 : owner.endRotation.y % 360;
         }
 
         public override void Process(UIController owner)
         {
-            if (owner._isLerping)
-            {
-                Vector3 TempRotation = owner.SpiritUIParent.transform.localEulerAngles;
-                TempRotation.y = Mathf.LerpAngle(owner.SpiritUIParent.transform.localEulerAngles.y, owner.endRotation.y, Time.deltaTime*2);
-                owner.SpiritUIParent.transform.localEulerAngles = TempRotation;
-
-                //When completed the lerp, set _isLerping to false
-                if (Mathf.Abs(owner.SpiritUIParent.transform.localEulerAngles.y - owner.endRotation.y) < 1.5f)
-                {
-                    owner.SpiritUIParent.transform.localEulerAngles = owner.endRotation;
-                    owner._isLerping = false;
-                }
-            }
-            else
+            Quaternion current = Quaternion.Slerp(start, end, count);
+            count = Mathf.Clamp01(count + Time.deltaTime / totalTime);
+            if (count == 1)
             {
                 owner.stateMachine.ChangeState(owner.states[0]);
             }
+            owner.SpiritUIParent.transform.localRotation = current;
         }
 
         public override void OnExit(UIController owner)
         {
+            owner._isLerping = false;
             owner.PlayerTarget.SendMessage("ChangeRight");
         }
     }
@@ -108,7 +105,7 @@ public class UIController : MonoBehaviour
 
         public override void Process(UIController owner)
         {
-
+            Debug.Log(owner.SpiritUIParent.transform.localEulerAngles);
         }
 
         public override void OnExit(UIController owner)
@@ -125,9 +122,6 @@ public class UIController : MonoBehaviour
     public GameObject SpiritUIParent;
 
     public bool _isLerping = false;
-
-    Vector3 startRotation;
-    Vector3 endRotation;
 
     // Use this for initialization
     void Start()
