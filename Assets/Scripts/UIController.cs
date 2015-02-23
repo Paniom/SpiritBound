@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
 
         public override void OnEnter(UIController owner)
         {
+            owner.PlayerTarget.SendMessage("SwitchToStandby");
             float s = owner.SpiritUIParent.transform.rotation.eulerAngles.y;
             float e = s - 120;
             count = 0;
@@ -63,6 +64,7 @@ public class UIController : MonoBehaviour
 
         public override void OnEnter(UIController owner)
         {
+            owner.PlayerTarget.SendMessage("SwitchToStandby");
             float s = owner.SpiritUIParent.transform.rotation.eulerAngles.y;
             float e = s + 120;
             count = 0;
@@ -105,7 +107,7 @@ public class UIController : MonoBehaviour
 
         public override void Process(UIController owner)
         {
-            Debug.Log(owner.SpiritUIParent.transform.localEulerAngles);
+
         }
 
         public override void OnExit(UIController owner)

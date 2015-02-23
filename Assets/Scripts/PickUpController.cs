@@ -33,18 +33,7 @@ public class PickUpController : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            switch (player.GetComponent<PlayerController>().stateMachine.getState())
-            {
-                case "Muskalo":
-                    TimeAndScore.score += 10;
-                    break;
-                case "Fox":
-                    player.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value += 5;
-                    break;
-                case "Wolf":
-                    player.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value += 5;
-                    break;
-            }
+            other.SendMessage("PickUp", SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
         }
     }

@@ -13,15 +13,18 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", charge));
+            HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
         }
 
         public override void OnEnter(PlayerController owner)
         {
+            Physics.gravity = owner.startGravity*1.5f;
             owner.muskaloTrail.SetActive(true);
             owner.stateMachine.setState("Muskalo");
             Color m = owner.muskaloUI.GetComponent<Image>().color;
             m.a = 1.0f;
             owner.muskaloUI.GetComponent<Image>().color = m;
+            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
@@ -55,7 +58,25 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+            if (owner.IsGrounded())
+                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+            else
+            {
+                Vector3 updatedVel = owner.rigidbody.velocity;
+                if ((float)args[0] > 0)
+                    updatedVel.x += owner.speed * 0.2f;
+                else if ((float)args[0] < 0)
+                    updatedVel.x -= owner.speed * 0.2f;
+                else
+                    updatedVel.x = owner.rigidbody.velocity.x;
+                if ((float)args[1] > 0)
+                    updatedVel.z += owner.speed * 0.2f;
+                else if ((float)args[1] < 0)
+                    updatedVel.z -= owner.speed * 0.2f;
+                else
+                    updatedVel.z = owner.rigidbody.velocity.z;
+                owner.rigidbody.velocity = updatedVel;
+            }
         }
 
         void jump(PlayerController owner, params object[] args)
@@ -65,9 +86,15 @@ public class PlayerController : MonoBehaviour
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
+        //Lowers head and does a charge/bash foward
         void charge(PlayerController owner, params object[] args)
         {
 
+        }
+
+        void pickup(PlayerController owner, params object[] args)
+        {
+            TimeAndScore.score += 10;
         }
     }
 
@@ -83,11 +110,13 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            Physics.gravity = owner.startGravity*0.5f;
             owner.foxTrail.SetActive(true);
             owner.stateMachine.setState("Fox");
             Color m = owner.foxUI.GetComponent<Image>().color;
             m.a = 1.0f;
             owner.foxUI.GetComponent<Image>().color = m;
+            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
@@ -116,7 +145,25 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+            if (owner.IsGrounded())
+                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+            else
+            {
+                Vector3 updatedVel = owner.rigidbody.velocity;
+                if ((float)args[0] > 0)
+                    updatedVel.x += owner.speed * 0.2f;
+                else if ((float)args[0] < 0)
+                    updatedVel.x -= owner.speed * 0.2f;
+                else
+                    updatedVel.x = owner.rigidbody.velocity.x;
+                if ((float)args[1] > 0)
+                    updatedVel.z += owner.speed * 0.2f;
+                else if ((float)args[1] < 0)
+                    updatedVel.z -= owner.speed * 0.2f;
+                else
+                    updatedVel.z = owner.rigidbody.velocity.z;
+                owner.rigidbody.velocity = updatedVel;
+            }
         }
 
         void jump(PlayerController owner, params object[] args)
@@ -126,9 +173,15 @@ public class PlayerController : MonoBehaviour
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
+        //Does a quick dash(speed boost) forward
         void dash(PlayerController owner, params object[] args)
         {
+            owner.rigidbody.AddForce(owner.transform.forward*10);
+        }
 
+        void pickup(PlayerController owner, params object[] args)
+        {
+            owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
         }
     }
 
@@ -144,11 +197,13 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            Physics.gravity = owner.startGravity;
             owner.wolfTrail.SetActive(true);
             owner.stateMachine.setState("Wolf");
             Color m = owner.wolfUI.GetComponent<Image>().color;
             m.a = 1.0f;
             owner.wolfUI.GetComponent<Image>().color = m;
+            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
@@ -177,7 +232,25 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.velocity = new Vector3((float)args[0]*owner.speed, owner.rigidbody.velocity.y, (float)args[1]*owner.speed);
+            if (owner.IsGrounded())
+                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+            else
+            {
+                Vector3 updatedVel = owner.rigidbody.velocity;
+                if ((float)args[0] > 0)
+                    updatedVel.x += owner.speed * 0.2f;
+                else if ((float)args[0] < 0)
+                    updatedVel.x -= owner.speed * 0.2f;
+                else
+                    updatedVel.x = owner.rigidbody.velocity.x;
+                if ((float)args[1] > 0)
+                    updatedVel.z += owner.speed * 0.2f;
+                else if ((float)args[1] < 0)
+                    updatedVel.z -= owner.speed * 0.2f;
+                else
+                    updatedVel.z = owner.rigidbody.velocity.z;
+                owner.rigidbody.velocity = updatedVel;
+            }
         }
 
         void jump(PlayerController owner, params object[] args)
@@ -187,7 +260,74 @@ public class PlayerController : MonoBehaviour
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
+        //Slow down time, player still moves with the same speed
         void precision(PlayerController owner, params object[] args)
+        {
+            
+        }
+
+        void pickup(PlayerController owner, params object[] args)
+        {
+            owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
+        }
+    }
+
+    public class Standby : State<PlayerController>
+    {
+        public Standby()
+        {
+            HandlerList.Add(new Handler<PlayerController>("Move", move));
+            HandlerList.Add(new Handler<PlayerController>("Jump", jump));
+            HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
+        }
+
+        public override void OnEnter(PlayerController owner)
+        {
+            Physics.gravity = owner.startGravity * 1.5f;
+            Debug.Log(owner.stateMachine.getState());
+        }
+
+        public override void Process(PlayerController owner)
+        {
+            
+        }
+
+        public override void OnExit(PlayerController owner)
+        {
+
+        }
+
+        void move(PlayerController owner, params object[] args)
+        {
+            if (owner.IsGrounded())
+                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+            else
+            {
+                Vector3 updatedVel = owner.rigidbody.velocity;
+                if ((float)args[0] > 0)
+                    updatedVel.x += owner.speed * 0.2f;
+                else if ((float)args[0] < 0)
+                    updatedVel.x -= owner.speed * 0.2f;
+                else
+                    updatedVel.x = owner.rigidbody.velocity.x;
+                if ((float)args[1] > 0)
+                    updatedVel.z += owner.speed * 0.2f;
+                else if ((float)args[1] < 0)
+                    updatedVel.z -= owner.speed * 0.2f;
+                else
+                    updatedVel.z = owner.rigidbody.velocity.z;
+                owner.rigidbody.velocity = updatedVel;
+            }
+        }
+
+        void jump(PlayerController owner, params object[] args)
+        {
+            Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
+            vel.y = 5;
+            owner.GetComponent<Rigidbody>().velocity = vel;
+        }
+
+        void pickup(PlayerController owner, params object[] args)
         {
 
         }
@@ -195,7 +335,8 @@ public class PlayerController : MonoBehaviour
 
     public State<PlayerController>[] states = new State<PlayerController>[] {	new Muskalo(),
 																				new Wolf(),
-                                                                                new Fox()};
+                                                                                new Fox(),
+                                                                                new Standby()};
     public StateMachine<PlayerController> stateMachine = new StateMachine<PlayerController>();
 
     public GameObject muskaloUI;
@@ -216,8 +357,6 @@ public class PlayerController : MonoBehaviour
 
     bool grounded; // Determine if the player is on the ground
     float distToGround; // Distance from player collider to ground
-    float distInX;
-    float distInZ;
     public float speed = 1; //How fast the player will move
 
     Vector3 startGravity = Physics.gravity; //Variable to tell what the starting gravity was
@@ -225,8 +364,6 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        distInX = collider.bounds.extents.x;
-        distInZ = collider.bounds.extents.z;
         distToGround = collider.bounds.extents.y; // set distance from player collider to ground
         stateMachine.Configure(this, states[0]);
     }
@@ -234,7 +371,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stateMachine.getState());
+        //Debug.Log(stateMachine.getState());
         stateMachine.Update();
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			camDirection = 90;
@@ -302,14 +439,14 @@ public class PlayerController : MonoBehaviour
         stateMachine.messageReciever("Interact", null);
     }
 
+    void PickUp()
+    {
+        stateMachine.messageReciever("PickUp", null);
+    }
+
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f); // Raycast to determine if player is on the ground and they can jump
-    }
-
-    bool IsHittingWall()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, distInX + 0.1f); // Raycast to determine if player is on the ground and they can jump
     }
 
     /* If the player is grounded they will jump*/
@@ -325,4 +462,9 @@ public class PlayerController : MonoBehaviour
 	{
 		gameObject.SendMessage("interactFinished",SendMessageOptions.DontRequireReceiver);
 	}
+
+    void SwitchToStandby()
+    {
+        stateMachine.ChangeState(states[3]);
+    }
 }

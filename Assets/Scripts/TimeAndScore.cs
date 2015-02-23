@@ -12,7 +12,7 @@ public class TimeAndScore : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        timeRemaining = 3000;
+        timeRemaining = 1000;
         score = 0;
 	}
 	
