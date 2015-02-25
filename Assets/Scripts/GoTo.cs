@@ -24,6 +24,11 @@ public class GoTo : MonoBehaviour
         Application.LoadLevel("TestCurtis");
     }
 
+    public void GoToTitlePage()
+    {
+        Application.LoadLevel("StartScreen");
+    }
+
     public void GoToMainMenu()
     {
         MainMenuPanel.SetActive(true);

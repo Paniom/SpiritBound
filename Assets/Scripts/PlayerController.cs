@@ -62,20 +62,10 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                Vector3 updatedVel = owner.rigidbody.velocity;
-                if ((float)args[0] > 0)
-                    updatedVel.x += owner.speed * 0.2f;
-                else if ((float)args[0] < 0)
-                    updatedVel.x -= owner.speed * 0.2f;
-                else
-                    updatedVel.x = owner.rigidbody.velocity.x;
-                if ((float)args[1] > 0)
-                    updatedVel.z += owner.speed * 0.2f;
-                else if ((float)args[1] < 0)
-                    updatedVel.z -= owner.speed * 0.2f;
-                else
-                    updatedVel.z = owner.rigidbody.velocity.z;
-                owner.rigidbody.velocity = updatedVel;
+                float airControl = 0.2f;
+                float airSpeed = owner.speed;
+                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
+                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
             }
         }
 
@@ -149,20 +139,10 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                Vector3 updatedVel = owner.rigidbody.velocity;
-                if ((float)args[0] > 0)
-                    updatedVel.x += owner.speed * 0.2f;
-                else if ((float)args[0] < 0)
-                    updatedVel.x -= owner.speed * 0.2f;
-                else
-                    updatedVel.x = owner.rigidbody.velocity.x;
-                if ((float)args[1] > 0)
-                    updatedVel.z += owner.speed * 0.2f;
-                else if ((float)args[1] < 0)
-                    updatedVel.z -= owner.speed * 0.2f;
-                else
-                    updatedVel.z = owner.rigidbody.velocity.z;
-                owner.rigidbody.velocity = updatedVel;
+                float airControl = 0.2f;
+                float airSpeed = owner.speed;
+                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
+                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
             }
         }
 
@@ -197,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
-            Physics.gravity = owner.startGravity;
+            Physics.gravity = owner.startGravity * 4;
             owner.wolfTrail.SetActive(true);
             owner.stateMachine.setState("Wolf");
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -236,27 +216,17 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                Vector3 updatedVel = owner.rigidbody.velocity;
-                if ((float)args[0] > 0)
-                    updatedVel.x += owner.speed * 0.2f;
-                else if ((float)args[0] < 0)
-                    updatedVel.x -= owner.speed * 0.2f;
-                else
-                    updatedVel.x = owner.rigidbody.velocity.x;
-                if ((float)args[1] > 0)
-                    updatedVel.z += owner.speed * 0.2f;
-                else if ((float)args[1] < 0)
-                    updatedVel.z -= owner.speed * 0.2f;
-                else
-                    updatedVel.z = owner.rigidbody.velocity.z;
-                owner.rigidbody.velocity = updatedVel;
+                float airControl = 0.5f;
+                float airSpeed = owner.speed;
+                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
+                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
             }
         }
 
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
-            vel.y = 10;
+            vel.y = 20;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
@@ -303,20 +273,10 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                Vector3 updatedVel = owner.rigidbody.velocity;
-                if ((float)args[0] > 0)
-                    updatedVel.x += owner.speed * 0.2f;
-                else if ((float)args[0] < 0)
-                    updatedVel.x -= owner.speed * 0.2f;
-                else
-                    updatedVel.x = owner.rigidbody.velocity.x;
-                if ((float)args[1] > 0)
-                    updatedVel.z += owner.speed * 0.2f;
-                else if ((float)args[1] < 0)
-                    updatedVel.z -= owner.speed * 0.2f;
-                else
-                    updatedVel.z = owner.rigidbody.velocity.z;
-                owner.rigidbody.velocity = updatedVel;
+                float airControl = 0.2f;
+                float airSpeed = owner.speed;
+                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
+                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
             }
         }
 
