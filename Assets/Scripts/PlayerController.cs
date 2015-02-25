@@ -345,6 +345,10 @@ public class PlayerController : MonoBehaviour
     public GameObject foxPowerLevelUI;
     public GameObject wolfPowerLevelUI;
 
+    public GameObject fox;
+    public GameObject wolf;
+    public GameObject muskalo;
+
 	public GameObject followingCamera;
 	private float camDirection = 0;
 
@@ -407,23 +411,53 @@ public class PlayerController : MonoBehaviour
     void ChangeRight()
     {
 		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
-		if (stateMachine.getState() == "Wolf")
+        if (stateMachine.getState() == "Wolf")
+        {
+            fox.SetActive(true);
+            wolf.SetActive(false);
+            //muskalo.SetActive(false);
             stateMachine.ChangeState(states[2]);
+        }
         else if (stateMachine.getState() == "Fox")
+        {
+            fox.SetActive(true);
+            wolf.SetActive(false);
+            //muskalo.SetActive(false);
             stateMachine.ChangeState(states[0]);
+        }
         else if (stateMachine.getState() == "Muskalo")
+        {
+            fox.SetActive(false);
+            wolf.SetActive(true);
+            //muskalo.SetActive(false);
             stateMachine.ChangeState(states[1]);
+        }
     }
 
     void ChangeLeft()
     {
 		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
         if (stateMachine.getState() == "Wolf")
+        {
+            fox.SetActive(true);
+            wolf.SetActive(false);
+            //muskalo.SetActive(false);
             stateMachine.ChangeState(states[0]);
+        }
         else if (stateMachine.getState() == "Fox")
+        {
+            fox.SetActive(false);
+            wolf.SetActive(true);
+            //muskalo.SetActive(false);
             stateMachine.ChangeState(states[1]);
+        }
         else if (stateMachine.getState() == "Muskalo")
+        {
+            fox.SetActive(true);
+            wolf.SetActive(false);
+            //muskalo.SetActive(false);
             stateMachine.ChangeState(states[2]);
+        }
     }
 
     void Move(Vector2 direction)

@@ -21,7 +21,7 @@ public class GoTo : MonoBehaviour
 
     public void StartGame()
     {
-        Application.LoadLevel("Level0");
+        Application.LoadLevel("TestCurtis");
     }
 
     public void GoToMainMenu()
