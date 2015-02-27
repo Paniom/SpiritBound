@@ -44,6 +44,7 @@ public class EndGameController : MonoBehaviour {
         if (other.tag == "Player")
         {
             TimeAndScore.GameOver = true;
+            TimeAndScore.win = true;
             other.GetComponent<PlayerController>().speed = 0;
             other.GetComponent<PlayerController>().enabled = false;
             if (TimeAndScore.win)

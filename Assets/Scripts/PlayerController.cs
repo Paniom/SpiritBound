@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            owner.fox.SetActive(false);
+            owner.wolf.SetActive(false);
+            owner.muskalo.SetActive(true);
             Physics.gravity = owner.startGravity*1.5f;
             owner.muskaloTrail.SetActive(true);
             owner.stateMachine.setState("Muskalo");
@@ -100,6 +103,9 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            owner.fox.SetActive(true);
+            owner.wolf.SetActive(false);
+            owner.muskalo.SetActive(false);
             Physics.gravity = owner.startGravity*0.5f;
             owner.foxTrail.SetActive(true);
             owner.stateMachine.setState("Fox");
@@ -177,6 +183,9 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            owner.fox.SetActive(false);
+            owner.wolf.SetActive(true);
+            owner.muskalo.SetActive(false);
             Physics.gravity = owner.startGravity * 4;
             owner.wolfTrail.SetActive(true);
             owner.stateMachine.setState("Wolf");
@@ -373,23 +382,14 @@ public class PlayerController : MonoBehaviour
 		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
         if (stateMachine.getState() == "Wolf")
         {
-            fox.SetActive(true);
-            wolf.SetActive(false);
-            muskalo.SetActive(false);
             stateMachine.ChangeState(states[2]);
         }
         else if (stateMachine.getState() == "Fox")
         {
-            fox.SetActive(false);
-            wolf.SetActive(false);
-            muskalo.SetActive(true);
             stateMachine.ChangeState(states[0]);
         }
         else if (stateMachine.getState() == "Muskalo")
         {
-            fox.SetActive(false);
-            wolf.SetActive(true);
-            muskalo.SetActive(false);
             stateMachine.ChangeState(states[1]);
         }
     }
@@ -399,23 +399,14 @@ public class PlayerController : MonoBehaviour
 		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
         if (stateMachine.getState() == "Wolf")
         {
-            fox.SetActive(false);
-            wolf.SetActive(false);
-            muskalo.SetActive(true);
             stateMachine.ChangeState(states[0]);
         }
         else if (stateMachine.getState() == "Fox")
         {
-            fox.SetActive(false);
-            wolf.SetActive(true);
-            muskalo.SetActive(false);
             stateMachine.ChangeState(states[1]);
         }
         else if (stateMachine.getState() == "Muskalo")
         {
-            fox.SetActive(true);
-            wolf.SetActive(false);
-            muskalo.SetActive(false);
             stateMachine.ChangeState(states[2]);
         }
     }
