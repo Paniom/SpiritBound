@@ -15,6 +15,14 @@ public class TimeAndScore : MonoBehaviour {
 
     public GameObject gameOverPanel;
 
+    void Awake()
+    {
+        score = 0;
+        GameOver = false;
+        win = false;
+        timeRemaining = 1000;
+    }
+
 	// Use this for initialization
 	void Start () {
         timeRemaining = 1000;
@@ -29,7 +37,6 @@ public class TimeAndScore : MonoBehaviour {
             {
                 win = true;
                 GameOver = true;
-                gameOverPanel.SetActive(true);
             }
             if (timeRemaining <= 150)
             {
@@ -43,9 +50,13 @@ public class TimeAndScore : MonoBehaviour {
             }
             else
             {
-                gameOverPanel.SetActive(true);
                 GameOver = true;
             }
+        }
+        else
+        {
+            this.enabled = false;
+            gameOverPanel.SetActive(true);
         }
 	}
 }

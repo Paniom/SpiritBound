@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class killPlayer : MonoBehaviour {
+public class SetLastSpawn : MonoBehaviour {
 
-    public static GameObject lastSpawn;
 	// Use this for initialization
 	void Start () {
 	
@@ -18,7 +17,7 @@ public class killPlayer : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            other.transform.position = lastSpawn.transform.position;
+            killPlayer.lastSpawn = this.gameObject;
         }
     }
 }

@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
     float distToGround; // Distance from player collider to ground
     public float speed = 1; //How fast the player will move
 
-    Vector3 startGravity = Physics.gravity; //Variable to tell what the starting gravity was
+    Vector3 startGravity = new Vector3(0,-9.8f,0); //Variable to tell what the starting gravity was
 
     // Use this for initialization
     void Start()
@@ -375,21 +375,21 @@ public class PlayerController : MonoBehaviour
         {
             fox.SetActive(true);
             wolf.SetActive(false);
-            //muskalo.SetActive(false);
+            muskalo.SetActive(false);
             stateMachine.ChangeState(states[2]);
         }
         else if (stateMachine.getState() == "Fox")
         {
-            fox.SetActive(true);
+            fox.SetActive(false);
             wolf.SetActive(false);
-            //muskalo.SetActive(false);
+            muskalo.SetActive(true);
             stateMachine.ChangeState(states[0]);
         }
         else if (stateMachine.getState() == "Muskalo")
         {
             fox.SetActive(false);
             wolf.SetActive(true);
-            //muskalo.SetActive(false);
+            muskalo.SetActive(false);
             stateMachine.ChangeState(states[1]);
         }
     }
@@ -399,23 +399,23 @@ public class PlayerController : MonoBehaviour
 		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
         if (stateMachine.getState() == "Wolf")
         {
-            fox.SetActive(true);
+            fox.SetActive(false);
             wolf.SetActive(false);
-            //muskalo.SetActive(false);
+            muskalo.SetActive(true);
             stateMachine.ChangeState(states[0]);
         }
         else if (stateMachine.getState() == "Fox")
         {
             fox.SetActive(false);
             wolf.SetActive(true);
-            //muskalo.SetActive(false);
+            muskalo.SetActive(false);
             stateMachine.ChangeState(states[1]);
         }
         else if (stateMachine.getState() == "Muskalo")
         {
             fox.SetActive(true);
             wolf.SetActive(false);
-            //muskalo.SetActive(false);
+            muskalo.SetActive(false);
             stateMachine.ChangeState(states[2]);
         }
     }
@@ -450,6 +450,13 @@ public class PlayerController : MonoBehaviour
         {
             stateMachine.messageReciever("Jump",null);
         }
+    }
+
+    void AirControl()
+    {
+        float airControl = 0.2f;
+        float airSpeed = speed;
+        //Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
     }
 
 	public void interactFinished()

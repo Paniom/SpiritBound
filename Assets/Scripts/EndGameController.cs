@@ -23,18 +23,20 @@ public class EndGameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        
-        scoreText.GetComponent<Text>().text = "Score : " + (int)score;
-        timeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
-        if (TimeTaken < TimeAndScore.timeRemaining)
-            TimeTaken += Time.deltaTime*500;
-        else if (TimeTaken > TimeAndScore.timeRemaining)
-            TimeTaken = TimeAndScore.timeRemaining;
+        if (TimeAndScore.GameOver == true)
+        {
+            scoreText.GetComponent<Text>().text = "Score : " + (int)score;
+            timeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
+            if (TimeTaken < TimeAndScore.timeRemaining)
+                TimeTaken += Time.deltaTime * 500;
+            else if (TimeTaken > TimeAndScore.timeRemaining)
+                TimeTaken = TimeAndScore.timeRemaining;
 
-        if (score < TimeAndScore.score)
-            score += Time.deltaTime * 100;
-        else if (score > TimeAndScore.score)
-            score = TimeAndScore.score;
+            if (score < TimeAndScore.score)
+                score += Time.deltaTime * 100;
+            else if (score > TimeAndScore.score)
+                score = TimeAndScore.score;
+        }
 	}
 
     void OnTriggerEnter(Collider other)
@@ -42,6 +44,12 @@ public class EndGameController : MonoBehaviour {
         if (other.tag == "Player")
         {
             TimeAndScore.GameOver = true;
+            other.GetComponent<PlayerController>().speed = 0;
+            other.GetComponent<PlayerController>().enabled = false;
+            if (TimeAndScore.win)
+                outcomeText.GetComponent<Text>().text = "Level Complete";
+            else
+                outcomeText.GetComponent<Text>().text = "You ran out of time";
         }
     }
 }
