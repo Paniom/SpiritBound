@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
             owner.fox.SetActive(false);
             owner.wolf.SetActive(false);
             owner.muskalo.SetActive(true);
-            Physics.gravity = owner.startGravity*1.5f;
+            Physics.gravity = new Vector3(0,-owner.muskaloGravity,0);
             owner.muskaloTrail.SetActive(true);
             owner.stateMachine.setState("Muskalo");
             Color m = owner.muskaloUI.GetComponent<Image>().color;
@@ -65,17 +65,14 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                float airControl = 0.2f;
-                float airSpeed = owner.speed;
-                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
-                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
+                owner.AirControlMovement(args);
             }
         }
 
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
-            vel.y = 5;
+            vel.y = owner.muskaloJumpPower;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
@@ -106,7 +103,7 @@ public class PlayerController : MonoBehaviour
             owner.fox.SetActive(true);
             owner.wolf.SetActive(false);
             owner.muskalo.SetActive(false);
-            Physics.gravity = owner.startGravity*0.5f;
+            Physics.gravity = new Vector3(0, -owner.foxGravity, 0);
             owner.foxTrail.SetActive(true);
             owner.stateMachine.setState("Fox");
             Color m = owner.foxUI.GetComponent<Image>().color;
@@ -145,24 +142,21 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                float airControl = 0.2f;
-                float airSpeed = owner.speed;
-                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
-                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
+                owner.AirControlMovement(args);
             }
         }
 
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
-            vel.y = 5;
+            vel.y = owner.foxJumpPower;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
         //Does a quick dash(speed boost) forward
         void dash(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.AddForce(owner.transform.forward*10);
+            owner.rigidbody.AddForce(owner.transform.forward*500, ForceMode.Impulse);
         }
 
         void pickup(PlayerController owner, params object[] args)
@@ -186,7 +180,7 @@ public class PlayerController : MonoBehaviour
             owner.fox.SetActive(false);
             owner.wolf.SetActive(true);
             owner.muskalo.SetActive(false);
-            Physics.gravity = owner.startGravity * 4;
+            Physics.gravity = new Vector3(0, -owner.wolfGravity, 0);
             owner.wolfTrail.SetActive(true);
             owner.stateMachine.setState("Wolf");
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -225,24 +219,21 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                float airControl = 0.5f;
-                float airSpeed = owner.speed;
-                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
-                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
+                owner.AirControlMovement(args);
             }
         }
 
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
-            vel.y = 20;
+            vel.y = owner.wolfJumpPower;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
         //Slow down time, player still moves with the same speed
         void precision(PlayerController owner, params object[] args)
         {
-            
+            Time.timeScale = 0.5f;
         }
 
         void pickup(PlayerController owner, params object[] args)
@@ -262,7 +253,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
-            Physics.gravity = owner.startGravity * 1.5f;
+            Physics.gravity = new Vector3(0, -owner.muskaloGravity, 0);
             Debug.Log(owner.stateMachine.getState());
         }
 
@@ -282,17 +273,14 @@ public class PlayerController : MonoBehaviour
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
             {
-                float airControl = 0.2f;
-                float airSpeed = owner.speed;
-                Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
-                owner.rigidbody.velocity = Vector3.Lerp(owner.rigidbody.velocity, airMove, Time.deltaTime * airControl);
+                owner.AirControlMovement(args);
             }
         }
 
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
-            vel.y = 5;
+            vel.y = owner.muskaloJumpPower;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
 
@@ -330,9 +318,29 @@ public class PlayerController : MonoBehaviour
 
     bool grounded; // Determine if the player is on the ground
     float distToGround; // Distance from player collider to ground
+
+    [Tooltip("How fast the player will move")]
     public float speed = 1; //How fast the player will move
 
-    Vector3 startGravity = new Vector3(0,-9.8f,0); //Variable to tell what the starting gravity was
+    [Tooltip("The force of gravity on the muskalo")]
+    public float muskaloGravity = 15; //force of gravity on the muskalo
+
+    [Tooltip("The force of gravity on the fox")]
+    public float foxGravity = 10; //force of gravity on the fox
+
+    [Tooltip("The force of gravity on the wolf")]
+    public float wolfGravity = 40; //force of gravity on the wolf
+
+    [Tooltip("The jump power of the muskalo")]
+    public float muskaloJumpPower = 5; //jump power of the muskalo
+
+    [Tooltip("The jump power of the fox")]
+    public float foxJumpPower = 5; //jump power of the fox
+
+    [Tooltip("The jump power of the wolf")]
+    public float wolfJumpPower = 20; //jump power of the wolf
+
+    Vector3 startGravity = new Vector3(0,-10f,0); //Variable to tell what the starting gravity was
 
     // Use this for initialization
     void Start()
@@ -358,6 +366,9 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Alpha0)) {
 			camDirection = 0;
 		}
+        if(Input.GetKeyDown(KeyCode.G)){
+            interactComplete();
+        }
     }
 
 
@@ -443,14 +454,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void AirControl()
+    void AirControlMovement(params object[] args)
     {
         float airControl = 0.2f;
         float airSpeed = speed;
-        //Vector3 airMove = new Vector3((float)args[0] * airSpeed, owner.rigidbody.velocity.y, (float)args[1] * airSpeed);
+        Vector3 airMove = new Vector3((float)args[0] * airSpeed, rigidbody.velocity.y, (float)args[1] * airSpeed);
+        rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
     }
 
-	public void interactFinished()
+	public void interactComplete()
 	{
 		gameObject.SendMessage("interactFinished",SendMessageOptions.DontRequireReceiver);
 	}
