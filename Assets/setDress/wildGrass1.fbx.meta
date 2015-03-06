@@ -35,6 +35,7 @@ ModelImporter:
     2300010: pCube58
     2300012: pCube71
     2300014: pCube72
+    2300016: //RootNode
     3300000: pCube38
     3300002: pCube39
     3300004: pCube50
@@ -43,6 +44,7 @@ ModelImporter:
     3300010: pCube58
     3300012: pCube71
     3300014: pCube72
+    3300016: //RootNode
     4300000: pCube57
     4300002: pCube38
     4300004: pCube58
@@ -51,6 +53,7 @@ ModelImporter:
     4300010: pCube50
     4300012: pCube71
     4300014: pCube51
+    4300016: group14_pCube57
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -71,7 +74,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

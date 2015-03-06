@@ -9,24 +9,39 @@ ModelImporter:
     100006: pSolid45
     100008: pSolid46
     100010: pSolid47
+    100012: Fall_Tree_Group_1
+    100014: fallentTree1_pCube12
+    100016: transform3
+    100018: transform4
+    100020: transform5
+    100022: transform6
     400000: //RootNode
     400002: fallentTree1
     400004: pCube12
     400006: pSolid45
     400008: pSolid46
     400010: pSolid47
+    400012: Fall_Tree_Group_1
+    400014: fallentTree1_pCube12
+    400016: transform3
+    400018: transform4
+    400020: transform5
+    400022: transform6
     2300000: pCube12
     2300002: pSolid45
     2300004: pSolid46
     2300006: pSolid47
+    2300008: fallentTree1_pCube12
     3300000: pCube12
     3300002: pSolid45
     3300004: pSolid46
     3300006: pSolid47
+    3300008: fallentTree1_pCube12
     4300000: pCube12
     4300002: pSolid45
     4300004: pSolid46
     4300006: pSolid47
+    4300008: fallentTree1_pCube12
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -47,7 +62,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 3
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -9,24 +9,39 @@ ModelImporter:
     100006: pCube39
     100008: pCube57
     100010: pCube58
+    100012: grass12_pCube39
+    100014: Grass_Group1
+    100016: transform52
+    100018: transform53
+    100020: transform54
+    100022: transform55
     400000: grass12
     400002: //RootNode
     400004: pCube38
     400006: pCube39
     400008: pCube57
     400010: pCube58
+    400012: grass12_pCube39
+    400014: Grass_Group1
+    400016: transform52
+    400018: transform53
+    400020: transform54
+    400022: transform55
     2300000: pCube38
     2300002: pCube39
     2300004: pCube57
     2300006: pCube58
+    2300008: grass12_pCube39
     3300000: pCube38
     3300002: pCube39
     3300004: pCube57
     3300006: pCube58
+    3300008: grass12_pCube39
     4300000: pCube57
     4300002: pCube38
     4300004: pCube58
     4300006: pCube39
+    4300008: grass12_pCube39
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -47,7 +62,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
