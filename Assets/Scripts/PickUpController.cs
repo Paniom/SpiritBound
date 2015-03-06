@@ -18,13 +18,13 @@ public class PickUpController : MonoBehaviour {
 	    switch(player.GetComponent<PlayerController>().stateMachine.getState())
         {
             case "Muskalo":
-                renderer.material.color = Color.green;
+                //renderer.material.color = Color.green;
                 break;
             case "Fox":
-                renderer.material.color = Color.yellow;
+                //renderer.material.color = Color.yellow;
                 break;
             case "Wolf":
-                renderer.material.color = Color.black;
+                //renderer.material.color = Color.black;
                 break;
         }
 	}
