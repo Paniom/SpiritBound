@@ -7,16 +7,27 @@ ModelImporter:
     100002: pSolid80
     100004: spore1
     100006: //RootNode
+    100008: spore1_pCylinder1
+    100010: Spore_Group1
+    100012: transform14
+    100014: transform15
     400000: pCylinder1
     400002: pSolid80
     400004: spore1
     400006: //RootNode
+    400008: spore1_pCylinder1
+    400010: Spore_Group1
+    400012: transform14
+    400014: transform15
     2300000: pCylinder1
     2300002: pSolid80
+    2300004: spore1_pCylinder1
     3300000: pCylinder1
     3300002: pSolid80
+    3300004: spore1_pCylinder1
     4300000: pCylinder1
     4300002: pSolid80
+    4300004: spore1_pCylinder1
     9500000: //RootNode
   materials:
     importMaterials: 1
