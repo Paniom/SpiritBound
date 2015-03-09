@@ -40,6 +40,10 @@ public class UIController : MonoBehaviour
                 owner.stateMachine.ChangeState(owner.states[0]);
             }
             owner.SpiritUIParent.transform.localRotation = current;
+            foreach (Transform child in owner.SpiritUIParent.transform)
+            {
+                child.transform.rotation = Quaternion.identity;
+            }
         }
 
         public override void OnExit(UIController owner)
@@ -84,6 +88,10 @@ public class UIController : MonoBehaviour
                 owner.stateMachine.ChangeState(owner.states[0]);
             }
             owner.SpiritUIParent.transform.localRotation = current;
+            foreach (Transform child in owner.SpiritUIParent.transform)
+            {
+                child.transform.rotation = Quaternion.identity;
+            }
         }
 
         public override void OnExit(UIController owner)
