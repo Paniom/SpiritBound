@@ -8,6 +8,10 @@ public class TimeAndScore : MonoBehaviour
     public GameObject coinText;
     public GameObject gemText;
 
+    public GameObject finalScoreText;
+    public GameObject finalTimeRemainingText;
+    public GameObject finalOutcomeText;
+
     public static int score;
     public static int coins;
     public static int gems;
@@ -18,6 +22,11 @@ public class TimeAndScore : MonoBehaviour
 
     public GameObject gameOverPanel;
     public GameObject timerSlider;
+
+    float TimeTaken = 0;
+    float finalScore = 0;
+
+    bool doneCalculatingScore = false;
 
     void Awake()
     {
@@ -76,8 +85,32 @@ public class TimeAndScore : MonoBehaviour
         }
         else
         {
-            this.enabled = false;
             gameOverPanel.SetActive(true);
+            if (win)
+                finalOutcomeText.GetComponent<Text>().text = "Level Complete";
+            else
+                finalOutcomeText.GetComponent<Text>().text = "You ran out of time";
+
+            finalScoreText.GetComponent<Text>().text = "Score : " + (int)score;
+            finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
+            if (TimeTaken < timeRemaining)
+                TimeTaken += Time.deltaTime * 500;
+            else if (TimeTaken > timeRemaining)
+                TimeTaken = timeRemaining;
+
+            if (finalScore < score)
+                finalScore += Time.deltaTime * 100;
+            else if (finalScore > score)
+            {
+                finalScore = score;
+                doneCalculatingScore = true;
+            }
+            
         }
+        if (doneCalculatingScore)
+        {
+            this.enabled = false;
+        }
+        
 	}
 }

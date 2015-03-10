@@ -35,8 +35,11 @@ public class PauseScript : MonoBehaviour {
 
     public void Pause()
     {
-        PausePanel.SetActive(true);
-        Time.timeScale = 0;
+        if (!TimeAndScore.GameOver)
+        {
+            PausePanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void Resume()

@@ -37,6 +37,9 @@ public class UIController : MonoBehaviour
             count = Mathf.Clamp01(count + Time.deltaTime / totalTime);
             if (count == 1)
             {
+                Debug.Log("count =  1   ,   should set rotation to end rotation");
+                Debug.Log("end rotation y =  " + end.eulerAngles.y);
+                owner.SpiritUIParent.transform.localEulerAngles = end.eulerAngles;
                 owner.stateMachine.ChangeState(owner.states[0]);
             }
             owner.SpiritUIParent.transform.localRotation = current;
@@ -49,7 +52,6 @@ public class UIController : MonoBehaviour
         public override void OnExit(UIController owner)
         {
             owner._isLerping = false;
-            owner.SpiritUIParent.transform.rotation = end;
             owner.PlayerTarget.SendMessage("ChangeLeft");
         }
     }
@@ -85,6 +87,11 @@ public class UIController : MonoBehaviour
             count = Mathf.Clamp01(count + Time.deltaTime / totalTime);
             if (count == 1)
             {
+                Debug.Log("count =  1   ,   should set rotation to end rotation");
+                Debug.Log("end rotation y =  " + end.eulerAngles.y);
+                Debug.Log("local y b4  :  " + owner.SpiritUIParent.transform.localEulerAngles.y);
+                owner.SpiritUIParent.transform.localEulerAngles = end.eulerAngles;
+                Debug.Log("local y after  :  " + owner.SpiritUIParent.transform.localEulerAngles.y);
                 owner.stateMachine.ChangeState(owner.states[0]);
             }
             owner.SpiritUIParent.transform.localRotation = current;
@@ -115,7 +122,7 @@ public class UIController : MonoBehaviour
 
         public override void Process(UIController owner)
         {
-
+            Debug.Log(owner.SpiritUIParent.transform.localEulerAngles);
         }
 
         public override void OnExit(UIController owner)

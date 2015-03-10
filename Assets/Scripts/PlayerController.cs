@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", charge));
+            HandlerList.Add(new Handler<PlayerController>("InteractFinished", chargeCompleted));
             HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
         }
 
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
             Color m = owner.muskaloUI.GetComponent<Image>().color;
             m.a = 1.0f;
             owner.muskaloUI.GetComponent<Image>().color = m;
+            owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f,0.8f,0.8f);
+            owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
             Debug.Log(owner.stateMachine.getState());
         }
 
@@ -79,7 +83,12 @@ public class PlayerController : MonoBehaviour
         //Lowers head and does a charge/bash foward
         void charge(PlayerController owner, params object[] args)
         {
+            owner.interacting = true;
+        }
 
+        void chargeCompleted(PlayerController owner, params object[] args)
+        {
+            owner.interacting = false;
         }
 
         void pickup(PlayerController owner, params object[] args)
@@ -96,6 +105,7 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", dash));
+            HandlerList.Add(new Handler<PlayerController>("InteractFinished", dashCompleted));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -109,6 +119,9 @@ public class PlayerController : MonoBehaviour
             Color m = owner.foxUI.GetComponent<Image>().color;
             m.a = 1.0f;
             owner.foxUI.GetComponent<Image>().color = m;
+            owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
             Debug.Log(owner.stateMachine.getState());
         }
 
@@ -156,7 +169,15 @@ public class PlayerController : MonoBehaviour
         //Does a quick dash(speed boost) forward
         void dash(PlayerController owner, params object[] args)
         {
-            owner.rigidbody.AddForce(owner.transform.forward*500, ForceMode.Impulse);
+            owner.interacting = true;
+            if(owner.IsGrounded())
+                owner.transform.position += new Vector3(0,0.5f,0);
+            owner.rigidbody.AddForce(owner.fox.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
+        }
+
+        void dashCompleted(PlayerController owner, params object[] args)
+        {
+            owner.interacting = false;
         }
 
         void pickup(PlayerController owner, params object[] args)
@@ -173,6 +194,7 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", precision));
+            HandlerList.Add(new Handler<PlayerController>("InteractFinished", precisionCompleted));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -186,6 +208,9 @@ public class PlayerController : MonoBehaviour
             Color m = owner.wolfUI.GetComponent<Image>().color;
             m.a = 1.0f;
             owner.wolfUI.GetComponent<Image>().color = m;
+            owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
             Debug.Log(owner.stateMachine.getState());
         }
 
@@ -207,6 +232,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnExit(PlayerController owner)
         {
+            Time.timeScale = 1f;
             owner.wolfTrail.SetActive(false);
             Color m = owner.wolfUI.GetComponent<Image>().color;
             m.a = 0.15f;
@@ -216,7 +242,7 @@ public class PlayerController : MonoBehaviour
         void move(PlayerController owner, params object[] args)
         {
             if (owner.IsGrounded())
-                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed * (1 / Time.timeScale), owner.rigidbody.velocity.y * (1 / Time.timeScale), (float)args[1] * owner.speed * (1 / Time.timeScale));
             else
             {
                 owner.AirControlMovement(args);
@@ -233,7 +259,14 @@ public class PlayerController : MonoBehaviour
         //Slow down time, player still moves with the same speed
         void precision(PlayerController owner, params object[] args)
         {
+            owner.interacting = true;
             Time.timeScale = 0.5f;
+        }
+
+        void precisionCompleted(PlayerController owner, params object[] args)
+        {
+            owner.interacting = false;
+            Time.timeScale = 1f;
         }
 
         void pickup(PlayerController owner, params object[] args)
@@ -319,6 +352,8 @@ public class PlayerController : MonoBehaviour
     bool grounded; // Determine if the player is on the ground
     float distToGround; // Distance from player collider to ground
 
+    bool interacting = false;
+
     [Tooltip("How fast the player will move")]
     public float speed = 1; //How fast the player will move
 
@@ -352,7 +387,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(stateMachine.getState());
+        //Debug.Log(distToGround);
         stateMachine.Update();
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			camDirection = 90;
@@ -367,7 +402,7 @@ public class PlayerController : MonoBehaviour
 			camDirection = 0;
 		}
         if(Input.GetKeyDown(KeyCode.G)){
-            interactComplete();
+            InteractComplete();
         }
     }
 
@@ -456,15 +491,15 @@ public class PlayerController : MonoBehaviour
 
     void AirControlMovement(params object[] args)
     {
-        float airControl = 0.2f;
+        float airControl = 0.4f;
         float airSpeed = speed;
         Vector3 airMove = new Vector3((float)args[0] * airSpeed, rigidbody.velocity.y, (float)args[1] * airSpeed);
         rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
     }
 
-	public void interactComplete()
+	public void InteractComplete()
 	{
-		gameObject.SendMessage("interactFinished",SendMessageOptions.DontRequireReceiver);
+        stateMachine.messageReciever("InteractFinished", null);
 	}
 
     void SwitchToStandby()
