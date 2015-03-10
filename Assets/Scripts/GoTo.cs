@@ -21,16 +21,19 @@ public class GoTo : MonoBehaviour
 
     public void StartGame()
     {
-        Application.LoadLevel("TestCurtis");
+        Time.timeScale = 1;
+        Application.LoadLevel("Main_Scene");
     }
 
     public void GoToTitlePage()
     {
+        Time.timeScale = 1;
         Application.LoadLevel("StartScreen");
     }
 
     public void GoToMainMenu()
     {
+        Time.timeScale = 1;
         MainMenuPanel.SetActive(true);
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(false);
