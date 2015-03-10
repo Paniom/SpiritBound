@@ -4,11 +4,141 @@ ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: dusk_ctrl1
+    100004: dusk_ctrl1 1
+    100006: dusk_ctrl12
+    100008: dusk_ctrl13
+    100010: dusk_ctrl14
+    100012: dusk_ctrl3
+    100014: dusk_ctrl6
+    100016: dusk_ctrl7
+    100018: dusk_joinjoint12
+    100020: dusk_joinjoint40
+    100022: dusk_joinjoint45
+    100024: dusk_joinjoint50
+    100026: dusk_joinjoint51
+    100028: dusk_joinjoint52
+    100030: dusk_joint13
+    100032: dusk_joint14
+    100034: dusk_joint15
+    100036: dusk_joint16
+    100038: dusk_joint18
+    100040: dusk_joint19
+    100042: dusk_joint19 1
+    100044: dusk_joint2
+    100046: dusk_joint20
+    100048: dusk_joint20 1
+    100050: dusk_joint21
+    100052: dusk_joint21 1
+    100054: dusk_joint22
+    100056: dusk_joint22 1
+    100058: dusk_joint24
+    100060: dusk_joint25
+    100062: dusk_joint26
+    100064: dusk_joint3
+    100066: dusk_joint30
+    100068: dusk_joint30 1
+    100070: dusk_joint4
+    100072: dusk_joint42
+    100074: dusk_joint46
+    100076: dusk_joint47
+    100078: dusk_joint48
+    100080: dusk_joint49
+    100082: dusk_joint5
+    100084: dusk_joint50
+    100086: dusk_joint51
+    100088: dusk_joint52
+    100090: dusk_joint53
+    100092: dusk_joint6
+    100094: dusk_joint7
+    100096: dusk_joint8
+    100098: Duskalo_Main_CTRL
+    100100: Duskalo_Mesh
+    100102: Duskalo_skeleton_grp
+    100104: Duskalo_Upper_CTRL
+    100106: Head_Point_Ctrl
+    100108: joint35
+    100110: Spine_ctrl
+    100112: Wolf_Pelvis_ctrl
+    100114: Root_Duskalo_Joint
+    100116: Root_Dusk_Joint
+    100118: dusk_ctrl10
+    100120: dusk_ctrl11
+    100122: dusk_ctrl2
+    100124: dusk_ctrl9
+    100126: L_fore_foot_ctrl
+    100128: R_fore_foot_ctrl
     400000: //RootNode
+    400002: dusk_ctrl1
+    400004: dusk_ctrl1 1
+    400006: dusk_ctrl12
+    400008: dusk_ctrl13
+    400010: dusk_ctrl14
+    400012: dusk_ctrl3
+    400014: dusk_ctrl6
+    400016: dusk_ctrl7
+    400018: dusk_joinjoint12
+    400020: dusk_joinjoint40
+    400022: dusk_joinjoint45
+    400024: dusk_joinjoint50
+    400026: dusk_joinjoint51
+    400028: dusk_joinjoint52
+    400030: dusk_joint13
+    400032: dusk_joint14
+    400034: dusk_joint15
+    400036: dusk_joint16
+    400038: dusk_joint18
+    400040: dusk_joint19
+    400042: dusk_joint19 1
+    400044: dusk_joint2
+    400046: dusk_joint20
+    400048: dusk_joint20 1
+    400050: dusk_joint21
+    400052: dusk_joint21 1
+    400054: dusk_joint22
+    400056: dusk_joint22 1
+    400058: dusk_joint24
+    400060: dusk_joint25
+    400062: dusk_joint26
+    400064: dusk_joint3
+    400066: dusk_joint30
+    400068: dusk_joint30 1
+    400070: dusk_joint4
+    400072: dusk_joint42
+    400074: dusk_joint46
+    400076: dusk_joint47
+    400078: dusk_joint48
+    400080: dusk_joint49
+    400082: dusk_joint5
+    400084: dusk_joint50
+    400086: dusk_joint51
+    400088: dusk_joint52
+    400090: dusk_joint53
+    400092: dusk_joint6
+    400094: dusk_joint7
+    400096: dusk_joint8
+    400098: Duskalo_Main_CTRL
+    400100: Duskalo_Mesh
+    400102: Duskalo_skeleton_grp
+    400104: Duskalo_Upper_CTRL
+    400106: Head_Point_Ctrl
+    400108: joint35
+    400110: Spine_ctrl
+    400112: Wolf_Pelvis_ctrl
+    400114: Root_Duskalo_Joint
+    400116: Root_Dusk_Joint
+    400118: dusk_ctrl10
+    400120: dusk_ctrl11
+    400122: dusk_ctrl2
+    400124: dusk_ctrl9
+    400126: L_fore_foot_ctrl
+    400128: R_fore_foot_ctrl
     2300000: //RootNode
     3300000: //RootNode
     4300000: Muskalo03
+    4300002: Duskalo_Mesh
     9500000: //RootNode
+    13700000: Duskalo_Mesh
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +176,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -58,7 +188,7 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Root_Dusk_Joint
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   additionalBone: 0
