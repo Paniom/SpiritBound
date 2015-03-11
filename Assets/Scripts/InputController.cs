@@ -54,13 +54,13 @@ public class InputController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (interactTime > 0 && interactActive)
+        if (interactTime > 0)
         {
             interactTime -= Time.deltaTime;
         }
-        else if(interactTime <=0 && interactActive)
+        else
         {
-            interactFinished();
+            interactTime = 0;
         }
 		if(inputDevice == InputType.Keyboard) {
 			if (direction.x == 0) {
@@ -134,7 +134,6 @@ public class InputController : MonoBehaviour {
 			if(!interactActive && interactTime <= 0) {
 				if ( Input.GetKey(KeyCode.E) ) {
 					target.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
-                    interactTime = interactDelay;
 					interactActive = true;
 				}
 			}
@@ -229,8 +228,7 @@ public class InputController : MonoBehaviour {
 	// starts the delay on using the interact button
 	void interactFinished() {
 		interactActive = false;
-		interactTime = 0;
-        target.SendMessage("InteractComplete", SendMessageOptions.DontRequireReceiver);
+		interactTime = interactDelay;
 	}
 
 	void rotateFinished() {

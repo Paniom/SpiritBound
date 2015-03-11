@@ -22,7 +22,7 @@ public class GoTo : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
-        Application.LoadLevel("RenderTesting");
+        Application.LoadLevel("Main_Scene");
     }
 
     public void GoToTitlePage()

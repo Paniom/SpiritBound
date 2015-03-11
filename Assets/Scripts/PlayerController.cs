@@ -8,12 +8,13 @@ public class PlayerController : MonoBehaviour
 
     public class Muskalo : State<PlayerController>
     {
+        float startingInteractTimer = 1.0f;
+        float interactTimer = 1.0f;
         public Muskalo()
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", charge));
-            HandlerList.Add(new Handler<PlayerController>("InteractFinished", chargeCompleted));
             HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
         }
 
@@ -53,6 +54,20 @@ public class PlayerController : MonoBehaviour
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value = owner.wolfSpiritStartPowerLevel;// reset value to starting power level
             }
+
+            if (owner.interacting)
+            {
+                if (interactTimer > 0)
+                {
+                    interactTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    owner.interacting = false;
+                    interactTimer = startingInteractTimer;
+                    owner.InteractComplete();
+                }
+            }
         }
 
         public override void OnExit(PlayerController owner)
@@ -61,6 +76,12 @@ public class PlayerController : MonoBehaviour
             Color m = owner.muskaloUI.GetComponent<Image>().color;
             m.a = 0.15f;
             owner.muskaloUI.GetComponent<Image>().color = m;
+            if (owner.interacting)
+            {
+                owner.interacting = false;
+                interactTimer = startingInteractTimer;
+                owner.InteractComplete();
+            }
         }
 
         void move(PlayerController owner, params object[] args)
@@ -86,11 +107,6 @@ public class PlayerController : MonoBehaviour
             owner.interacting = true;
         }
 
-        void chargeCompleted(PlayerController owner, params object[] args)
-        {
-            owner.interacting = false;
-        }
-
         void pickup(PlayerController owner, params object[] args)
         {
             TimeAndScore.score += 10;
@@ -100,12 +116,14 @@ public class PlayerController : MonoBehaviour
     // Sun Spirit is fox
     public class Fox : State<PlayerController>
     {
+        float startingInteractTimer = 1.0f;
+        float interactTimer = 1.0f;
         public Fox()
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", dash));
-            HandlerList.Add(new Handler<PlayerController>("InteractFinished", dashCompleted));
+            HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -134,10 +152,20 @@ public class PlayerController : MonoBehaviour
             else
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.stateMachine.ChangeState(owner.states[0]); //switch state to muskalo
-                owner.targetUI.GetComponent<UIController>().stateMachine.ChangeState(owner.targetUI.GetComponent<UIController>().states[0]);
-                owner.targetUI.GetComponent<UIController>()._isLerping = false;
-                owner.targetUI.GetComponent<UIController>().SpiritUIParent.transform.rotation = Quaternion.identity;
+                owner.RotateRight();
+            }
+            if (owner.interacting)
+            {
+                if (interactTimer > 0)
+                {
+                    interactTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    owner.interacting = false;
+                    interactTimer = startingInteractTimer;
+                    owner.InteractComplete();
+                }
             }
         }
 
@@ -147,6 +175,12 @@ public class PlayerController : MonoBehaviour
             Color m = owner.foxUI.GetComponent<Image>().color;
             m.a = 0.15f;
             owner.foxUI.GetComponent<Image>().color = m;
+            if (owner.interacting)
+            {
+                owner.interacting = false;
+                interactTimer = startingInteractTimer;
+                owner.InteractComplete();
+            }
         }
 
         void move(PlayerController owner, params object[] args)
@@ -175,11 +209,6 @@ public class PlayerController : MonoBehaviour
             owner.rigidbody.AddForce(owner.fox.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
         }
 
-        void dashCompleted(PlayerController owner, params object[] args)
-        {
-            owner.interacting = false;
-        }
-
         void pickup(PlayerController owner, params object[] args)
         {
             owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
@@ -189,12 +218,14 @@ public class PlayerController : MonoBehaviour
     // Moon Spirit is wolf
     public class Wolf : State<PlayerController>
     {
+        float startingInteractTimer = 5.0f;
+        float interactTimer = 5.0f;
         public Wolf()
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", precision));
-            HandlerList.Add(new Handler<PlayerController>("InteractFinished", precisionCompleted));
+            HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -223,10 +254,22 @@ public class PlayerController : MonoBehaviour
             else
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.stateMachine.ChangeState(owner.states[0]); //switch state to muskalo
-                owner.targetUI.GetComponent<UIController>().stateMachine.ChangeState(owner.targetUI.GetComponent<UIController>().states[0]);
-                owner.targetUI.GetComponent<UIController>()._isLerping = false;
-                owner.targetUI.GetComponent<UIController>().SpiritUIParent.transform.rotation = Quaternion.identity;
+                owner.RotateLeft();
+            }
+
+            if (owner.interacting)
+            {
+                if (interactTimer > 0)
+                {
+                    interactTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    owner.interacting = false;
+                    interactTimer = startingInteractTimer;
+                    Time.timeScale = 1f;
+                    owner.InteractComplete();
+                }
             }
         }
 
@@ -237,12 +280,19 @@ public class PlayerController : MonoBehaviour
             Color m = owner.wolfUI.GetComponent<Image>().color;
             m.a = 0.15f;
             owner.wolfUI.GetComponent<Image>().color = m;
+            if (owner.interacting)
+            {
+                owner.interacting = false;
+                interactTimer = startingInteractTimer;
+                Time.timeScale = 1f;
+                owner.InteractComplete();
+            }
         }
 
         void move(PlayerController owner, params object[] args)
         {
             if (owner.IsGrounded())
-                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed * (1 / Time.timeScale), owner.rigidbody.velocity.y * (1 / Time.timeScale), (float)args[1] * owner.speed * (1 / Time.timeScale));
+                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed * (1 / Time.timeScale), owner.rigidbody.velocity.y, (float)args[1] * owner.speed * (1 / Time.timeScale));
             else
             {
                 owner.AirControlMovement(args);
@@ -261,12 +311,6 @@ public class PlayerController : MonoBehaviour
         {
             owner.interacting = true;
             Time.timeScale = 0.5f;
-        }
-
-        void precisionCompleted(PlayerController owner, params object[] args)
-        {
-            owner.interacting = false;
-            Time.timeScale = 1f;
         }
 
         void pickup(PlayerController owner, params object[] args)
@@ -349,7 +393,7 @@ public class PlayerController : MonoBehaviour
     public GameObject wolfTrail;
     public GameObject muskaloTrail;
 
-    bool grounded; // Determine if the player is on the ground
+    public bool grounded; // Determine if the player is on the ground
     float distToGround; // Distance from player collider to ground
 
     bool interacting = false;
@@ -387,7 +431,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(distToGround);
+        //Debug.Log("is interacting  : " + interacting);
         stateMachine.Update();
 		if(Input.GetKeyDown(KeyCode.Alpha1)) {
 			camDirection = 90;
@@ -401,9 +445,6 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Alpha0)) {
 			camDirection = 0;
 		}
-        if(Input.GetKeyDown(KeyCode.G)){
-            InteractComplete();
-        }
     }
 
 
@@ -467,6 +508,7 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
+        interacting = true;
         stateMachine.messageReciever("Interact", null);
     }
 
@@ -493,13 +535,13 @@ public class PlayerController : MonoBehaviour
     {
         float airControl = 0.4f;
         float airSpeed = speed;
-        Vector3 airMove = new Vector3((float)args[0] * airSpeed, rigidbody.velocity.y, (float)args[1] * airSpeed);
+        Vector3 airMove = new Vector3((float)args[0] * airSpeed * (1 / Time.timeScale), rigidbody.velocity.y, (float)args[1] * airSpeed) * (1 / Time.timeScale);
         rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
     }
 
 	public void InteractComplete()
 	{
-        stateMachine.messageReciever("InteractFinished", null);
+        this.SendMessage("interactFinished", SendMessageOptions.DontRequireReceiver);
 	}
 
     void SwitchToStandby()
