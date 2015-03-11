@@ -5,14 +5,134 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: FoxTest9
+    100004: fox_ctrl1
+    100006: fox_ctrl10
+    100008: fox_ctrl11
+    100010: fox_ctrl12
+    100012: fox_ctrl13
+    100014: fox_ctrl14
+    100016: fox_ctrl2
+    100018: fox_ctrl3
+    100020: fox_ctrl6
+    100022: fox_ctrl7
+    100024: fox_ctrl9
+    100026: fox_joint19
+    100028: fox_joint36
+    100030: fox_joint43
+    100032: fox_joint51
+    100034: fox_joint52
+    100036: fox_joint53
+    100038: Fox_Main_CTRL
+    100040: Fox_Mesh
+    100042: Fox_Pelvis_ctrl
+    100044: Fox_skeleton_grp
+    100046: Fox_Upper_CTRL
+    100048: joint13
+    100050: joint13 1
+    100052: joint14
+    100054: joint14 1
+    100056: joint15
+    100058: joint15 1
+    100060: joint16
+    100062: joint16 1
+    100064: joint18
+    100066: joint2
+    100068: joint20
+    100070: joint20 1
+    100072: joint21
+    100074: joint21 1
+    100076: joint22
+    100078: joint22 1
+    100080: joint24
+    100082: joint25
+    100084: joint26
+    100086: joint3
+    100088: joint30
+    100090: joint30 1
+    100092: joint34
+    100094: joint36
+    100096: joint4
+    100098: joint40
+    100100: joint41
+    100102: joint41 1
+    100104: joint42
+    100106: joint43
+    100108: joint44
+    100110: joint5
+    100112: joint6
+    100114: joint7
+    100116: joint8
+    100118: Root_Fox_Joint
+    100120: SpineGroup
     400000: //RootNode
     400002: FoxTest9
+    400004: fox_ctrl1
+    400006: fox_ctrl10
+    400008: fox_ctrl11
+    400010: fox_ctrl12
+    400012: fox_ctrl13
+    400014: fox_ctrl14
+    400016: fox_ctrl2
+    400018: fox_ctrl3
+    400020: fox_ctrl6
+    400022: fox_ctrl7
+    400024: fox_ctrl9
+    400026: fox_joint19
+    400028: fox_joint36
+    400030: fox_joint43
+    400032: fox_joint51
+    400034: fox_joint52
+    400036: fox_joint53
+    400038: Fox_Main_CTRL
+    400040: Fox_Mesh
+    400042: Fox_Pelvis_ctrl
+    400044: Fox_skeleton_grp
+    400046: Fox_Upper_CTRL
+    400048: joint13
+    400050: joint13 1
+    400052: joint14
+    400054: joint14 1
+    400056: joint15
+    400058: joint15 1
+    400060: joint16
+    400062: joint16 1
+    400064: joint18
+    400066: joint2
+    400068: joint20
+    400070: joint20 1
+    400072: joint21
+    400074: joint21 1
+    400076: joint22
+    400078: joint22 1
+    400080: joint24
+    400082: joint25
+    400084: joint26
+    400086: joint3
+    400088: joint30
+    400090: joint30 1
+    400092: joint34
+    400094: joint36
+    400096: joint4
+    400098: joint40
+    400100: joint41
+    400102: joint41 1
+    400104: joint42
+    400106: joint43
+    400108: joint44
+    400110: joint5
+    400112: joint6
+    400114: joint7
+    400116: joint8
+    400118: Root_Fox_Joint
+    400120: SpineGroup
     2300000: //RootNode
     2300002: FoxTest9
     3300000: //RootNode
     3300002: FoxTest9
     4300000: FoxTest9
+    4300002: Fox_Mesh
     9500000: //RootNode
+    13700000: Fox_Mesh
   materials:
     importMaterials: 1
     materialName: 0
