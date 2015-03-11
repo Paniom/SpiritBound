@@ -5,12 +5,132 @@ ModelImporter:
   fileIDToRecycleName:
     100000: WolfFinal
     100002: //RootNode
+    100004: dusk_ctrl1
+    100006: dusk_ctrl10
+    100008: dusk_ctrl11
+    100010: dusk_ctrl12
+    100012: dusk_ctrl13
+    100014: dusk_ctrl14
+    100016: dusk_ctrl2
+    100018: dusk_ctrl3
+    100020: dusk_ctrl6
+    100022: dusk_ctrl7
+    100024: dusk_ctrl9
+    100026: joint36
+    100028: joint37
+    100030: joint38
+    100032: joint39
+    100034: joint40
+    100036: joint40 1
+    100038: joint41
+    100040: Root_Wolf_Joint
+    100042: Spine
+    100044: wolf_joint13
+    100046: wolf_joint13 1
+    100048: wolf_joint14
+    100050: wolf_joint14 1
+    100052: wolf_joint15
+    100054: wolf_joint15 1
+    100056: wolf_joint16
+    100058: wolf_joint16 1
+    100060: wolf_joint18
+    100062: wolf_joint19
+    100064: wolf_joint19 1
+    100066: wolf_joint2
+    100068: wolf_joint20
+    100070: wolf_joint20 1
+    100072: wolf_joint21
+    100074: wolf_joint21 1
+    100076: wolf_joint22
+    100078: wolf_joint22 1
+    100080: wolf_joint24
+    100082: wolf_joint25
+    100084: wolf_joint26
+    100086: wolf_joint29
+    100088: wolf_joint3
+    100090: wolf_joint30
+    100092: wolf_joint30 1
+    100094: wolf_joint37
+    100096: wolf_joint38
+    100098: wolf_joint4
+    100100: wolf_joint44
+    100102: wolf_joint49
+    100104: wolf_joint5
+    100106: wolf_joint6
+    100108: wolf_joint7
+    100110: wolf_joint8
+    100112: Wolf_Main_CTRL
+    100114: Wolf_Mesh
+    100116: Wolf_Pelvis_ctrl
+    100118: Wolf_skeleton_grp
+    100120: Wolf_Upper_CTRL
     400000: WolfFinal
     400002: //RootNode
+    400004: dusk_ctrl1
+    400006: dusk_ctrl10
+    400008: dusk_ctrl11
+    400010: dusk_ctrl12
+    400012: dusk_ctrl13
+    400014: dusk_ctrl14
+    400016: dusk_ctrl2
+    400018: dusk_ctrl3
+    400020: dusk_ctrl6
+    400022: dusk_ctrl7
+    400024: dusk_ctrl9
+    400026: joint36
+    400028: joint37
+    400030: joint38
+    400032: joint39
+    400034: joint40
+    400036: joint40 1
+    400038: joint41
+    400040: Root_Wolf_Joint
+    400042: Spine
+    400044: wolf_joint13
+    400046: wolf_joint13 1
+    400048: wolf_joint14
+    400050: wolf_joint14 1
+    400052: wolf_joint15
+    400054: wolf_joint15 1
+    400056: wolf_joint16
+    400058: wolf_joint16 1
+    400060: wolf_joint18
+    400062: wolf_joint19
+    400064: wolf_joint19 1
+    400066: wolf_joint2
+    400068: wolf_joint20
+    400070: wolf_joint20 1
+    400072: wolf_joint21
+    400074: wolf_joint21 1
+    400076: wolf_joint22
+    400078: wolf_joint22 1
+    400080: wolf_joint24
+    400082: wolf_joint25
+    400084: wolf_joint26
+    400086: wolf_joint29
+    400088: wolf_joint3
+    400090: wolf_joint30
+    400092: wolf_joint30 1
+    400094: wolf_joint37
+    400096: wolf_joint38
+    400098: wolf_joint4
+    400100: wolf_joint44
+    400102: wolf_joint49
+    400104: wolf_joint5
+    400106: wolf_joint6
+    400108: wolf_joint7
+    400110: wolf_joint8
+    400112: Wolf_Main_CTRL
+    400114: Wolf_Mesh
+    400116: Wolf_Pelvis_ctrl
+    400118: Wolf_skeleton_grp
+    400120: Wolf_Upper_CTRL
     2300000: WolfFinal
     3300000: WolfFinal
     4300000: WolfFinal
+    4300002: Wolf_Mesh
     9500000: //RootNode
+    13700000: Wolf_Mesh
   materials:
     importMaterials: 1
     materialName: 0
@@ -60,7 +180,7 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Root_Wolf_Joint
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   additionalBone: 0

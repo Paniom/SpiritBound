@@ -68,6 +68,7 @@ ModelImporter:
     100124: dusk_ctrl9
     100126: L_fore_foot_ctrl
     100128: R_fore_foot_ctrl
+    100130: Duskalo_Pelvis_ctrl
     400000: //RootNode
     400002: dusk_ctrl1
     400004: dusk_ctrl1 1
@@ -133,6 +134,7 @@ ModelImporter:
     400124: dusk_ctrl9
     400126: L_fore_foot_ctrl
     400128: R_fore_foot_ctrl
+    400130: Duskalo_Pelvis_ctrl
     2300000: //RootNode
     3300000: //RootNode
     4300000: Muskalo03
