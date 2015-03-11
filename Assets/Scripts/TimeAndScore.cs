@@ -35,7 +35,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 1000;
+        timeRemaining = 300;
         if(timerSlider!= null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
     }
