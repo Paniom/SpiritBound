@@ -86,6 +86,12 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
+            if (owner.duskaloAnimator)
+            {
+                Vector2 movement = new Vector2((float)args[0], (float)args[1]);
+                owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
+                owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
+            }
             if (owner.IsGrounded())
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
@@ -109,7 +115,32 @@ public class PlayerController : MonoBehaviour
 
         void pickup(PlayerController owner, params object[] args)
         {
-            TimeAndScore.score += 10;
+            if (args[0] == PickUpController.PowerUpType.Score.ToString())
+            {
+                TimeAndScore.score += 10;
+            }
+            else if (args[0] == PickUpController.PowerUpType.Coin.ToString())
+            {
+                TimeAndScore.coins += 1;
+            }
+            else if (args[0] == PickUpController.PowerUpType.Gem.ToString())
+            {
+                TimeAndScore.gems += 1;
+            }
+            else if (args[0] == PickUpController.PowerUpType.WolfPower.ToString())
+            {
+                if (owner.wolfPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                else
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
+            }
+            else if (args[0] == PickUpController.PowerUpType.FoxPower.ToString())
+            {
+                if (owner.foxPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
+                else
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
+            }
         }
     }
 
@@ -185,6 +216,12 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
+            if (owner.foxAnimator)
+            {
+                Vector2 movement = new Vector2((float)args[0], (float)args[1]);
+                owner.foxAnimator.SetFloat("Speed", movement.magnitude);
+                owner.foxAnimator.SetBool("Grounded", owner.IsGrounded());
+            }
             if (owner.IsGrounded())
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
             else
@@ -203,15 +240,48 @@ public class PlayerController : MonoBehaviour
         //Does a quick dash(speed boost) forward
         void dash(PlayerController owner, params object[] args)
         {
-            owner.interacting = true;
-            if(owner.IsGrounded())
-                owner.transform.position += new Vector3(0,0.5f,0);
-            owner.rigidbody.AddForce(owner.fox.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
+            if (owner.foxPowerLevelUI.GetComponent<Slider>().value >= 5)
+            {
+                owner.foxPowerLevelUI.GetComponent<Slider>().value -= 2;
+                owner.interacting = true;
+                if (owner.IsGrounded())
+                    owner.transform.position += new Vector3(0, 0.5f, 0);
+                owner.rigidbody.AddForce(owner.fox.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
+            }
+            else
+            {
+                owner.InteractComplete();
+            }
         }
 
         void pickup(PlayerController owner, params object[] args)
         {
-            owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
+            if (args[0] == PickUpController.PowerUpType.Score.ToString())
+            {
+                TimeAndScore.score += 10;
+            }
+            else if (args[0] == PickUpController.PowerUpType.Coin.ToString())
+            {
+                TimeAndScore.coins += 1;
+            }
+            else if (args[0] == PickUpController.PowerUpType.Gem.ToString())
+            {
+                TimeAndScore.gems += 1;
+            }
+            else if (args[0] == PickUpController.PowerUpType.WolfPower.ToString())
+            {
+                if (owner.wolfPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                else
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
+            }
+            else if (args[0] == PickUpController.PowerUpType.FoxPower.ToString())
+            {
+                if (owner.foxPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
+                else
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
+            }
         }
     }
 
@@ -291,6 +361,12 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
+            if (owner.wolfAnimator)
+            {
+                Vector2 movement = new Vector2((float)args[0], (float)args[1]);
+                owner.wolfAnimator.SetFloat("Speed", movement.magnitude);
+                owner.wolfAnimator.SetBool("Grounded", owner.IsGrounded());
+            }
             if (owner.IsGrounded())
                 owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed * (1 / Time.timeScale), owner.rigidbody.velocity.y, (float)args[1] * owner.speed * (1 / Time.timeScale));
             else
@@ -309,13 +385,47 @@ public class PlayerController : MonoBehaviour
         //Slow down time, player still moves with the same speed
         void precision(PlayerController owner, params object[] args)
         {
-            owner.interacting = true;
-            Time.timeScale = 0.5f;
+            if (owner.wolfPowerLevelUI.GetComponent<Slider>().value >= 5)
+            {
+                owner.wolfPowerLevelUI.GetComponent<Slider>().value -= 2;
+                owner.interacting = true;
+                Time.timeScale = 0.5f;
+            }
+            else
+            {
+                owner.InteractComplete();
+            }
+            
         }
 
         void pickup(PlayerController owner, params object[] args)
         {
-            owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
+            if (args[0] == PickUpController.PowerUpType.Score.ToString())
+            {
+                TimeAndScore.score += 10;
+            }
+            else if (args[0] == PickUpController.PowerUpType.Coin.ToString())
+            {
+                TimeAndScore.coins += 1;
+            }
+            else if (args[0] == PickUpController.PowerUpType.Gem.ToString())
+            {
+                TimeAndScore.gems += 1;
+            }
+            else if (args[0] == PickUpController.PowerUpType.WolfPower.ToString())
+            {
+                if (owner.wolfPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                else
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
+            }
+            else if (args[0] == PickUpController.PowerUpType.FoxPower.ToString())
+            {
+                if (owner.foxPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
+                else
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
+            }
         }
     }
 
@@ -419,6 +529,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The jump power of the wolf")]
     public float wolfJumpPower = 20; //jump power of the wolf
 
+    public Animator duskaloAnimator;
+    public Animator foxAnimator;
+    public Animator wolfAnimator;
+
     Vector3 startGravity = new Vector3(0,-10f,0); //Variable to tell what the starting gravity was
 
     // Use this for initialization
@@ -512,9 +626,9 @@ public class PlayerController : MonoBehaviour
         stateMachine.messageReciever("Interact", null);
     }
 
-    void PickUp()
+    void PickUp(string powerUpType)
     {
-        stateMachine.messageReciever("PickUp", null);
+        stateMachine.messageReciever("PickUp", powerUpType);
     }
 
     bool IsGrounded()
