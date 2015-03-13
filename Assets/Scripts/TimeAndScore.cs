@@ -27,9 +27,12 @@ public class TimeAndScore : MonoBehaviour
     float finalScore = 0;
 
     bool doneCalculatingScore = false;
+    bool doneCalculatingTime = false;
 
     void Awake()
     {
+        doneCalculatingScore = false;
+        doneCalculatingTime = false;
         score = 0;
         coins = 0;
         gems = 0;
@@ -43,6 +46,8 @@ public class TimeAndScore : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        doneCalculatingScore = false;
+        doneCalculatingTime = false;
         score = 0;
         coins = 0;
         gems = 0;
@@ -98,7 +103,10 @@ public class TimeAndScore : MonoBehaviour
             if (TimeTaken < timeRemaining)
                 TimeTaken += Time.deltaTime * 500;
             else if (TimeTaken > timeRemaining)
+            {
                 TimeTaken = timeRemaining;
+                doneCalculatingTime = true;
+            }
 
             if (finalScore < score)
                 finalScore += Time.deltaTime * 100;
@@ -109,7 +117,7 @@ public class TimeAndScore : MonoBehaviour
             }
             
         }
-        if (doneCalculatingScore)
+        if (doneCalculatingScore && doneCalculatingTime)
         {
             this.enabled = false;
         }
