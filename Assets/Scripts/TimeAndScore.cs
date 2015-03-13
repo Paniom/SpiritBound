@@ -48,7 +48,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 1000;
+        timeRemaining = 300;
         if (timerSlider != null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
 	}
@@ -63,7 +63,7 @@ public class TimeAndScore : MonoBehaviour
                 win = true;
                 GameOver = true;
             }
-            if (timeRemaining <= 150)
+            if (timeRemaining <= 30)
             {
                 GetComponent<AudioSource>().pitch = 1.01f;
             }
