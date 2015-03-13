@@ -50,6 +50,9 @@ public class CameraController : MonoBehaviour {
 				owner.stateMachine.ChangeState(owner.states[2]);
 			}
 			cPos.y = owner.distFromPlayer.y;
+			float yRot = current.eulerAngles.y;
+			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
+			owner.target.transform.rotation = Quaternion.Euler (targRot.x, yRot, targRot.z);
 			owner.transform.rotation = current;
 			owner.transform.position = cPos+owner.target.transform.position;
 		}
@@ -114,6 +117,9 @@ public class CameraController : MonoBehaviour {
 			{
 				owner.stateMachine.ChangeState(owner.states[2]);
 			}
+			float yRot = current.eulerAngles.y;
+			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
+			owner.target.transform.rotation = Quaternion.Euler (targRot.x, yRot, targRot.z);
 			cPos.y = owner.distFromPlayer.y;
 			owner.transform.rotation = current;
 			owner.transform.position = cPos;
@@ -159,9 +165,11 @@ public class CameraController : MonoBehaviour {
 		public override void OnEnter (CameraController owner)
 		{
 			float e = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
-			DesiredOffset = new Vector3(-Mathf.Cos(e*Mathf.Deg2Rad)*(owner.distFromPlayer.z) - Mathf.Sin(e*Mathf.Deg2Rad)*(owner.distFromPlayer.x),
-			                            owner.distFromPlayer.y,-Mathf.Cos(e*Mathf.Deg2Rad)*(owner.distFromPlayer.x) - Mathf.Sin(e*Mathf.Deg2Rad)*(owner.distFromPlayer.z));
-			//LookAtOffset = new Vector3(0, owner.distFromPlayer.y-.4f, 0);
+			float yRot = e;
+			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
+			owner.target.transform.rotation = Quaternion.Euler (targRot.x, yRot, targRot.z);
+			DesiredOffset = new Vector3(-owner.distFromPlayer.z,owner.distFromPlayer.y,owner.distFromPlayer.x);
+			//LookAtOffset = new Vector3(0, owner.distFromPlayer.y-.4f, 0);*/
 			print("dist = " + DesiredOffset.ToString());
 		}
 
