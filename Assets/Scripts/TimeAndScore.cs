@@ -72,10 +72,12 @@ public class TimeAndScore : MonoBehaviour
                 timeRemaining -= Time.deltaTime;
                 if (timerSlider != null)
                     timerSlider.GetComponent<Slider>().value = timeRemaining;
-
-                scoreText.GetComponent<Text>().text = "Score  " + score;
-                coinText.GetComponent<Text>().text = coins + " / 10  coins";
-                gemText.GetComponent<Text>().text = gems + " / 10  gems";
+				if(scoreText != null)
+	                scoreText.GetComponent<Text>().text = "Score  " + score;
+				if(coinText != null)
+                	coinText.GetComponent<Text>().text = coins + " / 10  coins";
+				if(gemText != null)
+					gemText.GetComponent<Text>().text = gems + " / 10  gems";
             }
             else
             {

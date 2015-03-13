@@ -8,7 +8,7 @@ public class NewCameraRotation : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.layer == LayerMask.NameToLayer("Player")) {
-			other.GetComponent<PlayerController>().followingCamera.SendMessage("AddRotation",eulerYRot,SendMessageOptions.DontRequireReceiver);
+			other.GetComponent<PlayerController>().followingCamera.SendMessage("AddRotation",new object[] {eulerYRot,transform.position.x,transform.position.z},SendMessageOptions.DontRequireReceiver);
 		}
 	}
 	void OnTriggerExit(Collider other) {
