@@ -21,9 +21,12 @@ public class PickUpController : MonoBehaviour
     public enum PowerUpType { Score, Gem, Coin, WolfPower, FoxPower };
     public PowerUpType ThisPowerUpType;
 
+    AudioClip pickupSound;
+
     // Use this for initialization
     void Start()
     {
+        pickupSound = Resources.Load<AudioClip>("Sounds/pickup");
         player = GameObject.FindGameObjectWithTag("Player");
         ScorePickup = transform.Find("ScorePickup").gameObject;
         GemPickup = transform.Find("GemPickup").gameObject;
@@ -183,6 +186,7 @@ public class PickUpController : MonoBehaviour
         if (other.tag == "Player")
         {
             other.SendMessage("PickUp", ThisPowerUpType.ToString(), SendMessageOptions.DontRequireReceiver);
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             Destroy(gameObject);
         }
     }

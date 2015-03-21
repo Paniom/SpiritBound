@@ -29,6 +29,9 @@ public class TimeAndScore : MonoBehaviour
     bool doneCalculatingScore = false;
     bool doneCalculatingTime = false;
 
+    public AudioClip timeTick;
+    public AudioClip scoreTick;
+
     void Awake()
     {
         doneCalculatingScore = false;
@@ -61,6 +64,7 @@ public class TimeAndScore : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        AudioSource audio = GetComponent<AudioSource>();
         if (!GameOver)
         {
             if (Input.GetKey(KeyCode.L))
@@ -70,7 +74,7 @@ public class TimeAndScore : MonoBehaviour
             }
             if (timeRemaining <= 30)
             {
-                GetComponent<AudioSource>().pitch = 1.01f;
+                GetComponent<AudioSource>().pitch = 1.02f;
             }
             if (timeRemaining >= 0)
             {
@@ -87,6 +91,7 @@ public class TimeAndScore : MonoBehaviour
             else
             {
                 timeRemaining = 0;
+                doneCalculatingTime = true;
                 GameOver = true;
             }
         }
@@ -98,18 +103,33 @@ public class TimeAndScore : MonoBehaviour
             else
                 finalOutcomeText.GetComponent<Text>().text = "You ran out of time";
 
-            finalScoreText.GetComponent<Text>().text = "Score : " + (int)score;
+            finalScoreText.GetComponent<Text>().text = "Score : " + (int)finalScore;
             finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
             if (TimeTaken < timeRemaining)
-                TimeTaken += Time.deltaTime * 500;
+            {
+                TimeTaken += Time.deltaTime * 100;
+                Debug.Log(audio.isPlaying);
+                if (!audio.isPlaying)
+                {
+                    audio.clip = timeTick;
+                    audio.Play();
+                }
+            }
             else if (TimeTaken > timeRemaining)
             {
                 TimeTaken = timeRemaining;
                 doneCalculatingTime = true;
             }
 
-            if (finalScore < score)
-                finalScore += Time.deltaTime * 100;
+            if (finalScore < score && doneCalculatingTime)
+            {
+                finalScore += Time.deltaTime *10;
+                if (!audio.isPlaying)
+                {
+                    audio.clip = scoreTick;
+                    audio.Play();
+                }
+            }
             else if (finalScore > score)
             {
                 finalScore = score;
