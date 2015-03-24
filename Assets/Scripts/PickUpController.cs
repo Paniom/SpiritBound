@@ -37,6 +37,7 @@ public class PickUpController : MonoBehaviour
         {
             case PowerUpType.Coin:
                 {
+                    tag = "Coin";
                     ScorePickup.SetActive(true);
                     GemPickup.SetActive(false);
                     CoinPickup.SetActive(false);
@@ -47,6 +48,7 @@ public class PickUpController : MonoBehaviour
                 }
             case PowerUpType.Gem:
                 {
+                    tag = "Gem";
                     GemPickup.SetActive(true);
                     ScorePickup.SetActive(false);
                     CoinPickup.SetActive(false);

@@ -17,6 +17,9 @@ public class TimeAndScore : MonoBehaviour
     public static int gems;
     public static float timeRemaining;
 
+    int TotalCoins = 0;
+    int TotalGems = 0;
+
     public static bool GameOver;
     public static bool win = false;
 
@@ -64,6 +67,14 @@ public class TimeAndScore : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        if (TotalCoins == 0)
+        {
+            TotalCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
+        }
+        if (TotalGems == 0)
+        {
+            TotalGems = GameObject.FindGameObjectsWithTag("Gem").Length;
+        }
         AudioSource audio = GetComponent<AudioSource>();
         if (!GameOver)
         {
@@ -91,9 +102,9 @@ public class TimeAndScore : MonoBehaviour
 				if(scoreText != null)
 	                scoreText.GetComponent<Text>().text = score.ToString();
 				if(coinText != null)
-                	coinText.GetComponent<Text>().text = coins + "/10  coins";
+                    coinText.GetComponent<Text>().text = coins + "/" + TotalCoins + " coins";
 				if(gemText != null)
-					gemText.GetComponent<Text>().text = gems + "/10  gems";
+					gemText.GetComponent<Text>().text = gems + "/" + TotalGems + " gems";
             }
             else
             {

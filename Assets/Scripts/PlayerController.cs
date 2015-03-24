@@ -258,6 +258,7 @@ public class PlayerController : MonoBehaviour
                 if (owner.IsGrounded())
                     owner.transform.position += new Vector3(0, 0.5f, 0);
                 owner.rigidbody.AddForce(owner.fox.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
+                AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Dash"), owner.transform.position);
             }
             else
             {
@@ -300,8 +301,8 @@ public class PlayerController : MonoBehaviour
     // Moon Spirit is wolf
     public class Wolf : State<PlayerController>
     {
-        float startingInteractTimer = 5.0f;
-        float interactTimer = 5.0f;
+        float startingInteractTimer = 2.25f;
+        float interactTimer = 2.25f;
         public Wolf()
         {
             HandlerList.Add(new Handler<PlayerController>("Move", move));
@@ -399,6 +400,7 @@ public class PlayerController : MonoBehaviour
         {
             if (owner.wolfPowerLevelUI.GetComponent<Slider>().value >= 5)
             {
+                AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/SlowMotion"), owner.transform.position);
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value -= 2;
                 owner.interacting = true;
                 Time.timeScale = 0.5f;
