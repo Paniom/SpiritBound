@@ -71,6 +71,13 @@ public class TimeAndScore : MonoBehaviour
             {
                 win = true;
                 GameOver = true;
+                GameObject.Find("ScorePanel").SetActive(false);
+                GameObject.Find("UIParent").SetActive(false);
+                GameObject.Find("PowerBar").SetActive(false);
+                GameObject.Find("TimeRemainingSlider").SetActive(false);
+                GameObject.Find("PauseButtonBack").SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed = 0;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
             }
             if (timeRemaining <= 30)
             {
@@ -82,11 +89,11 @@ public class TimeAndScore : MonoBehaviour
                 if (timerSlider != null)
                     timerSlider.GetComponent<Slider>().value = timeRemaining;
 				if(scoreText != null)
-	                scoreText.GetComponent<Text>().text = "Score  " + score;
+	                scoreText.GetComponent<Text>().text = score.ToString();
 				if(coinText != null)
-                	coinText.GetComponent<Text>().text = coins + " / 10  coins";
+                	coinText.GetComponent<Text>().text = coins + "/10  coins";
 				if(gemText != null)
-					gemText.GetComponent<Text>().text = gems + " / 10  gems";
+					gemText.GetComponent<Text>().text = gems + "/10  gems";
             }
             else
             {

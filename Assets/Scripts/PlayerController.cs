@@ -115,26 +115,27 @@ public class PlayerController : MonoBehaviour
 
         void pickup(PlayerController owner, params object[] args)
         {
-            if (args[0] == PickUpController.PowerUpType.Score.ToString())
+            if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
+                Debug.Log("duskalo score pickup");
                 TimeAndScore.score += 10;
             }
-            else if (args[0] == PickUpController.PowerUpType.Coin.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
             {
                 TimeAndScore.coins += 1;
             }
-            else if (args[0] == PickUpController.PowerUpType.Gem.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.Gem.ToString())
             {
                 TimeAndScore.gems += 1;
             }
-            else if (args[0] == PickUpController.PowerUpType.WolfPower.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.WolfPower.ToString())
             {
                 if (owner.wolfPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
                     owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
                 else
                     owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
             }
-            else if (args[0] == PickUpController.PowerUpType.FoxPower.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.FoxPower.ToString())
             {
                 if (owner.foxPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
                     owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
@@ -256,26 +257,27 @@ public class PlayerController : MonoBehaviour
 
         void pickup(PlayerController owner, params object[] args)
         {
-            if (args[0] == PickUpController.PowerUpType.Score.ToString())
+            if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
+                Debug.Log("fox score pickup");
                 TimeAndScore.score += 10;
             }
-            else if (args[0] == PickUpController.PowerUpType.Coin.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
             {
                 TimeAndScore.coins += 1;
             }
-            else if (args[0] == PickUpController.PowerUpType.Gem.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.Gem.ToString())
             {
                 TimeAndScore.gems += 1;
             }
-            else if (args[0] == PickUpController.PowerUpType.WolfPower.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.WolfPower.ToString())
             {
                 if (owner.wolfPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
                     owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
                 else
                     owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
             }
-            else if (args[0] == PickUpController.PowerUpType.FoxPower.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.FoxPower.ToString())
             {
                 if (owner.foxPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
                     owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
@@ -400,26 +402,27 @@ public class PlayerController : MonoBehaviour
 
         void pickup(PlayerController owner, params object[] args)
         {
-            if (args[0] == PickUpController.PowerUpType.Score.ToString())
+            if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
+                Debug.Log("wolf score pickup");
                 TimeAndScore.score += 10;
             }
-            else if (args[0] == PickUpController.PowerUpType.Coin.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
             {
                 TimeAndScore.coins += 1;
             }
-            else if (args[0] == PickUpController.PowerUpType.Gem.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.Gem.ToString())
             {
                 TimeAndScore.gems += 1;
             }
-            else if (args[0] == PickUpController.PowerUpType.WolfPower.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.WolfPower.ToString())
             {
                 if (owner.wolfPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
                     owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
                 else
                     owner.wolfPowerLevelUI.GetComponent<Slider>().value += 5;
             }
-            else if (args[0] == PickUpController.PowerUpType.FoxPower.ToString())
+            else if ((string)args[0] == PickUpController.PowerUpType.FoxPower.ToString())
             {
                 if (owner.foxPowerLevelUI.GetComponent<Slider>().value + 5 > 20)
                     owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
