@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public class Muskalo : State<PlayerController>
     {
+        GameObject chargeEffect;
         float startingInteractTimer = 1.0f;
         float interactTimer = 1.0f;
         public Muskalo()
@@ -59,10 +60,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (interactTimer > 0)
                 {
+                    owner.rigidbody.velocity = new Vector3(0, owner.rigidbody.velocity.y, owner.speed * 5);
                     interactTimer -= Time.deltaTime;
                 }
                 else
                 {
+                    Destroy(chargeEffect);
                     owner.interacting = false;
                     interactTimer = startingInteractTimer;
                     owner.InteractComplete();
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
             owner.muskaloUI.GetComponent<Image>().color = m;
             if (owner.interacting)
             {
+                Destroy(chargeEffect);
                 owner.interacting = false;
                 interactTimer = startingInteractTimer;
                 owner.InteractComplete();
@@ -86,17 +90,20 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            if (owner.duskaloAnimator)
+            if (!owner.interacting)
             {
-                Vector2 movement = new Vector2((float)args[0], (float)args[1]);
-                owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
-                owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
-            }
-            if (owner.IsGrounded())
-                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
-            else
-            {
-                owner.AirControlMovement(args);
+                if (owner.duskaloAnimator)
+                {
+                    Vector2 movement = new Vector2((float)args[0], (float)args[1]);
+                    owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
+                    owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
+                }
+                if (owner.IsGrounded())
+                    owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+                else
+                {
+                    owner.AirControlMovement(args);
+                }
             }
         }
 
@@ -110,6 +117,9 @@ public class PlayerController : MonoBehaviour
         //Lowers head and does a charge/bash foward
         void charge(PlayerController owner, params object[] args)
         {
+            chargeEffect = Instantiate(Resources.Load("ChargeEffect"),owner.transform.position,owner.transform.rotation) as GameObject;
+            chargeEffect.transform.parent = owner.transform;
+            chargeEffect.transform.localPosition = new Vector3(-0.2f,0,1.5f);
             owner.interacting = true;
         }
 
@@ -509,7 +519,7 @@ public class PlayerController : MonoBehaviour
     public bool grounded; // Determine if the player is on the ground
     float distToGround; // Distance from player collider to ground
 
-    bool interacting = false;
+    public bool interacting = false;
 
     [Tooltip("How fast the player will move")]
     public float speed = 1; //How fast the player will move
