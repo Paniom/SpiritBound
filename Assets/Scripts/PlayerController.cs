@@ -636,6 +636,16 @@ public class PlayerController : MonoBehaviour
 
     void Move(Vector2 direction)
     {
+		if(direction.y > 0)
+		{
+			float y = direction.y;
+			direction = direction*1f/2f;
+			direction.y = y;
+		}
+		else
+		{
+			direction = direction*1f/4f;
+		}
 		camDirection = followingCamera.transform.localRotation.eulerAngles.y;
 		stateMachine.messageReciever("Move",new object[] {Mathf.Cos(camDirection*Mathf.Deg2Rad)*direction.x + 
 			Mathf.Sin(camDirection*Mathf.Deg2Rad)*direction.y,Mathf.Cos(camDirection*Mathf.Deg2Rad)*direction.y - 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38d51f84e6ba04945ba863b9d76ae768
+guid: b30f16161eb830e4880c3ff2cc6a1db3
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -43,9 +43,9 @@ ModelImporter:
     100074: dusk_joint6
     100076: dusk_joint7
     100078: dusk_joint8
-    100080: Duskalo_Main_CTRL
-    100082: Duskalo_Mesh
-    100084: //RootNode
+    100080: //RootNode
+    100082: Duskalo_Main_CTRL
+    100084: Duskalo_Mesh
     100086: Duskalo_skeleton_grp
     100088: joint35
     100090: Root_Dusk_Joint
@@ -89,14 +89,14 @@ ModelImporter:
     400074: dusk_joint6
     400076: dusk_joint7
     400078: dusk_joint8
-    400080: Duskalo_Main_CTRL
-    400082: Duskalo_Mesh
-    400084: //RootNode
+    400080: //RootNode
+    400082: Duskalo_Main_CTRL
+    400084: Duskalo_Mesh
     400086: Duskalo_skeleton_grp
     400088: joint35
     400090: Root_Dusk_Joint
     4300000: Duskalo_Mesh
-    7400000: Duskalo_Run
+    7400000: Duskal_Jump
     9500000: //RootNode
     13700000: Duskalo_Mesh
   materials:
@@ -116,10 +116,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Duskalo_Run
+      name: Duskal_Jump
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 20
+      firstFrame: 12
+      lastFrame: 53
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
