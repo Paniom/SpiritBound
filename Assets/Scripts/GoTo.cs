@@ -31,6 +31,12 @@ public class GoTo : MonoBehaviour
         Application.LoadLevel("StartScreen");
     }
 
+    public void GoToNextLevel()
+    {
+        Time.timeScale = 1;
+        Application.LoadLevel(Application.loadedLevel + 1);
+    }
+
     public void GoToMainMenu()
     {
         Time.timeScale = 1;

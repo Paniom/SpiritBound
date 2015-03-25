@@ -18,6 +18,9 @@ public class killPlayer : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            TimeAndScore.numberOfDeaths++;
+            TimeAndScore.timeRemaining += (Time.time - SetLastSpawn.checkpointTime);
+            SetLastSpawn.checkpointTime = 0.0f;
             other.transform.position = lastSpawn.transform.position;
         }
     }

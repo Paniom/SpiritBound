@@ -11,11 +11,13 @@ public class TimeAndScore : MonoBehaviour
     public GameObject finalScoreText;
     public GameObject finalTimeRemainingText;
     public GameObject finalOutcomeText;
+    public GameObject finalDeaths;
 
     public static int score;
     public static int coins;
     public static int gems;
     public static float timeRemaining;
+    public static int numberOfDeaths;
 
     int TotalCoins = 0;
     int TotalGems = 0;
@@ -39,6 +41,7 @@ public class TimeAndScore : MonoBehaviour
     {
         doneCalculatingScore = false;
         doneCalculatingTime = false;
+        numberOfDeaths = 0;
         score = 0;
         coins = 0;
         gems = 0;
@@ -54,6 +57,7 @@ public class TimeAndScore : MonoBehaviour
     {
         doneCalculatingScore = false;
         doneCalculatingTime = false;
+        numberOfDeaths = 0;
         score = 0;
         coins = 0;
         gems = 0;
@@ -122,6 +126,7 @@ public class TimeAndScore : MonoBehaviour
                 finalOutcomeText.GetComponent<Text>().text = "You ran out of time";
 
             finalScoreText.GetComponent<Text>().text = "Score : " + (int)finalScore;
+            finalDeaths.GetComponent<Text>().text = "Number of Deaths : " + numberOfDeaths;
             finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
             if (TimeTaken < timeRemaining)
             {

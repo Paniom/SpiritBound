@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SetLastSpawn : MonoBehaviour {
 
+    public static float checkpointTime = 0.0f;
+    public static float deathTime = 0.0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -15,8 +17,9 @@ public class SetLastSpawn : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && killPlayer.lastSpawn != this.gameObject)
         {
+            checkpointTime = Time.time;
             killPlayer.lastSpawn = this.gameObject;
         }
     }
