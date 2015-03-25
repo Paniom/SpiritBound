@@ -27,9 +27,9 @@ public class InputController : MonoBehaviour {
 	private Vector2 slideDirection; // used to calculate the swipes
 
 	// used for showing a joystick
-	/*public GameObject cam;
+	public GameObject cam;
 	public GameObject joystick;
-	public GameObject joystickPrefab;*/
+	public GameObject joystickPrefab;
 	
 	private bool start; // used to set time the start of a swipe
 	private float oWidth = 0.0f; // used to divide the screen to figure out 
@@ -194,14 +194,14 @@ public class InputController : MonoBehaviour {
 				if(Input.GetTouch(i).fingerId == joystickID){
 					if(Input.GetTouch(i).phase == TouchPhase.Moved || Input.GetTouch(i).phase == TouchPhase.Stationary){
 						direction = Input.GetTouch(i).position - joystickPosition;
-						//joystick.GetComponent<Joystick>().position(direction);
+						joystick.GetComponent<Joystick>().position(direction);
 						if(direction.sqrMagnitude > 1225){
-							target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
+							target.SendMessage("Move", direction/10000f, SendMessageOptions.DontRequireReceiver);
 						}
 					}
 					if(Input.GetTouch(i).phase == TouchPhase.Ended || Input.GetTouch(i).phase == TouchPhase.Canceled){
 						joystickID = -1;
-						//Destroy(joystick);
+						Destroy(joystick);
 					}
 				}
 				else if(joystickID == -1){
@@ -209,14 +209,16 @@ public class InputController : MonoBehaviour {
 						if(Input.GetTouch(i).position.x < Screen.width/2){
 							joystickID = Input.GetTouch(i).fingerId;
 							joystickPosition = Input.GetTouch(i).position;
-							/*if(joystick != null){
+							if(joystick != null){
 								Destroy(joystick);
-							}*/
+							}
 							oHeight = 2.0f*Camera.main.orthographicSize;
 							oWidth = oHeight*Camera.main.aspect;
-							/*joystick.transform.localPosition = new Vector3((joystickPosition.x/(Screen.width)*oWidth)-oWidth/2.0f, -(oHeight/2.0f)+(joystickPosition.y/Screen.height)*oHeight, 0);
+							joystick = Instantiate(joystickPrefab) as GameObject;
+							joystick.transform.parent = cam.transform;
+							joystick.transform.localPosition = new Vector3((joystickPosition.x/(Screen.width)*oWidth)-oWidth/2.0f, -(oHeight/2.0f)+(joystickPosition.y/Screen.height)*oHeight, 0);
 							joystick.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
-							joystick.transform.localScale = new Vector3(25,.001f,25);*/
+							joystick.transform.localScale = new Vector3(25,.001f,25);
 						}
 					}
 				}
