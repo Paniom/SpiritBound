@@ -131,7 +131,6 @@ public class TimeAndScore : MonoBehaviour
             if (TimeTaken < timeRemaining)
             {
                 TimeTaken += Time.deltaTime * 100;
-                Debug.Log(audio.isPlaying);
                 if (!audio.isPlaying)
                 {
                     audio.clip = timeTick;
