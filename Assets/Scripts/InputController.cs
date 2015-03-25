@@ -123,10 +123,7 @@ public class InputController : MonoBehaviour {
 					direction.y = 0;
 				}
 			}
-			if(direction.sqrMagnitude > 0) {
-				direction = direction.normalized;
-			}
-			direction = direction*10;
+			direction = direction*6;
 			target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
 			if ( Input.GetKey(KeyCode.Space) ) {
 				target.SendMessage("Jump", SendMessageOptions.DontRequireReceiver);
