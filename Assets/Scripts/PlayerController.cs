@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviour
     // Sun Spirit is fox
     public class Fox : State<PlayerController>
     {
+        GameObject dashEffect;
         float startingInteractTimer = 1.0f;
         float interactTimer = 1.0f;
         public Fox()
@@ -204,6 +205,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
+                    Destroy(dashEffect);
                     owner.interacting = false;
                     interactTimer = startingInteractTimer;
                     owner.InteractComplete();
@@ -219,6 +221,7 @@ public class PlayerController : MonoBehaviour
             owner.foxUI.GetComponent<Image>().color = m;
             if (owner.interacting)
             {
+                Destroy(dashEffect);
                 owner.interacting = false;
                 interactTimer = startingInteractTimer;
                 owner.InteractComplete();
@@ -253,6 +256,10 @@ public class PlayerController : MonoBehaviour
         {
             if (owner.foxPowerLevelUI.GetComponent<Slider>().value >= 5)
             {
+                dashEffect = Instantiate(Resources.Load("FireDash"), owner.transform.position, owner.transform.rotation) as GameObject;
+                dashEffect.transform.parent = owner.transform;
+                dashEffect.transform.forward *= -1;
+                dashEffect.transform.localPosition = new Vector3(0.0f, 1.0f, 2.0f);
                 owner.foxPowerLevelUI.GetComponent<Slider>().value -= 2;
                 owner.interacting = true;
                 if (owner.IsGrounded())
@@ -548,7 +555,7 @@ public class PlayerController : MonoBehaviour
     public Animator foxAnimator;
     public Animator wolfAnimator;
 
-    Vector3 startGravity = new Vector3(0,-10f,0); //Variable to tell what the starting gravity was
+    //Vector3 startGravity = new Vector3(0,-10f,0); //Variable to tell what the starting gravity was
 
     // Use this for initialization
     void Start()
