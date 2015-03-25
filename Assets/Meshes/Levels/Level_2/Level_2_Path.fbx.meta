@@ -13,8 +13,6 @@ ModelImporter:
     100014: transform318
     100016: transform319
     100018: transform320
-    100020: polySurface680
-    100022: transform321
     400000: Level_1_Path
     400002: //RootNode
     400004: Merged_Terrain_warp
@@ -25,17 +23,9 @@ ModelImporter:
     400014: transform318
     400016: transform319
     400018: transform320
-    400020: polySurface680
-    400022: transform321
     2300000: polySurface668
-    2300002: polySurface680
-    2300004: //RootNode
     3300000: polySurface668
-    3300002: polySurface680
-    3300004: //RootNode
     4300000: polySurface668
-    4300002: polySurface680
-    4300004: Level_2_Path
     9500000: //RootNode
   materials:
     importMaterials: 1
