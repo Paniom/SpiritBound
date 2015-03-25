@@ -4,6 +4,8 @@ using System.Collections;
 public class BrushController : MonoBehaviour {
 
     float count = 0;
+    public GameObject afterCollision;
+    public Animation breakDown;
 	// Use this for initialization
 	void Start () {
 	
@@ -26,8 +28,17 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
-                AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
-                Destroy(gameObject);
+                if (!breakDown.isPlaying)
+                {
+                    breakDown.Play();
+                    
+                    //Destroy(gameObject);
+                }
+                else
+                {
+                    afterCollision.SetActive(true);
+                    AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
+                }
             }
         }
     }
@@ -40,8 +51,17 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
-                AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
-                Destroy(gameObject);
+                if (!breakDown.isPlaying)
+                {
+                    breakDown.Play();
+
+                    //Destroy(gameObject);
+                }
+                else
+                {
+                    afterCollision.SetActive(true);
+                    AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
+                }
             }
         }
     }
