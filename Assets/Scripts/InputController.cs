@@ -124,7 +124,7 @@ public class InputController : MonoBehaviour {
 				}
 			}
 			if(direction.sqrMagnitude > 0) {
-				direction = direction/direction.magnitude;
+				direction = direction.normalized;
 			}
 			direction = direction*10;
 			target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
@@ -150,19 +150,19 @@ public class InputController : MonoBehaviour {
 		}
 		if(inputDevice == InputType.Mobile) {
 			for(int i = 0; i < Input.touchCount; i++){
-				if(Input.GetTouch(i).fingerId == slideID){
-					if(Input.GetTouch(i).phase == TouchPhase.Moved || Input.GetTouch(i).phase == TouchPhase.Stationary){
-						slideDirection = Input.GetTouch(i).position - slideStartPosition;
+				if(Input.touches[i].fingerId == slideID){
+					if(Input.touches[i].phase == TouchPhase.Moved || Input.touches[i].phase == TouchPhase.Stationary){
+						slideDirection = Input.touches[i].position - slideStartPosition;
 						if(start){
-							endTime = Time.time + .5f;
+							endTime = Time.time + 1;
 							jumpTime = Time.time + .2f;
 							start = false;
 						}
 						slideTime = Time.time;
 					}
-					if(Input.GetTouch(i).phase == TouchPhase.Ended || Input.GetTouch(i).phase == TouchPhase.Canceled){
+					if(Input.touches[i].phase == TouchPhase.Ended || Input.touches[i].phase == TouchPhase.Canceled){
 						slideID = -1;
-						if(slideDirection.sqrMagnitude > 200){
+						if(slideDirection.sqrMagnitude > 1000){
 							setSwipe(slideDirection);
 						}
 						else {
@@ -177,48 +177,60 @@ public class InputController : MonoBehaviour {
 					}
 					if(slideTime >= endTime){
 						slideID = -1;
-						if(slideDirection.sqrMagnitude > 200){
+						if(slideDirection.sqrMagnitude > 1000){
 							setSwipe(slideDirection);
 						}
 					}
 				}
 				else if(slideID == -1){
-					if(Input.GetTouch(i).phase == TouchPhase.Began){
-						if(Input.GetTouch(i).position.x > Screen.width/2){
-							slideID = Input.GetTouch(i).fingerId;
-							slideStartPosition = Input.GetTouch(i).position;
+					if(Input.touches[i].phase == TouchPhase.Began){
+						if(Input.touches[i].position.x > Screen.width/2){
+							slideID = Input.touches[i].fingerId;
+							slideStartPosition = Input.touches[i].position;
 							start = true;
 						}
 					}
 				}
-				if(Input.GetTouch(i).fingerId == joystickID){
-					if(Input.GetTouch(i).phase == TouchPhase.Moved || Input.GetTouch(i).phase == TouchPhase.Stationary){
-						direction = Input.GetTouch(i).position - joystickPosition;
+				if(Input.touches[i].fingerId == joystickID){
+					if(Input.touches[i].phase == TouchPhase.Moved || Input.touches[i].phase == TouchPhase.Stationary){
+						direction = Input.touches[i].position - joystickPosition;
 						joystick.GetComponent<Joystick>().position(direction);
-						if(direction.sqrMagnitude > 1225){
-							target.SendMessage("Move", direction/10000f, SendMessageOptions.DontRequireReceiver);
+						if(direction.sqrMagnitude > 700){
+							if(direction.sqrMagnitude > 22500){
+								direction = direction.normalized;
+							}
+							else{
+								float rat = direction.magnitude/150f;
+								direction = direction.normalized * rat;
+							}
+							direction = direction*7;
 						}
+						else{
+							direction = Vector2.zero;
+						}
+						target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
 					}
-					if(Input.GetTouch(i).phase == TouchPhase.Ended || Input.GetTouch(i).phase == TouchPhase.Canceled){
+					if(Input.touches[i].phase == TouchPhase.Ended || Input.touches[i].phase == TouchPhase.Canceled){
 						joystickID = -1;
 						Destroy(joystick);
 					}
 				}
 				else if(joystickID == -1){
-					if(Input.GetTouch(i).phase == TouchPhase.Began){
-						if(Input.GetTouch(i).position.x < Screen.width/2){
-							joystickID = Input.GetTouch(i).fingerId;
-							joystickPosition = Input.GetTouch(i).position;
+					if(Input.touches[i].phase == TouchPhase.Began){
+						if(Input.touches[i].position.x < Screen.width/2){
+							joystickID = Input.touches[i].fingerId;
+							joystickPosition = Input.touches[i].position;
 							if(joystick != null){
 								Destroy(joystick);
 							}
 							oHeight = 2.0f*Camera.main.orthographicSize;
 							oWidth = oHeight*Camera.main.aspect;
 							joystick = Instantiate(joystickPrefab) as GameObject;
+							RectTransform rect = joystick.GetComponent<RectTransform>();
 							joystick.transform.parent = cam.transform;
-							joystick.transform.localPosition = new Vector3((joystickPosition.x/(Screen.width)*oWidth)-oWidth/2.0f, -(oHeight/2.0f)+(joystickPosition.y/Screen.height)*oHeight, 0);
-							joystick.transform.localRotation = Quaternion.Euler(new Vector3(90,0,0));
-							joystick.transform.localScale = new Vector3(25,.001f,25);
+							rect.localPosition = new Vector3((joystickPosition.x/(Screen.width)*oWidth)-oWidth/2.0f, -(oHeight/2.0f)+(joystickPosition.y/Screen.height)*oHeight, 0);
+							rect.localRotation = Quaternion.Euler(new Vector3(0,0,0));
+							rect.localScale = new Vector3(oWidth/10f,oWidth/10f,1);
 						}
 					}
 				}
