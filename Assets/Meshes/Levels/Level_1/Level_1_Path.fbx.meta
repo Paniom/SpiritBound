@@ -13,6 +13,10 @@ ModelImporter:
     100014: transform318
     100016: transform319
     100018: transform320
+    100020: polySurface675
+    100022: transform322
+    100024: polySurface677
+    100026: polySurface674
     400000: Level_1_Path
     400002: //RootNode
     400004: transform317
@@ -23,12 +27,25 @@ ModelImporter:
     400014: transform318
     400016: transform319
     400018: transform320
+    400020: polySurface675
+    400022: transform322
+    400024: polySurface677
+    400026: polySurface674
     2300000: Level_1_Path
     2300002: polySurface669
+    2300004: polySurface675
+    2300006: polySurface677
+    2300008: polySurface674
     3300000: Level_1_Path
     3300002: polySurface669
+    3300004: polySurface675
+    3300006: polySurface677
+    3300008: polySurface674
     4300000: Level_1_Path
     4300002: polySurface669
+    4300004: polySurface675
+    4300006: polySurface677
+    4300008: polySurface674
     9500000: //RootNode
   materials:
     importMaterials: 1
