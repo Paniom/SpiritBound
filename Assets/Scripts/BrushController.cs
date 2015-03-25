@@ -4,6 +4,7 @@ using System.Collections;
 public class BrushController : MonoBehaviour {
 
     float count = 0;
+    public GameObject beforeCollision;
     public GameObject afterCollision;
     public Animation breakDown;
 	// Use this for initialization
@@ -36,6 +37,7 @@ public class BrushController : MonoBehaviour {
                 }
                 else
                 {
+                    beforeCollision.SetActive(false);
                     afterCollision.SetActive(true);
                     AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
                 }
@@ -59,6 +61,7 @@ public class BrushController : MonoBehaviour {
                 }
                 else
                 {
+                    beforeCollision.SetActive(false);
                     afterCollision.SetActive(true);
                     AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
                 }
