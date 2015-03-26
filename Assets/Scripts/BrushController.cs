@@ -28,11 +28,11 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
-                if (breakDown.GetBool("DoneBreaking") == false && breakDown.GetBool("Breaking") == false)
+                if (breakDown.GetInteger("DoneBreaking") == 0 && breakDown.GetBool("Breaking") == false)
                 {
                     breakDown.SetBool("Breaking", true);
                 }
-                else if(breakDown.GetBool("DoneBreaking") == true)
+                else if (breakDown.GetInteger("DoneBreaking") == 1)
                 {
                     collider.enabled = false;
                     afterCollision.SetActive(true);
@@ -50,11 +50,11 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
-                if (breakDown.GetBool("DoneBreaking") == false && breakDown.GetBool("Breaking") == false)
+                if (breakDown.GetInteger("DoneBreaking") == 0 && breakDown.GetBool("Breaking") == false)
                 {
                     breakDown.SetBool("Breaking", true);
                 }
-                else if (breakDown.GetBool("DoneBreaking") == true)
+                else if (breakDown.GetInteger("DoneBreaking") == 1)
                 {
                     collider.enabled = false;
                     afterCollision.SetActive(true);
