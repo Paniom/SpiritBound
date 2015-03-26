@@ -516,7 +516,11 @@ public class PlayerController : MonoBehaviour
     public GameObject muskalo;
 
 	public GameObject followingCamera;
-	private float camDirection = 0;
+	//private float camDirection = 0;
+	private float setRotation = 0;
+	public void newRotation(float r) {
+		setRotation = r;
+	}
 
     float foxSpiritStartPowerLevel = 20;
     float wolfSpiritStartPowerLevel = 20;
@@ -567,20 +571,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("is interacting  : " + interacting);
         stateMachine.Update();
-		if(Input.GetKeyDown(KeyCode.Alpha1)) {
-			camDirection = 90;
-		}
-		if(Input.GetKeyDown(KeyCode.Alpha2)) {
-			camDirection = 180;
-		}
-		if(Input.GetKeyDown(KeyCode.Alpha3)) {
-			camDirection = 270;
-		}
-		if(Input.GetKeyDown(KeyCode.Alpha0)) {
-			camDirection = 0;
-		}
     }
 
 
@@ -646,10 +637,13 @@ public class PlayerController : MonoBehaviour
 		{
 			direction = direction*1f/4f;
 		}
-		camDirection = followingCamera.transform.localRotation.eulerAngles.y;
-		stateMachine.messageReciever("Move",new object[] {Mathf.Cos(camDirection*Mathf.Deg2Rad)*direction.x + 
-			Mathf.Sin(camDirection*Mathf.Deg2Rad)*direction.y,Mathf.Cos(camDirection*Mathf.Deg2Rad)*direction.y - 
-			Mathf.Sin(camDirection*Mathf.Deg2Rad)*direction.x});// straight
+		float rotation = setRotation;
+		if(setRotation == -1) {
+			rotation = transform.rotation.eulerAngles.y;
+		}
+		stateMachine.messageReciever("Move",new object[] {Mathf.Cos(rotation*Mathf.Deg2Rad)*direction.x + 
+			Mathf.Sin(rotation*Mathf.Deg2Rad)*direction.y,Mathf.Cos(rotation*Mathf.Deg2Rad)*direction.y - 
+			Mathf.Sin(rotation*Mathf.Deg2Rad)*direction.x});// straight
     }
 
     void Interact()
