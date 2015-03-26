@@ -4,6 +4,7 @@ using System.Collections;
 public class SetLastSpawn : MonoBehaviour {
 
     public static float checkpointTime = 300.0f;
+	public int playerRot = 0;
 	// Use this for initialization
 	void Start () {
         checkpointTime = TimeAndScore.timeRemaining;
