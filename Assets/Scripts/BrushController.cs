@@ -4,7 +4,6 @@ using System.Collections;
 public class BrushController : MonoBehaviour {
 
     float count = 0;
-    public GameObject beforeCollision;
     public GameObject afterCollision;
     public Animator breakDown;
 	// Use this for initialization
