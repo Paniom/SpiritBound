@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class killPlayer : MonoBehaviour {
@@ -35,6 +36,13 @@ public class killPlayer : MonoBehaviour {
             if (!dead)
             {
                 dead = true;
+                other.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value = 20;
+                other.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                TimeAndScore.score -= 10;
+                if (TimeAndScore.score < 0)
+                {
+                    TimeAndScore.score = 0;
+                }
                 TimeAndScore.numberOfDeaths++;
                 TimeAndScore.timeRemaining = SetLastSpawn.checkpointTime;
                 other.transform.position = lastSpawn.transform.position;

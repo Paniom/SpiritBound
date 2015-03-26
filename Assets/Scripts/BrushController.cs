@@ -6,6 +6,7 @@ public class BrushController : MonoBehaviour {
     float count = 0;
     public GameObject afterCollision;
     public Animator breakDown;
+    float breakTimer = 4.0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,6 +15,19 @@ public class BrushController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        if (breakDown.GetBool("Breaking"))
+        {
+            if (breakTimer < 0)
+            {
+                breakTimer = 4.0f;
+                collider.enabled = false;
+                afterCollision.SetActive(true);
+            }
+            else
+            {
+                breakTimer -= Time.deltaTime;
+            }
+        }
         if (count > 30)
         {
             //Hint to player to use the muskalo's charge to destroy brush
@@ -32,12 +46,6 @@ public class BrushController : MonoBehaviour {
                 {
                     breakDown.SetBool("Breaking", true);
                 }
-                else if (breakDown.GetInteger("DoneBreaking") == 1)
-                {
-                    collider.enabled = false;
-                    afterCollision.SetActive(true);
-                    AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
-                }
             }
         }
     }
@@ -53,11 +61,6 @@ public class BrushController : MonoBehaviour {
                 if (breakDown.GetInteger("DoneBreaking") == 0 && breakDown.GetBool("Breaking") == false)
                 {
                     breakDown.SetBool("Breaking", true);
-                }
-                else if (breakDown.GetInteger("DoneBreaking") == 1)
-                {
-                    collider.enabled = false;
-                    afterCollision.SetActive(true);
                     AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
                 }
             }

@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PickUpController : MonoBehaviour
 {
-
+    bool got = false;
     GameObject player;
     string playerState;
 
@@ -38,9 +38,9 @@ public class PickUpController : MonoBehaviour
             case PowerUpType.Coin:
                 {
                     tag = "Coin";
-                    ScorePickup.SetActive(true);
+                    ScorePickup.SetActive(false);
                     GemPickup.SetActive(false);
-                    CoinPickup.SetActive(false);
+                    CoinPickup.SetActive(true);
                     WolfPowerPickup.SetActive(false);
                     FoxPowerPickup.SetActive(false);
 
@@ -58,9 +58,9 @@ public class PickUpController : MonoBehaviour
                 }
             case PowerUpType.Score:
                 {
-                    CoinPickup.SetActive(true);
+                    CoinPickup.SetActive(false);
                     GemPickup.SetActive(false);
-                    ScorePickup.SetActive(false);
+                    ScorePickup.SetActive(true);
                     WolfPowerPickup.SetActive(false);
                     FoxPowerPickup.SetActive(false);
                     break;
@@ -187,9 +187,13 @@ public class PickUpController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.SendMessage("PickUp", ThisPowerUpType.ToString(), SendMessageOptions.DontRequireReceiver);
-            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
-            Destroy(gameObject);
+            if (!got)
+            {
+                got = true;
+                other.SendMessage("PickUp", ThisPowerUpType.ToString(), SendMessageOptions.DontRequireReceiver);
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -11,6 +11,8 @@ public class TimeAndScore : MonoBehaviour
     public GameObject finalScoreText;
     public GameObject finalTimeRemainingText;
     public GameObject finalOutcomeText;
+    public GameObject finalGemText;
+    public GameObject finalCoinText;
     public GameObject finalDeaths;
 
     public static int score;
@@ -36,6 +38,9 @@ public class TimeAndScore : MonoBehaviour
 
     public AudioClip timeTick;
     public AudioClip scoreTick;
+
+    public GameObject retryButton;
+    public GameObject continueButton;
 
     void Awake()
     {
@@ -121,14 +126,22 @@ public class TimeAndScore : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
             if (win)
-                finalOutcomeText.GetComponent<Text>().text = "Level Complete";
+            {
+                finalOutcomeText.GetComponent<Text>().text = "Level Complete!";
+                retryButton.SetActive(false);
+            }
             else
+            {
                 finalOutcomeText.GetComponent<Text>().text = "You ran out of time";
+                continueButton.SetActive(false);
+            }
 
             finalScoreText.GetComponent<Text>().text = "Score : " + (int)finalScore;
             finalDeaths.GetComponent<Text>().text = "Number of Deaths : " + numberOfDeaths;
+            finalGemText.GetComponent<Text>().text = "Gems : " + gems;
+            finalCoinText.GetComponent<Text>().text = "Coins : " + coins;
             finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
-            if (TimeTaken < timeRemaining)
+            if (TimeTaken <= timeRemaining && doneCalculatingScore)
             {
                 TimeTaken += Time.deltaTime * 100;
                 if (!audio.isPlaying)
@@ -143,9 +156,9 @@ public class TimeAndScore : MonoBehaviour
                 doneCalculatingTime = true;
             }
 
-            if (finalScore < score && doneCalculatingTime)
+            if (finalScore <= score)
             {
-                finalScore += Time.deltaTime *10;
+                finalScore += Time.deltaTime *20;
                 if (!audio.isPlaying)
                 {
                     audio.clip = scoreTick;

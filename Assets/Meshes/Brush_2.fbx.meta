@@ -185,15 +185,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: .996951222
-        functionName: DoneBreaking
-        data: 
-        objectReferenceParameter: {fileID: 9100000, guid: 93bba1e652e77af42b215c0329820ee6,
-          type: 2}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
