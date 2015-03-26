@@ -21,6 +21,8 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnEnter (CameraController owner)
 		{
+			Debug.Log("E");
+			owner.target.GetComponent<PlayerController>().newRotation(-1);
 			float s = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
 			owner.activeRotation = owner.yRotations[owner.yRotations.Count-1];
 			float e = owner.activeRotation;
@@ -47,7 +49,8 @@ public class CameraController : MonoBehaviour {
 			count = Mathf.Clamp01(count+Time.deltaTime*totalTimeInv);
 			if(count == 1)
 			{
-				owner.stateMachine.ChangeState(owner.states[2]);
+				Debug.Log("E");
+				owner.stateMachine.ChangeState(owner.states[1]);
 			}
 			cPos.y = owner.distFromPlayer.y;
 			float yRot = current.eulerAngles.y;
@@ -59,8 +62,11 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnExit (CameraController owner)
 		{
+			Debug.Log("E");
 			if(count == 1)
 			{
+				Debug.Log("EXIT");
+				owner.target.GetComponent<PlayerController>().newRotation(trueEnd);
 				owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,trueEnd,owner.transform.rotation.eulerAngles.z);
 			}
 		}
@@ -85,7 +91,8 @@ public class CameraController : MonoBehaviour {
 		
 		public override void OnEnter (CameraController owner)
 		{
-			float s = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
+			owner.target.GetComponent<PlayerController>().newRotation(-1);
+			float s = owner.target.GetComponent<PlayerController>().getRotation();
 			owner.activeRotation = owner.yRotations[owner.yRotations.Count-1];
 			float e = owner.activeRotation;
 			trueEnd = e;
@@ -115,21 +122,22 @@ public class CameraController : MonoBehaviour {
 			count = Mathf.Clamp01(count+Time.deltaTime*totalTimeInv);
 			if(count == 1)
 			{
-				owner.stateMachine.ChangeState(owner.states[2]);
+				owner.stateMachine.ChangeState(owner.states[1]);
 			}
 			float yRot = current.eulerAngles.y;
 			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
 			owner.target.transform.rotation = Quaternion.Euler (targRot.x, yRot, targRot.z);
-			cPos.y = owner.distFromPlayer.y;
-			owner.transform.rotation = current;
-			owner.transform.position = cPos;
+			//cPos.y = owner.distFromPlayer.y;
+			//owner.transform.rotation = current;
+			//owner.transform.position = cPos;
 		}
 		
 		public override void OnExit (CameraController owner)
 		{
 			if(count == 1)
 			{
-				owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,trueEnd,owner.transform.rotation.eulerAngles.z);
+				owner.target.GetComponent<PlayerController>().newRotation(trueEnd);
+				//owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,trueEnd,owner.transform.rotation.eulerAngles.z);
 			}
 		}
 	}
@@ -224,7 +232,7 @@ public class CameraController : MonoBehaviour {
 		yRotations.Add(0);
 		distFromPlayer = transform.position-target.position;
 		print("dist = " + distFromPlayer.ToString());
-		stateMachine.Configure(this, states[2]);
+		stateMachine.Configure(this, states[1]);
 	}
 	
 	// Update is called once per frame
