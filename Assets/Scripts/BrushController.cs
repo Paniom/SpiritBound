@@ -6,7 +6,7 @@ public class BrushController : MonoBehaviour {
     float count = 0;
     public GameObject beforeCollision;
     public GameObject afterCollision;
-    public Animation breakDown;
+    public Animator breakDown;
 	// Use this for initialization
 	void Start () {
 	
@@ -29,13 +29,11 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
-                if (!breakDown.isPlaying)
+                if (breakDown.GetBool("DoneBreaking") == false && breakDown.GetBool("Breaking") == false)
                 {
-                    breakDown.Play();
-                    
-                    //Destroy(gameObject);
+                    breakDown.SetBool("Breaking", true);
                 }
-                else
+                else if(breakDown.GetBool("DoneBreaking") == true)
                 {
                     beforeCollision.SetActive(false);
                     afterCollision.SetActive(true);
@@ -53,13 +51,11 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
-                if (!breakDown.isPlaying)
+                if (breakDown.GetBool("DoneBreaking") == false && breakDown.GetBool("Breaking") == false)
                 {
-                    breakDown.Play();
-
-                    //Destroy(gameObject);
+                    breakDown.SetBool("Breaking", true);
                 }
-                else
+                else if (breakDown.GetBool("DoneBreaking") == true)
                 {
                     beforeCollision.SetActive(false);
                     afterCollision.SetActive(true);
