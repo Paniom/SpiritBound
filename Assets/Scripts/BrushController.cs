@@ -35,7 +35,7 @@ public class BrushController : MonoBehaviour {
                 }
                 else if(breakDown.GetBool("DoneBreaking") == true)
                 {
-                    beforeCollision.SetActive(false);
+                    collider.enabled = false;
                     afterCollision.SetActive(true);
                     AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
                 }
@@ -57,7 +57,7 @@ public class BrushController : MonoBehaviour {
                 }
                 else if (breakDown.GetBool("DoneBreaking") == true)
                 {
-                    beforeCollision.SetActive(false);
+                    collider.enabled = false;
                     afterCollision.SetActive(true);
                     AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
                 }
