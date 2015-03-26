@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 81d87b17a5e40294181739ca9457369d
+guid: 03dfbcb94dad428488f905226378209e
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -11,29 +11,27 @@ ModelImporter:
     100010: deadTree7
     100012: fallenTree3
     100014: fallenTree4
-    100016: group5
-    100018: group6
-    100020: pCylinder10
-    100022: pCylinder11
-    100024: pCylinder12
-    100026: pCylinder13
-    100028: pCylinder14
-    100030: pCylinder15
-    100032: pCylinder16
-    100034: pCylinder17
-    100036: pCylinder18
-    100038: pCylinder19
-    100040: pCylinder20
-    100042: pCylinder21
-    100044: pCylinder22
-    100046: pCylinder23
-    100048: pCylinder24
-    100050: pCylinder25
-    100052: pCylinder26
-    100054: pCylinder6
-    100056: pCylinder7
-    100058: pCylinder8
-    100060: pCylinder9
+    100016: pCylinder10
+    100018: pCylinder11
+    100020: pCylinder12
+    100022: pCylinder13
+    100024: pCylinder14
+    100026: pCylinder15
+    100028: pCylinder16
+    100030: pCylinder17
+    100032: pCylinder18
+    100034: pCylinder19
+    100036: pCylinder20
+    100038: pCylinder21
+    100040: pCylinder22
+    100042: pCylinder23
+    100044: pCylinder24
+    100046: pCylinder25
+    100048: pCylinder26
+    100050: pCylinder6
+    100052: pCylinder7
+    100054: pCylinder8
+    100056: pCylinder9
     400000: //RootNode
     400002: deadTree2
     400004: deadTree4
@@ -42,29 +40,27 @@ ModelImporter:
     400010: deadTree7
     400012: fallenTree3
     400014: fallenTree4
-    400016: group5
-    400018: group6
-    400020: pCylinder10
-    400022: pCylinder11
-    400024: pCylinder12
-    400026: pCylinder13
-    400028: pCylinder14
-    400030: pCylinder15
-    400032: pCylinder16
-    400034: pCylinder17
-    400036: pCylinder18
-    400038: pCylinder19
-    400040: pCylinder20
-    400042: pCylinder21
-    400044: pCylinder22
-    400046: pCylinder23
-    400048: pCylinder24
-    400050: pCylinder25
-    400052: pCylinder26
-    400054: pCylinder6
-    400056: pCylinder7
-    400058: pCylinder8
-    400060: pCylinder9
+    400016: pCylinder10
+    400018: pCylinder11
+    400020: pCylinder12
+    400022: pCylinder13
+    400024: pCylinder14
+    400026: pCylinder15
+    400028: pCylinder16
+    400030: pCylinder17
+    400032: pCylinder18
+    400034: pCylinder19
+    400036: pCylinder20
+    400038: pCylinder21
+    400040: pCylinder22
+    400042: pCylinder23
+    400044: pCylinder24
+    400046: pCylinder25
+    400048: pCylinder26
+    400050: pCylinder6
+    400052: pCylinder7
+    400054: pCylinder8
+    400056: pCylinder9
     2300000: deadTree2
     2300002: deadTree4
     2300004: deadTree5
@@ -149,7 +145,7 @@ ModelImporter:
     4300050: pCylinder26
     4300052: deadTree6
     4300054: deadTree7
-    7400000: Take 001
+    7400000: Destroy_2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -166,11 +162,103 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Destroy_2
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 96
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: .996951222
+        functionName: DoneBreaking
+        data: 
+        objectReferenceParameter: {fileID: 9100000, guid: 93bba1e652e77af42b215c0329820ee6,
+          type: 2}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: deadTree2
+        weight: 1
+      - path: deadTree4
+        weight: 1
+      - path: deadTree5
+        weight: 1
+      - path: deadTree6
+        weight: 1
+      - path: deadTree7
+        weight: 1
+      - path: fallenTree3
+        weight: 1
+      - path: fallenTree4
+        weight: 1
+      - path: pCylinder6
+        weight: 1
+      - path: pCylinder7
+        weight: 1
+      - path: pCylinder8
+        weight: 1
+      - path: pCylinder9
+        weight: 1
+      - path: pCylinder10
+        weight: 1
+      - path: pCylinder11
+        weight: 1
+      - path: pCylinder12
+        weight: 1
+      - path: pCylinder13
+        weight: 1
+      - path: pCylinder14
+        weight: 1
+      - path: pCylinder15
+        weight: 1
+      - path: pCylinder16
+        weight: 1
+      - path: pCylinder17
+        weight: 1
+      - path: pCylinder18
+        weight: 1
+      - path: pCylinder19
+        weight: 1
+      - path: pCylinder20
+        weight: 1
+      - path: pCylinder21
+        weight: 1
+      - path: pCylinder22
+        weight: 1
+      - path: pCylinder23
+        weight: 1
+      - path: pCylinder24
+        weight: 1
+      - path: pCylinder25
+        weight: 1
+      - path: pCylinder26
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -189,7 +277,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     human: []
     skeleton: []
@@ -201,7 +289,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0108e8374ef1c324593320cc61cabe28,
+    type: 3}
   animationType: 2
   additionalBone: 0
   userData: 
