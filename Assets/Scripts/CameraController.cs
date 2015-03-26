@@ -92,7 +92,7 @@ public class CameraController : MonoBehaviour {
 		public override void OnEnter (CameraController owner)
 		{
 			owner.target.GetComponent<PlayerController>().newRotation(-1);
-			float s = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
+			float s = owner.target.GetComponent<PlayerController>().getRotation();
 			owner.activeRotation = owner.yRotations[owner.yRotations.Count-1];
 			float e = owner.activeRotation;
 			trueEnd = e;

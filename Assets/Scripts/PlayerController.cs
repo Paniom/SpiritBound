@@ -521,6 +521,9 @@ public class PlayerController : MonoBehaviour
 	public void newRotation(float r) {
 		setRotation = r;
 	}
+	public float getRotation() {
+		return setRotation;
+	}
 
     float foxSpiritStartPowerLevel = 20;
     float wolfSpiritStartPowerLevel = 20;
