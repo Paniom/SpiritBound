@@ -1,0 +1,288 @@
+fileFormatVersion: 2
+guid: 0108e8374ef1c324593320cc61cabe28
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: deadTree2
+    100004: deadTree4
+    100006: deadTree5
+    100008: deadTree6
+    100010: deadTree7
+    100012: fallenTree3
+    100014: fallenTree4
+    100016: pCylinder10
+    100018: pCylinder11
+    100020: pCylinder12
+    100022: pCylinder13
+    100024: pCylinder14
+    100026: pCylinder15
+    100028: pCylinder16
+    100030: pCylinder17
+    100032: pCylinder18
+    100034: pCylinder19
+    100036: pCylinder20
+    100038: pCylinder21
+    100040: pCylinder22
+    100042: pCylinder23
+    100044: pCylinder24
+    100046: pCylinder25
+    100048: pCylinder26
+    100050: pCylinder6
+    100052: pCylinder7
+    100054: pCylinder8
+    100056: pCylinder9
+    400000: //RootNode
+    400002: deadTree2
+    400004: deadTree4
+    400006: deadTree5
+    400008: deadTree6
+    400010: deadTree7
+    400012: fallenTree3
+    400014: fallenTree4
+    400016: pCylinder10
+    400018: pCylinder11
+    400020: pCylinder12
+    400022: pCylinder13
+    400024: pCylinder14
+    400026: pCylinder15
+    400028: pCylinder16
+    400030: pCylinder17
+    400032: pCylinder18
+    400034: pCylinder19
+    400036: pCylinder20
+    400038: pCylinder21
+    400040: pCylinder22
+    400042: pCylinder23
+    400044: pCylinder24
+    400046: pCylinder25
+    400048: pCylinder26
+    400050: pCylinder6
+    400052: pCylinder7
+    400054: pCylinder8
+    400056: pCylinder9
+    2300000: deadTree2
+    2300002: deadTree4
+    2300004: deadTree5
+    2300006: deadTree6
+    2300008: deadTree7
+    2300010: fallenTree3
+    2300012: fallenTree4
+    2300014: pCylinder10
+    2300016: pCylinder11
+    2300018: pCylinder12
+    2300020: pCylinder13
+    2300022: pCylinder14
+    2300024: pCylinder15
+    2300026: pCylinder16
+    2300028: pCylinder17
+    2300030: pCylinder18
+    2300032: pCylinder19
+    2300034: pCylinder20
+    2300036: pCylinder21
+    2300038: pCylinder22
+    2300040: pCylinder23
+    2300042: pCylinder24
+    2300044: pCylinder25
+    2300046: pCylinder26
+    2300048: pCylinder6
+    2300050: pCylinder7
+    2300052: pCylinder8
+    2300054: pCylinder9
+    3300000: deadTree2
+    3300002: deadTree4
+    3300004: deadTree5
+    3300006: deadTree6
+    3300008: deadTree7
+    3300010: fallenTree3
+    3300012: fallenTree4
+    3300014: pCylinder10
+    3300016: pCylinder11
+    3300018: pCylinder12
+    3300020: pCylinder13
+    3300022: pCylinder14
+    3300024: pCylinder15
+    3300026: pCylinder16
+    3300028: pCylinder17
+    3300030: pCylinder18
+    3300032: pCylinder19
+    3300034: pCylinder20
+    3300036: pCylinder21
+    3300038: pCylinder22
+    3300040: pCylinder23
+    3300042: pCylinder24
+    3300044: pCylinder25
+    3300046: pCylinder26
+    3300048: pCylinder6
+    3300050: pCylinder7
+    3300052: pCylinder8
+    3300054: pCylinder9
+    4300000: deadTree2
+    4300002: deadTree4
+    4300004: deadTree5
+    4300006: fallenTree3
+    4300008: fallenTree4
+    4300010: pCylinder6
+    4300012: pCylinder7
+    4300014: pCylinder8
+    4300016: pCylinder12
+    4300018: pCylinder13
+    4300020: pCylinder14
+    4300022: pCylinder15
+    4300024: pCylinder16
+    4300026: pCylinder17
+    4300028: pCylinder9
+    4300030: pCylinder10
+    4300032: pCylinder11
+    4300034: pCylinder18
+    4300036: pCylinder19
+    4300038: pCylinder20
+    4300040: pCylinder21
+    4300042: pCylinder22
+    4300044: pCylinder23
+    4300046: pCylinder24
+    4300048: pCylinder25
+    4300050: pCylinder26
+    4300052: deadTree6
+    4300054: deadTree7
+    7400000: Brush_untouched
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Brush_untouched
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: deadTree2
+        weight: 1
+      - path: deadTree4
+        weight: 1
+      - path: deadTree5
+        weight: 1
+      - path: deadTree6
+        weight: 1
+      - path: deadTree7
+        weight: 1
+      - path: fallenTree3
+        weight: 1
+      - path: fallenTree4
+        weight: 1
+      - path: pCylinder6
+        weight: 1
+      - path: pCylinder7
+        weight: 1
+      - path: pCylinder8
+        weight: 1
+      - path: pCylinder9
+        weight: 1
+      - path: pCylinder10
+        weight: 1
+      - path: pCylinder11
+        weight: 1
+      - path: pCylinder12
+        weight: 1
+      - path: pCylinder13
+        weight: 1
+      - path: pCylinder14
+        weight: 1
+      - path: pCylinder15
+        weight: 1
+      - path: pCylinder16
+        weight: 1
+      - path: pCylinder17
+        weight: 1
+      - path: pCylinder18
+        weight: 1
+      - path: pCylinder19
+        weight: 1
+      - path: pCylinder20
+        weight: 1
+      - path: pCylinder21
+        weight: 1
+      - path: pCylinder22
+        weight: 1
+      - path: pCylinder23
+        weight: 1
+      - path: pCylinder24
+        weight: 1
+      - path: pCylinder25
+        weight: 1
+      - path: pCylinder26
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 03dfbcb94dad428488f905226378209e,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 

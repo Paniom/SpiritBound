@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 53774a91aa326ca41bb0afd6336a4b51
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: H_legs
+    100002: Hip_ori_YZ_JT
+    100004: Hip_parent
+    100006: internal_tools
+    100008: invis_JT_knee_ori_X_node
+    100010: invis_jtEND_knee_ori_X_node
+    100012: joint36
+    100014: joint37
+    100016: joint38
+    100018: joint39
+    100020: joint40
+    100022: joint40 1
+    100024: joint41
+    100026: knee_ori_to_feet
+    100028: L_hind:PSTJ
+    100030: L_hind:PSTJ_IK_JT
+    100032: L_hind:PSTJ_IK_JT_M
+    100034: L_hind:PSTJ_JT_GRPS
+    100036: L_hind:PSTJ_measure
+    100038: L_hind:PSTJ_ori
+    100040: L_hind:PSTJ_ruler
+    100042: R_hind:Flipped_mover
+    100044: R_hind:flipper
+    100046: R_hind:INVis_pointer_PV
+    100048: R_hind:invis_world_dummy
+    100050: R_hind:Knee_pointer_grp_LOKT
+    100052: R_hind:PSTJ
+    100054: R_hind:PSTJ_IK_JT
+    100056: R_hind:PSTJ_IK_JT_M
+    100058: R_hind:PSTJ_JT_GRPS
+    100060: R_hind:PSTJ_measure
+    100062: R_hind:PSTJ_ori
+    100064: R_hind:PSTJ_ruler
+    100066: R_hind:world_invis_PV_grp
+    100068: Root_Wolf_Joint
+    100070: //RootNode
+    100072: wolf_joint13
+    100074: wolf_joint13 1
+    100076: wolf_joint14
+    100078: wolf_joint14 1
+    100080: wolf_joint15
+    100082: wolf_joint15 1
+    100084: wolf_joint16
+    100086: wolf_joint16 1
+    100088: wolf_joint18
+    100090: wolf_joint19
+    100092: wolf_joint19 1
+    100094: wolf_joint2
+    100096: wolf_joint20
+    100098: wolf_joint20 1
+    100100: wolf_joint21
+    100102: wolf_joint21 1
+    100104: wolf_joint22
+    100106: wolf_joint22 1
+    100108: wolf_joint24
+    100110: wolf_joint25
+    100112: wolf_joint26
+    100114: wolf_joint29
+    100116: wolf_joint3
+    100118: wolf_joint30
+    100120: wolf_joint30 1
+    100122: wolf_joint37
+    100124: wolf_joint38
+    100126: wolf_joint4
+    100128: wolf_joint44
+    100130: wolf_joint49
+    100132: wolf_joint5
+    100134: wolf_joint6
+    100136: wolf_joint7
+    100138: wolf_joint8
+    100140: Wolf_Main_CTRL
+    100142: Wolf_Mesh
+    100144: Wolf_skeleton_grp
+    100146: YZ_JT_end
+    400000: H_legs
+    400002: Hip_ori_YZ_JT
+    400004: Hip_parent
+    400006: internal_tools
+    400008: invis_JT_knee_ori_X_node
+    400010: invis_jtEND_knee_ori_X_node
+    400012: joint36
+    400014: joint37
+    400016: joint38
+    400018: joint39
+    400020: joint40
+    400022: joint40 1
+    400024: joint41
+    400026: knee_ori_to_feet
+    400028: L_hind:PSTJ
+    400030: L_hind:PSTJ_IK_JT
+    400032: L_hind:PSTJ_IK_JT_M
+    400034: L_hind:PSTJ_JT_GRPS
+    400036: L_hind:PSTJ_measure
+    400038: L_hind:PSTJ_ori
+    400040: L_hind:PSTJ_ruler
+    400042: R_hind:Flipped_mover
+    400044: R_hind:flipper
+    400046: R_hind:INVis_pointer_PV
+    400048: R_hind:invis_world_dummy
+    400050: R_hind:Knee_pointer_grp_LOKT
+    400052: R_hind:PSTJ
+    400054: R_hind:PSTJ_IK_JT
+    400056: R_hind:PSTJ_IK_JT_M
+    400058: R_hind:PSTJ_JT_GRPS
+    400060: R_hind:PSTJ_measure
+    400062: R_hind:PSTJ_ori
+    400064: R_hind:PSTJ_ruler
+    400066: R_hind:world_invis_PV_grp
+    400068: Root_Wolf_Joint
+    400070: //RootNode
+    400072: wolf_joint13
+    400074: wolf_joint13 1
+    400076: wolf_joint14
+    400078: wolf_joint14 1
+    400080: wolf_joint15
+    400082: wolf_joint15 1
+    400084: wolf_joint16
+    400086: wolf_joint16 1
+    400088: wolf_joint18
+    400090: wolf_joint19
+    400092: wolf_joint19 1
+    400094: wolf_joint2
+    400096: wolf_joint20
+    400098: wolf_joint20 1
+    400100: wolf_joint21
+    400102: wolf_joint21 1
+    400104: wolf_joint22
+    400106: wolf_joint22 1
+    400108: wolf_joint24
+    400110: wolf_joint25
+    400112: wolf_joint26
+    400114: wolf_joint29
+    400116: wolf_joint3
+    400118: wolf_joint30
+    400120: wolf_joint30 1
+    400122: wolf_joint37
+    400124: wolf_joint38
+    400126: wolf_joint4
+    400128: wolf_joint44
+    400130: wolf_joint49
+    400132: wolf_joint5
+    400134: wolf_joint6
+    400136: wolf_joint7
+    400138: wolf_joint8
+    400140: Wolf_Main_CTRL
+    400142: Wolf_Mesh
+    400144: Wolf_skeleton_grp
+    400146: YZ_JT_end
+    2300000: R_hind:INVis_pointer_PV
+    3300000: R_hind:INVis_pointer_PV
+    4300000: R_hind:INVis_pointer_PV
+    4300002: Wolf_Mesh
+    7400000: Wolf_Idle
+    9500000: //RootNode
+    13700000: Wolf_Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Wolf_Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Wolf_Main_CTRL
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/Hip_parent
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/Hip_parent/internal_tools
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/Hip_parent/internal_tools/Hip_ori_YZ_JT
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/Hip_parent/internal_tools/Hip_ori_YZ_JT/YZ_JT_end
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS/L_hind:PSTJ
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS/L_hind:PSTJ/L_hind:PSTJ_measure
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS/L_hind:PSTJ/L_hind:PSTJ_measure/L_hind:PSTJ_IK_JT_M
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS/L_hind:PSTJ/L_hind:PSTJ_measure/L_hind:PSTJ_ruler
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS/L_hind:PSTJ/L_hind:PSTJ_ori
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/L_hind:PSTJ_JT_GRPS/L_hind:PSTJ/L_hind:PSTJ_ori/L_hind:PSTJ_IK_JT
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper/R_hind:Flipped_mover
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper/R_hind:Flipped_mover/R_hind:world_invis_PV_grp
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper/R_hind:Flipped_mover/R_hind:world_invis_PV_grp/R_hind:invis_world_dummy
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper/R_hind:Flipped_mover/R_hind:world_invis_PV_grp/R_hind:invis_world_dummy/R_hind:INVis_pointer_PV
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper/R_hind:Flipped_mover/R_hind:world_invis_PV_grp/R_hind:invis_world_dummy/R_hind:INVis_pointer_PV/invis_JT_knee_ori_X_node
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:Knee_pointer_grp_LOKT/knee_ori_to_feet/R_hind:flipper/R_hind:Flipped_mover/R_hind:world_invis_PV_grp/R_hind:invis_world_dummy/R_hind:INVis_pointer_PV/invis_JT_knee_ori_X_node/invis_jtEND_knee_ori_X_node
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:PSTJ
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:PSTJ/R_hind:PSTJ_measure
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:PSTJ/R_hind:PSTJ_measure/R_hind:PSTJ_IK_JT_M
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:PSTJ/R_hind:PSTJ_measure/R_hind:PSTJ_ruler
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:PSTJ/R_hind:PSTJ_ori
+        weight: 1
+      - path: Wolf_Main_CTRL/H_legs/R_hind:PSTJ_JT_GRPS/R_hind:PSTJ/R_hind:PSTJ_ori/R_hind:PSTJ_IK_JT
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/joint39
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/joint39/joint40
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/joint41
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/joint41/joint40
+          1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7/wolf_joint8
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7/wolf_joint8/joint36
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7/wolf_joint8/wolf_joint29
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7/wolf_joint8/wolf_joint29/wolf_joint30
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7/wolf_joint8/wolf_joint38
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint6/wolf_joint7/wolf_joint8/wolf_joint38/wolf_joint30
+          1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint37
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint37/wolf_joint13
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint37/wolf_joint13/wolf_joint14
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint37/wolf_joint13/wolf_joint14/wolf_joint15
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint37/wolf_joint13/wolf_joint14/wolf_joint15/wolf_joint16
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint37/wolf_joint13/wolf_joint14/wolf_joint15/wolf_joint16/joint37
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint49
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint49/wolf_joint13
+          1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint49/wolf_joint13
+          1/wolf_joint14 1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint49/wolf_joint13
+          1/wolf_joint14 1/wolf_joint15 1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint49/wolf_joint13
+          1/wolf_joint14 1/wolf_joint15 1/wolf_joint16 1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint2/wolf_joint3/wolf_joint4/wolf_joint5/wolf_joint49/wolf_joint13
+          1/wolf_joint14 1/wolf_joint15 1/wolf_joint16 1/joint38
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint18
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint18/wolf_joint19
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint18/wolf_joint19/wolf_joint20
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint18/wolf_joint19/wolf_joint20/wolf_joint21
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint18/wolf_joint19/wolf_joint20/wolf_joint21/wolf_joint22
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint24
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint24/wolf_joint25
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint24/wolf_joint25/wolf_joint26
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint44
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint44/wolf_joint19
+          1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint44/wolf_joint19
+          1/wolf_joint20 1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint44/wolf_joint19
+          1/wolf_joint20 1/wolf_joint21 1
+        weight: 1
+      - path: Wolf_Main_CTRL/Wolf_skeleton_grp/Root_Wolf_Joint/wolf_joint44/wolf_joint19
+          1/wolf_joint20 1/wolf_joint21 1/wolf_joint22 1
+        weight: 1
+      - path: Wolf_Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Root_Wolf_Joint
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 15df4f6872e958f4ab7924180992ce77,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 
