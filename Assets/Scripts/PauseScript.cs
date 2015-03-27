@@ -3,7 +3,11 @@ using System.Collections;
 
 public class PauseScript : MonoBehaviour {
 
-    public GameObject PausePanel;
+    public GameObject MainPausePanel;
+    public GameObject PausedPanel;
+    //public GameObject AchievementsPanel;
+    public GameObject SettingsPanel;
+    public GameObject areYouSure;
 
     float startTime;
     bool startedUp;
@@ -17,12 +21,12 @@ public class PauseScript : MonoBehaviour {
 	void Update () {
         if (startTime + .01 < Time.time && startedUp == false)
         {
-            PausePanel.SetActive(false);
+            MainPausePanel.SetActive(false);
             startedUp = true;
         }
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (PausePanel.activeInHierarchy == true)
+            if (MainPausePanel.activeInHierarchy == true)
             {
                 Resume();
             }
@@ -37,14 +41,57 @@ public class PauseScript : MonoBehaviour {
     {
         if (!TimeAndScore.GameOver)
         {
-            PausePanel.SetActive(true);
+            MainPausePanel.SetActive(true);
+            PausedPanel.SetActive(true);
+            SettingsPanel.SetActive(false);
+            //AchievementsPanel.SetActive(false);
+            areYouSure.SetActive(false);
             Time.timeScale = 0;
         }
     }
 
     public void Resume()
     {
-        PausePanel.SetActive(false);
+        MainPausePanel.SetActive(false);
+        PausedPanel.SetActive(false);
+        SettingsPanel.SetActive(false);
+        //AchievementsPanel.SetActive(false);
+        areYouSure.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void AreYouSure()
+    {
+        areYouSure.SetActive(true);
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        Application.LoadLevel("StartScreen");
+    }
+
+    public void GoToMainPanel()
+    {
+        SettingsPanel.SetActive(false);
+        PausedPanel.SetActive(true);
+        //AchievementsPanel.SetActive(false);
+        areYouSure.SetActive(false);
+    }
+
+    public void GoToSettings()
+    {
+        SettingsPanel.SetActive(true);
+        PausedPanel.SetActive(false);
+        //AchievementsPanel.SetActive(false);
+        areYouSure.SetActive(false);
+    }
+
+    public void GoToAchievementsPage()
+    {
+        SettingsPanel.SetActive(true);
+        PausedPanel.SetActive(false);
+        //AchievementsPanel.SetActive(false);
+        areYouSure.SetActive(false);
     }
 }

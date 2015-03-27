@@ -6,11 +6,12 @@ public class GoTo : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject CreditsPanel;
     public GameObject SettingsPanel;
+    //public GameObject AchievementsPanel;
 
 	// Use this for initialization
 	void Start () 
     {
-	    
+
 	}
 	
 	// Update is called once per frame
@@ -22,7 +23,17 @@ public class GoTo : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
+        LoadingScreen.levelToLoad = "Level_1";
         Application.LoadLevel("LoadingScreen");
+    }
+
+    public void GoToAchievementsPage()
+    {
+        Time.timeScale = 1;
+        MainMenuPanel.SetActive(false);
+        CreditsPanel.SetActive(false);
+        SettingsPanel.SetActive(false);
+        //AchievementsPanel.SetActive(true);
     }
 
     public void GoToTitlePage()
@@ -34,7 +45,8 @@ public class GoTo : MonoBehaviour
     public void GoToNextLevel()
     {
         Time.timeScale = 1;
-        Application.LoadLevel(Application.loadedLevel + 1);
+        LoadingScreen.levelToLoad = "Level_1";
+        Application.LoadLevel("LoadingScreen");
     }
 
     public void GoToMainMenu()
@@ -43,6 +55,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(true);
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(false);
+        //AchievementsPanel.SetActive(false);
     }
 
     public void GoToCredits()
@@ -50,6 +63,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(true);
         SettingsPanel.SetActive(false);
+        //AchievementsPanel.SetActive(false);
     }
 
     public void GoToSettings()
@@ -57,6 +71,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(true);
+        //AchievementsPanel.SetActive(false);
     }
 
     public void Quit()

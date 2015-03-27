@@ -6,7 +6,7 @@ public class BrushController : MonoBehaviour {
     float count = 0;
     public GameObject afterCollision;
     public Animator breakDown;
-    float breakTimer = 4.0f;
+    float breakTimer = 1.0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,7 +19,7 @@ public class BrushController : MonoBehaviour {
         {
             if (breakTimer < 0)
             {
-                breakTimer = 4.0f;
+                breakTimer = 1.0f;
                 collider.enabled = false;
                 afterCollision.SetActive(true);
             }

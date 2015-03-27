@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LoadingScreen : MonoBehaviour {
 
-    public string levelToLoad;
+    public static string levelToLoad;
     public GameObject loadingText;
     public GameObject ProgressBar;
 
@@ -24,6 +24,7 @@ public class LoadingScreen : MonoBehaviour {
 
     IEnumerator DisplayLoadingScreen(string level)
     {
+        Debug.Log(levelToLoad);
         ProgressBar.GetComponent<Image>().fillAmount = loadProgress;
 
         AsyncOperation async = Application.LoadLevelAsync(level);

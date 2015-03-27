@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (interactTimer > 0)
                 {
-                    owner.rigidbody.velocity = new Vector3(0, owner.rigidbody.velocity.y, owner.speed * 5);
+                    owner.rigidbody.velocity = new Vector3(owner.transform.forward.x * owner.speed * 5, owner.rigidbody.velocity.y, owner.transform.forward.z * owner.speed * 5);
                     interactTimer -= Time.deltaTime;
                 }
                 else
@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour
                 owner.interacting = true;
                 if (owner.IsGrounded())
                     owner.transform.position += new Vector3(0, 0.5f, 0);
-                owner.rigidbody.AddForce(owner.fox.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
+                owner.rigidbody.AddForce(owner.transform.forward * 15 + owner.fox.transform.up, ForceMode.Impulse);
                 AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/Dash"), owner.transform.position);
             }
             else
