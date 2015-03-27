@@ -171,6 +171,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            Camera.main.GetComponent<ScreenOverlay>().texture = owner.foxOverlay;
             owner.fox.SetActive(true);
             owner.wolf.SetActive(false);
             owner.muskalo.SetActive(false);
