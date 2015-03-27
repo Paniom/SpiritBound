@@ -36,13 +36,19 @@ public class killPlayer : MonoBehaviour {
 	void Update () 
     {
 		if (respawn)
-		{
+        {
 			respawnWait -= Time.unscaledDeltaTime;
 			if (respawnWait < 0)
 			{
 				respawnWait = 1.0f;
 				respawn = false;
 				Time.timeScale = 1;
+                GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
+                deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
+                deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+                deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                Destroy(deathtext, 1.0f);
 				other.GetComponent<PlayerController>().newRotation(lastSpawn.GetComponent<SetLastSpawn>().playerRot);
 				other.transform.position = lastSpawn.transform.position;
 			}
