@@ -205,7 +205,6 @@ public class InputController : MonoBehaviour {
 						else{
 							direction = Vector2.zero;
 						}
-						target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
 					}
 					if(Input.touches[i].phase == TouchPhase.Ended || Input.touches[i].phase == TouchPhase.Canceled){
 						joystickID = -1;
@@ -231,6 +230,7 @@ public class InputController : MonoBehaviour {
 						}
 					}
 				}
+				target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
