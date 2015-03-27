@@ -528,6 +528,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject followingCamera;
 	//private float camDirection = 0;
 	private float setRotation = 0;
+	public bool useRotation = false;
 	public void newRotation(float r) {
 		setRotation = r;
 	}
@@ -651,7 +652,7 @@ public class PlayerController : MonoBehaviour
 			direction = direction*1f/4f;
 		}
 		float rotation = setRotation;
-		if(setRotation == -1) {
+		if(useRotation) {
 			rotation = transform.rotation.eulerAngles.y;
 		}
 		stateMachine.messageReciever("Move",new object[] {Mathf.Cos(rotation*Mathf.Deg2Rad)*direction.x + 
