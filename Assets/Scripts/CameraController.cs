@@ -21,9 +21,9 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnEnter (CameraController owner)
 		{
-			Debug.Log("E");
-			owner.target.GetComponent<PlayerController>().newRotation(-1);
+			owner.stateMachine.setState("Rotating");
 			float s = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
+			owner.target.GetComponent<PlayerController>().newRotation(-1);
 			owner.activeRotation = owner.yRotations[owner.yRotations.Count-1];
 			float e = owner.activeRotation;
 			trueEnd = e;
@@ -91,7 +91,8 @@ public class CameraController : MonoBehaviour {
 		
 		public override void OnEnter (CameraController owner)
 		{
-			owner.target.GetComponent<PlayerController>().newRotation(-1);
+			owner.target.GetComponent<PlayerController>().useRotation = true;
+			owner.stateMachine.setState("PathFollow");
 			float s = owner.target.GetComponent<PlayerController>().getRotation();
 			owner.activeRotation = owner.yRotations[owner.yRotations.Count-1];
 			float e = owner.activeRotation;
@@ -108,6 +109,7 @@ public class CameraController : MonoBehaviour {
 			playerPos = owner.target.transform.position;
 			ePos = playerPos + new Vector3(Mathf.Cos(e*Mathf.Deg2Rad)*(owner.distFromPlayer.x) + Mathf.Sin(e*Mathf.Deg2Rad)*(owner.distFromPlayer.z),
 			                   0,Mathf.Cos(e*Mathf.Deg2Rad)*(owner.distFromPlayer.z) - Mathf.Sin(e*Mathf.Deg2Rad)*(owner.distFromPlayer.x));
+
 			//owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,trueEnd,owner.transform.rotation.eulerAngles.z);
 			//owner.stateMachine.ChangeState(owner.states[2]);
 		}
@@ -137,6 +139,7 @@ public class CameraController : MonoBehaviour {
 			if(count == 1)
 			{
 				owner.target.GetComponent<PlayerController>().newRotation(trueEnd);
+				owner.target.GetComponent<PlayerController>().useRotation = false;
 				//owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,trueEnd,owner.transform.rotation.eulerAngles.z);
 			}
 		}
@@ -149,6 +152,10 @@ public class CameraController : MonoBehaviour {
 
 		}
 
+		public override void OnEnter(CameraController owner)
+		{
+			owner.stateMachine.setState("Still");
+		}
 	}
 
 	public class Swaying : State<CameraController>
@@ -172,6 +179,7 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnEnter (CameraController owner)
 		{
+			owner.stateMachine.setState("Swaying");
 			float e = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
 			float yRot = e;
 			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
@@ -238,6 +246,7 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		stateMachine.Update();
+		Debug.Log(stateMachine.getState());
 	}
 
 	void RemoveRotation (int y) {
