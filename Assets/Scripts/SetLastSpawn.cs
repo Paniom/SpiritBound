@@ -19,6 +19,10 @@ public class SetLastSpawn : MonoBehaviour {
     {
         if (other.tag == "Player" && killPlayer.lastSpawn != this.gameObject)
         {
+            if (this.gameObject.transform.parent.gameObject.GetComponentInChildren<ParticleSystem>() != null && name != "Start_Zone" && name != "FinishZone")
+            {
+                this.gameObject.transform.parent.gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            }
             checkpointTime = TimeAndScore.timeRemaining;
             killPlayer.lastSpawn = this.gameObject;
         }
