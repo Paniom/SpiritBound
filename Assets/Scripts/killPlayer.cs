@@ -65,6 +65,7 @@ public class killPlayer : MonoBehaviour {
                 dead = true;
                 other.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value = 20;
                 other.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                other.rigidbody.velocity = new Vector3(0, 0, 0);
                 TimeAndScore.score -= 10;
                 if (TimeAndScore.score < 0)
                 {
