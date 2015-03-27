@@ -201,11 +201,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (interactTimer > 0)
                 {
+                    Camera.main.GetComponent<ScreenOverlay>().enabled = true;
                     interactTimer -= Time.deltaTime;
                 }
                 else
                 {
                     Destroy(dashEffect);
+                    Camera.main.GetComponent<ScreenOverlay>().enabled = false;
                     owner.interacting = false;
                     interactTimer = startingInteractTimer;
                     owner.InteractComplete();
@@ -221,6 +223,7 @@ public class PlayerController : MonoBehaviour
             owner.foxUI.GetComponent<Image>().color = m;
             if (owner.interacting)
             {
+                Camera.main.GetComponent<ScreenOverlay>().enabled = false;
                 Destroy(dashEffect);
                 owner.interacting = false;
                 interactTimer = startingInteractTimer;
@@ -320,6 +323,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
+            Camera.main.GetComponent<ScreenOverlay>().texture = owner.wolfOverlay;
             owner.fox.SetActive(false);
             owner.wolf.SetActive(true);
             owner.muskalo.SetActive(false);
@@ -351,10 +355,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (interactTimer > 0)
                 {
+                    Camera.main.GetComponent<ScreenOverlay>().enabled = true;
                     interactTimer -= Time.deltaTime;
                 }
                 else
                 {
+                    Camera.main.GetComponent<ScreenOverlay>().enabled = false;
                     owner.interacting = false;
                     interactTimer = startingInteractTimer;
                     Time.timeScale = 1f;
@@ -372,6 +378,7 @@ public class PlayerController : MonoBehaviour
             owner.wolfUI.GetComponent<Image>().color = m;
             if (owner.interacting)
             {
+                Camera.main.GetComponent<ScreenOverlay>().enabled = false;
                 owner.interacting = false;
                 interactTimer = startingInteractTimer;
                 Time.timeScale = 1f;
@@ -505,6 +512,8 @@ public class PlayerController : MonoBehaviour
                                                                                 new Standby()};
     public StateMachine<PlayerController> stateMachine = new StateMachine<PlayerController>();
 
+    public Texture2D wolfOverlay;
+    public Texture2D foxOverlay;
     public GameObject muskaloUI;
     public GameObject wolfUI;
     public GameObject foxUI;
