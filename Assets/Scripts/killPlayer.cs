@@ -15,8 +15,9 @@ public class killPlayer : MonoBehaviour {
 	    
 	}
 
-	void FixedUpdate ()
-	{
+	// Update is called once per frame
+	void Update () 
+    {
 		if (dead)
 		{
 			if (deathDelay < 0)
@@ -29,12 +30,6 @@ public class killPlayer : MonoBehaviour {
 				deathDelay -= Time.deltaTime;
 			}
 		}
-
-	}
-
-	// Update is called once per frame
-	void Update () 
-    {
 		if (respawn)
         {
 			respawnWait -= Time.unscaledDeltaTime;

@@ -1,0 +1,321 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 7570M (ID=0x6841)
+    Vendor:   ATI
+    VRAM:     1007 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.071 seconds
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 7.994965 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 214.
+Total: 7.962533 ms (FindLiveObjects: 0.019705 ms CreateObjectMapping: 0.016831 ms MarkObjects: 0.222504 ms  DeleteObjects: 6.041689 ms)
+
+Level_1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.494271 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10541.
+Total: 2.568652 ms (FindLiveObjects: 0.427356 ms CreateObjectMapping: 0.086620 ms MarkObjects: 1.220899 ms  DeleteObjects: 0.035305 ms)
+
+Muskalo
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spiritBound_Data\Managed\Boo.Lang.dll (this message is harmless)
+dist = (0.0, 3.0, -6.3)
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Muskalo
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Wolf
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Wolf
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Fox
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Fox
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Wolf
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Wolf
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Muskalo
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Invalid parameter because it was infinity or nan.
+ 
+(Filename:  Line: 251)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+duskalo score pickup
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+

@@ -1,0 +1,238 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 7570M (ID=0x6841)
+    Vendor:   ATI
+    VRAM:     1007 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.087 seconds
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 9.619411 ms
+System memory in use before: 73.1 MB.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 43.8 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 217.
+Total: 8.818478 ms (FindLiveObjects: 0.036536 ms CreateObjectMapping: 0.027094 ms MarkObjects: 0.250419 ms  DeleteObjects: 6.223551 ms)
+
+Level_1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+<DisplayLoadingScreen>c__Iterator0:MoveNext() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\LoadingScreen.cs:27)
+UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineMonoBehaviour.cs:62)
+LoadingScreen:Start() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\LoadingScreen.cs:16)
+ 
+(Filename: D Line: 0)
+
+UnloadTime: 0.484008 ms
+System memory in use before: 73.5 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 73.5 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10544.
+Total: 3.055534 ms (FindLiveObjects: 0.554208 ms CreateObjectMapping: 0.068968 ms MarkObjects: 1.319425 ms  DeleteObjects: 0.042694 ms)
+
+Muskalo
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Muskalo:OnEnter(PlayerController) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:36)
+StateMachine`1:ChangeState(State`1) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:71)
+StateMachine`1:Configure(PlayerController, State`1) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:46)
+PlayerController:Start() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:582)
+ 
+(Filename: D Line: 0)
+
+Platform assembly: D:\Student Data\Documents\GitHub\SpiritBound\Builds\spirit0-1_Data\Managed\Boo.Lang.dll (this message is harmless)
+dist = (0.0, 3.0, -6.3)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.MonoBehaviour:print(Object) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineMonoBehaviour.cs:108)
+CameraController:Start() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\CameraController.cs:246)
+ 
+(Filename: C Line: 0)
+
+duskalo score pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Muskalo:pickup(PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:130)
+Handler`1:methodCall(String, PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:137)
+State`1:messageCalls(T, String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:22)
+StateMachine`1:messageReciever(String, Boolean, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:92)
+StateMachine`1:messageReciever(String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:81)
+PlayerController:PickUp(String) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:671)
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+PickUpController:OnTriggerEnter(Collider) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PickUpController.cs:193)
+ 
+(Filename: D Line: 0)
+
+duskalo score pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Muskalo:pickup(PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:130)
+Handler`1:methodCall(String, PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:137)
+State`1:messageCalls(T, String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:22)
+StateMachine`1:messageReciever(String, Boolean, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:92)
+StateMachine`1:messageReciever(String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:81)
+PlayerController:PickUp(String) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:671)
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+PickUpController:OnTriggerEnter(Collider) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PickUpController.cs:193)
+ 
+(Filename: D Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+duskalo score pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Muskalo:pickup(PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:130)
+Handler`1:methodCall(String, PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:137)
+State`1:messageCalls(T, String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:22)
+StateMachine`1:messageReciever(String, Boolean, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:92)
+StateMachine`1:messageReciever(String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:81)
+PlayerController:PickUp(String) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:671)
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+PickUpController:OnTriggerEnter(Collider) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PickUpController.cs:193)
+ 
+(Filename: D Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+duskalo score pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Muskalo:pickup(PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:130)
+Handler`1:methodCall(String, PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:137)
+State`1:messageCalls(T, String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:22)
+StateMachine`1:messageReciever(String, Boolean, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:92)
+StateMachine`1:messageReciever(String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:81)
+PlayerController:PickUp(String) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:671)
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+PickUpController:OnTriggerEnter(Collider) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PickUpController.cs:193)
+ 
+(Filename: D Line: 0)
+
+duskalo score pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Muskalo:pickup(PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:130)
+Handler`1:methodCall(String, PlayerController, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:137)
+State`1:messageCalls(T, String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:22)
+StateMachine`1:messageReciever(String, Boolean, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:92)
+StateMachine`1:messageReciever(String, Object[]) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:81)
+PlayerController:PickUp(String) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PlayerController.cs:671)
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+PickUpController:OnTriggerEnter(Collider) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\PickUpController.cs:193)
+ 
+(Filename: D Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+Invalid parameter because it was infinity or nan.
+UnityEngine.Transform:INTERNAL_set_rotation(Quaternion&)
+UnityEngine.Transform:set_rotation(Quaternion) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:82)
+PathFollow:Process(CameraController) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\CameraController.cs:135)
+StateMachine`1:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:52)
+CameraController:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\CameraController.cs:252)
+
+[C:/BuildAgent/work/d63dfc6385190b60/Runtime/Dynamics/CapsuleCollider.cpp line 251] 
+(Filename: C Line: 0)
+
+Invalid parameter because it was infinity or nan.
+UnityEngine.Transform:INTERNAL_set_rotation(Quaternion&)
+UnityEngine.Transform:set_rotation(Quaternion) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:82)
+PathFollow:Process(CameraController) (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\CameraController.cs:135)
+StateMachine`1:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\StateMachine.cs:52)
+CameraController:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\CameraController.cs:252)
+
+[C:/BuildAgent/work/d63dfc6385190b60/Runtime/Dynamics/CapsuleCollider.cpp line 251] 
+(Filename: C Line: 0)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object, Object)
+UnityEngine.Transform:set_parent(Transform) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineTransform.cs:119)
+killPlayer:Update() (at D:\Student Data\Documents\GitHub\SpiritBound\Assets\Scripts\killPlayer.cs:42)
+ 
+(Filename: C Line: 0)
+
+PlayerConnection accepted from [144.13.176.41] handle:0x548
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish
+Waiting for finish

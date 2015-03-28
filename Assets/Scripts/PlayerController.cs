@@ -98,9 +98,24 @@ public class PlayerController : MonoBehaviour
                     owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
                     owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
                 }
-                if (owner.IsGrounded())
-                    owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
-                else
+				if (owner.IsGrounded())
+				{
+					Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+					if(vel.x != vel.x)
+					{
+						vel.x = 0;
+					}
+					if(vel.y != vel.y)
+					{
+						vel.y = 0;
+					}
+					if(vel.z != vel.z)
+					{
+						vel.z = 0;
+					}
+					owner.rigidbody.velocity = vel;
+				}
+				else
                 {
                     owner.AirControlMovement(args);
                 }
@@ -240,9 +255,24 @@ public class PlayerController : MonoBehaviour
                 owner.foxAnimator.SetFloat("Speed", movement.magnitude);
                 owner.foxAnimator.SetBool("Grounded", owner.IsGrounded());
             }
-            if (owner.IsGrounded())
-                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
-            else
+			if (owner.IsGrounded())
+			{
+				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+				if(vel.x != vel.x)
+				{
+					vel.x = 0;
+				}
+				if(vel.y != vel.y)
+				{
+					vel.y = 0;
+				}
+				if(vel.z != vel.z)
+				{
+					vel.z = 0;
+				}
+				owner.rigidbody.velocity = vel;
+			}
+			else
             {
                 owner.AirControlMovement(args);
             }
@@ -395,9 +425,24 @@ public class PlayerController : MonoBehaviour
                 owner.wolfAnimator.SetFloat("Speed", movement.magnitude);
                 owner.wolfAnimator.SetBool("Grounded", owner.IsGrounded());
             }
-            if (owner.IsGrounded())
-                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed * (1 / Time.timeScale), owner.rigidbody.velocity.y, (float)args[1] * owner.speed * (1 / Time.timeScale));
-            else
+			if (owner.IsGrounded())
+			{
+				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+				if(vel.x != vel.x)
+				{
+					vel.x = 0;
+				}
+				if(vel.y != vel.y)
+				{
+					vel.y = 0;
+				}
+				if(vel.z != vel.z)
+				{
+					vel.z = 0;
+				}
+				owner.rigidbody.velocity = vel;
+			}
+			else
             {
                 owner.AirControlMovement(args);
             }
@@ -487,7 +532,22 @@ public class PlayerController : MonoBehaviour
         void move(PlayerController owner, params object[] args)
         {
             if (owner.IsGrounded())
-                owner.rigidbody.velocity = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+			{
+				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+				if(vel.x != vel.x)
+				{
+					vel.x = 0;
+				}
+				if(vel.y != vel.y)
+				{
+					vel.y = 0;
+				}
+				if(vel.z != vel.z)
+				{
+					vel.z = 0;
+				}
+				owner.rigidbody.velocity = vel;
+			}
             else
             {
                 owner.AirControlMovement(args);
@@ -690,7 +750,32 @@ public class PlayerController : MonoBehaviour
         float airControl = 0.4f;
         float airSpeed = speed;
         Vector3 airMove = new Vector3((float)args[0] * airSpeed * (1 / Time.timeScale), rigidbody.velocity.y, (float)args[1] * airSpeed) * (1 / Time.timeScale);
-        rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
+        if(airMove.x != airMove.x)
+		{
+			airMove.x = 0;
+		}
+		if(airMove.y != airMove.y)
+		{
+			airMove.y = 0;
+		}
+		if(airMove.z != airMove.z)
+		{
+			airMove.z = 0;
+		}
+		Vector3 vel = rigidbody.velocity;
+		if(vel.x != vel.x)
+		{
+			vel.x = 0;
+		}
+		if(vel.y != vel.y)
+		{
+			vel.y = 0;
+		}
+		if(vel.z != vel.z)
+		{
+			vel.z = 0;
+		}
+		rigidbody.velocity = Vector3.Lerp(vel, airMove, Time.deltaTime * airControl);
     }
 
 	public void InteractComplete()

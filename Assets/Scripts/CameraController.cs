@@ -127,7 +127,19 @@ public class CameraController : MonoBehaviour {
 				owner.stateMachine.ChangeState(owner.states[1]);
 			}
 			float yRot = current.eulerAngles.y;
+			if(yRot != yRot)
+			{
+				yRot = 0;
+			}
 			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
+			if(targRot.x != targRot.x)
+			{
+				targRot.x = 0;
+			}
+			if(targRot.z != targRot.z)
+			{
+				targRot.z = 0;
+			}
 			owner.target.transform.rotation = Quaternion.Euler (targRot.x, yRot, targRot.z);
 			//cPos.y = owner.distFromPlayer.y;
 			//owner.transform.rotation = current;
@@ -246,7 +258,6 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		stateMachine.Update();
-		Debug.Log(stateMachine.getState());
 	}
 
 	void RemoveRotation (int y) {
