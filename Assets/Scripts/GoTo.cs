@@ -6,7 +6,7 @@ public class GoTo : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject CreditsPanel;
     public GameObject SettingsPanel;
-    //public GameObject AchievementsPanel;
+    public GameObject AchievementsPanel;
 
 	// Use this for initialization
 	void Start () 
@@ -33,7 +33,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(false);
-        //AchievementsPanel.SetActive(true);
+        AchievementsPanel.SetActive(true);
     }
 
     public void GoToTitlePage()
@@ -55,7 +55,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(true);
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(false);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(false);
     }
 
     public void GoToCredits()
@@ -63,7 +63,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(true);
         SettingsPanel.SetActive(false);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(false);
     }
 
     public void GoToSettings()
@@ -71,7 +71,7 @@ public class GoTo : MonoBehaviour
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(true);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(false);
     }
 
     public void Quit()

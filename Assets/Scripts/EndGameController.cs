@@ -12,6 +12,11 @@ public class EndGameController : MonoBehaviour {
             if (!done)
             {
                 done = true;
+                if (TimeAndScore.numberOfDeaths == 0)
+                {
+                    AchievementTracker.Level1CompleteNoDeaths = 1;
+                }
+                AchievementTracker.Level1Complete = 1;
                 TimeAndScore.GameOver = true;
                 TimeAndScore.win = true;
                 GameObject.Find("ScorePanel").SetActive(false);

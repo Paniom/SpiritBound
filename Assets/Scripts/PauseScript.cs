@@ -5,7 +5,7 @@ public class PauseScript : MonoBehaviour {
 
     public GameObject MainPausePanel;
     public GameObject PausedPanel;
-    //public GameObject AchievementsPanel;
+    public GameObject AchievementsPanel;
     public GameObject SettingsPanel;
     public GameObject areYouSure;
 
@@ -44,7 +44,7 @@ public class PauseScript : MonoBehaviour {
             MainPausePanel.SetActive(true);
             PausedPanel.SetActive(true);
             SettingsPanel.SetActive(false);
-            //AchievementsPanel.SetActive(false);
+            AchievementsPanel.SetActive(false);
             areYouSure.SetActive(false);
             Time.timeScale = 0;
         }
@@ -55,7 +55,7 @@ public class PauseScript : MonoBehaviour {
         MainPausePanel.SetActive(false);
         PausedPanel.SetActive(false);
         SettingsPanel.SetActive(false);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(false);
         areYouSure.SetActive(false);
         Time.timeScale = 1;
     }
@@ -75,7 +75,7 @@ public class PauseScript : MonoBehaviour {
     {
         SettingsPanel.SetActive(false);
         PausedPanel.SetActive(true);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(false);
         areYouSure.SetActive(false);
     }
 
@@ -83,15 +83,15 @@ public class PauseScript : MonoBehaviour {
     {
         SettingsPanel.SetActive(true);
         PausedPanel.SetActive(false);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(false);
         areYouSure.SetActive(false);
     }
 
     public void GoToAchievementsPage()
     {
-        SettingsPanel.SetActive(true);
+        SettingsPanel.SetActive(false);
         PausedPanel.SetActive(false);
-        //AchievementsPanel.SetActive(false);
+        AchievementsPanel.SetActive(true);
         areYouSure.SetActive(false);
     }
 }
