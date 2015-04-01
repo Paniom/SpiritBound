@@ -5,15 +5,15 @@ using System.Collections;
 public class AchievementChecker : MonoBehaviour 
 {
 
-    public GameObject Level1Complete;
-    public GameObject Level2Complete;
-    public GameObject Level3Complete;
-    public GameObject Level4Complete;
+    public GameObject Level_1Complete;
+    public GameObject Level_2Complete;
+    public GameObject Level_3Complete;
+    public GameObject Level_4Complete;
 
-    public GameObject Level1CompleteNoDeaths;
-    public GameObject Level2CompleteNoDeaths;
-    public GameObject Level3CompleteNoDeaths;
-    public GameObject Level4CompleteNoDeaths;
+    public GameObject Level_1CompleteNoDeaths;
+    public GameObject Level_2CompleteNoDeaths;
+    public GameObject Level_3CompleteNoDeaths;
+    public GameObject Level_4CompleteNoDeaths;
 
     public GameObject TutorialComplete;
 
@@ -34,76 +34,76 @@ public class AchievementChecker : MonoBehaviour
                 TutorialComplete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 1 complete
-        if (PlayerPrefs.HasKey("Level1Complete"))
+        //Check for Level_ 1 complete
+        if (PlayerPrefs.HasKey("Level_1Complete"))
         {
-            if (PlayerPrefs.GetInt("Level1Complete") == 1)
-                Level1Complete.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_1Complete") == 1)
+                Level_1Complete.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level1Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_1Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 2 complete
-        if (PlayerPrefs.HasKey("Level2Complete"))
+        //Check for Level_ 2 complete
+        if (PlayerPrefs.HasKey("Level_2Complete"))
         {
-            if (PlayerPrefs.GetInt("Level2Complete") == 1)
-                Level2Complete.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_2Complete") == 1)
+                Level_2Complete.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level2Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_2Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 3 complete
-        if (PlayerPrefs.HasKey("Level3Complete"))
+        //Check for Level_ 3 complete
+        if (PlayerPrefs.HasKey("Level_3Complete"))
         {
-            if (PlayerPrefs.GetInt("Level3Complete") == 1)
-                Level3Complete.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_3Complete") == 1)
+                Level_3Complete.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level3Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_3Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 4 complete
-        if (PlayerPrefs.HasKey("Level4Complete"))
+        //Check for Level_ 4 complete
+        if (PlayerPrefs.HasKey("Level_4Complete"))
         {
-            if (PlayerPrefs.GetInt("Level4Complete") == 1)
-                Level4Complete.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_4Complete") == 1)
+                Level_4Complete.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level4Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_4Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 1 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level1CompleteNoDeaths"))
+        //Check for Level_ 1 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_1CompleteNoDeaths"))
         {
-            if (PlayerPrefs.GetInt("Level1CompleteNoDeaths") == 1)
-                Level1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_1CompleteNoDeaths") == 1)
+                Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 2 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level2CompleteNoDeaths"))
+        //Check for Level_ 2 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_2CompleteNoDeaths"))
         {
-            if (PlayerPrefs.GetInt("Level2CompleteNoDeaths") == 1)
-                Level2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_2CompleteNoDeaths") == 1)
+                Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 3 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level3CompleteNoDeaths"))
+        //Check for Level_ 3 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_3CompleteNoDeaths"))
         {
-            if (PlayerPrefs.GetInt("Level3CompleteNoDeaths") == 1)
-                Level3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_3CompleteNoDeaths") == 1)
+                Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
 
-        //Check for level 4 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level4CompleteNoDeaths"))
+        //Check for Level_ 4 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_4CompleteNoDeaths"))
         {
-            if (PlayerPrefs.GetInt("Level4CompleteNoDeaths") == 1)
-                Level4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+            if (PlayerPrefs.GetInt("Level_4CompleteNoDeaths") == 1)
+                Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
             else
-                Level4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
     }
 }

@@ -142,7 +142,6 @@ public class PlayerController : MonoBehaviour
         {
             if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
-                Debug.Log("duskalo score pickup");
                 TimeAndScore.score += 10;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
@@ -211,7 +210,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.RotateRight();
+                owner.stateMachine.ChangeState(owner.states[0]);
             }
             if (owner.interacting)
             {
@@ -311,7 +310,6 @@ public class PlayerController : MonoBehaviour
         {
             if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
-                Debug.Log("fox score pickup");
                 TimeAndScore.score += 10;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
@@ -379,7 +377,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.RotateLeft();
+                owner.stateMachine.ChangeState(owner.states[0]);
             }
 
             if (owner.interacting)
@@ -476,7 +474,6 @@ public class PlayerController : MonoBehaviour
         {
             if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
-                Debug.Log("wolf score pickup");
                 TimeAndScore.score += 10;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
@@ -653,50 +650,17 @@ public class PlayerController : MonoBehaviour
      ******** New Calls ********
      ***************************/
 
-    void RotateRight()
+    void ChangeToWolf()
     {
-        if (targetUI.GetComponent<UIController>()._isLerping == false)
-            targetUI.SendMessage("ChangeState", 2, SendMessageOptions.DontRequireReceiver);
+        stateMachine.ChangeState(states[1]);
     }
-
-    void RotateLeft()
+    void ChangeToFox()
     {
-        if (targetUI.GetComponent<UIController>()._isLerping == false)
-            targetUI.SendMessage("ChangeState", 1, SendMessageOptions.DontRequireReceiver);
+        stateMachine.ChangeState(states[2]);
     }
-
-    void ChangeRight()
+    void ChangeToMuskalo()
     {
-		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
-        if (stateMachine.getState() == "Wolf")
-        {
-            stateMachine.ChangeState(states[2]);
-        }
-        else if (stateMachine.getState() == "Fox")
-        {
-            stateMachine.ChangeState(states[0]);
-        }
-        else if (stateMachine.getState() == "Muskalo")
-        {
-            stateMachine.ChangeState(states[1]);
-        }
-    }
-
-    void ChangeLeft()
-    {
-		gameObject.SendMessage("rotateFinished",SendMessageOptions.DontRequireReceiver);
-        if (stateMachine.getState() == "Wolf")
-        {
-            stateMachine.ChangeState(states[0]);
-        }
-        else if (stateMachine.getState() == "Fox")
-        {
-            stateMachine.ChangeState(states[1]);
-        }
-        else if (stateMachine.getState() == "Muskalo")
-        {
-            stateMachine.ChangeState(states[2]);
-        }
+        stateMachine.ChangeState(states[0]);
     }
 
     void Move(Vector2 direction)

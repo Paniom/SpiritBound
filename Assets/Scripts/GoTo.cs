@@ -23,8 +23,8 @@ public class GoTo : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
-        LoadingScreen.levelToLoad = "Level_1";
-        Application.LoadLevel("LoadingScreen");
+        Application.LoadLevel("LevelSelect");
+        EndGameController.done = false;
     }
 
     public void GoToAchievementsPage()
@@ -34,19 +34,22 @@ public class GoTo : MonoBehaviour
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         AchievementsPanel.SetActive(true);
+        EndGameController.done = false;
     }
 
     public void GoToTitlePage()
     {
         Time.timeScale = 1;
         Application.LoadLevel("StartScreen");
+        EndGameController.done = false;
     }
 
-    public void GoToNextLevel()
+    public void GoToLevel(string nameOfLevel)
     {
         Time.timeScale = 1;
-        LoadingScreen.levelToLoad = "Level_1";
+        LoadingScreen.levelToLoad = nameOfLevel;
         Application.LoadLevel("LoadingScreen");
+        EndGameController.done = false;
     }
 
     public void GoToMainMenu()
@@ -56,6 +59,7 @@ public class GoTo : MonoBehaviour
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         AchievementsPanel.SetActive(false);
+        EndGameController.done = false;
     }
 
     public void GoToCredits()
@@ -64,6 +68,7 @@ public class GoTo : MonoBehaviour
         CreditsPanel.SetActive(true);
         SettingsPanel.SetActive(false);
         AchievementsPanel.SetActive(false);
+        EndGameController.done = false;
     }
 
     public void GoToSettings()
@@ -72,6 +77,7 @@ public class GoTo : MonoBehaviour
         CreditsPanel.SetActive(false);
         SettingsPanel.SetActive(true);
         AchievementsPanel.SetActive(false);
+        EndGameController.done = false;
     }
 
     public void Quit()

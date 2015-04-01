@@ -3,16 +3,15 @@ using System.Collections;
 
 public class AchievementTracker : MonoBehaviour
 {
+    public static int Level_1Complete = 0;
+    public static int Level_2Complete = 0;
+    public static int Level_3Complete = 0;
+    public static int Level_4Complete = 0;
 
-    public static int Level1Complete = 0;
-    public static int Level2Complete = 0;
-    public static int Level3Complete = 0;
-    public static int Level4Complete = 0;
-
-    public static int Level1CompleteNoDeaths = 0;
-    public static int Level2CompleteNoDeaths = 0;
-    public static int Level3CompleteNoDeaths = 0;
-    public static int Level4CompleteNoDeaths = 0;
+    public static int Level_1CompleteNoDeaths = 0;
+    public static int Level_2CompleteNoDeaths = 0;
+    public static int Level_3CompleteNoDeaths = 0;
+    public static int Level_4CompleteNoDeaths = 0;
 
     public static int TutorialComplete = 0;
 
@@ -21,18 +20,110 @@ public class AchievementTracker : MonoBehaviour
     {
         SetAchievements();
     }
-
     public void ClearStats()
     {
         PlayerPrefs.SetInt("TutorialComplete", 0);
-        PlayerPrefs.SetInt("Level1Complete", 0);
-        PlayerPrefs.SetInt("Level2Complete", 0);
-        PlayerPrefs.SetInt("Level3Complete", 0);
-        PlayerPrefs.SetInt("Level4Complete", 0);
-        PlayerPrefs.SetInt("Level1CompleteNoDeaths", 0);
-        PlayerPrefs.SetInt("Level2CompleteNoDeaths", 0);
-        PlayerPrefs.SetInt("Level3CompleteNoDeaths", 0);
-        PlayerPrefs.SetInt("Level4CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_1Complete", 0);
+        PlayerPrefs.SetInt("Level_2Complete", 0);
+        PlayerPrefs.SetInt("Level_3Complete", 0);
+        PlayerPrefs.SetInt("Level_4Complete", 0);
+        PlayerPrefs.SetInt("Level_1CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_2CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_3CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_4CompleteNoDeaths", 0);
+    }
+
+    public static void updateAchievements()
+    {
+        //Check for tutorial complete
+        if (PlayerPrefs.HasKey("TutorialComplete"))
+        {
+            TutorialComplete = PlayerPrefs.GetInt("TutorialComplete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("TutorialComplete", TutorialComplete);
+        }
+
+        //Check for Level_ 1 complete
+        if (PlayerPrefs.HasKey("Level_1Complete"))
+        {
+            Level_1Complete = PlayerPrefs.GetInt("Level_1Complete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_1Complete", Level_1Complete);
+        }
+
+        //Check for Level_ 2 complete
+        if (PlayerPrefs.HasKey("Level_2Complete"))
+        {
+            Level_2Complete = PlayerPrefs.GetInt("Level_2Complete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_2Complete", Level_2Complete);
+        }
+
+        //Check for Level_ 3 complete
+        if (PlayerPrefs.HasKey("Level_3Complete"))
+        {
+            Level_3Complete = PlayerPrefs.GetInt("Level_3Complete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_3Complete", Level_3Complete);
+        }
+
+        //Check for Level_ 4 complete
+        if (PlayerPrefs.HasKey("Level_4Complete"))
+        {
+            Level_4Complete = PlayerPrefs.GetInt("Level_4Complete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_4Complete", Level_4Complete);
+        }
+
+        //Check for Level_ 1 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_1CompleteNoDeaths"))
+        {
+            Level_1CompleteNoDeaths = PlayerPrefs.GetInt("Level_1CompleteNoDeaths");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_1CompleteNoDeaths", Level_1CompleteNoDeaths);
+        }
+
+        //Check for Level_ 2 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_2CompleteNoDeaths"))
+        {
+            Level_2CompleteNoDeaths = PlayerPrefs.GetInt("Level_2CompleteNoDeaths");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_2CompleteNoDeaths", Level_2CompleteNoDeaths);
+        }
+
+        //Check for Level_ 3 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_3CompleteNoDeaths"))
+        {
+            Level_3CompleteNoDeaths = PlayerPrefs.GetInt("Level_3CompleteNoDeaths");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_3CompleteNoDeaths", Level_3CompleteNoDeaths);
+        }
+
+        //Check for Level_ 4 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_4CompleteNoDeaths"))
+        {
+            Level_4CompleteNoDeaths = PlayerPrefs.GetInt("Level_4CompleteNoDeaths");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_4CompleteNoDeaths", Level_4CompleteNoDeaths);
+        }
     }
 
 
@@ -48,84 +139,84 @@ public class AchievementTracker : MonoBehaviour
             PlayerPrefs.SetInt("TutorialComplete", TutorialComplete);
         }
 
-        //Check for level 1 complete
-        if (PlayerPrefs.HasKey("Level1Complete"))
+        //Check for Level_ 1 complete
+        if (PlayerPrefs.HasKey("Level_1Complete"))
         {
-            Level1Complete = PlayerPrefs.GetInt("Level1Complete");
+            Level_1Complete = PlayerPrefs.GetInt("Level_1Complete");
         }
         else
         {
-            PlayerPrefs.SetInt("Level1Complete", Level1Complete);
+            PlayerPrefs.SetInt("Level_1Complete", Level_1Complete);
         }
 
-        //Check for level 2 complete
-        if (PlayerPrefs.HasKey("Level2Complete"))
+        //Check for Level_ 2 complete
+        if (PlayerPrefs.HasKey("Level_2Complete"))
         {
-            Level2Complete = PlayerPrefs.GetInt("Level2Complete");
+            Level_2Complete = PlayerPrefs.GetInt("Level_2Complete");
         }
         else
         {
-            PlayerPrefs.SetInt("Level2Complete", Level2Complete);
+            PlayerPrefs.SetInt("Level_2Complete", Level_2Complete);
         }
 
-        //Check for level 3 complete
-        if (PlayerPrefs.HasKey("Level3Complete"))
+        //Check for Level_ 3 complete
+        if (PlayerPrefs.HasKey("Level_3Complete"))
         {
-            Level3Complete = PlayerPrefs.GetInt("Level3Complete");
+            Level_3Complete = PlayerPrefs.GetInt("Level_3Complete");
         }
         else
         {
-            PlayerPrefs.SetInt("Level3Complete", Level3Complete);
+            PlayerPrefs.SetInt("Level_3Complete", Level_3Complete);
         }
 
-        //Check for level 4 complete
-        if (PlayerPrefs.HasKey("Level4Complete"))
+        //Check for Level_ 4 complete
+        if (PlayerPrefs.HasKey("Level_4Complete"))
         {
-            Level4Complete = PlayerPrefs.GetInt("Level4Complete");
+            Level_4Complete = PlayerPrefs.GetInt("Level_4Complete");
         }
         else
         {
-            PlayerPrefs.SetInt("Level4Complete", Level4Complete);
+            PlayerPrefs.SetInt("Level_4Complete", Level_4Complete);
         }
 
-        //Check for level 1 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level1CompleteNoDeaths"))
+        //Check for Level_ 1 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_1CompleteNoDeaths"))
         {
-            Level1CompleteNoDeaths = PlayerPrefs.GetInt("Level1CompleteNoDeaths");
+            Level_1CompleteNoDeaths = PlayerPrefs.GetInt("Level_1CompleteNoDeaths");
         }
         else
         {
-            PlayerPrefs.SetInt("Level1CompleteNoDeaths", Level1CompleteNoDeaths);
+            PlayerPrefs.SetInt("Level_1CompleteNoDeaths", Level_1CompleteNoDeaths);
         }
 
-        //Check for level 2 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level2CompleteNoDeaths"))
+        //Check for Level_ 2 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_2CompleteNoDeaths"))
         {
-            Level2CompleteNoDeaths = PlayerPrefs.GetInt("Level2CompleteNoDeaths");
+            Level_2CompleteNoDeaths = PlayerPrefs.GetInt("Level_2CompleteNoDeaths");
         }
         else
         {
-            PlayerPrefs.SetInt("Level2CompleteNoDeaths", Level2CompleteNoDeaths);
+            PlayerPrefs.SetInt("Level_2CompleteNoDeaths", Level_2CompleteNoDeaths);
         }
 
-        //Check for level 3 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level3CompleteNoDeaths"))
+        //Check for Level_ 3 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_3CompleteNoDeaths"))
         {
-            Level3CompleteNoDeaths = PlayerPrefs.GetInt("Level3CompleteNoDeaths");
+            Level_3CompleteNoDeaths = PlayerPrefs.GetInt("Level_3CompleteNoDeaths");
         }
         else
         {
-            PlayerPrefs.SetInt("Level3CompleteNoDeaths", Level3CompleteNoDeaths);
+            PlayerPrefs.SetInt("Level_3CompleteNoDeaths", Level_3CompleteNoDeaths);
         }
 
-        //Check for level 4 CompleteNoDeaths
-        if (PlayerPrefs.HasKey("Level4CompleteNoDeaths"))
+        //Check for Level_ 4 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_4CompleteNoDeaths"))
         {
-            Level4CompleteNoDeaths = PlayerPrefs.GetInt("Level4CompleteNoDeaths");
+            Level_4CompleteNoDeaths = PlayerPrefs.GetInt("Level_4CompleteNoDeaths");
         }
         else
         {
-            PlayerPrefs.SetInt("Level4CompleteNoDeaths", Level4CompleteNoDeaths);
+            PlayerPrefs.SetInt("Level_4CompleteNoDeaths", Level_4CompleteNoDeaths);
         }
     }
 }

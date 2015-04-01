@@ -136,10 +136,10 @@ public class TimeAndScore : MonoBehaviour
                 continueButton.SetActive(false);
             }
 
-            finalScoreText.GetComponent<Text>().text = "Score : " + (int)finalScore;
+            finalScoreText.GetComponent<Text>().text = ((int)finalScore).ToString();
             finalDeaths.GetComponent<Text>().text = "Number of Deaths : " + numberOfDeaths;
-            finalGemText.GetComponent<Text>().text = "Gems : " + gems;
-            finalCoinText.GetComponent<Text>().text = "Coins : " + coins;
+            finalGemText.GetComponent<Text>().text = "Gems : " + gems + "/" + TotalGems;
+            finalCoinText.GetComponent<Text>().text = "Coins : " + coins + "/" + TotalCoins;
             finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
             if (TimeTaken <= timeRemaining && doneCalculatingScore)
             {

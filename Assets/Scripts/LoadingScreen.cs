@@ -24,7 +24,6 @@ public class LoadingScreen : MonoBehaviour {
 
     IEnumerator DisplayLoadingScreen(string level)
     {
-        Debug.Log(levelToLoad);
         ProgressBar.GetComponent<Image>().fillAmount = loadProgress;
 
         AsyncOperation async = Application.LoadLevelAsync(level);
