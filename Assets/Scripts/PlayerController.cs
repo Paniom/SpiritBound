@@ -650,15 +650,15 @@ public class PlayerController : MonoBehaviour
      ******** New Calls ********
      ***************************/
 
-    void ChangeToWolf()
+    public void ChangeToWolf()
     {
         stateMachine.ChangeState(states[1]);
     }
-    void ChangeToFox()
+    public void ChangeToFox()
     {
         stateMachine.ChangeState(states[2]);
     }
-    void ChangeToMuskalo()
+    public void ChangeToMuskalo()
     {
         stateMachine.ChangeState(states[0]);
     }

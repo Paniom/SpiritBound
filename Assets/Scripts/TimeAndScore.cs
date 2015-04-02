@@ -68,7 +68,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 300;
+        timeRemaining = 30;
         if (timerSlider != null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
 	}
@@ -124,6 +124,12 @@ public class TimeAndScore : MonoBehaviour
         }
         else
         {
+            GameObject.Find("ScorePanel").SetActive(false);
+            GameObject.Find("UIParent").SetActive(false);
+            GameObject.Find("PowerBar").SetActive(false);
+            GameObject.Find("TimeRemainingSlider").SetActive(false);
+            GameObject.Find("PauseButtonBack").SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed = 0;
             gameOverPanel.SetActive(true);
             if (win)
             {
@@ -158,7 +164,7 @@ public class TimeAndScore : MonoBehaviour
 
             if (finalScore <= score)
             {
-                finalScore += Time.deltaTime *20;
+                finalScore += Time.deltaTime *100;
                 if (!audio.isPlaying)
                 {
                     audio.clip = scoreTick;
