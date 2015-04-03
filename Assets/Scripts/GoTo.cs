@@ -80,6 +80,11 @@ public class GoTo : MonoBehaviour
         EndGameController.done = false;
     }
 
+    public void RestartLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
     public void Quit()
     {
         Application.Quit();

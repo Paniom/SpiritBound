@@ -52,7 +52,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 300;
+        timeRemaining = 60;
         if(timerSlider!= null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
     }
@@ -68,7 +68,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 30;
+        timeRemaining = 60;
         if (timerSlider != null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
 	}
@@ -87,7 +87,7 @@ public class TimeAndScore : MonoBehaviour
         AudioSource audio = GetComponent<AudioSource>();
         if (!GameOver)
         {
-            if (Input.GetKey(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.P) && Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.Q))
             {
                 win = true;
                 GameOver = true;
@@ -124,11 +124,16 @@ public class TimeAndScore : MonoBehaviour
         }
         else
         {
-            GameObject.Find("ScorePanel").SetActive(false);
-            GameObject.Find("UIParent").SetActive(false);
-            GameObject.Find("PowerBar").SetActive(false);
-            GameObject.Find("TimeRemainingSlider").SetActive(false);
-            GameObject.Find("PauseButtonBack").SetActive(false);
+            if(GameObject.Find("ScorePanel"))
+                GameObject.Find("ScorePanel").SetActive(false);
+            if (GameObject.Find("UIParent"))
+                GameObject.Find("UIParent").SetActive(false);
+            if (GameObject.Find("PowerBar"))
+                GameObject.Find("PowerBar").SetActive(false);
+            if (GameObject.Find("TimeRemainingSlider"))
+                GameObject.Find("TimeRemainingSlider").SetActive(false);
+            if (GameObject.Find("PauseButtonBack"))
+                GameObject.Find("PauseButtonBack").SetActive(false);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed = 0;
             gameOverPanel.SetActive(true);
             if (win)
@@ -180,6 +185,11 @@ public class TimeAndScore : MonoBehaviour
         }
         if (doneCalculatingScore && doneCalculatingTime)
         {
+            finalScoreText.GetComponent<Text>().text = ((int)finalScore).ToString();
+            finalDeaths.GetComponent<Text>().text = "Number of Deaths : " + numberOfDeaths;
+            finalGemText.GetComponent<Text>().text = "Gems : " + gems + "/" + TotalGems;
+            finalCoinText.GetComponent<Text>().text = "Coins : " + coins + "/" + TotalCoins;
+            finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
             this.enabled = false;
         }
         
