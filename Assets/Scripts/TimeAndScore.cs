@@ -52,7 +52,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 60;
+        timeRemaining = 120;
         if(timerSlider!= null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
     }
@@ -68,7 +68,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 60;
+        timeRemaining = 120;
         if (timerSlider != null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
 	}

@@ -21,9 +21,6 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
-            owner.wallMaterial.dynamicFriction = 1;
-            owner.wallMaterial.staticFriction = 0;
-            owner.wallMaterial.frictionCombine = PhysicMaterialCombine.Minimum;
             owner.fox.SetActive(false);
             owner.wolf.SetActive(false);
             owner.muskalo.SetActive(true);
@@ -103,7 +100,6 @@ public class PlayerController : MonoBehaviour
                 }
 				if (owner.IsGrounded())
 				{
-                    owner.wallMaterial.bounceCombine = PhysicMaterialCombine.Minimum;
 					Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
 					if(vel.x != vel.x)
 					{
@@ -121,7 +117,6 @@ public class PlayerController : MonoBehaviour
 				}
 				else
                 {
-                    owner.wallMaterial.bounceCombine = PhysicMaterialCombine.Maximum;
                     owner.AirControlMovement(args);
                 }
             }
@@ -190,9 +185,6 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
-            owner.wallMaterial.dynamicFriction = 1;
-            owner.wallMaterial.staticFriction = 0;
-            owner.wallMaterial.frictionCombine = PhysicMaterialCombine.Maximum;
             Camera.main.GetComponent<ScreenOverlay>().texture = owner.foxOverlay;
             owner.fox.SetActive(true);
             owner.wolf.SetActive(false);
@@ -264,7 +256,6 @@ public class PlayerController : MonoBehaviour
             }
 			if (owner.IsGrounded())
 			{
-                owner.wallMaterial.bounceCombine = PhysicMaterialCombine.Minimum;
 				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
 				if(vel.x != vel.x)
 				{
@@ -282,7 +273,6 @@ public class PlayerController : MonoBehaviour
 			}
 			else
             {
-                owner.wallMaterial.bounceCombine = PhysicMaterialCombine.Maximum;
                 owner.AirControlMovement(args);
             }
         }
@@ -362,9 +352,6 @@ public class PlayerController : MonoBehaviour
 
         public override void OnEnter(PlayerController owner)
         {
-            owner.wallMaterial.dynamicFriction = 0;
-            owner.wallMaterial.staticFriction = 0;
-            owner.wallMaterial.frictionCombine = PhysicMaterialCombine.Minimum;
             Camera.main.GetComponent<ScreenOverlay>().texture = owner.wolfOverlay;
             owner.fox.SetActive(false);
             owner.wolf.SetActive(true);
@@ -438,7 +425,6 @@ public class PlayerController : MonoBehaviour
             }
 			if (owner.IsGrounded())
 			{
-                owner.wallMaterial.bounceCombine = PhysicMaterialCombine.Minimum;
 				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
 				if(vel.x != vel.x)
 				{
@@ -456,7 +442,6 @@ public class PlayerController : MonoBehaviour
 			}
 			else
             {
-                owner.wallMaterial.bounceCombine = PhysicMaterialCombine.Maximum;
                 owner.AirControlMovement(args);
             }
         }
@@ -644,8 +629,6 @@ public class PlayerController : MonoBehaviour
     public Animator duskaloAnimator;
     public Animator foxAnimator;
     public Animator wolfAnimator;
-
-    public PhysicMaterial wallMaterial;
 
     //Vector3 startGravity = new Vector3(0,-10f,0); //Variable to tell what the starting gravity was
 
