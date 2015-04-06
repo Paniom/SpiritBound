@@ -1,13 +1,31 @@
 fileFormatVersion: 2
-guid: 9cb0fce85932fe9468abf12ff8c75c88
+guid: ef722c416d1271d42b3515fe1cc21493
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pPlane2
+    100004: pPlane3
+    100006: pPlane4
+    100008: pPlane5
+    100010: pPlane6
+    100012: transform44
+    100014: transform45
+    100016: transform46
+    100018: transform47
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pPlane2
+    400002: pPlane2
+    400004: pPlane3
+    400006: pPlane4
+    400008: pPlane5
+    400010: pPlane6
+    400012: transform44
+    400014: transform45
+    400016: transform46
+    400018: transform47
+    2300000: pPlane6
+    3300000: pPlane6
+    4300000: pPlane6
     9500000: //RootNode
   materials:
     importMaterials: 1
