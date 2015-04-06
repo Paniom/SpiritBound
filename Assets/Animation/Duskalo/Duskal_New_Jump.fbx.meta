@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b30f16161eb830e4880c3ff2cc6a1db3
+guid: 5773f244b2566fc4ca49f43cfa35eb5d
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -96,7 +96,7 @@ ModelImporter:
     400088: joint35
     400090: Root_Dusk_Joint
     4300000: Duskalo_Mesh
-    7400000: Duskal_Jump
+    7400000: Duskalo_Jump
     9500000: //RootNode
     13700000: Duskalo_Mesh
   materials:
@@ -116,9 +116,9 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Duskal_Jump
+      name: Duskalo_Jump
       takeName: Take 001
-      firstFrame: 12
+      firstFrame: 1
       lastFrame: 53
       wrapMode: 0
       orientationOffsetY: 0
@@ -272,7 +272,7 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: Root_Dusk_Joint
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5d683cbe5c8089c43b26c181de10a8c0,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4b8ebfaffb163d049ae0dfbb37bb5724,
     type: 3}
   animationType: 2
   additionalBone: 0
