@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d078299852cd5d14d96092474e2f40f1
+guid: f71f3781c0bac444baa9f302b74e9832
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -119,7 +119,7 @@ ModelImporter:
       name: Duskalo_Idle
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 120
+      lastFrame: 121
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -272,7 +272,7 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: Root_Dusk_Joint
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5d683cbe5c8089c43b26c181de10a8c0,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4b8ebfaffb163d049ae0dfbb37bb5724,
     type: 3}
   animationType: 2
   additionalBone: 0
