@@ -564,10 +564,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+	public class Global : State<PlayerController>
+	{
+		public Global()
+		{
+
+		}
+
+		public override void Process (PlayerController owner)
+		{
+			float s = owner.transform.rotation.eulerAngles.y;
+			if(s!= s)
+			{
+				s = 0;
+			}
+
+			float e;
+			if(owner.rigidbody.velocity.sqrMagnitude <= 5)
+			{
+				e = owner.setRotation;
+			}
+			else 
+			{
+				e= Mathf.Atan2(owner.rigidbody.velocity.x,owner.rigidbody.velocity.z);
+			}
+			float[] vals = owner.getRotationAngles(s,e);
+			float valy = (vals[1]-vals[0])/3+vals[0];
+			owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,valy,owner.transform.rotation.eulerAngles.z);
+		}
+	}
+
     public State<PlayerController>[] states = new State<PlayerController>[] {	new Muskalo(),
 																				new Wolf(),
                                                                                 new Fox(),
-                                                                                new Standby()};
+                                                                                new Standby(),
+																				new Global()};
     public StateMachine<PlayerController> stateMachine = new StateMachine<PlayerController>();
 
     public Texture2D wolfOverlay;
@@ -584,6 +615,7 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject followingCamera;
 	//private float camDirection = 0;
+	private float offset = 30;
 	private float setRotation = 0;
 	public bool useRotation = false;
 	public void newRotation(float r) {
@@ -637,6 +669,7 @@ public class PlayerController : MonoBehaviour
     {
         distToGround = collider.bounds.extents.y; // set distance from player collider to ground
         stateMachine.Configure(this, states[0]);
+		stateMachine.ChangeGlobalState(states[4]);
     }
 
     // Update is called once per frame
@@ -751,4 +784,14 @@ public class PlayerController : MonoBehaviour
     {
         stateMachine.ChangeState(states[3]);
     }
+
+	public float[] getRotationAngles(float start, float end) {
+		if(Mathf.Abs(start-end) <= 180) {
+			return new float[] {start,end};
+		}
+		if(start < 180) {
+			return new float[] {start,end-360};
+		}
+		return new float[] {start,end+360};
+	}
 }

@@ -10,6 +10,12 @@ public class killPlayer : MonoBehaviour {
 	bool respawn = false;
 	float respawnWait = 1.0f;
 	Collider other;
+	public enum DeathType:int { Pit = 0, Geyser = 1, Boulder = 2, Other = 3 }; 
+	public DeathType deathType = DeathType.Other;
+	private string[] DeathMessage = new string[]{ 	"Your body has fallen but your spirit lives on",
+													"Your body has been incinerated but your spirit lives on",
+													"Your body has been toppled but your spirit lives on",
+													"Needs to be defined but your spirit lives on" };
 	// Use this for initialization
 	void Start () {
 	    
@@ -38,13 +44,7 @@ public class killPlayer : MonoBehaviour {
 				respawnWait = 1.0f;
 				respawn = false;
 				Time.timeScale = 1;
-                GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
-                deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
-                deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-                deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
-                deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-                Destroy(deathtext, 1.0f);
-				other.GetComponent<PlayerController>().newRotation(lastSpawn.GetComponent<SetLastSpawn>().playerRot);
+                other.GetComponent<PlayerController>().newRotation(lastSpawn.GetComponent<SetLastSpawn>().playerRot);
 				other.transform.position = lastSpawn.transform.position;
 			}
 		}
@@ -69,8 +69,14 @@ public class killPlayer : MonoBehaviour {
                 TimeAndScore.numberOfDeaths++;
                 TimeAndScore.timeRemaining = SetLastSpawn.checkpointTime;
 				Time.timeScale = 0;
+				GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
+				deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
+				deathtext.GetComponentInChildren<Text>().text = DeathMessage[(int)deathType];
+				deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+				deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+				deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+				Destroy(deathtext, 1.0f);
 				respawn = true;
-                
             }
         }
     }

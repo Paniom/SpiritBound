@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class InputController : MonoBehaviour {
@@ -147,7 +148,7 @@ public class InputController : MonoBehaviour {
 		}
 		if(inputDevice == InputType.Mobile) {
 			for(int i = 0; i < Input.touchCount; i++){
-				if(Input.touches[i].fingerId == slideID){
+				if(Input.touches[i].fingerId == slideID ){
 					if(Input.touches[i].phase == TouchPhase.Moved || Input.touches[i].phase == TouchPhase.Stationary){
 						slideDirection = Input.touches[i].position - slideStartPosition;
 						if(start){
@@ -159,7 +160,7 @@ public class InputController : MonoBehaviour {
 					}
 					if(Input.touches[i].phase == TouchPhase.Ended || Input.touches[i].phase == TouchPhase.Canceled){
 						slideID = -1;
-						if(slideDirection.sqrMagnitude > 1000){
+						if(slideDirection.sqrMagnitude > 5000){
 							setSwipe(slideDirection);
 						}
 						else {
@@ -174,14 +175,14 @@ public class InputController : MonoBehaviour {
 					}
 					if(slideTime >= endTime){
 						slideID = -1;
-						if(slideDirection.sqrMagnitude > 1000){
+						if(slideDirection.sqrMagnitude > 5000){
 							setSwipe(slideDirection);
 						}
 					}
 				}
-				else if(slideID == -1){
-					if(Input.touches[i].phase == TouchPhase.Began){
-						if(Input.touches[i].position.x > Screen.width/2){
+				else if(slideID == -1 && Input.touches[i].fingerId != joystickID){
+					if(Input.touches[i].position.x > Screen.width/2){
+						if(Input.touches[i].phase == TouchPhase.Began || Input.touches[i].phase == TouchPhase.Moved || Input.touches[i].phase == TouchPhase.Stationary){
 							slideID = Input.touches[i].fingerId;
 							slideStartPosition = Input.touches[i].position;
 							start = true;
@@ -251,13 +252,28 @@ public class InputController : MonoBehaviour {
 	void setSwipe(Vector2 input) {
 		float x = input.x;
 		float y = input.y;
+
 		if (canRotate && !interactActive) {
-			if(Mathf.Abs(x) > y && Mathf.Abs(x) > 100) {
+			if(Mathf.Abs(x) > Mathf.Abs(y) && Mathf.Abs(x) > 100) {
 				if(x > 0) {
+					GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
+					deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
+					deathtext.GetComponentInChildren<Text>().text = "RotateRight";
+					deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+					deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+					deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+					Destroy(deathtext, 1.0f);
 					target.SendMessage("RotateRight", SendMessageOptions.DontRequireReceiver);
 					canRotate = false;
 				}
 				else {
+					GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
+					deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
+					deathtext.GetComponentInChildren<Text>().text = "RotateLeft";
+					deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+					deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+					deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+					Destroy(deathtext, 1.0f);
 					target.SendMessage("RotateLeft", SendMessageOptions.DontRequireReceiver);
 					canRotate = false;
 				}
@@ -265,6 +281,13 @@ public class InputController : MonoBehaviour {
 		}
 		else if(y > 100) {
 			if(!interactActive && interactTime <= 0) {
+				GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
+				deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
+				deathtext.GetComponentInChildren<Text>().text = "Interact";
+				deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+				deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+				deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+				Destroy(deathtext, 1.0f);
 				target.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
 				interactActive = true;
 			}

@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour {
 			if(count == 1)
 			{
 				Debug.Log("E");
-				owner.stateMachine.ChangeState(owner.states[1]);
+				owner.stateMachine.ChangeState(owner.states[2]);
 			}
 			cPos.y = owner.distFromPlayer.y;
 			float yRot = current.eulerAngles.y;
@@ -124,7 +124,7 @@ public class CameraController : MonoBehaviour {
 			count = Mathf.Clamp01(count+Time.deltaTime*totalTimeInv);
 			if(count == 1)
 			{
-				owner.stateMachine.ChangeState(owner.states[1]);
+				owner.stateMachine.ChangeState(owner.states[2]);
 			}
 			float yRot = current.eulerAngles.y;
 			if(yRot != yRot)
@@ -175,7 +175,7 @@ public class CameraController : MonoBehaviour {
 		float sway = 0;
 	    
 	 
-	    float Stiffness = 1000.0f;
+	    float Stiffness = 10000.0f;
 	    float Damping = 200.0f;
 	    float Mass = 50.0f;
 	    Vector3 DesiredOffset = new Vector3(0.0f, 3.5f, -4.0f);
@@ -191,6 +191,9 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnEnter (CameraController owner)
 		{
+			Stiffness = owner.stiffness;
+			Damping = owner.damping;
+			Mass = owner.mass;
 			owner.stateMachine.setState("Swaying");
 			float e = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
 			float yRot = e;
@@ -211,6 +214,16 @@ public class CameraController : MonoBehaviour {
 	        cameraVelocity += acceleration * Time.deltaTime;
 	 
 	        owner.SpringCamera.transform.position += cameraVelocity * Time.deltaTime;
+			Vector3 s = owner.SpringCamera.transform.rotation.eulerAngles;
+			owner.SpringCamera.transform.LookAt(owner.target.position);
+			Vector3 e = owner.SpringCamera.transform.rotation.eulerAngles;
+			float[] vals = owner.getRotationAngles(s.y,e.y);
+			e = (e-s)/5+s;
+			float valy = (vals[1]-vals[0])/10+vals[0];
+			e.x = s.x;
+			e.y = valy;
+			//owner.SpringCamera.transform.rotation = Quaternion.Euler(e);
+			Vector3 rot = owner.target.rotation.eulerAngles;
 	 
 	        Matrix4x4 CamMat = new Matrix4x4();
 	        CamMat.SetRow(0, new Vector4(-owner.target.forward.x, -owner.target.forward.y, -owner.target.forward.z));
@@ -233,6 +246,9 @@ public class CameraController : MonoBehaviour {
 
 	public Transform target;
 	private Camera SpringCamera;
+	public float stiffness = 1000f;
+	public float damping = 200f;
+	public float mass = 50f;
 	private List<int> yRotations = new List<int>();
 	private List<Vector2> dimensions = new List<Vector2>();
 	private int activeRotation = 0;
@@ -252,7 +268,7 @@ public class CameraController : MonoBehaviour {
 		yRotations.Add(0);
 		distFromPlayer = transform.position-target.position;
 		print("dist = " + distFromPlayer.ToString());
-		stateMachine.Configure(this, states[1]);
+		stateMachine.Configure(this, states[2]);
 	}
 	
 	// Update is called once per frame
@@ -266,7 +282,7 @@ public class CameraController : MonoBehaviour {
 		if(activeRotation == y)
 		{
 			if(rotating) {
-				stateMachine.ChangeState(states[1]);
+				stateMachine.ChangeState(states[2]);
 			}
 			stateMachine.ChangeState(states[0]);
 		}
@@ -279,7 +295,7 @@ public class CameraController : MonoBehaviour {
 		yRotations.Add(y);
 		//dimensions.Add(new Vector2(x,z));
 		if(rotating) {
-			stateMachine.ChangeState(states[1]);
+			stateMachine.ChangeState(states[2]);
 		}
 		stateMachine.ChangeState(states[0]);
 	}
