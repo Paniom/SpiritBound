@@ -1,13 +1,20 @@
 fileFormatVersion: 2
-guid: 7149d3f6726e17e449d6e1092db0d73b
+guid: 40e97e62a6c3ef248b26a9f1e91b6308
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pPlane1
+    100004: sine1Handle
+    100006: sine2Handle
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pPlane12
+    400002: pPlane1
+    400004: sine1Handle
+    400006: sine2Handle
+    2300000: pPlane1
+    3300000: pPlane1
+    4300000: pPlane1
+    7400000: Rolling_Clouds
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -24,11 +31,45 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Rolling_Clouds
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pPlane1
+        weight: 1
+      - path: sine1Handle
+        weight: 1
+      - path: sine2Handle
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.13999999
+    globalScale: 1000
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

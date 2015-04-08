@@ -24,8 +24,11 @@ ModelImporter:
     400016: transform46
     400018: transform47
     2300000: pPlane6
+    2300002: //RootNode
     3300000: pPlane6
+    3300002: //RootNode
     4300000: pPlane6
+    4300002: pPlane10
     9500000: //RootNode
   materials:
     importMaterials: 1

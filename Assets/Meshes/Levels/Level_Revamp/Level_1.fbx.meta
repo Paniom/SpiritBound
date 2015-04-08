@@ -4,10 +4,20 @@ ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Level_1_Path_MeshPart0
+    100004: Level_1_Path_MeshPart1
     400000: //RootNode
+    400002: Level_1_Path_MeshPart0
+    400004: Level_1_Path_MeshPart1
     2300000: //RootNode
+    2300002: Level_1_Path_MeshPart0
+    2300004: Level_1_Path_MeshPart1
     3300000: //RootNode
+    3300002: Level_1_Path_MeshPart0
+    3300004: Level_1_Path_MeshPart1
     4300000: polySurface44
+    4300002: Level_1_Path_MeshPart0
+    4300004: Level_1_Path_MeshPart1
     9500000: //RootNode
   materials:
     importMaterials: 1
