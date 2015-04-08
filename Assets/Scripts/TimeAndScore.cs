@@ -36,6 +36,8 @@ public class TimeAndScore : MonoBehaviour
     bool doneCalculatingScore = false;
     bool doneCalculatingTime = false;
 
+    public static bool UpdateMap = true;
+
     public AudioClip timeTick;
     public AudioClip scoreTick;
 

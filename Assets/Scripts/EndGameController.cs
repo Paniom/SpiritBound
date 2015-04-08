@@ -22,6 +22,7 @@ public class EndGameController : MonoBehaviour {
                 }
                 AchievementTracker.updateAchievements();
                 TimeAndScore.GameOver = true;
+                TimeAndScore.UpdateMap = true;
                 TimeAndScore.win = true;
                 GameObject.Find("ScorePanel").SetActive(false);
                 GameObject.Find("UIParent").SetActive(false);
