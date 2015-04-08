@@ -794,4 +794,24 @@ public class PlayerController : MonoBehaviour
 		}
 		return new float[] {start,end+360};
 	}
+
+	void OnTriggerEnter(Collider other) {
+		string layer = LayerMask.LayerToName(other.gameObject.layer);
+		string tag = other.tag;
+		if(stateMachine.getState().Equals("Muskalo")) {
+			if(tag.Equals("Breakable")) {
+				stateMachine.messageReciever("Interact", null);
+			}
+		}
+		if(stateMachine.getState().Equals("Wolf")) {
+			if(layer.Equals("Brush")) {
+				stateMachine.messageReciever("Interact", null);
+			}
+		}
+		if(stateMachine.getState().Equals("Fox")) {
+			if(layer.Equals("Breakable")) {
+				//stateMachine.messageReciever("Interact", null);
+			}
+		}
+	}
 }
