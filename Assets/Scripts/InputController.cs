@@ -136,14 +136,19 @@ public class InputController : MonoBehaviour {
 				}
 			}
 			if (canRotate) {
-				if ( Input.GetKey(KeyCode.Z) ) {
-					target.SendMessage("RotateLeft", SendMessageOptions.DontRequireReceiver);
-					canRotate = false;
+				if ( Input.GetKey(KeyCode.Alpha1) ) {
+					target.SendMessage("ChangeToFox", SendMessageOptions.DontRequireReceiver);
+					//canRotate = false;
 				}
-				else if ( Input.GetKey(KeyCode.X) ) {
-					target.SendMessage("RotateRight", SendMessageOptions.DontRequireReceiver);
-					canRotate = false;
+				else if ( Input.GetKey(KeyCode.Alpha2) ) {
+					target.SendMessage("ChangeToMuskalo", SendMessageOptions.DontRequireReceiver);
+					//canRotate = false;
 				}
+                else if (Input.GetKey(KeyCode.Alpha3))
+                {
+                    target.SendMessage("ChangeToWolf", SendMessageOptions.DontRequireReceiver);
+                    //canRotate = false;
+                }
 			}
 		}
 		if(inputDevice == InputType.Mobile) {

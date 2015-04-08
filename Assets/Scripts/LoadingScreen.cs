@@ -8,6 +8,7 @@ public class LoadingScreen : MonoBehaviour
     public static string levelToLoad;
     public GameObject loadingText;
     public GameObject ProgressBar;
+    public GameObject spinWheel;
 
     int loadProgress = 0;
 
@@ -23,6 +24,7 @@ public class LoadingScreen : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
+        spinWheel.transform.Rotate(0, 0, 1);
         if (delay <= 0)
         {
             delay = 0.5f;
@@ -63,6 +65,7 @@ public class LoadingScreen : MonoBehaviour
         AsyncOperation async = Application.LoadLevelAsync(level);
         while (!async.isDone)
         {
+            
             loadProgress = (int)async.progress;
             ProgressBar.GetComponent<Image>().fillAmount = loadProgress;
             yield return null;
