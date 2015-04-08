@@ -7,19 +7,21 @@ public class WallWalk : MonoBehaviour {
     float xRot =1 ;
     float zRot = 1;
     Vector3 startRot;
+    bool done = false;
 
 	// Use this for initialization
 	void Start () 
     {
+        
         if (transform.root.gameObject.name == "RightSideWall")
         {
-            zRot = transform.root.eulerAngles.z;
-            xRot = transform.root.eulerAngles.x;
+            zRot = transform.root.localEulerAngles.z;
+            xRot = transform.root.localEulerAngles.x;
         }
         else if (transform.root.gameObject.name == "LeftSideWall")
         {
-            zRot = transform.root.eulerAngles.z;
-            xRot = transform.root.eulerAngles.x;
+            zRot = transform.root.localEulerAngles.z;
+            xRot = transform.root.localEulerAngles.x;
         }
         Debug.Log("xRot : " + xRot + "   , zRot : " + zRot);
 	}
@@ -32,16 +34,19 @@ public class WallWalk : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        startRot = other.transform.localEulerAngles;
-        if (other.tag == "Player")
+        
+        //startRot = other.transform.localEulerAngles;
+        if (other.tag == "Player" && !done)
         {
+            done = true;
             PlayerController pc = other.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":
                     {
-                        startRot = other.transform.FindChild("MuskaloModel_Still").localEulerAngles;
-                        other.transform.FindChild("MuskaloModel_Still").localEulerAngles = new Vector3(xRot,other.transform.FindChild("MuskaloModel_Still").localEulerAngles.z,zRot);
+                        startRot = other.transform.FindChild("Muskalo_Still").localEulerAngles;
+                        Debug.Log(startRot);
+                        other.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(zRot, other.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Fox":
@@ -60,6 +65,7 @@ public class WallWalk : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
+        done = false;
         if (other.tag == "Player")
         {
             PlayerController pc = other.GetComponent<PlayerController>();
@@ -67,7 +73,8 @@ public class WallWalk : MonoBehaviour {
             {
                 case "Muskalo":
                     {
-                        other.transform.FindChild("MuskaloModel_Still").localEulerAngles = startRot;
+                        Debug.Log("exited : should reset rotation");
+                        other.transform.FindChild("Muskalo_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }

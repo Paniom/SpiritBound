@@ -97,6 +97,8 @@ public class PlayerController : MonoBehaviour
                     Vector2 movement = new Vector2((float)args[0], (float)args[1]);
                     owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
                     owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
+                    owner.duskaloAnimator.SetBool("Interacting", owner.interacting);
+                    owner.duskaloAnimator.SetBool("Knockback", true);
                 }
 				if (owner.IsGrounded())
 				{
@@ -253,6 +255,8 @@ public class PlayerController : MonoBehaviour
                 Vector2 movement = new Vector2((float)args[0], (float)args[1]);
                 owner.foxAnimator.SetFloat("Speed", movement.magnitude);
                 owner.foxAnimator.SetBool("Grounded", owner.IsGrounded());
+                owner.foxAnimator.SetBool("Interacting", owner.interacting);
+                owner.foxAnimator.SetBool("Knockback", true);
             }
 			if (owner.IsGrounded())
 			{
@@ -422,6 +426,8 @@ public class PlayerController : MonoBehaviour
                 Vector2 movement = new Vector2((float)args[0], (float)args[1]);
                 owner.wolfAnimator.SetFloat("Speed", movement.magnitude);
                 owner.wolfAnimator.SetBool("Grounded", owner.IsGrounded());
+                owner.wolfAnimator.SetBool("Interacting", owner.interacting);
+                owner.wolfAnimator.SetBool("Knockback", true);
             }
 			if (owner.IsGrounded())
 			{

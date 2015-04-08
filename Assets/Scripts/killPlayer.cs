@@ -58,6 +58,14 @@ public class killPlayer : MonoBehaviour {
             if (!dead)
             {
                 dead = true;
+
+                if (other.GetComponent<PlayerController>().duskaloAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo")
+                    other.GetComponent<PlayerController>().duskaloAnimator.SetTrigger("Dead");
+                else if (other.GetComponent<PlayerController>().foxAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Fox")
+                    other.GetComponent<PlayerController>().foxAnimator.SetTrigger("Dead");
+                else if (other.GetComponent<PlayerController>().wolfAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Wolf")
+                    other.GetComponent<PlayerController>().wolfAnimator.SetTrigger("Dead");
+
                 other.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value = 20;
                 other.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value = 20;
                 other.rigidbody.velocity = new Vector3(0, 0, 0);
