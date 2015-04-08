@@ -6,18 +6,46 @@ ModelImporter:
     100000: //RootNode
     100002: Level_1_Path_MeshPart0
     100004: Level_1_Path_MeshPart1
+    100006: Level_1_Path
+    100008: Level_1_Path1
+    100010: Level_1_Path2
+    100012: Level_1_Path3
+    100014: Level_1_Path4
+    100016: Level_1_Path4_MeshPart0
+    100018: Level_1_Path4_MeshPart1
+    100020: transform1
+    100022: transform2
+    100024: transform3
+    100026: transform4
     400000: //RootNode
     400002: Level_1_Path_MeshPart0
     400004: Level_1_Path_MeshPart1
+    400006: Level_1_Path
+    400008: Level_1_Path1
+    400010: Level_1_Path2
+    400012: Level_1_Path3
+    400014: Level_1_Path4
+    400016: Level_1_Path4_MeshPart0
+    400018: Level_1_Path4_MeshPart1
+    400020: transform1
+    400022: transform2
+    400024: transform3
+    400026: transform4
     2300000: //RootNode
     2300002: Level_1_Path_MeshPart0
     2300004: Level_1_Path_MeshPart1
+    2300006: Level_1_Path4_MeshPart0
+    2300008: Level_1_Path4_MeshPart1
     3300000: //RootNode
     3300002: Level_1_Path_MeshPart0
     3300004: Level_1_Path_MeshPart1
+    3300006: Level_1_Path4_MeshPart0
+    3300008: Level_1_Path4_MeshPart1
     4300000: polySurface44
     4300002: Level_1_Path_MeshPart0
     4300004: Level_1_Path_MeshPart1
+    4300006: Level_1_Path4_MeshPart0
+    4300008: Level_1_Path4_MeshPart1
     9500000: //RootNode
   materials:
     importMaterials: 1

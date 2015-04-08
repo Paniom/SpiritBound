@@ -1,25 +1,36 @@
 fileFormatVersion: 2
-guid: 0261e3c0666fe734aa037be321593681
+guid: 7abfa929f6073954294f827646557590
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group1
-    100004: pPlane2
-    100006: pSolid1
+    100002: shard1
+    100004: shard2
+    100006: shard3
+    100008: shard4
+    100010: shard5
     400000: //RootNode
-    400002: group1
-    400004: pPlane2
-    400006: pSolid1
-    2300000: //RootNode
-    2300002: pPlane2
-    2300004: pSolid1
-    3300000: //RootNode
-    3300002: pPlane2
-    3300004: pSolid1
-    4300000: pPlane2
-    4300002: pSolid1
-    7400000: Rolling
+    400002: shard1
+    400004: shard2
+    400006: shard3
+    400008: shard4
+    400010: shard5
+    2300000: shard1
+    2300002: shard2
+    2300004: shard3
+    2300006: shard4
+    2300008: shard5
+    3300000: shard1
+    3300002: shard2
+    3300004: shard3
+    3300006: shard4
+    3300008: shard5
+    4300000: shard1
+    4300002: shard2
+    4300004: shard3
+    4300006: shard4
+    4300008: shard5
+    7400000: Falling_Path_breaking
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -38,10 +49,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Rolling
+      name: Falling_Path_breaking
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 47
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -63,11 +74,15 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: group1
+      - path: shard1
         weight: 1
-      - path: group1/pSolid1
+      - path: shard2
         weight: 1
-      - path: pPlane2
+      - path: shard3
+        weight: 1
+      - path: shard4
+        weight: 1
+      - path: shard5
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -93,7 +108,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     human: []
     skeleton: []
@@ -105,7 +120,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4b74e4c4c6387f641a5beffd98b172a0,
+    type: 3}
   animationType: 2
   additionalBone: 0
   userData: 
