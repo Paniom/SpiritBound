@@ -59,12 +59,25 @@ public class killPlayer : MonoBehaviour {
             {
                 dead = true;
 
-                if (other.GetComponent<PlayerController>().duskaloAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo")
-                    other.GetComponent<PlayerController>().duskaloAnimator.SetTrigger("Dead");
-                else if (other.GetComponent<PlayerController>().foxAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Fox")
-                    other.GetComponent<PlayerController>().foxAnimator.SetTrigger("Dead");
-                else if (other.GetComponent<PlayerController>().wolfAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Wolf")
-                    other.GetComponent<PlayerController>().wolfAnimator.SetTrigger("Dead");
+                if (deathType == DeathType.Pit)
+                {
+                    Debug.Log("trigger set");
+                    if (other.GetComponent<PlayerController>().duskaloAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo")
+                        other.GetComponent<PlayerController>().duskaloAnimator.SetTrigger("deathPit");
+                    else if (other.GetComponent<PlayerController>().foxAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Fox")
+                        other.GetComponent<PlayerController>().foxAnimator.SetTrigger("deathPit");
+                    else if (other.GetComponent<PlayerController>().wolfAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Wolf")
+                        other.GetComponent<PlayerController>().wolfAnimator.SetTrigger("deathPit");
+                }
+                else
+                {
+                    if (other.GetComponent<PlayerController>().duskaloAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo")
+                        other.GetComponent<PlayerController>().duskaloAnimator.SetTrigger("deathStruck");
+                    else if (other.GetComponent<PlayerController>().foxAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Fox")
+                        other.GetComponent<PlayerController>().foxAnimator.SetTrigger("deathStruck");
+                    else if (other.GetComponent<PlayerController>().wolfAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Wolf")
+                        other.GetComponent<PlayerController>().wolfAnimator.SetTrigger("deathStruck");
+                }
 
                 other.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value = 20;
                 other.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value = 20;
@@ -78,7 +91,7 @@ public class killPlayer : MonoBehaviour {
                 TimeAndScore.timeRemaining = SetLastSpawn.checkpointTime;
 				Time.timeScale = 0;
 				GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
-				deathtext.transform.parent = GameObject.Find("UI Canvas").transform;
+				deathtext.transform.SetParent(GameObject.Find("UI Canvas").transform);
 				deathtext.GetComponentInChildren<Text>().text = DeathMessage[(int)deathType];
 				deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 				deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
