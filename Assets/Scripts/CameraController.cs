@@ -174,11 +174,7 @@ public class CameraController : MonoBehaviour {
 	{
 		float sway = 0;
 	    
-	 
-	    float Stiffness = 10000.0f;
-	    float Damping = 200.0f;
-	    float Mass = 50.0f;
-	    Vector3 DesiredOffset = new Vector3(0.0f, 3.5f, -4.0f);
+		Vector3 DesiredOffset = new Vector3(0.0f, 3.5f, -4.0f);
 	    //Vector3 LookAtOffset = new Vector3(0.0f, 3.1f, 0.0f);
 	 
 	    private Vector3 desiredPosition = Vector3.zero;
@@ -191,9 +187,6 @@ public class CameraController : MonoBehaviour {
 
 		public override void OnEnter (CameraController owner)
 		{
-			Stiffness = owner.stiffness;
-			Damping = owner.damping;
-			Mass = owner.mass;
 			owner.stateMachine.setState("Swaying");
 			float e = Mathf.RoundToInt(owner.transform.rotation.eulerAngles.y);
 			float yRot = e;
@@ -207,22 +200,23 @@ public class CameraController : MonoBehaviour {
 		public override void Process (CameraController owner)
 		{
 			Vector3 stretch = owner.SpringCamera.transform.position - desiredPosition;
-	        Vector3 force = -Stiffness * stretch - Damping * cameraVelocity;
+			Vector3 force = -owner.stiffness * stretch - owner.damping * cameraVelocity;
 	 
-	        Vector3 acceleration = force / Mass;
-	 
+			Vector3 acceleration = force / owner.mass;
+			
 	        cameraVelocity += acceleration * Time.deltaTime;
 	 
 	        owner.SpringCamera.transform.position += cameraVelocity * Time.deltaTime;
 			Vector3 s = owner.SpringCamera.transform.rotation.eulerAngles;
 			owner.SpringCamera.transform.LookAt(owner.target.position);
 			Vector3 e = owner.SpringCamera.transform.rotation.eulerAngles;
+			DesiredOffset = new Vector3(-owner.distFromPlayer.z,owner.distFromPlayer.y,owner.distFromPlayer.x);
 			float[] vals = owner.getRotationAngles(s.y,e.y);
 			e = (e-s)/5+s;
 			float valy = (vals[1]-vals[0])/10+vals[0];
 			e.x = s.x;
 			e.y = valy;
-			//owner.SpringCamera.transform.rotation = Quaternion.Euler(e);
+			owner.SpringCamera.transform.rotation = Quaternion.Euler(e);
 			Vector3 rot = owner.target.rotation.eulerAngles;
 	 
 	        Matrix4x4 CamMat = new Matrix4x4();

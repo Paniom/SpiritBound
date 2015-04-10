@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
             Physics.gravity = new Vector3(0,-owner.muskaloGravity,0);
             owner.muskaloTrail.SetActive(true);
             owner.stateMachine.setState("Muskalo");
-            Color m = owner.muskaloUI.GetComponent<Image>().color;
-            m.a = 1.0f;
-            owner.muskaloUI.GetComponent<Image>().color = m;
+            //Color m = owner.muskaloUI.GetComponent<Image>().color;
+            //m.a = 1.0f;
+            //owner.muskaloUI.GetComponent<Image>().color = m;
             owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f,0.8f,0.8f);
             owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
         public override void Process(PlayerController owner)
         {
-            if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to increase
+            /*if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to increase
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime * 0.5f; //increase fox power level
             }
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             else if (owner.wolfPowerLevelUI.GetComponent<Slider>().value > owner.wolfSpiritStartPowerLevel)//check if wolf power level went over starting power level
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value = owner.wolfSpiritStartPowerLevel;// reset value to starting power level
-            }
+            }*/
 
             if (owner.interacting)
             {
@@ -584,18 +584,28 @@ public class PlayerController : MonoBehaviour
 			{
 				s = 0;
 			}
+			float xVel = owner.rigidbody.velocity.x;
+			float zVel = owner.rigidbody.velocity.z;
+			if(xVel != xVel)
+			{
+				xVel = 0;
+			}
+			if(zVel != zVel)
+			{
+				zVel = 0;
+			}
 
 			float e;
-			if(owner.rigidbody.velocity.sqrMagnitude <= 5)
+			if(Mathf.Abs(xVel) + Mathf.Abs(zVel) < 1)
 			{
 				e = owner.setRotation;
 			}
 			else 
 			{
-				e= Mathf.Atan2(owner.rigidbody.velocity.x,owner.rigidbody.velocity.z);
+				e = Mathf.Rad2Deg*Mathf.Atan(xVel/zVel);
 			}
 			float[] vals = owner.getRotationAngles(s,e);
-			float valy = (vals[1]-vals[0])/3+vals[0];
+			float valy = (vals[1]-vals[0])/9+vals[0];
 			owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,valy,owner.transform.rotation.eulerAngles.z);
 		}
 	}
@@ -714,10 +724,8 @@ public class PlayerController : MonoBehaviour
 		{
 			direction = direction*1f/4f;
 		}
-		float rotation = setRotation;
-		if(useRotation) {
-			rotation = transform.rotation.eulerAngles.y;
-		}
+		float rotation = followingCamera.transform.rotation.eulerAngles.y;
+
 		stateMachine.messageReciever("Move",new object[] {Mathf.Cos(rotation*Mathf.Deg2Rad)*direction.x + 
 			Mathf.Sin(rotation*Mathf.Deg2Rad)*direction.y,Mathf.Cos(rotation*Mathf.Deg2Rad)*direction.y - 
 			Mathf.Sin(rotation*Mathf.Deg2Rad)*direction.x});// straight
