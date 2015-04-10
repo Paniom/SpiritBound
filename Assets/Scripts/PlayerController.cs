@@ -60,8 +60,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (interactTimer > 0)
                 {
-                    owner.rigidbody.velocity = new Vector3(owner.transform.forward.x * owner.speed * 5, owner.rigidbody.velocity.y, owner.transform.forward.z * owner.speed * 5);
-                    interactTimer -= Time.deltaTime;
+					interactTimer -= Time.deltaTime;
                 }
                 else
                 {
@@ -90,37 +89,34 @@ public class PlayerController : MonoBehaviour
 
         void move(PlayerController owner, params object[] args)
         {
-            if (!owner.interacting)
+            if (owner.duskaloAnimator)
             {
-                if (owner.duskaloAnimator)
-                {
-                    Vector2 movement = new Vector2((float)args[0], (float)args[1]);
-                    owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
-                    owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
-                    owner.duskaloAnimator.SetBool("doAction", owner.interacting);
-                    //owner.duskaloAnimator.SetBool("Refusing", true);
-                }
-				if (owner.IsGrounded())
+                Vector2 movement = new Vector2((float)args[0], (float)args[1]);
+                owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
+                owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
+                owner.duskaloAnimator.SetBool("doAction", owner.interacting);
+                //owner.duskaloAnimator.SetBool("Refusing", true);
+            }
+			if (owner.IsGrounded())
+			{
+				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+				if(vel.x != vel.x)
 				{
-					Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
-					if(vel.x != vel.x)
-					{
-						vel.x = 0;
-					}
-					if(vel.y != vel.y)
-					{
-						vel.y = 0;
-					}
-					if(vel.z != vel.z)
-					{
-						vel.z = 0;
-					}
-					owner.rigidbody.velocity = vel;
+					vel.x = 0;
 				}
-				else
-                {
-                    owner.AirControlMovement(args);
-                }
+				if(vel.y != vel.y)
+				{
+					vel.y = 0;
+				}
+				if(vel.z != vel.z)
+				{
+					vel.z = 0;
+				}
+				owner.rigidbody.velocity = vel;
+			}
+			else
+            {
+                owner.AirControlMovement(args);
             }
         }
 
@@ -596,16 +592,19 @@ public class PlayerController : MonoBehaviour
 			}
 
 			float e;
-			if(Mathf.Abs(xVel) + Mathf.Abs(zVel) < 1)
+			if(Mathf.Abs(xVel) + Mathf.Abs(zVel) < 3)
 			{
-				e = owner.setRotation;
+				e = s;
 			}
 			else 
 			{
-				e = Mathf.Rad2Deg*Mathf.Atan(xVel/zVel);
+				e = Mathf.Rad2Deg*Mathf.Atan2(xVel,zVel);
 			}
 			float[] vals = owner.getRotationAngles(s,e);
 			float valy = (vals[1]-vals[0])/9+vals[0];
+			Debug.Log ("start: "+s+", end: "+e);
+			Debug.Log ("start: "+vals[0]+", end: "+vals[1]);
+			Debug.Log ("Y Rot: "+valy);
 			owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,valy,owner.transform.rotation.eulerAngles.z);
 		}
 	}
@@ -723,6 +722,7 @@ public class PlayerController : MonoBehaviour
 		else
 		{
 			direction = direction*1f/4f;
+			direction.y = 0;
 		}
 		float rotation = followingCamera.transform.rotation.eulerAngles.y;
 
@@ -804,6 +804,12 @@ public class PlayerController : MonoBehaviour
 			return new float[] {start,end};
 		}
 		if(start < 180) {
+			if(end < 0) {
+				return new float[] {start,end+360};
+			}
+			return new float[] {start,end-360};
+		}
+		if(end > 360) {
 			return new float[] {start,end-360};
 		}
 		return new float[] {start,end+360};
