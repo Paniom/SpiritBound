@@ -13,6 +13,7 @@ ModelImporter:
     100014: transform45
     100016: transform46
     100018: transform47
+    100020: level_1_gound
     400000: //RootNode
     400002: pPlane2
     400004: pPlane3
@@ -23,15 +24,19 @@ ModelImporter:
     400014: transform45
     400016: transform46
     400018: transform47
+    400020: level_1_gound
     2300000: pPlane6
     2300002: //RootNode
+    2300004: level_1_gound
     3300000: pPlane6
     3300002: //RootNode
+    3300004: level_1_gound
     4300000: pPlane6
     4300002: pPlane10
+    4300004: level_1_gound
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
