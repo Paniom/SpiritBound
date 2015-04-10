@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
             Physics.gravity = new Vector3(0,-owner.muskaloGravity,0);
             owner.muskaloTrail.SetActive(true);
             owner.stateMachine.setState("Muskalo");
-            //Color m = owner.muskaloUI.GetComponent<Image>().color;
-            //m.a = 1.0f;
-            //owner.muskaloUI.GetComponent<Image>().color = m;
+            Color m = owner.muskaloUI.GetComponent<Image>().color;
+            m.a = 1.0f;
+            owner.muskaloUI.GetComponent<Image>().color = m;
             owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f,0.8f,0.8f);
             owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
         public override void Process(PlayerController owner)
         {
-            /*if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to increase
+            if (owner.foxPowerLevelUI.GetComponent<Slider>().value < owner.foxSpiritStartPowerLevel) // check if fox power level needs to increase
             {
                 owner.foxPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime * 0.5f; //increase fox power level
             }
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             else if (owner.wolfPowerLevelUI.GetComponent<Slider>().value > owner.wolfSpiritStartPowerLevel)//check if wolf power level went over starting power level
             {
                 owner.wolfPowerLevelUI.GetComponent<Slider>().value = owner.wolfSpiritStartPowerLevel;// reset value to starting power level
-            }*/
+            }
 
             if (owner.interacting)
             {
