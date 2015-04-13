@@ -45,6 +45,7 @@ public class WallWalk : MonoBehaviour {
                         transform.root.collider.material.dynamicFriction = 0;
                         transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.transform.FindChild("Muskalo_Still").localEulerAngles;
+                        //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
                         other.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
                         break;
                     }
@@ -54,6 +55,7 @@ public class WallWalk : MonoBehaviour {
                         transform.root.collider.material.dynamicFriction = 0;
                         transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
                         startRot = other.transform.FindChild("foxSpirit_Still").localEulerAngles;
+                        //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
                         other.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
@@ -63,6 +65,7 @@ public class WallWalk : MonoBehaviour {
                         transform.root.collider.material.dynamicFriction = 0;
                         transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.transform.FindChild("WolfSpirit_Still").localEulerAngles;
+                        //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
                         other.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }

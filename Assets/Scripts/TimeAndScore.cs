@@ -54,7 +54,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 120;
+        timeRemaining = 240;
         if(timerSlider!= null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
     }
@@ -70,7 +70,7 @@ public class TimeAndScore : MonoBehaviour
         gems = 0;
         GameOver = false;
         win = false;
-        timeRemaining = 120;
+        timeRemaining = 240;
         if (timerSlider != null)
             timerSlider.GetComponent<Slider>().maxValue = timeRemaining;
 	}
@@ -113,9 +113,9 @@ public class TimeAndScore : MonoBehaviour
 				if(scoreText != null)
 	                scoreText.GetComponent<Text>().text = score.ToString();
 				if(coinText != null)
-                    coinText.GetComponent<Text>().text = coins + "/" + TotalCoins + " coins";
+                    coinText.GetComponent<Text>().text = coins + "     coins";
 				if(gemText != null)
-					gemText.GetComponent<Text>().text = gems + "/" + TotalGems + " gems";
+					gemText.GetComponent<Text>().text = gems + "     gems";
             }
             else
             {
