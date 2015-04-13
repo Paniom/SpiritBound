@@ -20,13 +20,7 @@ public class FallingPath : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            ContactPoint cp = other.contacts[0];
-            Debug.Log(cp.point.y);
-            Debug.Log(collider.bounds.extents.y);
-            if (cp.point.y > transform.position.y + collider.bounds.extents.y)
-            {
-                GetComponent<Animator>().SetBool("playerStanding", true);
-            }
+			GetComponent<Animator>().SetBool("playerStanding", true);
         }
     }
 
