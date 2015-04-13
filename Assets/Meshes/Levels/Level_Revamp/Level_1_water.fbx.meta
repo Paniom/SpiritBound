@@ -5,8 +5,10 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Levle_1_water
+    100004: group1
     400000: //RootNode
     400002: Levle_1_water
+    400004: group1
     2300000: Levle_1_water
     3300000: Levle_1_water
     4300000: Levle_1_water
