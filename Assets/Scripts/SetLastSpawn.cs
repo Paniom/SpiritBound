@@ -4,7 +4,8 @@ using System.Collections;
 public class SetLastSpawn : MonoBehaviour {
 
     public static float checkpointTime = 300.0f;
-	public int playerRot = 0;
+	public static Quaternion RespawnPlayerRot = Quaternion.identity;
+    public static Vector3 RespawnPlayerPos = Vector3.zero;
 	// Use this for initialization
 	void Start () {
         checkpointTime = TimeAndScore.timeRemaining;
@@ -23,6 +24,8 @@ public class SetLastSpawn : MonoBehaviour {
             {
                 this.gameObject.transform.parent.gameObject.GetComponentInChildren<ParticleSystem>().Play();
             }
+            RespawnPlayerRot = other.transform.rotation;
+            RespawnPlayerPos = other.transform.position;
             checkpointTime = TimeAndScore.timeRemaining;
             killPlayer.lastSpawn = this.gameObject;
         }

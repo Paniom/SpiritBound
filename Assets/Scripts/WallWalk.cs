@@ -12,7 +12,6 @@ public class WallWalk : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        
         if (transform.root.gameObject.name == "RightSideWall")
         {
             zRot = transform.root.localEulerAngles.z;
@@ -23,7 +22,6 @@ public class WallWalk : MonoBehaviour {
             zRot = transform.root.localEulerAngles.z;
             xRot = transform.root.localEulerAngles.x;
         }
-        Debug.Log("xRot : " + xRot + "   , zRot : " + zRot);
 	}
 	
 	// Update is called once per frame
@@ -34,7 +32,6 @@ public class WallWalk : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        
         //startRot = other.transform.localEulerAngles;
         if (other.tag == "Player" && !done)
         {
@@ -44,19 +41,29 @@ public class WallWalk : MonoBehaviour {
             {
                 case "Muskalo":
                     {
+                        transform.root.collider.material.staticFriction = 0;
+                        transform.root.collider.material.dynamicFriction = 0;
+                        transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.transform.FindChild("Muskalo_Still").localEulerAngles;
-                        Debug.Log(startRot);
-                        other.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(zRot, other.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
+                        other.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Fox":
                     {
-                        other.transform.FindChild("FoxSpirit_Still").Rotate(-30, 0, 0);
+                        transform.root.collider.material.staticFriction = 1;
+                        transform.root.collider.material.dynamicFriction = 0;
+                        transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
+                        startRot = other.transform.FindChild("foxSpirit_Still").localEulerAngles;
+                        other.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Wolf":
                     {
-                        other.transform.FindChild("WolfSpirit_Still").Rotate(-30, 0, 0);
+                        transform.root.collider.material.staticFriction = 0;
+                        transform.root.collider.material.dynamicFriction = 0;
+                        transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
+                        startRot = other.transform.FindChild("WolfSpirit_Still").localEulerAngles;
+                        other.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
             }
@@ -73,20 +80,19 @@ public class WallWalk : MonoBehaviour {
             {
                 case "Muskalo":
                     {
-                        Debug.Log("exited : should reset rotation");
                         other.transform.FindChild("Muskalo_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }
                 case "Fox":
                     {
-                        other.transform.FindChild("FoxSpirit_Still").Rotate(30, 0, 0);
+                        other.transform.FindChild("foxSpirit_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }
                 case "Wolf":
                     {
-                        other.transform.FindChild("WolfSpirit_Still").Rotate(30, 0, 0);
+                        other.transform.FindChild("WolfSpirit_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }

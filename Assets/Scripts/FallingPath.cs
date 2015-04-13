@@ -13,10 +13,7 @@ public class FallingPath : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if (GetComponent<Animator>().GetBool("playerStanding") == true)
-        {
 
-        }
 	}
 
     void OnCollisionEnter(Collision other)
@@ -24,8 +21,9 @@ public class FallingPath : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             ContactPoint cp = other.contacts[0];
-            Debug.Log(cp.point);
-            if (cp.point.y > collider.bounds.extents.y)
+            Debug.Log(cp.point.y);
+            Debug.Log(collider.bounds.extents.y);
+            if (cp.point.y > transform.position.y + collider.bounds.extents.y)
             {
                 GetComponent<Animator>().SetBool("playerStanding", true);
             }
@@ -34,7 +32,6 @@ public class FallingPath : MonoBehaviour
 
     void DestroyThisRock()
     {
-        Debug.Log("this is called");
         Destroy(gameObject);
     }
 
