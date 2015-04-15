@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", charge));
             HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
+            HandlerList.Add(new Handler<PlayerController>("PowerZone", powerZone));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -166,6 +167,11 @@ public class PlayerController : MonoBehaviour
                     owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
             }
         }
+
+        void powerZone(PlayerController owner, params object[] args)
+        {
+            
+        }
     }
 
     // Sun Spirit is fox
@@ -180,6 +186,7 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", dash));
             HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
+            HandlerList.Add(new Handler<PlayerController>("PowerZone", powerZone));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -337,6 +344,18 @@ public class PlayerController : MonoBehaviour
                     owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
             }
         }
+
+        void powerZone(PlayerController owner, params object[] args)
+        {
+            if ((string)args[0] == PowerZoneController.PowerZoneType.FoxPower.ToString())
+            {
+                owner.foxPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime;
+                if (owner.foxPowerLevelUI.GetComponent<Slider>().value > 20)
+                {
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value = 20;
+                }
+            }
+        }
     }
 
     // Moon Spirit is wolf
@@ -350,6 +369,7 @@ public class PlayerController : MonoBehaviour
             HandlerList.Add(new Handler<PlayerController>("Jump", jump));
             HandlerList.Add(new Handler<PlayerController>("Interact", precision));
             HandlerList.Add(new Handler<PlayerController>("PickUp", pickup));
+            HandlerList.Add(new Handler<PlayerController>("PowerZone", powerZone));
         }
 
         public override void OnEnter(PlayerController owner)
@@ -504,6 +524,18 @@ public class PlayerController : MonoBehaviour
                     owner.foxPowerLevelUI.GetComponent<Slider>().value += 5;
             }
         }
+
+        void powerZone(PlayerController owner, params object[] args)
+        {
+            if ((string)args[0] == PowerZoneController.PowerZoneType.WolfPower.ToString())
+            {
+                owner.wolfPowerLevelUI.GetComponent<Slider>().value += Time.deltaTime;
+                if (owner.wolfPowerLevelUI.GetComponent<Slider>().value > 20)
+                {
+                    owner.wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                }
+            }
+        }
     }
 
     public class Standby : State<PlayerController>
@@ -566,6 +598,11 @@ public class PlayerController : MonoBehaviour
         void pickup(PlayerController owner, params object[] args)
         {
 
+        }
+
+        void powerZone(PlayerController owner, params object[] args)
+        {
+            
         }
     }
 
@@ -743,6 +780,11 @@ public class PlayerController : MonoBehaviour
     void PickUp(string powerUpType)
     {
         stateMachine.messageReciever("PickUp", powerUpType);
+    }
+
+    void PowerZone(string powerZoneType)
+    {
+        stateMachine.messageReciever("PowerZone", powerZoneType);
     }
 
     bool IsGrounded()

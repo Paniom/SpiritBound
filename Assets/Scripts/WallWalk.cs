@@ -30,13 +30,13 @@ public class WallWalk : MonoBehaviour {
 	    
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisonEnter(Collision other)
     {
         //startRot = other.transform.localEulerAngles;
-        if (other.tag == "Player" && !done)
+        if (other.gameObject.tag == "Player")
         {
-            done = true;
-            PlayerController pc = other.GetComponent<PlayerController>();
+            //done = true;
+            PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":
@@ -44,9 +44,9 @@ public class WallWalk : MonoBehaviour {
                         transform.root.collider.material.staticFriction = 0;
                         transform.root.collider.material.dynamicFriction = 0;
                         transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
-                        startRot = other.transform.FindChild("Muskalo_Still").localEulerAngles;
+                        startRot = other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
-                        other.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
+                        other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Fox":
@@ -54,9 +54,9 @@ public class WallWalk : MonoBehaviour {
                         transform.root.collider.material.staticFriction = 1;
                         transform.root.collider.material.dynamicFriction = 0;
                         transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
-                        startRot = other.transform.FindChild("foxSpirit_Still").localEulerAngles;
+                        startRot = other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
-                        other.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
+                        other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Wolf":
@@ -64,38 +64,38 @@ public class WallWalk : MonoBehaviour {
                         transform.root.collider.material.staticFriction = 0;
                         transform.root.collider.material.dynamicFriction = 0;
                         transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
-                        startRot = other.transform.FindChild("WolfSpirit_Still").localEulerAngles;
+                        startRot = other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
-                        other.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
+                        other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
             }
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnCollisionExit(Collision other)
     {
         done = false;
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            PlayerController pc = other.GetComponent<PlayerController>();
+            PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":
                     {
-                        other.transform.FindChild("Muskalo_Still").localEulerAngles = startRot;
+                        //other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }
                 case "Fox":
                     {
-                        other.transform.FindChild("foxSpirit_Still").localEulerAngles = startRot;
+                        //other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }
                 case "Wolf":
                     {
-                        other.transform.FindChild("WolfSpirit_Still").localEulerAngles = startRot;
+                        //other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles = startRot;
                         pc.speed = 3;
                         break;
                     }
@@ -103,11 +103,11 @@ public class WallWalk : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay(Collider other)
+    void OnCollisonStay(Collision other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            PlayerController pc = other.GetComponent<PlayerController>();
+            PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":
