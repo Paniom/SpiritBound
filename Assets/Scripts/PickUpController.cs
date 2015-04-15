@@ -218,4 +218,10 @@ public class PickUpController : MonoBehaviour
             }
         }
     }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
+        got = false;
+    }
 }

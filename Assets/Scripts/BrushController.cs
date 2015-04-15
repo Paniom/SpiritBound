@@ -71,7 +71,6 @@ public class BrushController : MonoBehaviour {
 
     public void Reset()
     {
-        Debug.Log("reset called");
         breakDown.SetInteger("DoneBreaking",0);
         breakDown.SetBool("Breaking",false);
         breakTimer = 1.0f;

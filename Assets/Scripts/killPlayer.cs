@@ -63,7 +63,6 @@ public class killPlayer : MonoBehaviour {
 
                 if (deathType == DeathType.Pit)
                 {
-                    Debug.Log("trigger set");
                     if (other.GetComponent<PlayerController>().duskaloAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo")
                         other.GetComponent<PlayerController>().duskaloAnimator.SetTrigger("deathPit");
                     else if (other.GetComponent<PlayerController>().foxAnimator && other.GetComponent<PlayerController>().stateMachine.getState() == "Fox")
@@ -85,7 +84,7 @@ public class killPlayer : MonoBehaviour {
                 {
                     if (gameObj.tag == "Pickup")
                     {
-                        gameObj.SetActive(true);
+                        gameObj.GetComponent<PickUpController>().Reset();
                     }
                     else if (gameObj.tag == "Breakable")
                     {
@@ -93,7 +92,6 @@ public class killPlayer : MonoBehaviour {
                     }
                     else if (gameObj.tag == "FallingPath")
                     {
-                        Debug.Log("fallnig path reset called");
                         gameObj.GetComponent<FallingPath>().Reset();
                     }
                 }

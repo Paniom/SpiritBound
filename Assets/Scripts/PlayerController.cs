@@ -140,11 +140,12 @@ public class PlayerController : MonoBehaviour
         {
             if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
-                TimeAndScore.score += 10;
+                TimeAndScore.score += 20;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
             {
                 TimeAndScore.coins += 1;
+                TimeAndScore.score += 10;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Gem.ToString())
             {
@@ -310,11 +311,12 @@ public class PlayerController : MonoBehaviour
         {
             if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
-                TimeAndScore.score += 10;
+                TimeAndScore.score += 20;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
             {
                 TimeAndScore.coins += 1;
+                TimeAndScore.score += 10;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Gem.ToString())
             {
@@ -476,11 +478,12 @@ public class PlayerController : MonoBehaviour
         {
             if ((string)args[0] == PickUpController.PowerUpType.Score.ToString())
             {
-                TimeAndScore.score += 10;
+                TimeAndScore.score += 20;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Coin.ToString())
             {
                 TimeAndScore.coins += 1;
+                TimeAndScore.score += 10;
             }
             else if ((string)args[0] == PickUpController.PowerUpType.Gem.ToString())
             {
@@ -602,9 +605,9 @@ public class PlayerController : MonoBehaviour
 			}
 			float[] vals = owner.getRotationAngles(s,e);
 			float valy = (vals[1]-vals[0])/9+vals[0];
-			Debug.Log ("start: "+s+", end: "+e);
-			Debug.Log ("start: "+vals[0]+", end: "+vals[1]);
-			Debug.Log ("Y Rot: "+valy);
+			//Debug.Log ("start: "+s+", end: "+e);
+			//Debug.Log ("start: "+vals[0]+", end: "+vals[1]);
+			//Debug.Log ("Y Rot: "+valy);
 			owner.transform.rotation = Quaternion.Euler(owner.transform.rotation.eulerAngles.x,valy,owner.transform.rotation.eulerAngles.z);
 		}
 	}
@@ -744,7 +747,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -transform.up, distToGround + 0.1f); // Raycast to determine if player is on the ground and they can jump
+        return Physics.Raycast(transform.position, -transform.up, distToGround + 1f); // Raycast to determine if player is on the ground and they can jump
     }
 
     /* If the player is grounded they will jump*/
