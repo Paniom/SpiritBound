@@ -81,8 +81,25 @@ public class killPlayer : MonoBehaviour {
                         other.GetComponent<PlayerController>().wolfAnimator.SetTrigger("deathStruck");
                 }
 
-                other.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value = 20;
-                other.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value = 20;
+                foreach(GameObject gameObj in SetLastSpawn.PiecesToReset)
+                {
+                    if (gameObj.tag == "Pickup")
+                    {
+                        gameObj.SetActive(true);
+                    }
+                    else if (gameObj.tag == "Breakable")
+                    {
+                        gameObj.GetComponent<BrushController>().Reset();
+                    }
+                    else if (gameObj.tag == "FallingPath")
+                    {
+                        Debug.Log("fallnig path reset called");
+                        gameObj.GetComponent<FallingPath>().Reset();
+                    }
+                }
+
+                other.GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value = 15;
+                other.GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value = 15;
                 other.rigidbody.velocity = new Vector3(0, 0, 0);
                 TimeAndScore.score -= 10;
                 if (TimeAndScore.score < 0)

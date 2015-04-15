@@ -8,8 +8,9 @@ public class BrushController : MonoBehaviour {
     public Animator breakDown;
     float breakTimer = 1.0f;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+    {
+        
 	}
 	
 	// Update is called once per frame
@@ -42,6 +43,7 @@ public class BrushController : MonoBehaviour {
         {
             if (other.GetComponent<PlayerController>().stateMachine.getState() == "Muskalo" && other.GetComponent<PlayerController>().interacting)
             {
+                SetLastSpawn.PiecesToReset.Add(gameObject);
                 if (breakDown.GetInteger("DoneBreaking") == 0 && breakDown.GetBool("Breaking") == false)
                 {
                     breakDown.SetBool("Breaking", true);
@@ -65,5 +67,15 @@ public class BrushController : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void Reset()
+    {
+        Debug.Log("reset called");
+        breakDown.SetInteger("DoneBreaking",0);
+        breakDown.SetBool("Breaking",false);
+        breakTimer = 1.0f;
+        collider.enabled = true;
+        afterCollision.SetActive(false);
     }
 }

@@ -101,11 +101,14 @@ public class PickUpController : MonoBehaviour
                         collider.enabled = true;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
-                            if (rend.material.HasProperty("_Color"))
+                            foreach (Material mat in rend.materials)
                             {
-                                Color m = rend.material.color;
-                                m.a = 1f;
-                                rend.material.color = m;
+                                if (mat.HasProperty("_Color"))
+                                {
+                                    Color m = mat.color;
+                                    m.a = 1.0f;
+                                    mat.color = m;
+                                }
                             }
                         }
                     }
@@ -114,11 +117,14 @@ public class PickUpController : MonoBehaviour
                         collider.enabled = false;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
-                            if (rend.material.HasProperty("_Color"))
+                            foreach (Material mat in rend.materials)
                             {
-                                Color m = rend.material.color;
-                                m.a = 0.15f;
-                                rend.material.color = m;
+                                if (mat.HasProperty("_Color"))
+                                {
+                                    Color m = mat.color;
+                                    m.a = 0.25f;
+                                    mat.color = m;
+                                }
                             }
                         }
                     }
@@ -129,11 +135,14 @@ public class PickUpController : MonoBehaviour
                         collider.enabled = true;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
-                            if (rend.material.HasProperty("_Color"))
+                            foreach (Material mat in rend.materials)
                             {
-                                Color m = rend.material.color;
-                                m.a = 1f;
-                                rend.material.color = m;
+                                if (mat.HasProperty("_Color"))
+                                {
+                                    Color m = mat.color;
+                                    m.a = 1.0f;
+                                    mat.color = m;
+                                }
                             }
                         }
                     }
@@ -142,11 +151,14 @@ public class PickUpController : MonoBehaviour
                         collider.enabled = false;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
-                            if (rend.material.HasProperty("_Color"))
+                            foreach (Material mat in rend.materials)
                             {
-                                Color m = rend.material.color;
-                                m.a = 0.15f;
-                                rend.material.color = m;
+                                if (mat.HasProperty("_Color"))
+                                {
+                                    Color m = mat.color;
+                                    m.a = 0.25f;
+                                    mat.color = m;
+                                }
                             }
                         }
                     }
@@ -157,11 +169,14 @@ public class PickUpController : MonoBehaviour
                         collider.enabled = true;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
-                            if (rend.material.HasProperty("_Color"))
+                            foreach (Material mat in rend.materials)
                             {
-                                Color m = rend.material.color;
-                                m.a = 1f;
-                                rend.material.color = m;
+                                if (mat.HasProperty("_Color"))
+                                {
+                                    Color m = mat.color;
+                                    m.a = 1.0f;
+                                    mat.color = m;
+                                }
                             }
                         }
                     }
@@ -170,11 +185,14 @@ public class PickUpController : MonoBehaviour
                         collider.enabled = false;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
-                            if (rend.material.HasProperty("_Color"))
+                            foreach (Material mat in rend.materials)
                             {
-                                Color m = rend.material.color;
-                                m.a = 0.15f;
-                                rend.material.color = m;
+                                if (mat.HasProperty("_Color"))
+                                {
+                                    Color m = mat.color;
+                                    m.a = 0.25f;
+                                    mat.color = m;
+                                }
                             }
                         }
                     }
@@ -189,10 +207,14 @@ public class PickUpController : MonoBehaviour
         {
             if (!got)
             {
+                if (ThisPowerUpType == PowerUpType.WolfPower || ThisPowerUpType == PowerUpType.FoxPower)
+                {
+                    SetLastSpawn.PiecesToReset.Add(gameObject);
+                }
                 got = true;
                 other.SendMessage("PickUp", ThisPowerUpType.ToString(), SendMessageOptions.DontRequireReceiver);
                 AudioSource.PlayClipAtPoint(pickupSound, transform.position);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

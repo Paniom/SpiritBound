@@ -3,35 +3,41 @@ using System.Collections;
 
 public class FallingPath : MonoBehaviour 
 {
-
-	// Use this for initialization
-	void Start () 
-    {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-
-	}
-
+    bool done = false;
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !done)
         {
+            GetComponent<Animator>().SetBool("reset", false);
+            done = true;
+            SetLastSpawn.PiecesToReset.Add(gameObject);
 			GetComponent<Animator>().SetBool("playerStanding", true);
         }
     }
 
+    void OnCollisionExit()
+    {
+        done = false;
+        GetComponent<Animator>().SetBool("playerStanding", false);
+    }
+
     void DestroyThisRock()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void RemoveTheCollider()
     {
         collider.enabled = false;
+    }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
+        done = false;
+        GetComponent<Animator>().SetBool("reset", true);
+        GetComponent<Animator>().SetBool("playerStanding", false);
+        collider.enabled = true;
     }
 
 }
