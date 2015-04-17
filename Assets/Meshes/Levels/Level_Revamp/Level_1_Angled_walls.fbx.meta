@@ -13,6 +13,8 @@ ModelImporter:
     100014: transform1
     100016: transform2
     100018: transform3
+    100020: Angled_Walls
+    100022: Angled_Wals1
     400000: Angle_1
     400002: Angle_2
     400004: Angle_3
@@ -23,18 +25,23 @@ ModelImporter:
     400014: transform1
     400016: transform2
     400018: transform3
+    400020: Angled_Walls
+    400022: Angled_Wals1
     2300000: Angle_1
     2300002: Angle_2
     2300004: Angle_3
     2300006: Angled_Wals
+    2300008: Angled_Wals1
     3300000: Angle_1
     3300002: Angle_2
     3300004: Angle_3
     3300006: Angled_Wals
+    3300008: Angled_Wals1
     4300000: Angle_2
     4300002: Angle_3
     4300004: Angle_1
     4300006: Angled_Wals
+    4300008: Angled_Wals1
     9500000: //RootNode
   materials:
     importMaterials: 0
