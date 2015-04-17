@@ -9,10 +9,12 @@ public class WallWalk : MonoBehaviour {
     Vector3 startRot;
     bool done = false;
 
+    PhysicMaterial wallWalk;
+
 	// Use this for initialization
 	void Start () 
     {
-        
+        wallWalk = Resources.Load<PhysicMaterial>("WallWalk");
 	}
 	
     void OnTriggerEnter(Collider other)
@@ -27,9 +29,9 @@ public class WallWalk : MonoBehaviour {
             {
                 case "Muskalo":
                     {
-                        collider.material.staticFriction = 0;
-                        collider.material.dynamicFriction = 0;
-                        collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
+                        wallWalk.staticFriction = 0;
+                        wallWalk.dynamicFriction = 0;
+                        wallWalk.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
                         //other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
@@ -37,9 +39,9 @@ public class WallWalk : MonoBehaviour {
                     }
                 case "Fox":
                     {
-                        collider.material.staticFriction = 1;
-                        collider.material.dynamicFriction = 0;
-                        collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
+                        wallWalk.staticFriction = 1;
+                        wallWalk.dynamicFriction = 0;
+                        wallWalk.frictionCombine = PhysicMaterialCombine.Maximum;
                         startRot = other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
                         //other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
@@ -47,9 +49,9 @@ public class WallWalk : MonoBehaviour {
                     }
                 case "Wolf":
                     {
-                        collider.material.staticFriction = 0;
-                        collider.material.dynamicFriction = 0;
-                        collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
+                        wallWalk.staticFriction = 0;
+                        wallWalk.dynamicFriction = 0;
+                        wallWalk.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
                         //other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
@@ -99,6 +101,10 @@ public class WallWalk : MonoBehaviour {
             {
                 case "Muskalo":
                     {
+                        Debug.Log("muskalo should slow down");
+                        wallWalk.staticFriction = 0;
+                        wallWalk.dynamicFriction = 0;
+                        wallWalk.frictionCombine = PhysicMaterialCombine.Minimum;
                         if (pc.speed > 0)
                             pc.speed -= Time.deltaTime;
                         else if (pc.speed < 0)
@@ -107,11 +113,16 @@ public class WallWalk : MonoBehaviour {
                     }
                 case "Fox":
                     {
-
+                        wallWalk.staticFriction = 1;
+                        wallWalk.dynamicFriction = 0;
+                        wallWalk.frictionCombine = PhysicMaterialCombine.Maximum;
                         break;
                     }
                 case "Wolf":
                     {
+                        wallWalk.staticFriction = 0;
+                        wallWalk.dynamicFriction = 0;
+                        wallWalk.frictionCombine = PhysicMaterialCombine.Minimum;
                         if (pc.speed > 0)
                             pc.speed -= Time.deltaTime;
                         else if (pc.speed < 0)
