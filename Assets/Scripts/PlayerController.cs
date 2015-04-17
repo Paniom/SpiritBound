@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(chargeEffect);
+                    //Destroy(chargeEffect);
                     owner.interacting = false;
                     interactTimer = startingInteractTimer;
                     owner.InteractComplete();
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
             owner.muskaloUI.GetComponent<Image>().color = m;
             if (owner.interacting)
             {
-                Destroy(chargeEffect);
+                //Destroy(chargeEffect);
                 owner.interacting = false;
                 interactTimer = startingInteractTimer;
                 owner.InteractComplete();
@@ -131,9 +131,9 @@ public class PlayerController : MonoBehaviour
         //Lowers head and does a charge/bash foward
         void charge(PlayerController owner, params object[] args)
         {
-            chargeEffect = Instantiate(Resources.Load("ChargeEffect"),owner.transform.position,owner.transform.rotation) as GameObject;
-            chargeEffect.transform.parent = owner.transform;
-            chargeEffect.transform.localPosition = new Vector3(-0.2f,0,1.5f);
+            //chargeEffect = Instantiate(Resources.Load("ChargeEffect"),owner.transform.position,owner.transform.rotation) as GameObject;
+            //chargeEffect.transform.parent = owner.transform;
+            //chargeEffect.transform.localPosition = new Vector3(-0.2f,0,1.5f);
             owner.interacting = true;
         }
 

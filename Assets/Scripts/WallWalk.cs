@@ -12,68 +12,54 @@ public class WallWalk : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        if (transform.root.gameObject.name == "RightSideWall")
-        {
-            zRot = transform.root.localEulerAngles.z;
-            xRot = transform.root.localEulerAngles.x;
-        }
-        else if (transform.root.gameObject.name == "LeftSideWall")
-        {
-            zRot = transform.root.localEulerAngles.z;
-            xRot = transform.root.localEulerAngles.x;
-        }
+        
 	}
 	
-	// Update is called once per frame
-	void Update () 
-    {
-	    
-	}
-
-    void OnCollisonEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         //startRot = other.transform.localEulerAngles;
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Wall collision enter with player");
             //done = true;
             PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":
                     {
-                        transform.root.collider.material.staticFriction = 0;
-                        transform.root.collider.material.dynamicFriction = 0;
-                        transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
+                        collider.material.staticFriction = 0;
+                        collider.material.dynamicFriction = 0;
+                        collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
-                        other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
+                        //other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("Muskalo_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Fox":
                     {
-                        transform.root.collider.material.staticFriction = 1;
-                        transform.root.collider.material.dynamicFriction = 0;
-                        transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
+                        collider.material.staticFriction = 1;
+                        collider.material.dynamicFriction = 0;
+                        collider.material.frictionCombine = PhysicMaterialCombine.Maximum;
                         startRot = other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
-                        other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
+                        //other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
                 case "Wolf":
                     {
-                        transform.root.collider.material.staticFriction = 0;
-                        transform.root.collider.material.dynamicFriction = 0;
-                        transform.root.collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
+                        collider.material.staticFriction = 0;
+                        collider.material.dynamicFriction = 0;
+                        collider.material.frictionCombine = PhysicMaterialCombine.Minimum;
                         startRot = other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles;
                         //other.transform.FindChild("Muskalo_Still").up = Vector3.Normalize(other.transform.FindChild("Muskalo_Still").position - other.transform.position);
-                        other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
+                        //other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles = new Vector3(-zRot, other.gameObject.transform.FindChild("WolfSpirit_Still").localEulerAngles.y, xRot);
                         break;
                     }
             }
         }
     }
 
-    void OnCollisionExit(Collision other)
+    void OnTriggerExit(Collider other)
     {
         done = false;
         if (other.gameObject.tag == "Player")
@@ -103,10 +89,11 @@ public class WallWalk : MonoBehaviour {
         }
     }
 
-    void OnCollisonStay(Collision other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Wall collision stay with player");
             PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
