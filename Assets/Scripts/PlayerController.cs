@@ -862,6 +862,24 @@ public class PlayerController : MonoBehaviour
 		return new float[] {start,end+360};
 	}
 
+    void OnCollisionEnter(Collision other)
+    {
+        //if (other.gameObject.name == "Angled_Walls_Zones")
+        //{
+        //    ContactPoint whereItHit = other.contacts[0];
+        //    transform.up = transform.position - whereItHit.point;
+        //}
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        //if (other.gameObject.name == "Angled_Walls_Zones")
+        //{
+        //    ContactPoint whereItHit = other.contacts[0];
+        //    transform.up = transform.position - whereItHit.point;
+        //}
+    }
+
 	void OnTriggerEnter(Collider other) {
 		string layer = LayerMask.LayerToName(other.gameObject.layer);
 		string tag = other.tag;
