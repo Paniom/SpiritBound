@@ -270,30 +270,6 @@ public class CameraController : MonoBehaviour {
 		stateMachine.Update();
 	}
 
-	void RemoveRotation (int y) {
-		int pos = yRotations.IndexOf(y);
-		yRotations.RemoveAt(pos);
-		if(activeRotation == y)
-		{
-			if(rotating) {
-				stateMachine.ChangeState(states[2]);
-			}
-			stateMachine.ChangeState(states[0]);
-		}
-	}
-
-	void AddRotation (object[] vals) {
-		int y = (int) vals[0];
-		float x = (float) vals[1];
-		float z = (float) vals[2];
-		yRotations.Add(y);
-		//dimensions.Add(new Vector2(x,z));
-		if(rotating) {
-			stateMachine.ChangeState(states[2]);
-		}
-		stateMachine.ChangeState(states[0]);
-	}
-
 	public float[] getRotationAngles(float start, float end) {
 		if(Mathf.Abs(start-end) <= 180) {
 			return new float[] {start,end};
@@ -317,24 +293,9 @@ public class CameraController : MonoBehaviour {
         return transformNormal;
  
     }
+
+	void setPosition(Vector3 pos)
+	{
+		transform.position = pos;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

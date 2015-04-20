@@ -18,6 +18,14 @@ public class InputController : MonoBehaviour {
 	private float interactDelay = 1.5f;
 	private float interactTime = 0;
 
+	private float maxSpeed = 1;
+	private float speedChange = .2f;
+	public float ySpeed = 0;
+	private float stopTime = 1.3f;
+	private float stopTimer = 0;
+	private bool yPress = false;
+	private bool backPress = false;
+
 	private int joystickID = -1; // used to keep track of which finger is controlling the joystick
 	private int slideID = -1; // used to keep track of which finger is doing the swipe
 	private Vector2 joystickPosition; // used for a moveable joystick
@@ -94,7 +102,35 @@ public class InputController : MonoBehaviour {
 					direction.x = 0;
 				}
 			}
-			if (direction.y == 0) {
+			if( Input.GetKeyDown(KeyCode.W) && !yPress )
+			{
+				ySpeed = Mathf.Clamp(ySpeed + speedChange, 0, maxSpeed);
+				yPress = true;
+			}
+			if( Input.GetKeyUp(KeyCode.W) )
+			{
+				yPress = false;
+			}
+			if( Input.GetKeyDown(KeyCode.S) && !backPress )
+			{
+				ySpeed = Mathf.Clamp(ySpeed - speedChange, 0, maxSpeed);
+				stopTimer = 0;
+				backPress = true;
+			}
+			if( Input.GetKey(KeyCode.S) )
+			{
+				if(stopTimer > stopTime)
+				{
+					ySpeed = 0;
+				}
+				stopTimer += Time.deltaTime;
+			}
+			if( Input.GetKeyUp(KeyCode.S) )
+			{
+				backPress = false;
+			}
+			direction.y = ySpeed;
+			/*if (direction.y == 0) {
 				if ( Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ) {
 					direction.y = 1;
 				}
@@ -123,7 +159,7 @@ public class InputController : MonoBehaviour {
 				else {
 					direction.y = 0;
 				}
-			}
+			}*/
 			direction = direction*6;
 			target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
 			if ( Input.GetKey(KeyCode.Space) ) {

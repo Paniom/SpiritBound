@@ -749,16 +749,22 @@ public class PlayerController : MonoBehaviour
 
     void Move(Vector2 direction)
     {
-		if(direction.y > 0)
+		if(direction.y > 2.5f)
 		{
 			float y = direction.y;
 			direction = direction*1f/2f;
 			direction.y = y;
 		}
-		else
+		else if(direction.y < 0)
 		{
 			direction = direction*1f/4f;
 			direction.y = 0;
+		}
+		else
+		{
+			float y = direction.y;
+			direction = direction*1f/4f;
+			direction.y = y;
 		}
 		float rotation = followingCamera.transform.rotation.eulerAngles.y;
 
@@ -814,7 +820,7 @@ public class PlayerController : MonoBehaviour
 		{
 			airMove.z = 0;
 		}
-		Vector3 vel = rigidbody.velocity;
+		Vector3 vel = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
 		if(vel.x != vel.x)
 		{
 			vel.x = 0;
@@ -827,7 +833,7 @@ public class PlayerController : MonoBehaviour
 		{
 			vel.z = 0;
 		}
-		rigidbody.velocity = Vector3.Lerp(vel, airMove, Time.deltaTime * airControl);
+		rigidbody.velocity = vel;
     }
 
 	public void InteractComplete()
@@ -874,5 +880,14 @@ public class PlayerController : MonoBehaviour
 				//stateMachine.messageReciever("Interact", null);
 			}
 		}
+	}
+
+	void OnTriggerExit(Collider other) {
+
+	}
+
+	public void playerDied(Vector3 cam) {
+		followingCamera.SendMessage("setPosition", cam, SendMessageOptions.DontRequireReceiver);
+		GetComponent<InputController>().ySpeed = 0;
 	}
 }

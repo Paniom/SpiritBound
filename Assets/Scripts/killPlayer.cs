@@ -44,10 +44,9 @@ public class killPlayer : MonoBehaviour {
 				respawnWait = 1.0f;
 				respawn = false;
 				Time.timeScale = 1;
-                //other.GetComponent<PlayerController>().newRotation(lastSpawn.GetComponent<SetLastSpawn>().playerRot);
+				other.GetComponent<PlayerController>().playerDied(SetLastSpawn.RespawnCameraPos);
                 other.transform.rotation = SetLastSpawn.RespawnPlayerRot;
                 other.transform.position = SetLastSpawn.RespawnPlayerPos;
-				//other.transform.position = lastSpawn.transform.position;
 			}
 		}
 	}

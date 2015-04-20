@@ -8,6 +8,7 @@ public class SetLastSpawn : MonoBehaviour {
     public static float checkpointTime = 300.0f;
 	public static Quaternion RespawnPlayerRot = Quaternion.identity;
     public static Vector3 RespawnPlayerPos = Vector3.zero;
+	public static Vector3 RespawnCameraPos = Vector3.zero;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class SetLastSpawn : MonoBehaviour {
             }
             RespawnPlayerRot = other.transform.rotation;
             RespawnPlayerPos = other.transform.position;
+			RespawnCameraPos = other.GetComponent<PlayerController>().followingCamera.transform.position;
             checkpointTime = TimeAndScore.timeRemaining;
             killPlayer.lastSpawn = this.gameObject;
         }
