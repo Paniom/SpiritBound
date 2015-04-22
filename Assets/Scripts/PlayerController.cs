@@ -93,31 +93,34 @@ public class PlayerController : MonoBehaviour
             if (owner.duskaloAnimator)
             {
                 Vector2 movement = new Vector2((float)args[0], (float)args[1]);
-                owner.duskaloAnimator.SetFloat("Speed", movement.magnitude);
+                owner.duskaloAnimator.SetFloat("Speed", movement.magnitude * owner.speed);
                 owner.duskaloAnimator.SetBool("Grounded", owner.IsGrounded());
                 owner.duskaloAnimator.SetBool("doAction", owner.interacting);
                 //owner.duskaloAnimator.SetBool("Refusing", true);
             }
-			if (owner.IsGrounded())
-			{
-				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
-				if(vel.x != vel.x)
-				{
-					vel.x = 0;
-				}
-				if(vel.y != vel.y)
-				{
-					vel.y = 0;
-				}
-				if(vel.z != vel.z)
-				{
-					vel.z = 0;
-				}
-				owner.rigidbody.velocity = vel;
-			}
-			else
+            if (!owner.OnWall)
             {
-                owner.AirControlMovement(args);
+                if (owner.IsGrounded())
+                {
+                    Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+                    if (vel.x != vel.x)
+                    {
+                        vel.x = 0;
+                    }
+                    if (vel.y != vel.y)
+                    {
+                        vel.y = 0;
+                    }
+                    if (vel.z != vel.z)
+                    {
+                        vel.z = 0;
+                    }
+                    owner.rigidbody.velocity = vel;
+                }
+                else
+                {
+                    owner.AirControlMovement(args);
+                }
             }
         }
 
@@ -256,7 +259,7 @@ public class PlayerController : MonoBehaviour
             if (owner.foxAnimator)
             {
                 Vector2 movement = new Vector2((float)args[0], (float)args[1]);
-                owner.foxAnimator.SetFloat("Speed", movement.magnitude);
+                owner.foxAnimator.SetFloat("Speed", movement.magnitude * owner.speed);
                 owner.foxAnimator.SetBool("Grounded", owner.IsGrounded());
                 owner.foxAnimator.SetBool("doAction", owner.interacting);
                 //owner.foxAnimator.SetBool("Refusing", true);
@@ -440,7 +443,7 @@ public class PlayerController : MonoBehaviour
             if (owner.wolfAnimator)
             {
                 Vector2 movement = new Vector2((float)args[0], (float)args[1]);
-                owner.wolfAnimator.SetFloat("Speed", movement.magnitude);
+                owner.wolfAnimator.SetFloat("Speed", movement.magnitude * owner.speed);
                 owner.wolfAnimator.SetBool("Grounded", owner.IsGrounded());
                 owner.wolfAnimator.SetBool("doAction", owner.interacting);
                 //owner.wolfAnimator.SetBool("Refusing", true);
@@ -684,6 +687,7 @@ public class PlayerController : MonoBehaviour
     public GameObject muskaloTrail;
 
     public bool grounded; // Determine if the player is on the ground
+    public bool OnWall = false;
     float distToGround; // Distance from player collider to ground
 
     public bool interacting = false;
@@ -797,7 +801,7 @@ public class PlayerController : MonoBehaviour
     /* If the player is grounded they will jump*/
     void Jump()
     {
-        if (IsGrounded())
+        if (IsGrounded() && !OnWall)
         {
             stateMachine.messageReciever("Jump",null);
         }

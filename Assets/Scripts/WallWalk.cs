@@ -28,9 +28,11 @@ public class WallWalk : MonoBehaviour
             {
                 case "Muskalo":
                     {
-                        wallWalk.staticFriction = 0;
-                        wallWalk.dynamicFriction = 0;
-                        wallWalk.frictionCombine = PhysicMaterialCombine.Minimum;
+                        player.GetComponent<PlayerController>().OnWall = true;
+                        if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.1f > 0)
+                            player.GetComponent<InputController>().ySpeed -= Time.deltaTime * 0.1f;
+                        else if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.1f < 0 && player.GetComponent<InputController>().ySpeed != 0)
+                            player.GetComponent<InputController>().ySpeed = 0;
                         //startRot = player.transform.FindChild("Muskalo_Still").localEulerAngles;
                         //Transform other = player.transform.FindChild("Muskalo_Still");
                         //other.up = Vector3.Normalize(other.position - other.position);
@@ -39,9 +41,7 @@ public class WallWalk : MonoBehaviour
                     }
                 case "Fox":
                     {
-                        wallWalk.staticFriction = 1;
-                        wallWalk.dynamicFriction = 0;
-                        wallWalk.frictionCombine = PhysicMaterialCombine.Maximum;
+                        player.GetComponent<PlayerController>().OnWall = false;
                         //startRot = player.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //Transform other = player.transform.FindChild("foxSpirit_Still");
                         //other.up = Vector3.Normalize(other.position - other.position);
@@ -50,9 +50,11 @@ public class WallWalk : MonoBehaviour
                     }
                 case "Wolf":
                     {
-                        wallWalk.staticFriction = 0;
-                        wallWalk.dynamicFriction = 0;
-                        wallWalk.frictionCombine = PhysicMaterialCombine.Minimum;
+                        player.GetComponent<PlayerController>().OnWall = true;
+                        if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.5f > 0)
+                            player.GetComponent<InputController>().ySpeed -= Time.deltaTime * 0.5f;
+                        else if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.5f < 0 && player.GetComponent<InputController>().ySpeed != 0)
+                            player.GetComponent<InputController>().ySpeed = 0;
                         //startRot = player.transform.FindChild("WolfSpirit_Still").localEulerAngles;
                         //Transform other = player.transform.FindChild("WolfSpirit_Still");
                         //other.up = Vector3.Normalize(other.position - other.position);
@@ -87,7 +89,7 @@ public class WallWalk : MonoBehaviour
                 case "Fox":
                     {
                         wallWalk.staticFriction = 1;
-                        wallWalk.dynamicFriction = 0;
+                        wallWalk.dynamicFriction = 1;
                         wallWalk.frictionCombine = PhysicMaterialCombine.Maximum;
                         //startRot = other.gameObject.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //Transform otherChild = other.gameObject.transform.FindChild("foxSpirit_Still");
@@ -112,15 +114,17 @@ public class WallWalk : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        onWall = false;
         if (other.gameObject.tag == "Player")
         {
+            onWall = false;
+            player.GetComponent<PlayerController>().OnWall = false;
             Debug.Log("Wall collision exit with player");
             PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":
                     {
+                        player.GetComponent<InputController>().ySpeed = 0;
                         pc.speed = 3;
                         break;
                     }
@@ -131,6 +135,7 @@ public class WallWalk : MonoBehaviour
                     }
                 case "Wolf":
                     {
+                        player.GetComponent<InputController>().ySpeed = 0;
                         pc.speed = 3;
                         break;
                     }
