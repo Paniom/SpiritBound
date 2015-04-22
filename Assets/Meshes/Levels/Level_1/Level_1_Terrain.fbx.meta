@@ -1,20 +1,18 @@
 fileFormatVersion: 2
-guid: eb7e60d9f553df54a9f5d548b0c82b72
+guid: 10982dfcd17098b46804c5b978e5996c
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: polySurface674
-    100004: transform322
-    400000: //RootNode
-    400002: polySurface674
-    400004: transform322
-    2300000: polySurface674
-    3300000: polySurface674
-    4300000: polySurface674
+    100000: Level_1_Terrain
+    100002: //RootNode
+    400000: Level_1_Terrain
+    400002: //RootNode
+    2300000: Level_1_Terrain
+    3300000: Level_1_Terrain
+    4300000: Level_1_Terrain
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

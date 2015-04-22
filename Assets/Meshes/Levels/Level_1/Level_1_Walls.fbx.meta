@@ -1,89 +1,21 @@
 fileFormatVersion: 2
-guid: b8a75ad37984b2f4ab1a7d363005b334
+guid: c04a0e076ce26124f9b04f29a03d7ec1
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pPlane30
-    100004: pPlane31
-    100006: pPlane32
-    100008: pPlane33
-    100010: pPlane34
-    100012: pPlane35
-    100014: pPlane36
-    100016: pPlane37
-    100018: transform322
-    100020: transform323
-    100022: transform324
-    100024: transform325
-    100026: transform326
-    100028: transform327
-    100030: transform328
-    100032: polySurface678
-    100034: polySurface679
-    100036: polySurface680
-    100038: polySurface680 1
-    100040: polySurface681
-    100042: polySurface682
-    100044: transform329
-    100046: transform330
-    100048: transform331
-    100050: transform332
-    100052: transform333
-    100054: transform334
-    100056: polySurface683
-    100058: polySurface684
-    100060: polySurface685
-    100062: transform335
-    100064: transform336
+    100002: level_1_wall
     400000: //RootNode
-    400002: pPlane30
-    400004: pPlane31
-    400006: pPlane32
-    400008: pPlane33
-    400010: pPlane34
-    400012: pPlane35
-    400014: pPlane36
-    400016: pPlane37
-    400018: transform322
-    400020: transform323
-    400022: transform324
-    400024: transform325
-    400026: transform326
-    400028: transform327
-    400030: transform328
-    400032: polySurface678
-    400034: polySurface679
-    400036: polySurface680
-    400038: polySurface680 1
-    400040: polySurface681
-    400042: polySurface682
-    400044: transform329
-    400046: transform330
-    400048: transform331
-    400050: transform332
-    400052: transform333
-    400054: transform334
-    400056: polySurface683
-    400058: polySurface684
-    400060: polySurface685
-    400062: transform335
-    400064: transform336
-    2300000: pPlane37
-    2300002: polySurface680
-    2300004: //RootNode
-    2300006: polySurface685
-    3300000: pPlane37
-    3300002: polySurface680
-    3300004: //RootNode
-    3300006: polySurface685
-    4300000: pPlane37
-    4300002: polySurface680
-    4300004: polySurface684
-    4300006: polySurface685
+    400002: level_1_wall
+    2300000: //RootNode
+    2300002: level_1_wall
+    3300000: //RootNode
+    3300002: level_1_wall
+    4300000: pPlane15
+    4300002: level_1_wall
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

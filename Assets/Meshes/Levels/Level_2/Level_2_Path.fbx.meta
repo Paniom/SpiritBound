@@ -1,20 +1,23 @@
 fileFormatVersion: 2
-guid: 320a5bc863a46364aaf152e9684be2ec
+guid: 0c5e48bf10f27e8409ec6c69b07ee037
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: polySurface676
-    100004: transform322
+    100002: polySurface130_MeshPart0
+    100004: polySurface130_MeshPart1
     400000: //RootNode
-    400002: polySurface676
-    400004: transform322
-    2300000: //RootNode
-    2300002: polySurface676
-    3300000: //RootNode
-    3300002: polySurface676
-    4300000: Merged_Terrain25
-    4300002: polySurface676
+    400002: polySurface130_MeshPart0
+    400004: polySurface130_MeshPart1
+    2300000: polySurface130_MeshPart0
+    2300002: polySurface130_MeshPart1
+    2300004: //RootNode
+    3300000: polySurface130_MeshPart0
+    3300002: polySurface130_MeshPart1
+    3300004: //RootNode
+    4300000: polySurface130_MeshPart0
+    4300002: polySurface130_MeshPart1
+    4300004: pPlane13
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -1,21 +1,16 @@
 fileFormatVersion: 2
-guid: c04a0e076ce26124f9b04f29a03d7ec1
+guid: e92e62cdd976dfb408e99ec0b1d88c29
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
-    100002: level_1_wall
     400000: //RootNode
-    400002: level_1_wall
     2300000: //RootNode
-    2300002: level_1_wall
     3300000: //RootNode
-    3300002: level_1_wall
-    4300000: pPlane15
-    4300002: level_1_wall
+    4300000: Level_2_Walls
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
