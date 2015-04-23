@@ -7,6 +7,7 @@ public class GoTo : MonoBehaviour
     public GameObject CreditsPanel;
     public GameObject SettingsPanel;
     public GameObject AchievementsPanel;
+    public GameObject AreYouSure;
 
 	// Use this for initialization
 	void Start () 
@@ -83,6 +84,33 @@ public class GoTo : MonoBehaviour
     public void RestartLevel()
     {
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void ResetPrompt()
+    {
+        AreYouSure.SetActive(true);
+    }
+
+    public void DontClearStats()
+    {
+        AreYouSure.SetActive(false);
+    }
+
+    public void ClearStats()
+    {
+        AreYouSure.SetActive(false);
+        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.SetInt("TutorialComplete", 0);
+        //PlayerPrefs.SetInt("Level_1Complete", 0);
+        //PlayerPrefs.SetInt("Level_2Complete", 0);
+        //PlayerPrefs.SetInt("Level_3Complete", 0);
+        //PlayerPrefs.SetInt("Level_4Complete", 0);
+        //PlayerPrefs.SetInt("Level_5Complete", 0);
+        //PlayerPrefs.SetInt("Level_1CompleteNoDeaths", 0);
+        //PlayerPrefs.SetInt("Level_2CompleteNoDeaths", 0);
+        //PlayerPrefs.SetInt("Level_3CompleteNoDeaths", 0);
+        //PlayerPrefs.SetInt("Level_4CompleteNoDeaths", 0);
+        //PlayerPrefs.SetInt("Level_5CompleteNoDeaths", 0);
     }
 
     public void Quit()

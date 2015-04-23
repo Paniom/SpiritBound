@@ -3,46 +3,35 @@ using System.Collections;
 
 public class AchievementTracker : MonoBehaviour
 {
+    public static int Level_0Complete = 0;
     public static int Level_1Complete = 0;
     public static int Level_2Complete = 0;
     public static int Level_3Complete = 0;
     public static int Level_4Complete = 0;
+    public static int Level_5Complete = 0;
 
     public static int Level_1CompleteNoDeaths = 0;
     public static int Level_2CompleteNoDeaths = 0;
     public static int Level_3CompleteNoDeaths = 0;
     public static int Level_4CompleteNoDeaths = 0;
-
-    public static int TutorialComplete = 0;
+    public static int Level_5CompleteNoDeaths = 0;
 
     // Use this for initialization
     void Start()
     {
         SetAchievements();
     }
-    public void ClearStats()
-    {
-        PlayerPrefs.SetInt("TutorialComplete", 0);
-        PlayerPrefs.SetInt("Level_1Complete", 0);
-        PlayerPrefs.SetInt("Level_2Complete", 0);
-        PlayerPrefs.SetInt("Level_3Complete", 0);
-        PlayerPrefs.SetInt("Level_4Complete", 0);
-        PlayerPrefs.SetInt("Level_1CompleteNoDeaths", 0);
-        PlayerPrefs.SetInt("Level_2CompleteNoDeaths", 0);
-        PlayerPrefs.SetInt("Level_3CompleteNoDeaths", 0);
-        PlayerPrefs.SetInt("Level_4CompleteNoDeaths", 0);
-    }
-
+    
     public static void updateAchievements()
     {
         //Check for tutorial complete
         if (PlayerPrefs.HasKey("TutorialComplete"))
         {
-            TutorialComplete = PlayerPrefs.GetInt("TutorialComplete");
+            Level_0Complete = PlayerPrefs.GetInt("TutorialComplete");
         }
         else
         {
-            PlayerPrefs.SetInt("TutorialComplete", TutorialComplete);
+            PlayerPrefs.SetInt("TutorialComplete", Level_0Complete);
         }
 
         //Check for Level_ 1 complete
@@ -85,6 +74,16 @@ public class AchievementTracker : MonoBehaviour
             PlayerPrefs.SetInt("Level_4Complete", Level_4Complete);
         }
 
+        //Check for Level_ 5 complete
+        if (PlayerPrefs.HasKey("Level_5Complete"))
+        {
+            Level_5Complete = PlayerPrefs.GetInt("Level_5Complete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_5Complete", Level_5Complete);
+        }
+
         //Check for Level_ 1 CompleteNoDeaths
         if (PlayerPrefs.HasKey("Level_1CompleteNoDeaths"))
         {
@@ -123,6 +122,16 @@ public class AchievementTracker : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("Level_4CompleteNoDeaths", Level_4CompleteNoDeaths);
+        }
+
+        //Check for Level_ 5 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_5CompleteNoDeaths"))
+        {
+            Level_5CompleteNoDeaths = PlayerPrefs.GetInt("Level_5CompleteNoDeaths");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_5CompleteNoDeaths", Level_5CompleteNoDeaths);
         }
     }
 
@@ -132,11 +141,11 @@ public class AchievementTracker : MonoBehaviour
         //Check for tutorial complete
         if (PlayerPrefs.HasKey("TutorialComplete"))
         {
-            TutorialComplete = PlayerPrefs.GetInt("TutorialComplete");
+            Level_0Complete = PlayerPrefs.GetInt("TutorialComplete");
         }
         else
         {
-            PlayerPrefs.SetInt("TutorialComplete", TutorialComplete);
+            PlayerPrefs.SetInt("TutorialComplete", Level_0Complete);
         }
 
         //Check for Level_ 1 complete
@@ -179,6 +188,16 @@ public class AchievementTracker : MonoBehaviour
             PlayerPrefs.SetInt("Level_4Complete", Level_4Complete);
         }
 
+        //Check for Level_ 5 complete
+        if (PlayerPrefs.HasKey("Level_5Complete"))
+        {
+            Level_5Complete = PlayerPrefs.GetInt("Level_5Complete");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_5Complete", Level_5Complete);
+        }
+
         //Check for Level_ 1 CompleteNoDeaths
         if (PlayerPrefs.HasKey("Level_1CompleteNoDeaths"))
         {
@@ -217,6 +236,16 @@ public class AchievementTracker : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("Level_4CompleteNoDeaths", Level_4CompleteNoDeaths);
+        }
+
+        //Check for Level_ 5 CompleteNoDeaths
+        if (PlayerPrefs.HasKey("Level_5CompleteNoDeaths"))
+        {
+            Level_5CompleteNoDeaths = PlayerPrefs.GetInt("Level_5CompleteNoDeaths");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level_5CompleteNoDeaths", Level_5CompleteNoDeaths);
         }
     }
 }
