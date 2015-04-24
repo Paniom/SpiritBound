@@ -616,6 +616,28 @@ public class PlayerController : MonoBehaviour
 
 		public override void Process (PlayerController owner)
 		{
+
+            if (WallWalk.onWall)
+            {
+                if (owner.RightWall)
+                {
+                    owner.fox.transform.localEulerAngles = new Vector3(30, 90, 0);
+                    owner.wolf.transform.localEulerAngles = new Vector3(30, 90, 0);
+                    owner.muskalo.transform.localEulerAngles = new Vector3(30, 90, 0);
+                }
+                else
+                {
+                    owner.fox.transform.localEulerAngles = new Vector3(-30, 90, 0);
+                    owner.wolf.transform.localEulerAngles = new Vector3(-30, 90, 0);
+                    owner.muskalo.transform.localEulerAngles = new Vector3(-30, 90, 0);
+                }
+            }
+            else
+            {
+                owner.fox.transform.localEulerAngles = new Vector3(0, 90, 0);
+                owner.wolf.transform.localEulerAngles = new Vector3(0, 90, 0);
+                owner.muskalo.transform.localEulerAngles = new Vector3(0, 90, 0);
+            }
 			float s = owner.transform.rotation.eulerAngles.y;
 			if(s!= s)
 			{
@@ -717,11 +739,20 @@ public class PlayerController : MonoBehaviour
     public Animator foxAnimator;
     public Animator wolfAnimator;
 
+    Vector3 wolfStartUp;
+    Vector3 foxStartUp;
+    Vector3 muskaloStartUp;
+
+    bool RightWall = false;
+
     //Vector3 startGravity = new Vector3(0,-10f,0); //Variable to tell what the starting gravity was
 
     // Use this for initialization
     void Start()
     {
+        wolfStartUp = wolf.transform.up;
+        foxStartUp = fox.transform.up;
+        muskaloStartUp = muskalo.transform.up;
         distToGround = collider.bounds.extents.y; // set distance from player collider to ground
         stateMachine.Configure(this, states[0]);
 		stateMachine.ChangeGlobalState(states[4]);
@@ -868,19 +899,41 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        //if (other.gameObject.name == "Angled_Walls_Zones")
-        //{
-        //    ContactPoint whereItHit = other.contacts[0];
-        //    transform.up = transform.position - whereItHit.point;
-        //}
+        if (other.gameObject.name == "Angled_Walls")
+        {
+            //OnWall = true;
+            //Debug.Log("Got on the angled walls");
+            ContactPoint whereItHit = other.contacts[0];
+            if (whereItHit.normal.x > 0)
+            {
+                RightWall = true;
+            }
+            else
+            {
+                RightWall = false;
+            }
+            //Debug.Log(whereItHit.normal);
+            //fox.transform.up = Vector3.Normalize(whereItHit.point - transform.position);
+            //wolf.transform.up = Vector3.Normalize(whereItHit.point - transform.position);
+            //muskalo.transform.up = Vector3.Normalize(whereItHit.point - transform.position);
+            //fox.transform.Rotate(fox.transform.up, -90, Space.Self);
+            //fox.transform.Rotate(fox.transform.up, 35);
+            //wolf.transform.Rotate(wolf.transform.up, 35);
+            //muskalo.transform.Rotate(muskalo.transform.up, 35);
+            //fox.transform.Rotate(fox.transform.up, -90, Space.Self);
+            //wolf.transform.up = whereItHit.normal;
+            //muskalo.transform.up = whereItHit.normal;
+        }
     }
 
     void OnCollisionExit(Collision other)
     {
-        //if (other.gameObject.name == "Angled_Walls_Zones")
+        //if (other.gameObject.name == "Angled_Walls")
         //{
-        //    ContactPoint whereItHit = other.contacts[0];
-        //    transform.up = transform.position - whereItHit.point;
+        //    Debug.Log("Got off the angled walls");
+        //    fox.transform.Rotate(fox.transform.up, -35);
+        //    wolf.transform.Rotate(wolf.transform.up, -35);
+        //    muskalo.transform.Rotate(muskalo.transform.up, -35);
         //}
     }
 
