@@ -967,6 +967,11 @@ ModelImporter:
     101922: transform97
     101924: transform98
     101926: transform99
+    101928: Level_1_Path
+    101930: Level_1_Path 1
+    101932: Level__
+    101934: transform1
+    101936: transform2
     400000: //RootNode
     400002: cliffTile2
     400004: polySurface132
@@ -1931,12 +1936,21 @@ ModelImporter:
     401922: transform97
     401924: transform98
     401926: transform99
+    401928: Level_1_Path
+    401930: Level_1_Path 1
+    401932: Level__
+    401934: transform1
+    401936: transform2
     2300000: //RootNode
     2300002: polySurface132
+    2300004: Level_1_Path
     3300000: //RootNode
     3300002: polySurface132
+    3300004: Level_1_Path
     4300000: cliffTile2
     4300002: polySurface132
+    4300004: Level_1_Path
+    4300006: Level_1_Path1
     9500000: //RootNode
   materials:
     importMaterials: 1
