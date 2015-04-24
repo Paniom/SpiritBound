@@ -423,6 +423,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnExit(PlayerController owner)
         {
+			owner.sinkTimer = 1f;
             Time.timeScale = 1f;
             owner.wolfTrail.SetActive(false);
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -616,6 +617,7 @@ public class PlayerController : MonoBehaviour
 
 		public override void Process (PlayerController owner)
 		{
+<<<<<<< HEAD
 
             if (WallWalk.onWall)
             {
@@ -638,6 +640,32 @@ public class PlayerController : MonoBehaviour
                 owner.wolf.transform.localEulerAngles = new Vector3(0, 90, 0);
                 owner.muskalo.transform.localEulerAngles = new Vector3(0, 90, 0);
             }
+=======
+			if(owner.inWater)
+			{
+				if(owner.stateMachine.getState().Equals("Wolf"))
+				{
+					if(owner.floorColliders != null)
+					{
+						owner.floorColliders.collider.isTrigger = false;
+					}
+					Physics.gravity = new Vector3(0, -owner.wolfGravity, 0);
+				}
+				else
+				{
+					if(owner.floorColliders != null)
+					{
+						owner.floorColliders.collider.isTrigger = true;
+					}
+					Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
+					owner.sinkTimer -= Time.deltaTime;
+					if(owner.sinkTimer < 0)
+					{
+						owner.Drowning();
+					}
+				}
+			}
+>>>>>>> origin/master
 			float s = owner.transform.rotation.eulerAngles.y;
 			if(s!= s)
 			{
@@ -684,12 +712,16 @@ public class PlayerController : MonoBehaviour
     public GameObject foxUI;
     public GameObject foxPowerLevelUI;
     public GameObject wolfPowerLevelUI;
+	public GameObject floorColliders;
 
     public GameObject fox;
     public GameObject wolf;
     public GameObject muskalo;
 
 	public GameObject followingCamera;
+	public float sinkTimer = 1f;
+	public bool inWater { get; private set; }
+	private killPlayer deadlyWater;
 	//private float camDirection = 0;
 	private float offset = 30;
 	private float setRotation = 0;
@@ -719,6 +751,9 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("The force of gravity on the muskalo")]
     public float muskaloGravity = 15; //force of gravity on the muskalo
+
+	[Tooltip("The force of gravity in water")]
+	public float waterGravity = 8; //force of gravity on the muskalo
 
     [Tooltip("The force of gravity on the fox")]
     public float foxGravity = 10; //force of gravity on the fox
@@ -784,6 +819,9 @@ public class PlayerController : MonoBehaviour
 
     void Move(Vector2 direction)
     {
+		if(!stateMachine.getState().Equals("Wolf") && inWater) {
+			direction = direction/3;
+		}
 		if(direction.y > 2.5f)
 		{
 			float y = direction.y;
@@ -826,13 +864,13 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -transform.up, distToGround + 1f); // Raycast to determine if player is on the ground and they can jump
+		return Physics.Raycast(transform.position, -transform.up, distToGround + 1f); // Raycast to determine if player is on the ground and they can jump
     }
 
     /* If the player is grounded they will jump*/
     void Jump()
     {
-        if (IsGrounded() && !OnWall)
+		if (IsGrounded() && !OnWall && (!inWater || stateMachine.getState().Equals("Wolf")) )
         {
             stateMachine.messageReciever("Jump",null);
         }
@@ -940,25 +978,32 @@ public class PlayerController : MonoBehaviour
 	void OnTriggerEnter(Collider other) {
 		string layer = LayerMask.LayerToName(other.gameObject.layer);
 		string tag = other.tag;
+		if(layer.Equals("Water")) {
+			inWater = true;
+			deadlyWater = other.GetComponent<killPlayer>();
+		}
 		if(stateMachine.getState().Equals("Muskalo")) {
 			if(tag.Equals("Breakable")) {
 				stateMachine.messageReciever("Interact", null);
 			}
 		}
 		if(stateMachine.getState().Equals("Wolf")) {
-			if(layer.Equals("Brush")) {
-				stateMachine.messageReciever("Interact", null);
-			}
+
 		}
 		if(stateMachine.getState().Equals("Fox")) {
-			if(layer.Equals("Breakable")) {
-				//stateMachine.messageReciever("Interact", null);
-			}
+
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
+		string layer = LayerMask.LayerToName(other.gameObject.layer);
+		if(layer.Equals("Water")) {
+			inWater = false;
+		}
+	}
 
+	public void Drowning() {
+		deadlyWater.playerDied(this.collider);
 	}
 
 	public void playerDied(Vector3 cam) {
