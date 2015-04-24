@@ -617,8 +617,6 @@ public class PlayerController : MonoBehaviour
 
 		public override void Process (PlayerController owner)
 		{
-<<<<<<< HEAD
-
             if (WallWalk.onWall)
             {
                 if (owner.RightWall)
@@ -640,7 +638,6 @@ public class PlayerController : MonoBehaviour
                 owner.wolf.transform.localEulerAngles = new Vector3(0, 90, 0);
                 owner.muskalo.transform.localEulerAngles = new Vector3(0, 90, 0);
             }
-=======
 			if(owner.inWater)
 			{
 				if(owner.stateMachine.getState().Equals("Wolf"))
@@ -665,7 +662,6 @@ public class PlayerController : MonoBehaviour
 					}
 				}
 			}
->>>>>>> origin/master
 			float s = owner.transform.rotation.eulerAngles.y;
 			if(s!= s)
 			{
