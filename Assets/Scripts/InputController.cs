@@ -18,8 +18,8 @@ public class InputController : MonoBehaviour {
 	private float interactDelay = 1.5f;
 	private float interactTime = 0;
 
-	private float maxSpeed = 1;
-	private float speedChange = .2f;
+	private float maxSpeed = 1.4f;
+	private float speedChange = .35f;
 	public float ySpeed = 0;
 	private float stopTime = 1.3f;
 	private float stopTimer = 0;

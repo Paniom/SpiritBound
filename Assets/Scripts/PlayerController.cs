@@ -890,15 +890,15 @@ public class PlayerController : MonoBehaviour
 			airMove.z = 0;
 		}
 		Vector3 vel = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
-		if(vel.x != vel.x)
+		if(vel.x != vel.x || float.IsInfinity(vel.x) )
 		{
 			vel.x = 0;
 		}
-		if(vel.y != vel.y)
+		if(vel.y != vel.y || float.IsInfinity(vel.y) )
 		{
 			vel.y = 0;
 		}
-		if(vel.z != vel.z)
+		if(vel.z != vel.z || float.IsInfinity(vel.z) )
 		{
 			vel.z = 0;
 		}
@@ -991,10 +991,32 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	void OnTriggerStay(Collider other) {
+		string tag = other.tag;
+		if(stateMachine.getState().Equals("Muskalo")) {
+			if(tag.Equals("Breakable")) {
+				stateMachine.messageReciever("Interact", null);
+			}
+		}
+	}
+
 	void OnTriggerExit(Collider other) {
 		string layer = LayerMask.LayerToName(other.gameObject.layer);
 		if(layer.Equals("Water")) {
 			inWater = false;
+			if(floorColliders != null)
+			{
+				floorColliders.collider.isTrigger = false;
+			}
+			if(stateMachine.getState().Equals("Muskalo")) {
+				Physics.gravity = new Vector3(0, -muskaloGravity, 0);
+			}
+			if(stateMachine.getState().Equals("Wolf")) {
+				Physics.gravity = new Vector3(0, -wolfGravity, 0);
+			}
+			if(stateMachine.getState().Equals("Fox")) {
+				Physics.gravity = new Vector3(0, -foxGravity, 0);
+			}
 		}
 	}
 
