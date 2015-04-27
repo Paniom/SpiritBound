@@ -20,9 +20,59 @@ public class LevelSelect : MonoBehaviour
     public Sprite level4Unlocked;
     public Sprite level5Unlocked;
 
+    public GameObject LevelDetails;
+    public GameObject levelDetails_name;
+    public GameObject levelDetails_stats;
+
+    public void ShowLevelDetails(string level)
+    {
+        LevelDetails.SetActive(true);
+        switch (level)
+        {
+            case "Level1":
+                {
+                    levelDetails_name.GetComponent<Text>().text = "Level 1 ";
+                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level1FastestTime+ "\n" + "High Score: " + AchievementTracker.level1HighScore;
+                    break;
+                }
+            case "Level2":
+                {
+                    levelDetails_name.GetComponent<Text>().text = "Level 2 ";
+                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level2FastestTime + "\n" + "High Score: " + AchievementTracker.level2HighScore; break;
+                }
+            case "Level3":
+                {
+                    levelDetails_name.GetComponent<Text>().text = "Level 3 ";
+                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level3FastestTime + "\n" + "High Score: " + AchievementTracker.level3HighScore; break;
+                }
+            case "Level4":
+                {
+                    levelDetails_name.GetComponent<Text>().text = "Level 4 ";
+                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level4FastestTime + "\n" + "High Score: " + AchievementTracker.level4HighScore; break;
+                }
+            case "Level5":
+                {
+                    levelDetails_name.GetComponent<Text>().text = "Level 5 ";
+                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level5FastestTime + "\n" + "High Score: " + AchievementTracker.level5HighScore; break;
+                }
+        }
+    }
+
+    public void HideLevelDetails()
+    {
+        LevelDetails.SetActive(false);
+    }
+
     // Use this for initialization
     void Start()
     {
+        //LevelDetails = Instantiate(Resources.Load("LevelDetails")) as GameObject;
+        //LevelDetails.transform.SetParent(GameObject.Find("Canvas").transform);
+        //LevelDetails.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 0, 0);
+        //LevelDetails.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        //LevelDetails.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        LevelDetails.SetActive(false);
+
         AchievementTracker.updateAchievements();
         if (AchievementTracker.Level_0Complete == 1)
         {

@@ -190,10 +190,52 @@ public class TimeAndScore : MonoBehaviour
                 finalScore = score;
                 doneCalculatingScore = true;
             }
-
         }
         if (doneCalculatingScore && doneCalculatingTime)
         {
+            switch (Application.loadedLevelName)
+            {
+                case "Level_1":
+                    {
+                        if (finalScore > PlayerPrefs.GetInt("level1HighScore"))
+                            PlayerPrefs.SetInt("level1HighScore", (int)finalScore);
+                        if (timeRemaining > PlayerPrefs.GetInt("level1FastestTime"))
+                            PlayerPrefs.SetInt("level1FastestTime", (int)timeRemaining);
+                        break;
+                    }
+                case "Level_2":
+                    {
+                        if (finalScore > PlayerPrefs.GetInt("level2HighScore"))
+                            PlayerPrefs.SetInt("level2HighScore", (int)finalScore);
+                        if (timeRemaining > PlayerPrefs.GetInt("level2FastestTime"))
+                            PlayerPrefs.SetInt("level2FastestTime", (int)timeRemaining);
+                        break;
+                    }
+                case "Level_3":
+                    {
+                        if (finalScore > PlayerPrefs.GetInt("level3HighScore"))
+                            PlayerPrefs.SetInt("level3HighScore", (int)finalScore);
+                        if (timeRemaining > PlayerPrefs.GetInt("level3HighScore"))
+                            PlayerPrefs.SetInt("level3HighScore", (int)timeRemaining);
+                        break;
+                    }
+                case "Level_4":
+                    {
+                        if (finalScore > PlayerPrefs.GetInt("level4HighScore"))
+                            PlayerPrefs.SetInt("level4HighScore", (int)finalScore);
+                        if (timeRemaining > PlayerPrefs.GetInt("level4FastestTime"))
+                            PlayerPrefs.SetInt("level4FastestTime", (int)timeRemaining);
+                        break;
+                    }
+                case "Level_5":
+                    {
+                        if (finalScore > PlayerPrefs.GetInt("level5HighScore"))
+                            PlayerPrefs.SetInt("level5HighScore", (int)finalScore);
+                        if (timeRemaining > PlayerPrefs.GetInt("level5FastestTime"))
+                            PlayerPrefs.SetInt("level5FastestTime", (int)timeRemaining);
+                        break;
+                    }
+            }
             finalScoreText.GetComponent<Text>().text = ""+(int)finalScore;
             finalDeaths.GetComponent<Text>().text = "Number of Deaths : " + numberOfDeaths;
             finalGemText.GetComponent<Text>().text = "Gems : " + gems + "/" + TotalGems;
@@ -201,6 +243,5 @@ public class TimeAndScore : MonoBehaviour
             finalTimeRemainingText.GetComponent<Text>().text = "Time Remaining : " + (int)TimeTaken;
             this.enabled = false;
         }
-
     }
 }

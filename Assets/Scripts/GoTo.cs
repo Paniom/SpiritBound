@@ -99,18 +99,56 @@ public class GoTo : MonoBehaviour
     public void ClearStats()
     {
         AreYouSure.SetActive(false);
-        PlayerPrefs.DeleteAll();
-        //PlayerPrefs.SetInt("TutorialComplete", 0);
-        //PlayerPrefs.SetInt("Level_1Complete", 0);
-        //PlayerPrefs.SetInt("Level_2Complete", 0);
-        //PlayerPrefs.SetInt("Level_3Complete", 0);
-        //PlayerPrefs.SetInt("Level_4Complete", 0);
-        //PlayerPrefs.SetInt("Level_5Complete", 0);
-        //PlayerPrefs.SetInt("Level_1CompleteNoDeaths", 0);
-        //PlayerPrefs.SetInt("Level_2CompleteNoDeaths", 0);
-        //PlayerPrefs.SetInt("Level_3CompleteNoDeaths", 0);
-        //PlayerPrefs.SetInt("Level_4CompleteNoDeaths", 0);
-        //PlayerPrefs.SetInt("Level_5CompleteNoDeaths", 0);
+        //AchievementTracker.level1HighScore = 0;
+        //AchievementTracker.level2HighScore = 0;
+        //AchievementTracker.level3HighScore = 0;
+        //AchievementTracker.level4HighScore = 0;
+        //AchievementTracker.level5HighScore = 0;
+
+        //AchievementTracker.level1FastestTime = 0;
+        //AchievementTracker.level2FastestTime = 0;
+        //AchievementTracker.level3FastestTime = 0;
+        //AchievementTracker.level4FastestTime = 0;
+        //AchievementTracker.level5FastestTime = 0;
+
+        //AchievementTracker.Level_0Complete = 0;
+        //AchievementTracker.Level_1Complete = 0;
+        //AchievementTracker.Level_2Complete = 0;
+        //AchievementTracker.Level_3Complete = 0;
+        //AchievementTracker.Level_4Complete = 0;
+        //AchievementTracker.Level_5Complete = 0;
+
+        //AchievementTracker.Level_1CompleteNoDeaths = 0;
+        //AchievementTracker.Level_2CompleteNoDeaths = 0;
+        //AchievementTracker.Level_3CompleteNoDeaths = 0;
+        //AchievementTracker.Level_4CompleteNoDeaths = 0;
+        //AchievementTracker.Level_5CompleteNoDeaths = 0;
+
+        PlayerPrefs.SetInt("Level_0Complete", 0);
+        PlayerPrefs.SetInt("Level_1Complete", 0);
+        PlayerPrefs.SetInt("Level_2Complete", 0);
+        PlayerPrefs.SetInt("Level_3Complete", 0);
+        PlayerPrefs.SetInt("Level_4Complete", 0);
+        PlayerPrefs.SetInt("Level_5Complete", 0);
+
+        PlayerPrefs.SetInt("Level_1CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_2CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_3CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_4CompleteNoDeaths", 0);
+        PlayerPrefs.SetInt("Level_5CompleteNoDeaths", 0);
+
+        PlayerPrefs.SetInt("level1HighScore", 0);
+        PlayerPrefs.SetInt("level2HighScore", 0);
+        PlayerPrefs.SetInt("level3HighScore", 0);
+        PlayerPrefs.SetInt("level4HighScore", 0);
+        PlayerPrefs.SetInt("level5HighScore", 0);
+
+        PlayerPrefs.SetInt("level1FastestTime", 0);
+        PlayerPrefs.SetInt("level2FastestTime", 0);
+        PlayerPrefs.SetInt("level3FastestTime", 0);
+        PlayerPrefs.SetInt("level4FastestTime", 0);
+        PlayerPrefs.SetInt("level5FastestTime", 0);
+        AchievementTracker.updateAchievements();
     }
 
     public void Quit()

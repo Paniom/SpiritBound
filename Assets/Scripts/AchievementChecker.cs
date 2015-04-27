@@ -18,6 +18,8 @@ public class AchievementChecker : MonoBehaviour
 
     public GameObject TutorialComplete;
 
+    public Sprite levelCompleteSprite;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -27,10 +29,13 @@ public class AchievementChecker : MonoBehaviour
     public void CheckForAchievements()
     {
         //Check for tutorial complete
-        if (PlayerPrefs.HasKey("TutorialComplete"))
+        if (PlayerPrefs.HasKey("Level_0Complete"))
         {
-            if (PlayerPrefs.GetInt("TutorialComplete") == 1)
+            if (PlayerPrefs.GetInt("Level_0Complete") == 1)
+            {
                 TutorialComplete.GetComponent<CanvasGroup>().alpha = 1;
+                TutorialComplete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 TutorialComplete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -43,7 +48,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_1Complete"))
         {
             if (PlayerPrefs.GetInt("Level_1Complete") == 1)
+            {
                 Level_1Complete.GetComponent<CanvasGroup>().alpha = 1;
+                Level_1Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_1Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -56,7 +64,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_2Complete"))
         {
             if (PlayerPrefs.GetInt("Level_2Complete") == 1)
+            {
                 Level_2Complete.GetComponent<CanvasGroup>().alpha = 1;
+                Level_2Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_2Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -69,7 +80,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_3Complete"))
         {
             if (PlayerPrefs.GetInt("Level_3Complete") == 1)
+            {
                 Level_3Complete.GetComponent<CanvasGroup>().alpha = 1;
+                Level_3Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_3Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -82,7 +96,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_4Complete"))
         {
             if (PlayerPrefs.GetInt("Level_4Complete") == 1)
+            {
                 Level_4Complete.GetComponent<CanvasGroup>().alpha = 1;
+                Level_4Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_4Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -95,7 +112,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_5Complete"))
         {
             if (PlayerPrefs.GetInt("Level_5Complete") == 1)
+            {
                 Level_5Complete.GetComponent<CanvasGroup>().alpha = 1;
+                Level_5Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_5Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -108,7 +128,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_1CompleteNoDeaths"))
         {
             if (PlayerPrefs.GetInt("Level_1CompleteNoDeaths") == 1)
+            {
                 Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+                Level_1CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -121,7 +144,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_2CompleteNoDeaths"))
         {
             if (PlayerPrefs.GetInt("Level_2CompleteNoDeaths") == 1)
+            {
                 Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+                Level_2CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -134,7 +160,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_3CompleteNoDeaths"))
         {
             if (PlayerPrefs.GetInt("Level_3CompleteNoDeaths") == 1)
+            {
                 Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+                Level_3CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -147,7 +176,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_4CompleteNoDeaths"))
         {
             if (PlayerPrefs.GetInt("Level_4CompleteNoDeaths") == 1)
+            {
                 Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+                Level_4CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
@@ -160,7 +192,10 @@ public class AchievementChecker : MonoBehaviour
         if (PlayerPrefs.HasKey("Level_5CompleteNoDeaths"))
         {
             if (PlayerPrefs.GetInt("Level_5CompleteNoDeaths") == 1)
+            {
                 Level_5CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 1;
+                Level_5CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
+            }
             else
                 Level_5CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
         }
