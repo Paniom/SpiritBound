@@ -115,14 +115,10 @@ public class TimeAndScore : MonoBehaviour
                     timerSlider.GetComponent<Slider>().value = timeRemaining;
                 if (scoreText != null)
                     scoreText.GetComponent<Text>().text = score.ToString();
-                if (coinText != null && coins == 1)
-                    coinText.GetComponent<Text>().text = coins + "          coin";
-                else if (coinText != null && coins != 1)
-                    coinText.GetComponent<Text>().text = coins + "          coins";
-                if (gemText != null && gems == 1)
-                    gemText.GetComponent<Text>().text = gems + "          gem";
-                else if (gemText != null && gems != 1)
-                    gemText.GetComponent<Text>().text = gems + "          gems";
+                if (coinText != null)
+                    coinText.GetComponent<Text>().text = "coins    " + coins;
+                if (gemText != null)
+                    gemText.GetComponent<Text>().text = "gems    " + gems;
             }
             else
             {
