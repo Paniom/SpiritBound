@@ -423,7 +423,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnExit(PlayerController owner)
         {
-			owner.sinkTimer = 1f;
+			owner.sinkTimer = 4f;
             Time.timeScale = 1f;
             owner.wolfTrail.SetActive(false);
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -715,7 +715,7 @@ public class PlayerController : MonoBehaviour
     public GameObject muskalo;
 
 	public GameObject followingCamera;
-	public float sinkTimer = 1f;
+	public float sinkTimer = 4f;
 	public bool inWater { get; private set; }
 	private killPlayer deadlyWater;
 	//private float camDirection = 0;
