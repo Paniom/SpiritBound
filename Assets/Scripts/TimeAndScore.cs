@@ -174,7 +174,7 @@ public class TimeAndScore : MonoBehaviour
 
             if (finalScore <= score && !doneCalculatingScore)
             {
-                finalScore += Time.deltaTime * 100;
+                finalScore += Time.deltaTime * 200;
                 if (!audio.isPlaying)
                 {
                     audio.clip = scoreTick;
@@ -184,10 +184,6 @@ public class TimeAndScore : MonoBehaviour
             else if (finalScore > score && !doneCalculatingScore)
             {
                 finalScore = score;
-                finalScore -= numberOfDeaths * 10;
-                finalScore += timeRemaining;
-                finalScore += GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value*20;
-                finalScore += GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value * 20;
                 doneCalculatingScore = true;
             }
         }

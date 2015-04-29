@@ -20,6 +20,10 @@ public class EndGameController : MonoBehaviour {
                     levelname += "NoDeaths";
                     PlayerPrefs.SetInt(levelname, 1);
                 }
+                TimeAndScore.score -= TimeAndScore.numberOfDeaths * 10;
+                TimeAndScore.score += (int)TimeAndScore.timeRemaining;
+                TimeAndScore.score += (int)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value * 20;
+                TimeAndScore.score += (int)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value * 20;
                 AchievementTracker.updateAchievements();
                 TimeAndScore.GameOver = true;
                 TimeAndScore.UpdateMap = true;
