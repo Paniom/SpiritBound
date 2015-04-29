@@ -860,7 +860,24 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-		return Physics.Raycast(transform.position, -transform.up, distToGround + 1f); // Raycast to determine if player is on the ground and they can jump
+        if (Physics.Raycast(transform.position + 1.25f * transform.forward, -transform.up, distToGround + 0.2f))
+        {
+            return true;
+        }
+        else if (Physics.Raycast(transform.position + 1.25f * transform.forward + 0.1f*transform.right, -transform.up, distToGround + 0.2f))
+        {
+            return true;
+        }
+        else if (Physics.Raycast(transform.position + 1.25f * transform.forward - 0.1f*transform.right, -transform.up, distToGround + 0.2f))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        //Debug.DrawLine(transform.position + 1.25f*transform.forward, transform.position+1.25f*transform.forward+-distToGround*transform.up,Color.red);
+		//return ; // Raycast to determine if player is on the ground and they can jump
     }
 
     /* If the player is grounded they will jump*/
@@ -938,6 +955,7 @@ public class PlayerController : MonoBehaviour
             //OnWall = true;
             //Debug.Log("Got on the angled walls");
             ContactPoint whereItHit = other.contacts[0];
+            Physics.gravity = -whereItHit.normal;
             if (whereItHit.normal.x > 0)
             {
                 RightWall = true;
@@ -962,6 +980,15 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
+        if(stateMachine.getState().Equals("Muskalo")) {
+				Physics.gravity = new Vector3(0, -muskaloGravity, 0);
+			}
+			if(stateMachine.getState().Equals("Wolf")) {
+				Physics.gravity = new Vector3(0, -wolfGravity, 0);
+			}
+			if(stateMachine.getState().Equals("Fox")) {
+				Physics.gravity = new Vector3(0, -foxGravity, 0);
+			}
         //if (other.gameObject.name == "Angled_Walls")
         //{
         //    Debug.Log("Got off the angled walls");
