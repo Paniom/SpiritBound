@@ -25,7 +25,7 @@ public class TutorialZones : MonoBehaviour
     void Start()
     {
         tutorialtext = Instantiate(Resources.Load("DeathText")) as GameObject;
-        tutorialtext.transform.SetParent(GameObject.Find("UI Canvas").transform);
+        tutorialtext.transform.SetParent(GameObject.Find("HintsPanel").transform);
         tutorialtext.GetComponentInChildren<Text>().text = TutorialMessage[(int)tutorialType];
         tutorialtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         tutorialtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);

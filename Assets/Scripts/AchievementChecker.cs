@@ -37,11 +37,11 @@ public class AchievementChecker : MonoBehaviour
                 TutorialComplete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                TutorialComplete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                TutorialComplete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            TutorialComplete.GetComponent<CanvasGroup>().alpha = 0.39f;
+            TutorialComplete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 1 complete
@@ -53,11 +53,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_1Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_1Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_1Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_1Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_1Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 2 complete
@@ -69,11 +69,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_2Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_2Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_2Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_2Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_2Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 3 complete
@@ -85,11 +85,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_3Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_3Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_3Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_3Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_3Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 4 complete
@@ -101,11 +101,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_4Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_4Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_4Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_4Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_4Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 5 complete
@@ -117,11 +117,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_5Complete.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_5Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_5Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_5Complete.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_5Complete.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 1 CompleteNoDeaths
@@ -133,11 +133,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_1CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_1CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 2 CompleteNoDeaths
@@ -149,11 +149,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_2CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_2CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 3 CompleteNoDeaths
@@ -165,11 +165,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_3CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_3CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 4 CompleteNoDeaths
@@ -181,11 +181,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_4CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_4CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
 
         //Check for Level_ 5 CompleteNoDeaths
@@ -197,11 +197,11 @@ public class AchievementChecker : MonoBehaviour
                 Level_5CompleteNoDeaths.transform.GetChild(0).GetComponent<Image>().sprite = levelCompleteSprite;
             }
             else
-                Level_5CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+                Level_5CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
         else
         {
-            Level_5CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.39f;
+            Level_5CompleteNoDeaths.GetComponent<CanvasGroup>().alpha = 0.45f;
         }
     }
 }

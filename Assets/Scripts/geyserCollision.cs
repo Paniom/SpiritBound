@@ -17,6 +17,7 @@ public class geyserCollision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        gameObject.GetComponent<Animator>().SetBool("erupting", erupting);
         if (erupting)
         {
             if(!collider.enabled)

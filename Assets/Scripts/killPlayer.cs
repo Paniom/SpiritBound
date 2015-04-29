@@ -116,7 +116,7 @@ public class killPlayer : MonoBehaviour {
 				TimeAndScore.timeRemaining = SetLastSpawn.checkpointTime;
 				Time.timeScale = 0;
 				GameObject deathtext = Instantiate(Resources.Load("DeathText")) as GameObject;
-				deathtext.transform.SetParent(GameObject.Find("UI Canvas").transform);
+				deathtext.transform.SetParent(GameObject.Find("HintsPanel").transform);
 				deathtext.GetComponentInChildren<Text>().text = DeathMessage[(int)deathType];
 				deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 				deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);

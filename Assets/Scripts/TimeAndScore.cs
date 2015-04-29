@@ -184,6 +184,10 @@ public class TimeAndScore : MonoBehaviour
             else if (finalScore > score && !doneCalculatingScore)
             {
                 finalScore = score;
+                finalScore -= numberOfDeaths * 10;
+                finalScore += timeRemaining;
+                finalScore += GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value*20;
+                finalScore += GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value * 20;
                 doneCalculatingScore = true;
             }
         }
