@@ -380,6 +380,9 @@ public class PlayerController : MonoBehaviour
             owner.wolf.SetActive(true);
             owner.muskalo.SetActive(false);
             Physics.gravity = new Vector3(0, -owner.wolfGravity, 0);
+			if(owner.inWater) {
+				owner.transform.position = new Vector3(owner.transform.position.x,owner.deadlyWater.transform.position.y,owner.transform.position.z);
+			}
             owner.wolfTrail.SetActive(true);
             owner.stateMachine.setState("Wolf");
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -423,7 +426,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnExit(PlayerController owner)
         {
-			owner.sinkTimer = 1f;
+			owner.sinkTimer = owner.resetSinkTime;
             Time.timeScale = 1f;
             owner.wolfTrail.SetActive(false);
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -650,11 +653,12 @@ public class PlayerController : MonoBehaviour
 				}
 				else
 				{
+					Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
 					if(owner.floorColliders != null)
 					{
 						owner.floorColliders.collider.isTrigger = true;
 					}
-					Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
+
 					owner.sinkTimer -= Time.deltaTime;
 					if(owner.sinkTimer < 0)
 					{
@@ -715,7 +719,8 @@ public class PlayerController : MonoBehaviour
     public GameObject muskalo;
 
 	public GameObject followingCamera;
-	public float sinkTimer = 1f;
+	public float sinkTimer = 3f;
+	private float resetSinkTime = 3f;
 	public bool inWater { get; private set; }
 	private killPlayer deadlyWater;
 	//private float camDirection = 0;
@@ -749,7 +754,7 @@ public class PlayerController : MonoBehaviour
     public float muskaloGravity = 15; //force of gravity on the muskalo
 
 	[Tooltip("The force of gravity in water")]
-	public float waterGravity = 8; //force of gravity on the muskalo
+	public float waterGravity = 8; //force of gravity in the water
 
     [Tooltip("The force of gravity on the fox")]
     public float foxGravity = 10; //force of gravity on the fox
@@ -1004,6 +1009,7 @@ public class PlayerController : MonoBehaviour
 		if(layer.Equals("Water")) {
 			inWater = true;
 			deadlyWater = other.GetComponent<killPlayer>();
+			sinkTimer = resetSinkTime;
 		}
 		if(stateMachine.getState().Equals("Muskalo")) {
 			if(tag.Equals("Breakable")) {
