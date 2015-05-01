@@ -38,22 +38,29 @@ public class LevelSelect : MonoBehaviour
             case "Level2":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 2 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level2FastestTime + "\n" + "High Score: " + AchievementTracker.level2HighScore; break;
+                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level2FastestTime + "\n" + "High Score: " + AchievementTracker.level2HighScore; 
+                    break;
                 }
             case "Level3":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 3 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level3FastestTime + "\n" + "High Score: " + AchievementTracker.level3HighScore; break;
+                    levelDetails_stats.GetComponent<Text>().text = "Locked : Coming Soon";
+                    //levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level3FastestTime + "\n" + "High Score: " + AchievementTracker.level3HighScore; 
+                    break;
                 }
             case "Level4":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 4 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level4FastestTime + "\n" + "High Score: " + AchievementTracker.level4HighScore; break;
+                    levelDetails_stats.GetComponent<Text>().text = "Locked : Coming Soon";
+                    //levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level4FastestTime + "\n" + "High Score: " + AchievementTracker.level4HighScore; 
+                    break;
                 }
             case "Level5":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 5 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level5FastestTime + "\n" + "High Score: " + AchievementTracker.level5HighScore; break;
+                    levelDetails_stats.GetComponent<Text>().text = "Locked : Coming Soon";
+                    //levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level5FastestTime + "\n" + "High Score: " + AchievementTracker.level5HighScore; 
+                    break;
                 }
         }
     }
@@ -120,8 +127,8 @@ public class LevelSelect : MonoBehaviour
                 //map.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Map2-3(Finish)");
             }
             level2.GetComponent<Image>().sprite = levelComplete;
-            level3.GetComponent<Image>().sprite = level3Unlocked;
-            level3.GetComponent<Button>().interactable = true;
+            //level3.GetComponent<Image>().sprite = level3Unlocked;
+            //level3.GetComponent<Button>().interactable = true;
         }
         if (AchievementTracker.Level_3Complete == 1)
         {
