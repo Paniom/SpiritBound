@@ -168,6 +168,10 @@ public class CameraController : MonoBehaviour {
 		{
 			owner.stateMachine.setState("Still");
 		}
+		public override void Process(CameraController owner)
+		{
+			owner.stateMachine.ChangeState(owner.states[2]);
+		}
 	}
 
 	public class Swaying : State<CameraController>
@@ -294,8 +298,10 @@ public class CameraController : MonoBehaviour {
  
     }
 
-	void setPosition(Vector3 pos)
+	public void setPosition(Vector3 pos,Quaternion rot)
 	{
 		transform.position = pos;
+		transform.rotation = rot;
+		stateMachine.ChangeState(states[1]);
 	}
 }
