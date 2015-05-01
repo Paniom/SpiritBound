@@ -49,7 +49,6 @@ public class CameraController : MonoBehaviour {
 			count = Mathf.Clamp01(count+Time.deltaTime*totalTimeInv);
 			if(count == 1)
 			{
-				Debug.Log("E");
 				owner.stateMachine.ChangeState(owner.states[2]);
 			}
 			cPos.y = owner.distFromPlayer.y;
@@ -183,10 +182,11 @@ public class CameraController : MonoBehaviour {
 	 
 	    private Vector3 desiredPosition = Vector3.zero;
 	    private Vector3 cameraVelocity = Vector3.zero;
+		private bool reset = false;
 
 		public Swaying()
 		{
-
+			HandlerList.Add(new Handler<CameraController>("SetPosition", resetPos));
 		}
 
 		public override void OnEnter (CameraController owner)
@@ -197,12 +197,19 @@ public class CameraController : MonoBehaviour {
 			Vector3 targRot = owner.target.transform.rotation.eulerAngles;
 			owner.target.transform.rotation = Quaternion.Euler (targRot.x, yRot, targRot.z);
 			DesiredOffset = new Vector3(-owner.distFromPlayer.z,owner.distFromPlayer.y,owner.distFromPlayer.x);
+			owner.SpringCamera.transform.position = owner.distFromPlayer+owner.target.transform.position;
 			//LookAtOffset = new Vector3(0, owner.distFromPlayer.y-.4f, 0);*/
 			print("dist = " + DesiredOffset.ToString());
 		}
 
 		public override void Process (CameraController owner)
 		{
+			if(reset)
+			{
+				cameraVelocity = Vector3.zero;
+				reset = false;
+
+			}
 			Vector3 stretch = owner.SpringCamera.transform.position - desiredPosition;
 			Vector3 force = -owner.stiffness * stretch - owner.damping * cameraVelocity;
 	 
@@ -234,6 +241,13 @@ public class CameraController : MonoBehaviour {
 	        //SpringCamera.projectionMatrix = Matrix4x4.Perspective(SpringCamera.fieldOfView, SpringCamera.aspect, SpringCamera.near, SpringCamera.far);
 	 
 		}
+
+		void resetPos(CameraController owner, params object[] args)
+		{
+			Debug.Log("Resetting");
+			reset = true;
+		}
+
 	}
 
 	public State<CameraController>[] states = new State<CameraController>[] {	new PathFollow(),
@@ -300,8 +314,8 @@ public class CameraController : MonoBehaviour {
 
 	public void setPosition(Vector3 pos,Quaternion rot)
 	{
-		transform.position = pos;
-		transform.rotation = rot;
-		stateMachine.ChangeState(states[1]);
+		SpringCamera.transform.position = pos;
+		SpringCamera.transform.rotation = rot;
+		stateMachine.messageReciever("SetPosition", null);
 	}
 }
