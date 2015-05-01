@@ -41,7 +41,7 @@ public class WallWalk : MonoBehaviour
                     }
                 case "Fox":
                     {
-                        player.GetComponent<PlayerController>().OnWall = false;
+                        player.GetComponent<PlayerController>().OnWall = true;
                         //startRot = player.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //Transform other = player.transform.FindChild("foxSpirit_Still");
                         //other.up = Vector3.Normalize(other.position - other.position);
