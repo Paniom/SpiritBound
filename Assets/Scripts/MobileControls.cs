@@ -22,7 +22,7 @@ public class MobileControls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		#if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_BLACKBERRY
+		#if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_WEBPLAYER
 		gameObject.SetActive(false);
 		#endif
 		downTimer = playerInput.stopTime;
