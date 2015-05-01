@@ -6,9 +6,9 @@ public class killPlayer : MonoBehaviour {
 
     public static GameObject lastSpawn;
     bool dead = false;
-    float deathDelay = 1.0f;
+    float deathDelay = 2.0f;
 	bool respawn = false;
-	float respawnWait = 1.0f;
+	float respawnWait = 2.0f;
 	Collider other;
 	public enum DeathType:int { Pit = 0, Geyser = 1, Boulder = 2, Other = 3, Water = 4 }; 
 	public DeathType deathType = DeathType.Other;
@@ -29,7 +29,7 @@ public class killPlayer : MonoBehaviour {
 		{
 			if (deathDelay < 0)
 			{
-				deathDelay = 1.0f;
+				deathDelay = 2.0f;
 				dead = false;
 			}
 			else
@@ -42,7 +42,7 @@ public class killPlayer : MonoBehaviour {
 			respawnWait -= Time.unscaledDeltaTime;
 			if (respawnWait < 0)
 			{
-				respawnWait = 1.0f;
+				respawnWait = 2.0f;
 				respawn = false;
 				Time.timeScale = 1;
 				other.GetComponent<PlayerController>().playerDied(SetLastSpawn.RespawnCameraPos,SetLastSpawn.RespawnCameraRot);
@@ -121,7 +121,7 @@ public class killPlayer : MonoBehaviour {
 				deathtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 				deathtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
 				deathtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-				Destroy(deathtext, 1.0f);
+				Destroy(deathtext, 2.0f);
 				respawn = true;
 			}
 		}
