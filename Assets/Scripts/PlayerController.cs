@@ -1057,8 +1057,8 @@ public class PlayerController : MonoBehaviour
 		deadlyWater.playerDied(this.collider);
 	}
 
-	public void playerDied(Vector3 cam) {
-		followingCamera.SendMessage("setPosition", cam, SendMessageOptions.DontRequireReceiver);
+	public void playerDied(Vector3 cam, Quaternion rot) {
+		followingCamera.GetComponent<CameraController>().setPosition(cam, rot);
 		GetComponent<InputController>().ySpeed = 0;
 	}
 }
