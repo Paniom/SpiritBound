@@ -866,15 +866,18 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        if (Physics.Raycast(transform.position + 1.25f * transform.forward, -transform.up, distToGround + 0.2f))
+        Debug.DrawLine(transform.position + 1.25f * transform.forward, transform.position + 1.25f * transform.forward+(distToGround + 0.2f)*-transform.up, Color.red);
+        Debug.DrawLine(transform.position + 1.25f * transform.forward - 0.4f * transform.right, transform.position + 1.25f * transform.forward + (distToGround + 0.2f) * -transform.up, Color.red);
+        Debug.DrawLine(transform.position + 1.25f * transform.forward + 0.4f * transform.right, transform.position + 1.25f * transform.forward + (distToGround + 0.2f) * -transform.up, Color.red);
+        if (Physics.Raycast(transform.position + 1.25f * transform.forward, -transform.up, distToGround + 0.1f))
         {
             return true;
         }
-        else if (Physics.Raycast(transform.position + 1.25f * transform.forward + 0.1f*transform.right, -transform.up, distToGround + 0.2f))
+        else if (Physics.Raycast(transform.position + 1.25f * transform.forward + 0.4f*transform.right, -transform.up, distToGround + 0.1f))
         {
             return true;
         }
-        else if (Physics.Raycast(transform.position + 1.25f * transform.forward - 0.1f*transform.right, -transform.up, distToGround + 0.2f))
+        else if (Physics.Raycast(transform.position + 1.25f * transform.forward - 0.4f*transform.right, -transform.up, distToGround + 0.1f))
         {
             return true;
         }
