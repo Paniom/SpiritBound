@@ -13,6 +13,9 @@ ModelImporter:
     100014: polySurface130ss_MeshPart0
     100016: polySurface130ss_MeshPart1
     100018: polySurface130ss_MeshPart2
+    100020: levl_2_path_MeshPart0
+    100022: levl_2_path_MeshPart1
+    100024: levl_2_path_MeshPart2
     400000: //RootNode
     400002: polySurface130_MeshPart0
     400004: polySurface130_MeshPart1
@@ -23,6 +26,9 @@ ModelImporter:
     400014: polySurface130ss_MeshPart0
     400016: polySurface130ss_MeshPart1
     400018: polySurface130ss_MeshPart2
+    400020: levl_2_path_MeshPart0
+    400022: levl_2_path_MeshPart1
+    400024: levl_2_path_MeshPart2
     2300000: polySurface130_MeshPart0
     2300002: polySurface130_MeshPart1
     2300004: //RootNode
@@ -33,6 +39,9 @@ ModelImporter:
     2300014: polySurface130ss_MeshPart0
     2300016: polySurface130ss_MeshPart1
     2300018: polySurface130ss_MeshPart2
+    2300020: levl_2_path_MeshPart0
+    2300022: levl_2_path_MeshPart1
+    2300024: levl_2_path_MeshPart2
     3300000: polySurface130_MeshPart0
     3300002: polySurface130_MeshPart1
     3300004: //RootNode
@@ -43,6 +52,9 @@ ModelImporter:
     3300014: polySurface130ss_MeshPart0
     3300016: polySurface130ss_MeshPart1
     3300018: polySurface130ss_MeshPart2
+    3300020: levl_2_path_MeshPart0
+    3300022: levl_2_path_MeshPart1
+    3300024: levl_2_path_MeshPart2
     4300000: polySurface130_MeshPart0
     4300002: polySurface130_MeshPart1
     4300004: pPlane13
@@ -53,6 +65,9 @@ ModelImporter:
     4300014: polySurface130ss_MeshPart0
     4300016: polySurface130ss_MeshPart1
     4300018: polySurface130ss_MeshPart2
+    4300020: levl_2_path_MeshPart0
+    4300022: levl_2_path_MeshPart1
+    4300024: levl_2_path_MeshPart2
     9500000: //RootNode
   materials:
     importMaterials: 1
