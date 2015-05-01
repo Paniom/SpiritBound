@@ -102,6 +102,10 @@ public class TimeAndScore : MonoBehaviour
                     GameObject.Find("PauseButtonBack").SetActive(false);
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed = 0;
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
+                    TimeAndScore.score -= TimeAndScore.numberOfDeaths * 10;
+                    TimeAndScore.score += (int)TimeAndScore.timeRemaining;
+                    TimeAndScore.score += (int)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value * 20;
+                    TimeAndScore.score += (int)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value * 20;
                 }
             }
             if (timeRemaining <= 30)
@@ -174,7 +178,7 @@ public class TimeAndScore : MonoBehaviour
 
             if (finalScore <= score && !doneCalculatingScore)
             {
-                finalScore += Time.deltaTime * 100;
+                finalScore += Time.deltaTime * 250;
                 if (!audio.isPlaying)
                 {
                     audio.clip = scoreTick;
@@ -184,10 +188,6 @@ public class TimeAndScore : MonoBehaviour
             else if (finalScore > score && !doneCalculatingScore)
             {
                 finalScore = score;
-                finalScore -= numberOfDeaths * 10;
-                finalScore += timeRemaining;
-                finalScore += GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().foxPowerLevelUI.GetComponent<Slider>().value*20;
-                finalScore += GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().wolfPowerLevelUI.GetComponent<Slider>().value * 20;
                 doneCalculatingScore = true;
             }
         }

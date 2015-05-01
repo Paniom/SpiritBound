@@ -4,8 +4,6 @@ using System.Collections;
 public class WallWalk : MonoBehaviour
 {
     public static bool onWall;
-    float xRot = 1;
-    float zRot = 1;
     Vector3 startRot;
 
     PhysicMaterial wallWalk;
