@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
             owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f,0.8f,0.8f);
             owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
@@ -206,19 +205,21 @@ public class PlayerController : MonoBehaviour
             owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
         {
-            if (owner.foxPowerLevelUI.GetComponent<Slider>().value > 0) // check if fox power level needs to decrease
+            if (!owner.OnWall)
             {
-                owner.foxPowerLevelUI.GetComponent<Slider>().value -= Time.deltaTime; //decrease fox power level
-            }
-            else
-            {
-                owner.foxPowerLevelUI.GetComponent<Slider>().value = 0;
-                owner.stateMachine.ChangeState(owner.states[0]);
+                if (owner.foxPowerLevelUI.GetComponent<Slider>().value > 0) // check if fox power level needs to decrease
+                {
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value -= Time.deltaTime; //decrease fox power level
+                }
+                else
+                {
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value = 0;
+                    owner.stateMachine.ChangeState(owner.states[0]);
+                }
             }
             if (owner.interacting)
             {
@@ -391,7 +392,6 @@ public class PlayerController : MonoBehaviour
             owner.muskaloUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.foxUI.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
             owner.wolfUI.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
@@ -555,7 +555,6 @@ public class PlayerController : MonoBehaviour
         public override void OnEnter(PlayerController owner)
         {
             Physics.gravity = new Vector3(0, -owner.muskaloGravity, 0);
-            Debug.Log(owner.stateMachine.getState());
         }
 
         public override void Process(PlayerController owner)
@@ -807,7 +806,8 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeToWolf()
     {
-        stateMachine.ChangeState(states[1]);
+        if (!OnWall)
+            stateMachine.ChangeState(states[1]);
     }
     public void ChangeToFox()
     {
@@ -815,7 +815,8 @@ public class PlayerController : MonoBehaviour
     }
     public void ChangeToMuskalo()
     {
-        stateMachine.ChangeState(states[0]);
+        if (!OnWall)
+            stateMachine.ChangeState(states[0]);
     }
 
     void Move(Vector2 direction)
