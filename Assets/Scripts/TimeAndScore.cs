@@ -116,9 +116,9 @@ public class TimeAndScore : MonoBehaviour
                 if (scoreText != null)
                     scoreText.GetComponent<Text>().text = score.ToString();
                 if (coinText != null)
-                    coinText.GetComponent<Text>().text = "coins    " + coins;
+                    coinText.GetComponent<Text>().text = coins.ToString();
                 if (gemText != null)
-                    gemText.GetComponent<Text>().text = "gems    " + gems;
+                    gemText.GetComponent<Text>().text = gems.ToString();
             }
             else
             {

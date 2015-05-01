@@ -22,7 +22,7 @@ public class BrushController : MonoBehaviour {
             {
                 breakTimer = 0.1f;
                 collider.enabled = false;
-                afterCollision.SetActive(true);
+                //afterCollision.SetActive(true);
             }
             else
             {
