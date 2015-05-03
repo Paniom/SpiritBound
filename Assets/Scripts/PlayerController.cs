@@ -478,6 +478,8 @@ public class PlayerController : MonoBehaviour
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
+            vel.x = vel.x * (1f / 4f);
+            vel.z = vel.z * (1f / 4f);
             vel.y = owner.wolfJumpPower;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
@@ -619,7 +621,7 @@ public class PlayerController : MonoBehaviour
 
 		public override void Process (PlayerController owner)
 		{
-            if (WallWalk.onWall)
+            if (owner.OnWall)
             {
                 if (owner.RightWall)
                 {
@@ -900,7 +902,7 @@ public class PlayerController : MonoBehaviour
 
     void AirControlMovement(params object[] args)
     {
-        float airControl = 0.4f;
+        float airControl = 0.5f;
         float airSpeed = speed;
         Vector3 airMove = new Vector3((float)args[0] * airSpeed * (1 / Time.timeScale), rigidbody.velocity.y, (float)args[1] * airSpeed) * (1 / Time.timeScale);
         if(airMove.x != airMove.x)
@@ -961,11 +963,12 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.name == "Angled_Walls")
         {
-            //OnWall = true;
+            OnWall = true;
             //Debug.Log("Got on the angled walls");
             ContactPoint whereItHit = other.contacts[0];
-            Physics.gravity = -whereItHit.normal;
-            if (whereItHit.normal.x > 0)
+            //Physics.gravity = -whereItHit.normal;
+            Debug.Log("on collision enter");
+            if (transform.InverseTransformDirection(transform.position-whereItHit.point).x > 0)
             {
                 RightWall = true;
             }
@@ -989,15 +992,17 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
-        if(stateMachine.getState().Equals("Muskalo")) {
-				Physics.gravity = new Vector3(0, -muskaloGravity, 0);
-			}
-			if(stateMachine.getState().Equals("Wolf")) {
-				Physics.gravity = new Vector3(0, -wolfGravity, 0);
-			}
-			if(stateMachine.getState().Equals("Fox")) {
-				Physics.gravity = new Vector3(0, -foxGravity, 0);
-			}
+        Debug.Log("on collision exit");
+        OnWall = false;
+        //if(stateMachine.getState().Equals("Muskalo")) {
+        //        Physics.gravity = new Vector3(0, -muskaloGravity, 0);
+        //    }
+        //    if(stateMachine.getState().Equals("Wolf")) {
+        //        Physics.gravity = new Vector3(0, -wolfGravity, 0);
+        //    }
+        //    if(stateMachine.getState().Equals("Fox")) {
+        //        Physics.gravity = new Vector3(0, -foxGravity, 0);
+        //    }
         //if (other.gameObject.name == "Angled_Walls")
         //{
         //    Debug.Log("Got off the angled walls");

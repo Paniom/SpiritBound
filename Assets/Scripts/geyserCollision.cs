@@ -46,6 +46,7 @@ public class geyserCollision : MonoBehaviour {
             }
             else
             {
+                GetComponent<AudioSource>().Play();
                 erupting = true;
                 eruptDelay = 2f;
             }

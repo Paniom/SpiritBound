@@ -26,7 +26,7 @@ public class WallWalk : MonoBehaviour
             {
                 case "Muskalo":
                     {
-                        player.GetComponent<PlayerController>().OnWall = true;
+                        //player.GetComponent<PlayerController>().OnWall = true;
                         if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.1f > 0)
                             player.GetComponent<InputController>().ySpeed -= Time.deltaTime * 0.1f;
                         else if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.1f < 0 && player.GetComponent<InputController>().ySpeed != 0)
@@ -39,7 +39,7 @@ public class WallWalk : MonoBehaviour
                     }
                 case "Fox":
                     {
-                        player.GetComponent<PlayerController>().OnWall = true;
+                        //player.GetComponent<PlayerController>().OnWall = true;
                         //startRot = player.transform.FindChild("foxSpirit_Still").localEulerAngles;
                         //Transform other = player.transform.FindChild("foxSpirit_Still");
                         //other.up = Vector3.Normalize(other.position - other.position);
@@ -48,7 +48,7 @@ public class WallWalk : MonoBehaviour
                     }
                 case "Wolf":
                     {
-                        player.GetComponent<PlayerController>().OnWall = true;
+                        //player.GetComponent<PlayerController>().OnWall = true;
                         if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.5f > 0)
                             player.GetComponent<InputController>().ySpeed -= Time.deltaTime * 0.5f;
                         else if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.5f < 0 && player.GetComponent<InputController>().ySpeed != 0)
@@ -115,7 +115,7 @@ public class WallWalk : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             onWall = false;
-            player.GetComponent<PlayerController>().OnWall = false;
+            //player.GetComponent<PlayerController>().OnWall = false;
             Debug.Log("Wall collision exit with player");
             PlayerController pc = other.gameObject.GetComponent<PlayerController>();
             switch (pc.stateMachine.getState())

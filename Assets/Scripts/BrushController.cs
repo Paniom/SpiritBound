@@ -46,6 +46,7 @@ public class BrushController : MonoBehaviour {
                 SetLastSpawn.PiecesToReset.Add(gameObject);
                 if (breakDown.GetInteger("DoneBreaking") == 0 && breakDown.GetBool("Breaking") == false)
                 {
+                    AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
                     breakDown.SetBool("Breaking", true);
                 }
             }
@@ -62,8 +63,8 @@ public class BrushController : MonoBehaviour {
             {
                 if (breakDown.GetInteger("DoneBreaking") == 0 && breakDown.GetBool("Breaking") == false)
                 {
-                    breakDown.SetBool("Breaking", true);
                     AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/BreakBrush"), transform.position);
+                    breakDown.SetBool("Breaking", true);
                 }
             }
         }
