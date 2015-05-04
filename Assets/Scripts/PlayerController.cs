@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
             owner.wolf.SetActive(false);
             owner.muskalo.SetActive(true);
             Physics.gravity = new Vector3(0,-owner.muskaloGravity,0);
+			if(owner.inWater) {
+				Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
+			}
             owner.muskaloTrail.SetActive(true);
             owner.stateMachine.setState("Muskalo");
             Color m = owner.muskaloUI.GetComponent<Image>().color;
@@ -197,7 +200,10 @@ public class PlayerController : MonoBehaviour
             owner.wolf.SetActive(false);
             owner.muskalo.SetActive(false);
             Physics.gravity = new Vector3(0, -owner.foxGravity, 0);
-            owner.foxTrail.SetActive(true);
+			if(owner.inWater) {
+				Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
+			}
+			owner.foxTrail.SetActive(true);
             owner.stateMachine.setState("Fox");
             Color m = owner.foxUI.GetComponent<Image>().color;
             m.a = 1.0f;
@@ -647,6 +653,7 @@ public class PlayerController : MonoBehaviour
             }
 			if(owner.inWater)
 			{
+				Debug.Log("In Water as: "+owner.stateMachine.getState());
 				if(owner.stateMachine.getState().Equals("Wolf"))
 				{
 					if(owner.floorColliders != null)
@@ -657,6 +664,7 @@ public class PlayerController : MonoBehaviour
 				}
 				else
 				{
+					Debug.Log("hit");
 					Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
 					if(owner.floorColliders != null)
 					{
