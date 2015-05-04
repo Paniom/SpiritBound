@@ -487,8 +487,8 @@ public class PlayerController : MonoBehaviour
         void jump(PlayerController owner, params object[] args)
         {
             Vector3 vel = owner.GetComponent<Rigidbody>().velocity;
-            vel.x = vel.x * (1f / 4f);
-            vel.z = vel.z * (1f / 4f);
+            //vel.x = vel.x * (1f / 4f);
+            //vel.z = vel.z * (1f / 4f);
             vel.y = owner.wolfJumpPower;
             owner.GetComponent<Rigidbody>().velocity = vel;
         }
