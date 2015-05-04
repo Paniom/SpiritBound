@@ -118,6 +118,7 @@ public class WallWalk : MonoBehaviour
             //player.GetComponent<PlayerController>().OnWall = false;
             Debug.Log("Wall collision exit with player");
             PlayerController pc = other.gameObject.GetComponent<PlayerController>();
+            pc.hitWall = false;
             switch (pc.stateMachine.getState())
             {
                 case "Muskalo":

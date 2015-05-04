@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
                 owner.duskaloAnimator.SetBool("doAction", owner.interacting);
                 //owner.duskaloAnimator.SetBool("Refusing", true);
             }
-            if (!owner.OnWall)
+            if (!WallWalk.onWall)
             {
                 if (owner.IsGrounded())
                 {
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
         public override void Process(PlayerController owner)
         {
-            if (!owner.OnWall)
+            if (!WallWalk.onWall)
             {
                 if (owner.foxPowerLevelUI.GetComponent<Slider>().value > 0) // check if fox power level needs to decrease
                 {
@@ -452,26 +452,29 @@ public class PlayerController : MonoBehaviour
                 owner.wolfAnimator.SetBool("doAction", owner.interacting);
                 //owner.wolfAnimator.SetBool("Refusing", true);
             }
-			if (owner.IsGrounded())
-			{
-				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
-				if(vel.x != vel.x)
-				{
-					vel.x = 0;
-				}
-				if(vel.y != vel.y)
-				{
-					vel.y = 0;
-				}
-				if(vel.z != vel.z)
-				{
-					vel.z = 0;
-				}
-				owner.rigidbody.velocity = vel;
-			}
-			else
+            if (!WallWalk.onWall)
             {
-                owner.AirControlMovement(args);
+                if (owner.IsGrounded())
+                {
+                    Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+                    if (vel.x != vel.x)
+                    {
+                        vel.x = 0;
+                    }
+                    if (vel.y != vel.y)
+                    {
+                        vel.y = 0;
+                    }
+                    if (vel.z != vel.z)
+                    {
+                        vel.z = 0;
+                    }
+                    owner.rigidbody.velocity = vel;
+                }
+                else
+                {
+                    owner.AirControlMovement(args);
+                }
             }
         }
 
@@ -621,7 +624,7 @@ public class PlayerController : MonoBehaviour
 
 		public override void Process (PlayerController owner)
 		{
-            if (owner.OnWall)
+            if (WallWalk.onWall && owner.hitWall)
             {
                 if (owner.RightWall)
                 {
@@ -743,7 +746,7 @@ public class PlayerController : MonoBehaviour
     public GameObject muskaloTrail;
 
     public bool grounded; // Determine if the player is on the ground
-    public bool OnWall = false;
+    public bool hitWall = false;
     float distToGround; // Distance from player collider to ground
 
     public bool interacting = false;
@@ -787,6 +790,8 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        foxPowerLevelUI.GetComponent<Slider>().value = 15;
+        wolfPowerLevelUI.GetComponent<Slider>().value = 15;
         wolfStartUp = wolf.transform.up;
         foxStartUp = fox.transform.up;
         muskaloStartUp = muskalo.transform.up;
@@ -808,7 +813,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeToWolf()
     {
-        if (!OnWall)
+        if (!WallWalk.onWall)
             stateMachine.ChangeState(states[1]);
     }
     public void ChangeToFox()
@@ -817,7 +822,7 @@ public class PlayerController : MonoBehaviour
     }
     public void ChangeToMuskalo()
     {
-        if (!OnWall)
+        if (!WallWalk.onWall)
             stateMachine.ChangeState(states[0]);
     }
 
@@ -894,7 +899,7 @@ public class PlayerController : MonoBehaviour
     /* If the player is grounded they will jump*/
     void Jump()
     {
-		if (IsGrounded() && !OnWall && (!inWater || stateMachine.getState().Equals("Wolf")) )
+        if (IsGrounded() && !WallWalk.onWall && (!inWater || stateMachine.getState().Equals("Wolf")))
         {
             stateMachine.messageReciever("Jump",null);
         }
@@ -963,8 +968,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.name == "Angled_Walls")
         {
-            OnWall = true;
             //Debug.Log("Got on the angled walls");
+            hitWall = true;
             ContactPoint whereItHit = other.contacts[0];
             //Physics.gravity = -whereItHit.normal;
             Debug.Log("on collision enter");
@@ -976,40 +981,27 @@ public class PlayerController : MonoBehaviour
             {
                 RightWall = false;
             }
-            //Debug.Log(whereItHit.normal);
-            //fox.transform.up = Vector3.Normalize(whereItHit.point - transform.position);
-            //wolf.transform.up = Vector3.Normalize(whereItHit.point - transform.position);
-            //muskalo.transform.up = Vector3.Normalize(whereItHit.point - transform.position);
-            //fox.transform.Rotate(fox.transform.up, -90, Space.Self);
-            //fox.transform.Rotate(fox.transform.up, 35);
-            //wolf.transform.Rotate(wolf.transform.up, 35);
-            //muskalo.transform.Rotate(muskalo.transform.up, 35);
-            //fox.transform.Rotate(fox.transform.up, -90, Space.Self);
-            //wolf.transform.up = whereItHit.normal;
-            //muskalo.transform.up = whereItHit.normal;
         }
     }
 
     void OnCollisionExit(Collision other)
     {
-        Debug.Log("on collision exit");
-        OnWall = false;
-        //if(stateMachine.getState().Equals("Muskalo")) {
-        //        Physics.gravity = new Vector3(0, -muskaloGravity, 0);
-        //    }
-        //    if(stateMachine.getState().Equals("Wolf")) {
-        //        Physics.gravity = new Vector3(0, -wolfGravity, 0);
-        //    }
-        //    if(stateMachine.getState().Equals("Fox")) {
-        //        Physics.gravity = new Vector3(0, -foxGravity, 0);
-        //    }
-        //if (other.gameObject.name == "Angled_Walls")
-        //{
-        //    Debug.Log("Got off the angled walls");
-        //    fox.transform.Rotate(fox.transform.up, -35);
-        //    wolf.transform.Rotate(wolf.transform.up, -35);
-        //    muskalo.transform.Rotate(muskalo.transform.up, -35);
-        //}
+        if (other.gameObject.name == "Angled_Walls")
+        {
+            Debug.Log("on collision exit");
+            if (stateMachine.getState().Equals("Muskalo"))
+            {
+                Physics.gravity = new Vector3(0, -muskaloGravity, 0);
+            }
+            if (stateMachine.getState().Equals("Wolf"))
+            {
+                Physics.gravity = new Vector3(0, -wolfGravity, 0);
+            }
+            if (stateMachine.getState().Equals("Fox"))
+            {
+                Physics.gravity = new Vector3(0, -foxGravity, 0);
+            }
+        }
     }
 
 	void OnTriggerEnter(Collider other) {
