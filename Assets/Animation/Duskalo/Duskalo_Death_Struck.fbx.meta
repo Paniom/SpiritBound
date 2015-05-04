@@ -1,0 +1,279 @@
+fileFormatVersion: 2
+guid: e71469d85ed6fcf4d8fedfb7d1f17782
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: dusk_joinjoint12
+    100002: dusk_joinjoint40
+    100004: dusk_joinjoint45
+    100006: dusk_joinjoint50
+    100008: dusk_joinjoint51
+    100010: dusk_joinjoint52
+    100012: dusk_joint13
+    100014: dusk_joint14
+    100016: dusk_joint15
+    100018: dusk_joint16
+    100020: dusk_joint18
+    100022: dusk_joint19
+    100024: dusk_joint19 1
+    100026: dusk_joint2
+    100028: dusk_joint20
+    100030: dusk_joint20 1
+    100032: dusk_joint21
+    100034: dusk_joint21 1
+    100036: dusk_joint22
+    100038: dusk_joint22 1
+    100040: dusk_joint24
+    100042: dusk_joint25
+    100044: dusk_joint26
+    100046: dusk_joint3
+    100048: dusk_joint30
+    100050: dusk_joint30 1
+    100052: dusk_joint4
+    100054: dusk_joint42
+    100056: dusk_joint46
+    100058: dusk_joint47
+    100060: dusk_joint48
+    100062: dusk_joint49
+    100064: dusk_joint5
+    100066: dusk_joint50
+    100068: dusk_joint51
+    100070: dusk_joint52
+    100072: dusk_joint53
+    100074: dusk_joint6
+    100076: dusk_joint7
+    100078: dusk_joint8
+    100080: //RootNode
+    100082: Duskalo_Main_CTRL
+    100084: Duskalo_Mesh
+    100086: Duskalo_skeleton_grp
+    100088: joint35
+    100090: Root_Dusk_Joint
+    400000: dusk_joinjoint12
+    400002: dusk_joinjoint40
+    400004: dusk_joinjoint45
+    400006: dusk_joinjoint50
+    400008: dusk_joinjoint51
+    400010: dusk_joinjoint52
+    400012: dusk_joint13
+    400014: dusk_joint14
+    400016: dusk_joint15
+    400018: dusk_joint16
+    400020: dusk_joint18
+    400022: dusk_joint19
+    400024: dusk_joint19 1
+    400026: dusk_joint2
+    400028: dusk_joint20
+    400030: dusk_joint20 1
+    400032: dusk_joint21
+    400034: dusk_joint21 1
+    400036: dusk_joint22
+    400038: dusk_joint22 1
+    400040: dusk_joint24
+    400042: dusk_joint25
+    400044: dusk_joint26
+    400046: dusk_joint3
+    400048: dusk_joint30
+    400050: dusk_joint30 1
+    400052: dusk_joint4
+    400054: dusk_joint42
+    400056: dusk_joint46
+    400058: dusk_joint47
+    400060: dusk_joint48
+    400062: dusk_joint49
+    400064: dusk_joint5
+    400066: dusk_joint50
+    400068: dusk_joint51
+    400070: dusk_joint52
+    400072: dusk_joint53
+    400074: dusk_joint6
+    400076: dusk_joint7
+    400078: dusk_joint8
+    400080: //RootNode
+    400082: Duskalo_Main_CTRL
+    400084: Duskalo_Mesh
+    400086: Duskalo_skeleton_grp
+    400088: joint35
+    400090: Root_Dusk_Joint
+    4300000: Duskalo_Mesh
+    7400000: Death_Struck
+    9500000: //RootNode
+    13700000: Duskalo_Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Death_Struck
+      takeName: Take 001
+      firstFrame: 21
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Duskalo_Main_CTRL
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint12
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint12/dusk_joint13
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint12/dusk_joint13/dusk_joint14
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint12/dusk_joint13/dusk_joint14/dusk_joint15
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint12/dusk_joint13/dusk_joint14/dusk_joint15/dusk_joint16
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint12/dusk_joint13/dusk_joint14/dusk_joint15/dusk_joint16/dusk_joint47
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint45
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint45/dusk_joint46
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint51
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint51/dusk_joint48
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint51/dusk_joint48/dusk_joint49
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint51/dusk_joint48/dusk_joint49/dusk_joint50
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint51/dusk_joint48/dusk_joint49/dusk_joint50/dusk_joint51
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint51/dusk_joint48/dusk_joint49/dusk_joint50/dusk_joint51/dusk_joint52
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint52
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joinjoint52/dusk_joint53
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7/dusk_joint8
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7/dusk_joint8/dusk_joinjoint40
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7/dusk_joint8/dusk_joinjoint40/dusk_joint30
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7/dusk_joint8/dusk_joinjoint50
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7/dusk_joint8/dusk_joinjoint50/dusk_joint30
+          1
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint2/dusk_joint3/dusk_joint4/dusk_joint5/dusk_joint6/dusk_joint7/dusk_joint8/joint35
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint18
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint18/dusk_joint19
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint18/dusk_joint19/dusk_joint20
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint18/dusk_joint19/dusk_joint20/dusk_joint21
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint18/dusk_joint19/dusk_joint20/dusk_joint21/dusk_joint22
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint24
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint24/dusk_joint25
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint24/dusk_joint25/dusk_joint26
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint42
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint42/dusk_joint19
+          1
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint42/dusk_joint19
+          1/dusk_joint20 1
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint42/dusk_joint19
+          1/dusk_joint20 1/dusk_joint21 1
+        weight: 1
+      - path: Duskalo_Main_CTRL/Duskalo_skeleton_grp/Root_Dusk_Joint/dusk_joint42/dusk_joint19
+          1/dusk_joint20 1/dusk_joint21 1/dusk_joint22 1
+        weight: 1
+      - path: Duskalo_Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Root_Dusk_Joint
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4b8ebfaffb163d049ae0dfbb37bb5724,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 
