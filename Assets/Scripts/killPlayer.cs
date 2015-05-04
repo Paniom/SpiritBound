@@ -10,13 +10,14 @@ public class killPlayer : MonoBehaviour {
 	bool respawn = false;
 	float respawnWait = 2.0f;
 	Collider other;
-	public enum DeathType:int { Pit = 0, Geyser = 1, Boulder = 2, Other = 3, Water = 4 }; 
+	public enum DeathType:int { Pit = 0, Geyser = 1, Boulder = 2, Other = 3, Water = 4, Thorn = 6 }; 
 	public DeathType deathType = DeathType.Other;
 	private string[] DeathMessage = new string[]{ 	"Your body has fallen but your spirit lives on",
 													"Your body has been incinerated but your spirit lives on",
-													"Your body has been toppled but your spirit lives on",
+													"Your body has been crushed but your spirit lives on",
 													"Needs to be defined but your spirit lives on",
-													"Your body has sunk but your spirit lives on"};
+													"Your body has sunk but your spirit lives on",
+													"Your body has been pierced but your spirit lives on"};
 	// Use this for initialization
 	void Start () {
 	    
