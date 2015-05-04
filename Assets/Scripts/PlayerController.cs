@@ -1029,8 +1029,10 @@ public class PlayerController : MonoBehaviour
 			sinkTimer = resetSinkTime;
 		}
 		if(stateMachine.getState().Equals("Muskalo")) {
-			if(tag.Equals("Breakable")) {
+			if(tag.Equals("Breakable")) 
+			{
 				stateMachine.messageReciever("Interact", null);
+				duskaloAnimator.SetTrigger("Bash");
 			}
 		}
 		if(stateMachine.getState().Equals("Wolf")) {
