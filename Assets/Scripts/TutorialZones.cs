@@ -18,6 +18,17 @@ public class TutorialZones : MonoBehaviour
                                     "Ancient obelisks are checkpoints, you return to the last one you passed when you die",
                                     "Finishing faster, picking up coins, and dying less increase your score!",
                                     "Default tutorial message"};
+    private string[] TutorialMessageMobile = new string[]{ "Tap (Up Arrow) to speed up, (Down Arrow) to slow down. Turn with (Left Arrow) & (Right Arrow)",
+                                    "(Jump button) to jump over obstacles and hazards",
+                                    "The duskalo can bash through light obstacles like brush",
+                                    "Touch the character icons to change spirit forms",
+                                    "In spirit form, your power depletes - day spirit orange bar, night spirit dark blue bar",
+                                    "Gem’s help refill your power bar, some are specific to a certain bar",
+                                    "The day spirit can walk on steep land, and jump really far",
+                                    "The night spirit can walk on water and jump really high",
+                                    "Ancient obelisks are checkpoints, you return to the last one you passed when you die",
+                                    "Finishing faster, picking up coins, and dying less increase your score!",
+                                    "Default tutorial message"};
 
     GameObject tutorialtext;
 
@@ -26,7 +37,13 @@ public class TutorialZones : MonoBehaviour
     {
         tutorialtext = Instantiate(Resources.Load("DeathText")) as GameObject;
         tutorialtext.transform.SetParent(GameObject.Find("HintsPanel").transform);
-        tutorialtext.GetComponentInChildren<Text>().text = TutorialMessage[(int)tutorialType];
+        #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_WEBPLAYER
+            tutorialtext.GetComponentInChildren<Text>().text = TutorialMessage[(int)tutorialType];
+
+        #else
+            tutorialtext.GetComponentInChildren<Text>().text = TutorialMessageMobile[(int)tutorialType];
+
+        #endif
         tutorialtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         tutorialtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
         tutorialtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
