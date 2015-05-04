@@ -811,6 +811,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IsGrounded() && !WallWalk.onWall && (!inWater || stateMachine.getState().Equals("Wolf")))
+        {
+            Debug.Log("can jump");
+        }
+        else
+        {
+            Debug.Log("player cant jump");
+        }
         stateMachine.Update();
     }
 

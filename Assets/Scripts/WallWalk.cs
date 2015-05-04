@@ -17,11 +17,12 @@ public class WallWalk : MonoBehaviour
         wallWalk = Resources.Load<PhysicMaterial>("WallWalk");
     }
 
-    void Update()
+    void OnTriggerStay(Collider other)
     {
-        if (onWall)
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("player is on the wall");
+            onWall = true;
             switch (player.GetComponent<PlayerController>().stateMachine.getState())
             {
                 case "Muskalo":
@@ -61,6 +62,51 @@ public class WallWalk : MonoBehaviour
                     }
             }
         }
+    }
+    void Update()
+    {
+        //if (onWall)
+        //{
+        //    Debug.Log("player is on the wall");
+        //    switch (player.GetComponent<PlayerController>().stateMachine.getState())
+        //    {
+        //        case "Muskalo":
+        //            {
+        //                //player.GetComponent<PlayerController>().OnWall = true;
+        //                if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.1f > 0)
+        //                    player.GetComponent<InputController>().ySpeed -= Time.deltaTime * 0.1f;
+        //                else if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.1f < 0 && player.GetComponent<InputController>().ySpeed != 0)
+        //                    player.GetComponent<InputController>().ySpeed = 0;
+        //                //startRot = player.transform.FindChild("Muskalo_Still").localEulerAngles;
+        //                //Transform other = player.transform.FindChild("Muskalo_Still");
+        //                //other.up = Vector3.Normalize(other.position - other.position);
+        //                //other.localEulerAngles = new Vector3(-zRot, other.localEulerAngles.y, other.localEulerAngles.z);
+        //                break;
+        //            }
+        //        case "Fox":
+        //            {
+        //                //player.GetComponent<PlayerController>().OnWall = true;
+        //                //startRot = player.transform.FindChild("foxSpirit_Still").localEulerAngles;
+        //                //Transform other = player.transform.FindChild("foxSpirit_Still");
+        //                //other.up = Vector3.Normalize(other.position - other.position);
+        //                //other.localEulerAngles = new Vector3(-zRot, other.localEulerAngles.y, other.localEulerAngles.z);
+        //                break;
+        //            }
+        //        case "Wolf":
+        //            {
+        //                //player.GetComponent<PlayerController>().OnWall = true;
+        //                if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.5f > 0)
+        //                    player.GetComponent<InputController>().ySpeed -= Time.deltaTime * 0.5f;
+        //                else if (player.GetComponent<InputController>().ySpeed - Time.deltaTime * 0.5f < 0 && player.GetComponent<InputController>().ySpeed != 0)
+        //                    player.GetComponent<InputController>().ySpeed = 0;
+        //                //startRot = player.transform.FindChild("WolfSpirit_Still").localEulerAngles;
+        //                //Transform other = player.transform.FindChild("WolfSpirit_Still");
+        //                //other.up = Vector3.Normalize(other.position - other.position);
+        //                //other.localEulerAngles = new Vector3(-zRot, other.localEulerAngles.y, other.localEulerAngles.z);
+        //                break;
+        //            }
+        //    }
+        //}
     }
 
     void OnTriggerEnter(Collider other)
