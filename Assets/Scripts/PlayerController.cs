@@ -227,6 +227,17 @@ public class PlayerController : MonoBehaviour
                     owner.stateMachine.ChangeState(owner.states[0]);
                 }
             }
+            else
+            {
+                if (owner.foxPowerLevelUI.GetComponent<Slider>().value - Time.deltaTime > 1) // check if fox power level needs to decrease
+                {
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value -= Time.deltaTime; //decrease fox power level
+                }
+                else
+                {
+                    owner.foxPowerLevelUI.GetComponent<Slider>().value = 1;
+                }
+            }
             if (owner.interacting)
             {
                 if (interactTimer > 0)
