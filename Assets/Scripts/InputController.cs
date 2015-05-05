@@ -42,7 +42,7 @@ public class InputController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         if (interactTime > 0)
         {
             interactTime -= Time.deltaTime;
