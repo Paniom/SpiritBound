@@ -109,8 +109,7 @@ public class killPlayer : MonoBehaviour {
 			pc.foxPowerLevelUI.GetComponent<Slider>().value = 15;
 			pc.wolfPowerLevelUI.GetComponent<Slider>().value = 15;
 	        pc.hitWall = false;
-	        pc.ChangeToMuskalo();
-			pc.resetSinker();
+	        pc.resetSinker();
 			other.GetComponent<InputController>().receiveInput = false;
 			other.rigidbody.velocity = new Vector3(0, 0, 0);
 			TimeAndScore.score -= 10;

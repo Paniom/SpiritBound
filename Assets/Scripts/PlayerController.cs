@@ -809,6 +809,11 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		#if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_BLACKBERRY
+		wolfJumpPower = wolfJumpPower * 1.1f;
+		foxJumpPower = foxJumpPower * 1.1f;
+		muskaloJumpPower = muskaloJumpPower * 1.1f;
+		#endif
         foxPowerLevelUI.GetComponent<Slider>().value = 15;
         wolfPowerLevelUI.GetComponent<Slider>().value = 15;
         wolfStartUp = wolf.transform.up;
@@ -1089,6 +1094,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	public void playerDied(Vector3 cam, Quaternion rot) {
+		ChangeToMuskalo();
 		followingCamera.GetComponent<CameraController>().setPosition(cam, rot);
 		GetComponent<InputController>().ySpeed = 0;
 		GameObject con = GameObject.Find("MobileControls");
