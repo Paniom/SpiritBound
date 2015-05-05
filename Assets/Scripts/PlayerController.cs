@@ -1091,6 +1091,11 @@ public class PlayerController : MonoBehaviour
 	public void playerDied(Vector3 cam, Quaternion rot) {
 		followingCamera.GetComponent<CameraController>().setPosition(cam, rot);
 		GetComponent<InputController>().ySpeed = 0;
+		GameObject con = GameObject.Find("MobileControls");
+		if(con != null)
+		{
+			con.GetComponent<MobileControls>().ySpeed = 0;
+		}
 		GetComponent<InputController>().receiveInput = true;
 	}
 

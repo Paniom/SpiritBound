@@ -11,7 +11,7 @@ public class MobileControls : MonoBehaviour {
 	public InputController playerInput;
 	float downTimer = 1.3f;
 	float upTimer = 1f;
-	float ySpeed = 0;
+	public float ySpeed = 0;
 	float stopTimer = 0;
 	float stopTime = 1.4f;
 	float speedChange = .35f;
