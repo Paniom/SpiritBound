@@ -73,7 +73,10 @@ public class MobileControls : MonoBehaviour {
 		}
 		direction.y = ySpeed;
 		direction = direction*6;
-		playerInput.target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
+		if(playerInput.receiveInput)
+		{
+			playerInput.target.SendMessage("Move", direction, SendMessageOptions.DontRequireReceiver);
+		}
 	}
 
 	public void LeftPressed() {
@@ -93,7 +96,10 @@ public class MobileControls : MonoBehaviour {
 	}
 
 	public void Jump() {
-		playerInput.target.SendMessage("Jump", SendMessageOptions.DontRequireReceiver);
+		if(playerInput.receiveInput)
+		{
+			playerInput.target.SendMessage("Jump", SendMessageOptions.DontRequireReceiver);
+		}
 	}
 
 	public void UpPressed() {

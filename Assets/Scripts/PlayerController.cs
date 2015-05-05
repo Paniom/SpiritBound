@@ -443,7 +443,7 @@ public class PlayerController : MonoBehaviour
 
         public override void OnExit(PlayerController owner)
         {
-			owner.sinkTimer = owner.resetSinkTime;
+			owner.resetSinker();
             Time.timeScale = 1f;
             owner.wolfTrail.SetActive(false);
             Color m = owner.wolfUI.GetComponent<Image>().color;
@@ -742,8 +742,8 @@ public class PlayerController : MonoBehaviour
     public GameObject muskalo;
 
 	public GameObject followingCamera;
-	public float sinkTimer = 3f;
-	private float resetSinkTime = 3f;
+	private float sinkTimer = 0;
+	public float resetSinkTime = 1f;
 	public bool inWater { get; private set; }
 	private killPlayer deadlyWater;
 	//private float camDirection = 0;
@@ -817,6 +817,7 @@ public class PlayerController : MonoBehaviour
         distToGround = collider.bounds.extents.y; // set distance from player collider to ground
         stateMachine.Configure(this, states[0]);
 		stateMachine.ChangeGlobalState(states[4]);
+		resetSinker();
     }
 
     // Update is called once per frame
@@ -1037,7 +1038,7 @@ public class PlayerController : MonoBehaviour
 		if(layer.Equals("Water")) {
 			inWater = true;
 			deadlyWater = other.GetComponent<killPlayer>();
-			sinkTimer = resetSinkTime;
+			resetSinker();
 		}
 		if(stateMachine.getState().Equals("Muskalo")) {
 			if(tag.Equals("Breakable")) 
@@ -1090,5 +1091,10 @@ public class PlayerController : MonoBehaviour
 	public void playerDied(Vector3 cam, Quaternion rot) {
 		followingCamera.GetComponent<CameraController>().setPosition(cam, rot);
 		GetComponent<InputController>().ySpeed = 0;
+		GetComponent<InputController>().receiveInput = true;
+	}
+
+	public void resetSinker() {
+		sinkTimer = resetSinkTime;
 	}
 }
