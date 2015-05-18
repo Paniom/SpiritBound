@@ -20,8 +20,8 @@ public class geyserCollision : MonoBehaviour {
         gameObject.GetComponent<Animator>().SetBool("erupting", erupting);
         if (erupting)
         {
-            if(!collider.enabled)
-                collider.enabled = true;
+            if(!GetComponent<Collider>().enabled)
+                GetComponent<Collider>().enabled = true;
             if (!GetComponent<ParticleSystem>().isPlaying)
                 GetComponent<ParticleSystem>().Play();
             if (eruptTime > 0)
@@ -38,8 +38,8 @@ public class geyserCollision : MonoBehaviour {
         {
             if (GetComponent<ParticleSystem>().isPlaying)
                 GetComponent<ParticleSystem>().Stop();
-            if(collider.enabled)
-                collider.enabled = false;
+            if(GetComponent<Collider>().enabled)
+                GetComponent<Collider>().enabled = false;
             if (eruptDelay > 0)
             {
                 eruptDelay -= Time.deltaTime;

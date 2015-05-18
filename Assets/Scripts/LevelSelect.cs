@@ -32,20 +32,28 @@ public class LevelSelect : MonoBehaviour
             case "Level1":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 1 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level1FastestTime+ "\n" + "High Score: " + AchievementTracker.level1HighScore;
+                    if(AchievementTracker.Level_0Complete == 1)
+                        levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level1FastestTime+ "\n" + "High Score: " + AchievementTracker.level1HighScore;
+                    else
+                        levelDetails_stats.GetComponent<Text>().text = "Locked";
                     break;
                 }
             case "Level2":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 2 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level2FastestTime + "\n" + "High Score: " + AchievementTracker.level2HighScore; 
+                    if (AchievementTracker.Level_1Complete == 1)
+                        levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level2FastestTime + "\n" + "High Score: " + AchievementTracker.level2HighScore; 
+                    else
+                        levelDetails_stats.GetComponent<Text>().text = "Locked";
                     break;
                 }
             case "Level3":
                 {
                     levelDetails_name.GetComponent<Text>().text = "Level 3 ";
-                    levelDetails_stats.GetComponent<Text>().text = "Locked : Coming Soon";
-                    //levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level3FastestTime + "\n" + "High Score: " + AchievementTracker.level3HighScore; 
+                    if(AchievementTracker.Level_2Complete == 1)
+                        levelDetails_stats.GetComponent<Text>().text = "Fastest time: " + AchievementTracker.level3FastestTime + "\n" + "High Score: " + AchievementTracker.level3HighScore; 
+                    else
+                        levelDetails_stats.GetComponent<Text>().text = "Locked";
                     break;
                 }
             case "Level4":
@@ -127,8 +135,8 @@ public class LevelSelect : MonoBehaviour
                 //map.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Map2-3(Finish)");
             }
             level2.GetComponent<Image>().sprite = levelComplete;
-            //level3.GetComponent<Image>().sprite = level3Unlocked;
-            //level3.GetComponent<Button>().interactable = true;
+            level3.GetComponent<Image>().sprite = level3Unlocked;
+            level3.GetComponent<Button>().interactable = true;
         }
         if (AchievementTracker.Level_3Complete == 1)
         {

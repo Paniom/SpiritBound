@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class TutorialZones : MonoBehaviour 
@@ -35,8 +37,18 @@ public class TutorialZones : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        tutorialtext = Instantiate(Resources.Load("DeathText")) as GameObject;
+        tutorialtext = Instantiate(Resources.Load("TutorialText")) as GameObject;
+        tutorialtext.name = "TutorialHints";
         tutorialtext.transform.SetParent(GameObject.Find("HintsPanel").transform);
+        
+        
+        EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        trigger.AddListener((eventData) => Continue());
+        entry.eventID = EventTriggerType.PointerClick;
+        entry.callback = trigger;
+
+        tutorialtext.GetComponent<EventTrigger>().delegates.Add(entry);
         #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_WEBPLAYER
             tutorialtext.GetComponentInChildren<Text>().text = TutorialMessage[(int)tutorialType];
 
@@ -61,14 +73,24 @@ public class TutorialZones : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             tutorialtext.SetActive(true);
+            Time.timeScale = 0;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<InputController>().receiveInput = false;
         }
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InputController>().receiveInput = true;
+        tutorialtext.SetActive(false);
+        Destroy(gameObject);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            tutorialtext.SetActive(false);
-        }
+        //if (other.gameObject.tag == "Player")
+        //{
+        //    tutorialtext.SetActive(false);
+        //}
     }
 }

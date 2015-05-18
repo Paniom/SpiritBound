@@ -21,7 +21,7 @@ public class BrushController : MonoBehaviour {
             if (breakTimer < 0)
             {
                 breakTimer = 0.1f;
-                collider.enabled = false;
+                GetComponent<Collider>().enabled = false;
                 //afterCollision.SetActive(true);
             }
             else
@@ -75,7 +75,7 @@ public class BrushController : MonoBehaviour {
         breakDown.SetInteger("DoneBreaking",0);
         breakDown.SetBool("Breaking",false);
         breakTimer = 0.1f;
-        collider.enabled = true;
+        GetComponent<Collider>().enabled = true;
         afterCollision.SetActive(false);
     }
 }

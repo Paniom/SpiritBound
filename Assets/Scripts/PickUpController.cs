@@ -98,7 +98,7 @@ public class PickUpController : MonoBehaviour
                 case "Muskalo":
                     if (muskaloCanSee)
                     {
-                        collider.enabled = true;
+                        GetComponent<Collider>().enabled = true;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
                             foreach (Material mat in rend.materials)
@@ -114,7 +114,7 @@ public class PickUpController : MonoBehaviour
                     }
                     else
                     {
-                        collider.enabled = false;
+                        GetComponent<Collider>().enabled = false;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
                             foreach (Material mat in rend.materials)
@@ -132,7 +132,7 @@ public class PickUpController : MonoBehaviour
                 case "Fox":
                     if (foxCanSee)
                     {
-                        collider.enabled = true;
+                        GetComponent<Collider>().enabled = true;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
                             foreach (Material mat in rend.materials)
@@ -148,7 +148,7 @@ public class PickUpController : MonoBehaviour
                     }
                     else
                     {
-                        collider.enabled = false;
+                        GetComponent<Collider>().enabled = false;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
                             foreach (Material mat in rend.materials)
@@ -166,7 +166,7 @@ public class PickUpController : MonoBehaviour
                 case "Wolf":
                     if (wolfCanSee)
                     {
-                        collider.enabled = true;
+                        GetComponent<Collider>().enabled = true;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
                             foreach (Material mat in rend.materials)
@@ -182,7 +182,7 @@ public class PickUpController : MonoBehaviour
                     }
                     else
                     {
-                        collider.enabled = false;
+                        GetComponent<Collider>().enabled = false;
                         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                         {
                             foreach (Material mat in rend.materials)

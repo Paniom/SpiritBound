@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (owner.IsGrounded())
                 {
-                    Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+                    Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.GetComponent<Rigidbody>().velocity.y, (float)args[1] * owner.speed);
                     if (vel.x != vel.x)
                     {
                         vel.x = 0;
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
                     {
                         vel.z = 0;
                     }
-                    owner.rigidbody.velocity = vel;
+                    owner.GetComponent<Rigidbody>().velocity = vel;
                 }
                 else
                 {
@@ -284,7 +284,7 @@ public class PlayerController : MonoBehaviour
             }
 			if (owner.IsGrounded())
 			{
-				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.GetComponent<Rigidbody>().velocity.y, (float)args[1] * owner.speed);
 				if(vel.x != vel.x)
 				{
 					vel.x = 0;
@@ -297,7 +297,7 @@ public class PlayerController : MonoBehaviour
 				{
 					vel.z = 0;
 				}
-				owner.rigidbody.velocity = vel;
+				owner.GetComponent<Rigidbody>().velocity = vel;
 			}
 			else
             {
@@ -473,7 +473,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (owner.IsGrounded())
                 {
-                    Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+                    Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.GetComponent<Rigidbody>().velocity.y, (float)args[1] * owner.speed);
                     if (vel.x != vel.x)
                     {
                         vel.x = 0;
@@ -486,7 +486,7 @@ public class PlayerController : MonoBehaviour
                     {
                         vel.z = 0;
                     }
-                    owner.rigidbody.velocity = vel;
+                    owner.GetComponent<Rigidbody>().velocity = vel;
                 }
                 else
                 {
@@ -593,7 +593,7 @@ public class PlayerController : MonoBehaviour
         {
             if (owner.IsGrounded())
 			{
-				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.rigidbody.velocity.y, (float)args[1] * owner.speed);
+				Vector3 vel = new Vector3((float)args[0] * owner.speed, owner.GetComponent<Rigidbody>().velocity.y, (float)args[1] * owner.speed);
 				if(vel.x != vel.x)
 				{
 					vel.x = 0;
@@ -606,7 +606,7 @@ public class PlayerController : MonoBehaviour
 				{
 					vel.z = 0;
 				}
-				owner.rigidbody.velocity = vel;
+				owner.GetComponent<Rigidbody>().velocity = vel;
 			}
             else
             {
@@ -669,7 +669,7 @@ public class PlayerController : MonoBehaviour
 				{
 					if(owner.floorColliders != null)
 					{
-						owner.floorColliders.collider.isTrigger = false;
+						owner.floorColliders.GetComponent<Collider>().isTrigger = false;
 					}
 					Physics.gravity = new Vector3(0, -owner.wolfGravity, 0);
 				}
@@ -679,7 +679,7 @@ public class PlayerController : MonoBehaviour
 					Physics.gravity = new Vector3(0, -owner.waterGravity, 0);
 					if(owner.floorColliders != null)
 					{
-						owner.floorColliders.collider.isTrigger = true;
+						owner.floorColliders.GetComponent<Collider>().isTrigger = true;
 					}
 
 					owner.sinkTimer -= Time.deltaTime;
@@ -694,8 +694,8 @@ public class PlayerController : MonoBehaviour
 			{
 				s = 0;
 			}
-			float xVel = owner.rigidbody.velocity.x;
-			float zVel = owner.rigidbody.velocity.z;
+			float xVel = owner.GetComponent<Rigidbody>().velocity.x;
+			float zVel = owner.GetComponent<Rigidbody>().velocity.z;
 			if(xVel != xVel)
 			{
 				xVel = 0;
@@ -819,7 +819,7 @@ public class PlayerController : MonoBehaviour
         wolfStartUp = wolf.transform.up;
         foxStartUp = fox.transform.up;
         muskaloStartUp = muskalo.transform.up;
-        distToGround = collider.bounds.extents.y; // set distance from player collider to ground
+        distToGround = GetComponent<Collider>().bounds.extents.y; // set distance from player collider to ground
         stateMachine.Configure(this, states[0]);
 		stateMachine.ChangeGlobalState(states[4]);
 		resetSinker();
@@ -828,6 +828,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("is grounded " + IsGrounded());
+        Debug.Log("is in water " + inWater);
+        Debug.Log("on the wall " + WallWalk.onWall);
         if (IsGrounded() && !WallWalk.onWall && (!inWater || stateMachine.getState().Equals("Wolf")))
         {
             Debug.Log("can jump");
@@ -846,16 +849,17 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeToWolf()
     {
-        if (!WallWalk.onWall)
+        if (!WallWalk.onWall && GetComponent<InputController>().receiveInput)
             stateMachine.ChangeState(states[1]);
     }
     public void ChangeToFox()
     {
-        stateMachine.ChangeState(states[2]);
+        if(GetComponent<InputController>().receiveInput)
+            stateMachine.ChangeState(states[2]);
     }
     public void ChangeToMuskalo()
     {
-        if (!WallWalk.onWall)
+        if (!WallWalk.onWall && GetComponent<InputController>().receiveInput)
             stateMachine.ChangeState(states[0]);
     }
 
@@ -906,18 +910,18 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        Debug.DrawLine(transform.position + 1.25f * transform.forward, transform.position + 1.25f * transform.forward+(distToGround + 0.2f)*-transform.up, Color.red);
-        Debug.DrawLine(transform.position + 1.25f * transform.forward - 0.4f * transform.right, transform.position + 1.25f * transform.forward + (distToGround + 0.2f) * -transform.up, Color.red);
-        Debug.DrawLine(transform.position + 1.25f * transform.forward + 0.4f * transform.right, transform.position + 1.25f * transform.forward + (distToGround + 0.2f) * -transform.up, Color.red);
-        if (Physics.Raycast(transform.position + 1.25f * transform.forward, -transform.up, distToGround + 0.1f))
+        Debug.DrawLine(transform.position + 1.25f * transform.forward, transform.position + 1.25f * transform.forward+(distToGround + 0.1f)*-transform.up, Color.red);
+        Debug.DrawLine(transform.position + 1.25f * transform.forward - 0.4f * transform.right, transform.position + 1.25f * transform.forward - 0.4f * transform.right + (distToGround + 0.1f) * -transform.up, Color.red);
+        Debug.DrawLine(transform.position + 1.25f * transform.forward + 0.4f * transform.right, transform.position + 1.25f * transform.forward + 0.4f * transform.right + (distToGround + 0.1f) * -transform.up, Color.red);
+        if (Physics.Raycast(transform.position + 1.25f * transform.forward, -transform.up, distToGround + 0.15f))
         {
             return true;
         }
-        else if (Physics.Raycast(transform.position + 1.25f * transform.forward + 0.4f*transform.right, -transform.up, distToGround + 0.1f))
+        else if (Physics.Raycast(transform.position + 1.25f * transform.forward + 0.4f*transform.right, -transform.up, distToGround + 0.15f))
         {
             return true;
         }
-        else if (Physics.Raycast(transform.position + 1.25f * transform.forward - 0.4f*transform.right, -transform.up, distToGround + 0.1f))
+        else if (Physics.Raycast(transform.position + 1.25f * transform.forward - 0.4f*transform.right, -transform.up, distToGround + 0.15f))
         {
             return true;
         }
@@ -942,7 +946,7 @@ public class PlayerController : MonoBehaviour
     {
         float airControl = 0.5f;
         float airSpeed = speed;
-        Vector3 airMove = new Vector3((float)args[0] * airSpeed * (1 / Time.timeScale), rigidbody.velocity.y, (float)args[1] * airSpeed) * (1 / Time.timeScale);
+        Vector3 airMove = new Vector3((float)args[0] * airSpeed * (1 / Time.timeScale), GetComponent<Rigidbody>().velocity.y, (float)args[1] * airSpeed) * (1 / Time.timeScale);
         if(airMove.x != airMove.x)
 		{
 			airMove.x = 0;
@@ -955,7 +959,7 @@ public class PlayerController : MonoBehaviour
 		{
 			airMove.z = 0;
 		}
-		Vector3 vel = Vector3.Lerp(rigidbody.velocity, airMove, Time.deltaTime * airControl);
+		Vector3 vel = Vector3.Lerp(GetComponent<Rigidbody>().velocity, airMove, Time.deltaTime * airControl);
 		if(vel.x != vel.x || float.IsInfinity(vel.x) )
 		{
 			vel.x = 0;
@@ -968,7 +972,7 @@ public class PlayerController : MonoBehaviour
 		{
 			vel.z = 0;
 		}
-		rigidbody.velocity = vel;
+		GetComponent<Rigidbody>().velocity = vel;
     }
 
 	public void InteractComplete()
@@ -1075,7 +1079,7 @@ public class PlayerController : MonoBehaviour
 			inWater = false;
 			if(floorColliders != null)
 			{
-				floorColliders.collider.isTrigger = false;
+				floorColliders.GetComponent<Collider>().isTrigger = false;
 			}
 			if(stateMachine.getState().Equals("Muskalo")) {
 				Physics.gravity = new Vector3(0, -muskaloGravity, 0);
@@ -1090,7 +1094,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	public void Drowning() {
-		deadlyWater.playerDied(this.collider);
+		deadlyWater.playerDied(this.GetComponent<Collider>());
 	}
 
 	public void playerDied(Vector3 cam, Quaternion rot) {

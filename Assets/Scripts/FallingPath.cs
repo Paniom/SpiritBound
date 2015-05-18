@@ -28,7 +28,7 @@ public class FallingPath : MonoBehaviour
 
     void RemoveTheCollider()
     {
-        collider.enabled = false;
+        GetComponent<Collider>().enabled = false;
     }
 
     public void Reset()
@@ -37,7 +37,7 @@ public class FallingPath : MonoBehaviour
         done = false;
         GetComponent<Animator>().SetBool("reset", true);
         GetComponent<Animator>().SetBool("playerStanding", false);
-        collider.enabled = true;
+        GetComponent<Collider>().enabled = true;
     }
 
 }

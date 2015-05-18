@@ -111,7 +111,7 @@ public class killPlayer : MonoBehaviour {
 	        pc.hitWall = false;
 	        pc.resetSinker();
 			other.GetComponent<InputController>().receiveInput = false;
-			other.rigidbody.velocity = new Vector3(0, 0, 0);
+			other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 			TimeAndScore.score -= 10;
 			if (TimeAndScore.score < 0)
 			{
