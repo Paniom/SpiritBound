@@ -199,7 +199,7 @@ public class TimeAndScore : MonoBehaviour
                     {
                         if (finalScore > PlayerPrefs.GetInt("level1HighScore"))
                             PlayerPrefs.SetInt("level1HighScore", (int)finalScore);
-                        if (timeRemaining > PlayerPrefs.GetInt("level1FastestTime"))
+                        if (timeRemaining > PlayerPrefs.GetInt("level1FastestTime") || PlayerPrefs.GetInt("level1FastestTime") == 0)
                             PlayerPrefs.SetInt("level1FastestTime", (int)timeRemaining);
                         break;
                     }
@@ -207,7 +207,7 @@ public class TimeAndScore : MonoBehaviour
                     {
                         if (finalScore > PlayerPrefs.GetInt("level2HighScore"))
                             PlayerPrefs.SetInt("level2HighScore", (int)finalScore);
-                        if (timeRemaining > PlayerPrefs.GetInt("level2FastestTime"))
+                        if (timeRemaining > PlayerPrefs.GetInt("level2FastestTime") || PlayerPrefs.GetInt("level2FastestTime") == 0)
                             PlayerPrefs.SetInt("level2FastestTime", (int)timeRemaining);
                         break;
                     }
@@ -215,15 +215,15 @@ public class TimeAndScore : MonoBehaviour
                     {
                         if (finalScore > PlayerPrefs.GetInt("level3HighScore"))
                             PlayerPrefs.SetInt("level3HighScore", (int)finalScore);
-                        if (timeRemaining > PlayerPrefs.GetInt("level3HighScore"))
-                            PlayerPrefs.SetInt("level3HighScore", (int)timeRemaining);
+                        if (timeRemaining > PlayerPrefs.GetInt("level3FastestTime") || PlayerPrefs.GetInt("level3FastestTime") == 0)
+                            PlayerPrefs.SetInt("level3FastestTime", (int)timeRemaining);
                         break;
                     }
                 case "Level_4":
                     {
                         if (finalScore > PlayerPrefs.GetInt("level4HighScore"))
                             PlayerPrefs.SetInt("level4HighScore", (int)finalScore);
-                        if (timeRemaining > PlayerPrefs.GetInt("level4FastestTime"))
+                        if (timeRemaining > PlayerPrefs.GetInt("level4FastestTime") || PlayerPrefs.GetInt("level4FastestTime") == 0)
                             PlayerPrefs.SetInt("level4FastestTime", (int)timeRemaining);
                         break;
                     }
@@ -231,7 +231,7 @@ public class TimeAndScore : MonoBehaviour
                     {
                         if (finalScore > PlayerPrefs.GetInt("level5HighScore"))
                             PlayerPrefs.SetInt("level5HighScore", (int)finalScore);
-                        if (timeRemaining > PlayerPrefs.GetInt("level5FastestTime"))
+                        if (timeRemaining > PlayerPrefs.GetInt("level5FastestTime") || PlayerPrefs.GetInt("level5FastestTime") == 0)
                             PlayerPrefs.SetInt("level5FastestTime", (int)timeRemaining);
                         break;
                     }

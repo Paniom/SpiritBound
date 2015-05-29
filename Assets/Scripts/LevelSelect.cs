@@ -141,8 +141,8 @@ public class LevelSelect : MonoBehaviour
         if (AchievementTracker.Level_3Complete == 1)
         {
             level3.GetComponent<Image>().sprite = levelComplete;
-            level4.GetComponent<Image>().sprite = level4Unlocked;
-            level4.GetComponent<Button>().interactable = true;
+            //level4.GetComponent<Image>().sprite = level4Unlocked;
+            //level4.GetComponent<Button>().interactable = true;
         }
         if (AchievementTracker.Level_4Complete == 1)
         {
